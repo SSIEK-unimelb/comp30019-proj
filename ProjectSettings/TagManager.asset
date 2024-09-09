@@ -3,7 +3,9 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - HoldableItem
+  - Weapon
   layers:
   - Default
   - TransparentFX
@@ -11,11 +13,11 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Interactible
+  - Holdable
+  - Obstacle
+  - HitboxLayer
+  - Enemy
   - 
   - 
   - 

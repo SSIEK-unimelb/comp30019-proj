@@ -1,0 +1,213 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEditor;
+using UnityEngine;
+
+
+// Shoutout to Comp-3 Interactive's series on first person controllers
+
+public class FirstPersonControl : MonoBehaviour
+{
+    public bool CanMove { get; private set; } = true;
+    [SerializeField] private int InteractibleLayer = 6;
+    private bool isSprinting => canSprint && Input.GetKey(sprintKey) && !holder.isHolding();
+
+    private bool shouldJump => characterController.isGrounded && Input.GetKeyDown(jumpKey) && !holder.isHolding();
+    private bool shouldCrouch => !isInCrouchAnimation && characterController.isGrounded && Input.GetKeyDown(crouchKey);
+
+
+    [Header("Movement")]
+    [SerializeField] private float walkSpeed = 4.0f;
+    [SerializeField] private float sprintSpeed = 8.0f;
+    [SerializeField] private float crouchSpeed = 2.0f;
+    private float currentSpeed;
+    
+
+    [Header("Movement Options")]
+    [SerializeField] private bool canSprint = true;
+    [SerializeField] private bool canJump = true;
+    [SerializeField] private bool canCrouch = true;
+    [SerializeField] private bool canInteract = true;
+
+    [Header("Controls")]
+    [SerializeField] private KeyCode sprintKey = KeyCode.LeftShift;
+    [SerializeField] private KeyCode jumpKey = KeyCode.Space;
+    [SerializeField] private KeyCode crouchKey = KeyCode.LeftControl;
+    [SerializeField] private KeyCode interactKey = KeyCode.F;
+
+    [Header("Looking")]
+    [SerializeField] private float lookSpeedX = 2.0f;
+    [SerializeField] private float lookSpeedY = 2.0f;
+    [SerializeField] private float aboveLookClamp = 90.0f;
+    [SerializeField] private float belowLookClamp = 90.0f;
+
+    [Header("Jump")]
+    [SerializeField] private float jumpStrength = 8.0f;
+    [SerializeField] private float gravity = 9.81f;
+
+    [Header("Crouch")]
+    [SerializeField] private float crouchHeight = 0.5f;
+    [SerializeField] private float standHeight = 2f;
+    [SerializeField] private float crouchTransitionTime = 0.25f;
+    [SerializeField] private Vector3 crouchCenter = new Vector3(0, 0.5f, 0);
+    [SerializeField] private Vector3 standCenter = new Vector3(0, 0, 0);
+    private bool isCrouched;
+    private bool isInCrouchAnimation;
+
+
+    [Header("Interaction")]
+    [SerializeField] private Vector3 interactRayIntersect = default;
+    [SerializeField] private float interactDistance = default;
+    [SerializeField] private LayerMask interactLayerMask = default;
+    private Interactible currentInteractible;
+
+    private Camera playerCamera;
+    private CharacterController characterController;
+
+    private Vector3 moveDir;
+    private Vector2 inputDir;
+    private float rotationX = 0;
+
+    private HoldingScript holder;
+
+    private void Awake()
+    {
+        playerCamera = GetComponentInChildren<Camera>();
+        characterController = GetComponent<CharacterController>();
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+        holder = GetComponentInChildren<HoldingScript>();
+    }
+    void Update()
+    {
+        if (CanMove)
+        {
+            ValidateMovement(); 
+            RegisterMouseMovement(); 
+            if (canJump) RegisterJump();  
+            if (canCrouch) RegisterCrouch();
+            ApplyMovement();
+            if (canInteract) { 
+                CheckInteraction();
+                RegisterInteractInput();
+            }
+
+        }
+    }
+
+    private void ValidateMovement()
+    {
+        if (characterController.isGrounded)
+        {
+            currentSpeed = isCrouched ? crouchSpeed : isSprinting ? sprintSpeed : walkSpeed;
+        }
+        inputDir = new Vector2(currentSpeed * Input.GetAxis("Vertical"), currentSpeed * Input.GetAxis("Horizontal"));
+        float moveDirY = moveDir.y;
+        moveDir = (transform.TransformDirection(Vector3.forward) * inputDir.x) + (transform.TransformDirection(Vector3.right) * inputDir.y);
+        moveDir.y = moveDirY;
+    }
+
+    private void RegisterMouseMovement() 
+    {
+        // look vertically
+        rotationX -= Input.GetAxis("Mouse Y") * lookSpeedY;
+        rotationX = Mathf.Clamp(rotationX, -aboveLookClamp, belowLookClamp);
+        playerCamera.transform.localRotation = Quaternion.Euler(rotationX, 0, 0);
+
+        // horizontal looking moves the character
+        transform.rotation *= Quaternion.Euler(0, Input.GetAxis("Mouse X") * lookSpeedX, 0);
+
+        
+    }
+     
+    private void ApplyMovement()
+    {
+        if (!characterController.isGrounded) { 
+            moveDir.y -= gravity * Time.deltaTime;   
+        }
+        characterController.Move(moveDir * Time.deltaTime);
+    }
+
+
+    private void RegisterJump() 
+    {
+        if (shouldJump) {
+            moveDir.y = jumpStrength;
+        }
+    }
+
+    private void RegisterCrouch() 
+    {
+        if (shouldCrouch || isCrouched && !isInCrouchAnimation && !Input.GetKey(crouchKey))
+        {
+            StartCoroutine(CrouchStandTransition());
+        }
+    }
+
+    private IEnumerator CrouchStandTransition() 
+    {
+        if (isCrouched && Physics.Raycast(playerCamera.transform.position, Vector3.up, 1f))
+        {
+            yield break;
+        }
+        isInCrouchAnimation = true;
+
+        float elapsedTime = 0;
+        float targetHeight = isCrouched ? standHeight : crouchHeight;
+        float currentHeight = characterController.height;
+        Vector3 targetCenter = isCrouched ? standCenter : crouchCenter;
+        Vector3 currentCenter = characterController.center;
+
+        isCrouched = !isCrouched;
+
+        while (elapsedTime < crouchTransitionTime) 
+        {
+            characterController.height = Mathf.Lerp(currentHeight, targetHeight, elapsedTime/crouchTransitionTime);
+            characterController.center = Vector3.Lerp(currentCenter, targetCenter, elapsedTime/crouchTransitionTime);
+            elapsedTime += Time.deltaTime;  
+            yield return null;
+        }
+        
+        characterController.height = targetHeight;
+        characterController.center = targetCenter;
+
+        isInCrouchAnimation = false;
+    }
+
+    private void CheckInteraction() 
+    {
+        if (Physics.Raycast(playerCamera.ViewportPointToRay(interactRayIntersect), out RaycastHit hit, interactDistance)) 
+        { 
+            if(hit.collider.gameObject.layer == InteractibleLayer && 
+                (currentInteractible == null || hit.collider.gameObject.GetInstanceID() != currentInteractible.GetInstanceID()))
+            {
+                hit.collider.TryGetComponent(out currentInteractible);
+                if (currentInteractible != null) { 
+                    currentInteractible.OnFocus();
+                }
+            }
+        }
+        else if (currentInteractible != null) 
+        {
+            currentInteractible.OnLoseFocus();
+            currentInteractible = null;
+        }   
+    }
+
+    private void RegisterInteractInput() 
+    {
+        if (Input.GetKeyDown(interactKey) && currentInteractible != null && Physics.Raycast(playerCamera.ViewportPointToRay(interactRayIntersect),
+            out RaycastHit hit, interactDistance, interactLayerMask))
+        {
+            currentInteractible.OnInteract();
+        }
+    }
+
+    public float GetCurrentSpeed() {
+        // If the player is moving,
+        if (inputDir != Vector2.zero) {
+            return currentSpeed;
+        }
+        return 0;
+    }
+}
