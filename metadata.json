@@ -1,0 +1,26 @@
+{
+    "repoUrl": "https://github.com/feit-comp30019/2024s2-project-2-byte-brigade",
+    "teamName": "Byte Brigade",
+    "teamMembers": [
+      {
+        "name": "Zach Mandragona",
+        "github": "zchaarim",
+        "email": "zmandragona@student.unimelb.edu.au"
+      },
+      {
+        "name": "William Alexander Tang Wai",
+        "github": "WilliamAlexTW",
+        "email": "wtangwai@student.unimelb.edu.au"
+      },
+      {
+        "name": "Aye Myat Min",
+        "github": "ayemyatmin",
+        "email": "ammin@student.unimelb.edu.au"
+      },
+      {
+        "name": "Sak Panha Siek",
+        "github": "SSIEK-unimelb",
+        "email": "ssiek@student.unimelb.edu.au"
+      }
+    ]
+  }
