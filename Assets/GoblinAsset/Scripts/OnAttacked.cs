@@ -19,7 +19,7 @@ public class OnAttacked : MonoBehaviour
             if (goblinAI.IsKillable()) {
                 print("Should die");
                 // Kill parent goblin.
-                StartCoroutine(goblinAI.Die());
+                goblinAI.Die();
                 Destroy(gameObject);
             }
         }

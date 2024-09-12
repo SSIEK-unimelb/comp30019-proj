@@ -67,7 +67,7 @@ public class GoblinAI : MonoBehaviour
     [SerializeField] private AnimationClip searchAnimation;
     [SerializeField] private AnimationClip chaseAnimation;
     [SerializeField] private AnimationClip attackAnimation;
-    [SerializeField] private AnimationClip dieAnimation;
+    // [SerializeField] private AnimationClip dieAnimation;
     // [SerializeField] private AnimationClip killAnimation;
 
     private AudioSource audioSource;
@@ -80,10 +80,6 @@ public class GoblinAI : MonoBehaviour
     [SerializeField] private AudioClip killSoundPath;
     [SerializeField] private float pitch = 1.0f;
     [SerializeField] private float pitchVariance = 0.1f;
-
-    [Header("Ragdoll and Holdable")]
-    [SerializeField] private float deathAnimTime = 2.0f;
-    [SerializeField] private string holdableTag = "HoldableItem";
 
 
     void Start()
@@ -363,55 +359,29 @@ public class GoblinAI : MonoBehaviour
     }
 
     // This triggers the death animation, removes this script so enemy cannot move.
-    public IEnumerator Die() {
-        if (currentState != State.Dead) {
-            questionMark.SetActive(false);
-            exclamationMark.SetActive(false);
-            StartCoroutine(ChangeSoundTo(dieSoundPath));
+    public void Die() {
+        currentState = State.Dead;
 
-            // To stop movement.
-            Destroy(gameObject.GetComponent<BoxCollider>());
-            Destroy(nav);
+        questionMark.SetActive(false);
+        exclamationMark.SetActive(false);
+        StartCoroutine(ChangeSoundTo(dieSoundPath));
 
-            animator.ResetTrigger(idleAnimation.name);
-            animator.ResetTrigger(patrolAnimation.name);
-            animator.ResetTrigger(searchAnimation.name);
-            animator.ResetTrigger(chaseAnimation.name);
-            animator.ResetTrigger(attackAnimation.name);
-            animator.SetTrigger(dieAnimation.name);
-
-            currentState = State.Dead;
-
-            // Add this to update instead.
-            StartCoroutine(Die());
-        }
-
-        // Wait until the animation has finished playing.
-        yield return new WaitForSeconds(deathAnimTime);
-
-        Destroy(animator);
-
-        // Set the body parts of the enemy to holdable.
-        ChangeTagRecursively(transform, holdableTag);
-
-        // Change layer to Dead for magic circle to work.
+        // To stop movement.
+        Destroy(gameObject.GetComponent<BoxCollider>());
+        Destroy(nav);
 
         // To start ragdoll, need a rigidbody.
         gameObject.AddComponent(typeof(Rigidbody));
 
+        animator.ResetTrigger(idleAnimation.name);
+        animator.ResetTrigger(patrolAnimation.name);
+        animator.ResetTrigger(searchAnimation.name);
+        animator.ResetTrigger(chaseAnimation.name);
+        animator.ResetTrigger(attackAnimation.name);
+        Destroy(animator);
+
         // Destroy this script.
         Destroy(this);
-    }
-
-    private void ChangeTagRecursively(Transform parent, string tag) {
-        // Change the tag of the current object
-        parent.gameObject.tag = tag;
-
-        // Iterate through all children of the current object
-        foreach (Transform child in parent) {
-            // Recursively change the tag for each child
-            ChangeTagRecursively(child, tag);
-        }
     }
 
     // This should be called by the player, or a health manager.

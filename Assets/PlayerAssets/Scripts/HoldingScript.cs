@@ -74,9 +74,16 @@ public class HoldingScript : MonoBehaviour
     }
     void PickUpObject(GameObject pickUpObj)
     {
+        // If the object cannot be held, do not hold
+        HoldStatus holdStatus = pickUpObj.GetComponentInParent<HoldStatus>();
+        if (holdStatus != null && !holdStatus.CanBeHeld) {
+            return;
+        } 
+
         if (pickUpObj.GetComponent<Rigidbody>()) //make sure the object has a RigidBody
         {
             heldObj = pickUpObj; //assign heldObj to the object that was hit by the raycast (no longer == null)
+            if (heldObj.GetComponentInParent<HoldStatus>()) heldObj.GetComponentInParent<HoldStatus>().IsHeld = true;
             heldObjRb = pickUpObj.GetComponent<Rigidbody>(); //assign Rigidbody
             heldObjRb.isKinematic = true;
             objectParent = heldObjRb.transform.parent;
@@ -93,6 +100,7 @@ public class HoldingScript : MonoBehaviour
         heldObj.layer = 0; //object assigned back to default layer
         heldObjRb.isKinematic = false;
         heldObj.transform.parent = objectParent; //unparent object
+        if (heldObj.GetComponentInParent<HoldStatus>()) heldObj.GetComponentInParent<HoldStatus>().IsHeld = false;
         heldObj = null; //undefine game object
     }
     void MoveObject()

@@ -36,24 +36,27 @@ public class SacrificeCircle : MonoBehaviour
     {
         if (!isSacrificed) {
             if (isInside) {
+                HoldStatus holdStatus = enemySacrifice.GetComponentInParent<HoldStatus>();
+                if (holdStatus == null || holdStatus.IsHeld) {
+                    timeInside = 0f;
+                    if (holdStatus) Debug.Log(holdStatus.IsHeld);
+                }
+
                 // Increment time inside the collider
                 timeInside += Time.deltaTime;
-
-                // Check if the object has been inside for a specific period of time
                 if (timeInside >= sacrificeTime) {
                     Debug.Log("Sacrifice");
                     audioSource.Play();
                     isSacrificed = true;
+                    holdStatus.CanBeHeld = false;
                     door.OnTrigger();
                 }
             }
         } else {
-            sacrificeSoundTime += Time.deltaTime;
-
             // Increase rotation speed
             currentRotationSpeed += Time.deltaTime * rotationAcceleration;
 
-            // Sacrifice finished
+            sacrificeSoundTime += Time.deltaTime;
             if (sacrificeSoundTime >= sacrificeSoundLength) {
                 Destroy(GetRootParent(enemySacrifice).gameObject);
                 Destroy(gameObject);
