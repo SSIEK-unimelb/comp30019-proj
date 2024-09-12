@@ -19,61 +19,49 @@ public class GoblinAI : MonoBehaviour
     private GameObject player;
     private LayerMask obstacleMask;
     private NavMeshAgent nav;
-    private Transform _rayOrigin;
+    private Transform rayOrigin;
     [SerializeField] private GameObject backHitPoint;
 
     [Header("Patrol variables")]
-    [SerializeField] private List<Transform> destinations;
-    private Transform currentDest;
+    [SerializeField] private List<Transform> patrolPoints;
+    private Transform currentPatrolPoint;
     private int patrolIndex = 0;
-    private Vector3 soundPos;
+    private Vector3 lastHeardPos;
     
     // AI States
-    private enum AIState
-    {
-        Idle,
-        Patrol,
-        Chase,
-        Search,
-        Attack,
-        Dead
-    }
-    private AIState currentState;
+    private enum State { Idle, Patrol, Chase, Search, Attack, Dead }
+    private State currentState;
 
     [Header("Movement Speeds")]
     [SerializeField] private float walkSpeed = 3f;
     [SerializeField] private float chaseSpeed = 6f;
+    [SerializeField] private float rotationTime = 0.3f;
+    private float yVelocity;
 
     [Header("Detection")]
     [SerializeField] private float viewRadius = 15f;
     [SerializeField] private float viewAngle = 90f;
     [SerializeField] private float hearRadius = 10f;
-    [SerializeField] private float hearLoudness = 3f;   // This should equal the player's walkSpeed.
+    [SerializeField] private float hearLoudness = 3f;   // Match to player's walkSpeed.
     [SerializeField] private float attackDistance = 2f;
 
     [Header("Timing")]
     [SerializeField] private float idleDuration = 5f;
     private float idleTime;
-
     [SerializeField] private float searchDuration = 10f;
     private float SearchTime;
-
+    [SerializeField] private float waitTimeToChase = 1f;
+    private float currentWaitTimeToChase;
     [SerializeField] private float minChaseTime = 10f;
     [SerializeField] private float maxChaseTime = 15f;
     private float chaseTime;
-
-    [SerializeField] private float AttackInterval = 1f;
-    private float attackTimer;
-    [SerializeField] private float attackRotationRate = 20f;    // The speed at which the enemy rotates 
-                                                                // to face the player when attacking
-    private float rotationProgress;
 
     [Header("Suspicion Icons")]
     private GameObject questionMark;
     private GameObject exclamationMark;
 
     [Header("Animations and Sounds")]
-    private Animator anim;
+    private Animator animator;
     [SerializeField] private AnimationClip idleAnimation;
     [SerializeField] private AnimationClip patrolAnimation;
     [SerializeField] private AnimationClip searchAnimation;
@@ -100,132 +88,84 @@ public class GoblinAI : MonoBehaviour
 
     void Start()
     {
-        // Animator
-        anim = GetComponent<Animator>();
-
+        animator = GetComponent<Animator>();
         player = GameObject.FindGameObjectWithTag("Player");
         obstacleMask = LayerMask.GetMask("Obstacle");
         nav = GetComponent<NavMeshAgent>();
-        _rayOrigin = transform.Find("Raycast_Position").transform;
+        nav.updateRotation = false;
+        rayOrigin = transform.Find("Raycast_Position").transform;
 
         questionMark = transform.Find("Question_Mark").gameObject;
         exclamationMark = transform.Find("Exclamation_Mark").gameObject;
-
         audioSource = GetComponent<AudioSource>();
 
         // For fixed patrolling
-        currentDest = destinations[patrolIndex];
+        currentPatrolPoint = patrolPoints[patrolIndex];
 
         // For random patrolling
         // randNum = Random.Range(0, destinations.Count);
         // currentDest = destinations[randNum];
 
-        SetStateToPatrol();
+        SetState(State.Patrol);
+        currentWaitTimeToChase = waitTimeToChase;
     }
 
     void Update()
     {
-        if (currentState == AIState.Dead) { return; }
+        if (currentState == State.Dead) return;
 
-        Vector3 playerTarget = (player.transform.position - transform.position).normalized;
-        float distanceToTarget = Vector3.Distance(transform.position, player.transform.position);
+        Vector3 playerDirection = (player.transform.position - transform.position).normalized;
+        float distanceToPlayer = Vector3.Distance(transform.position, player.transform.position);
 
         // If enemy sees player,
-        if (PlayerInSight(playerTarget, distanceToTarget)) {
-            // If player is in attack range,
-            if (distanceToTarget <= attackDistance) {
-                SetStateToAttack();
+        if (CanSeePlayer(playerDirection, distanceToPlayer)) {
+            // Identifying player takes some time
+            currentWaitTimeToChase -= Time.deltaTime;
+            if (currentWaitTimeToChase > 0) {
+                SetState(State.Search);
             } else {
-                SetStateToChase();
+                // If player is in attack range,
+                if (distanceToPlayer <= attackDistance) {
+                    SetState(State.Attack);
+                } else {
+                    SetState(State.Chase);
+                }
             }
         }
-        // If enemy does not see player,
-        else {
-            // But is within attack range.
-            if (distanceToTarget <= attackDistance) {
-                SetStateToAttack();
-            }
-            // If the enemy hears a sound, search for sound.
-            else if (currentState != AIState.Chase && currentState != AIState.Attack && HearPlayer(distanceToTarget)) {
-                SetStateToSearch();
-            }
+        // If enemy does not see player, but hears a sound, search for sound.
+        else if (currentState != State.Chase && currentState != State.Attack && CanHearPlayer(distanceToPlayer)) {
+            SetState(State.Search);
         }
 
-        // Idle State.
-        if (currentState == AIState.Idle) {
-            Idle();
-            // If the enemy has idle for this long,
-            idleTime -= Time.deltaTime;
-            if (idleTime < 0) {
-                SetStateToPatrol();
-            }
-        }
-
-        // Patrol State.
-        if (currentState == AIState.Patrol) {
-            Patrol();
-            // If enemy has reached the patrol point.
-            var destinationPos = new Vector3(nav.destination.x, 0, nav.destination.z);
-            var currentPos = new Vector3(transform.position.x, 0, transform.position.z);
-            if (Vector3.Distance(destinationPos, currentPos) <= nav.stoppingDistance) {
-                SetStateToIdle();
-                NextPatrolPoint();
-            }
-        }
-
-        // Search State.
-        if (currentState == AIState.Search) {
-            Search();
-            // If enemy has reached the position where they last heard a sound.
-            var destinationPos = new Vector3(nav.destination.x, 0, nav.destination.z);
-            var currentPos = new Vector3(transform.position.x, 0, transform.position.z);
-            if (Vector3.Distance(destinationPos, currentPos) <= nav.stoppingDistance) {
-                questionMark.SetActive(false);
-                SetStateToIdle();
-            }
-
-            // If the enemy has spent too much time searching.
-            SearchTime -= Time.deltaTime;
-            if (SearchTime < 0) {
-                questionMark.SetActive(false);
-                SetStateToIdle();
-            }
-        }
-
-        // Chase State.
-        if (currentState == AIState.Chase) {
-            Chase(distanceToTarget);
-            // If the player has exited the enemy's line of sight for chaseTime.
-            chaseTime -= Time.deltaTime;
-            if (chaseTime < 0) {
-                exclamationMark.SetActive(false);
-                SetStateToIdle();
-            }
-        }
-
-        // Attack State
-        if (currentState == AIState.Attack) {
-            // Stop moving and turn towards player.
-            FocusOnPlayer(playerTarget);
-
-            // Attack at a rate of attack interval.
-            attackTimer -= Time.deltaTime;
-            if (attackTimer < 0) {
-                Attack();
-            }
+        // State Handling
+        switch (currentState) {
+            case State.Idle:
+                HandleIdleState();
+                break;
+            case State.Patrol:
+                HandlePatrolState();
+                break;
+            case State.Search:
+                HandleSearchState();
+                break;
+            case State.Chase:
+                HandleChaseState(playerDirection);
+                break;
+            case State.Attack:
+                HandleAttackState(playerDirection);
+                break;
         }
     }
 
     // Enemy Vision.
-    private bool PlayerInSight(Vector3 playerTarget, float distanceToTarget) {
+    private bool CanSeePlayer(Vector3 playerDirection, float distanceToPlayer) {
         // Debug.DrawRay(_rayOrigin.position, playerTarget * distanceToTarget, Color.red);
-
         // If player is in view range,
-        if (distanceToTarget <= viewRadius) {
+        if (distanceToPlayer <= viewRadius) {
             // If player is in the current field of view,
-            if (Vector3.Angle(transform.forward, playerTarget) < viewAngle / 2) {
+            if (Vector3.Angle(transform.forward, playerDirection) < viewAngle / 2) {
                 // If there are no obstacles between player and enemy,
-                if (Physics.Raycast(_rayOrigin.position, playerTarget, distanceToTarget, obstacleMask) == false) {
+                if (Physics.Raycast(rayOrigin.position, playerDirection, distanceToPlayer, obstacleMask) == false) {
                     // The enemy can see the player.
                     // Debug.Log("I see you!");
                     return true;
@@ -236,9 +176,9 @@ public class GoblinAI : MonoBehaviour
     }
 
     // Enemy Hearing.
-    private bool HearPlayer(float distanceToTarget) {
+    private bool CanHearPlayer(float distanceToPlayer) {
         // If the player is in hearing range,
-        if (distanceToTarget <= hearRadius) {
+        if (distanceToPlayer <= hearRadius) {
             // If the player is being loud (i.e. not crouching while moving)
             if (player.GetComponent<FirstPersonControl>().GetCurrentSpeed() >= hearLoudness) {
                 // The enemy can hear the player.
@@ -249,70 +189,157 @@ public class GoblinAI : MonoBehaviour
         return false;
     }
 
-    // Change to idle state.
-    private void SetStateToIdle() {
-        idleTime = idleDuration;
-        currentState = AIState.Idle;
+    private void SetState(State newState) {
+        currentState = newState;
 
-        anim.ResetTrigger(patrolAnimation.name);
-        anim.ResetTrigger(searchAnimation.name);
-        anim.ResetTrigger(chaseAnimation.name);
-        anim.ResetTrigger(attackAnimation.name);
-        anim.SetTrigger(idleAnimation.name);
-    }
+        animator.ResetTrigger(idleAnimation.name);
+        animator.ResetTrigger(patrolAnimation.name);
+        animator.ResetTrigger(searchAnimation.name);
+        animator.ResetTrigger(chaseAnimation.name);
+        animator.ResetTrigger(attackAnimation.name);
 
-    // Change to patrol state.
-    private void SetStateToPatrol() {
-        currentState = AIState.Patrol;
+        switch (newState) {
+            case State.Idle:
+                idleTime = idleDuration;
+                animator.SetTrigger(idleAnimation.name);
+                // Set the currentWaitTimeToChase back to initial time
+                currentWaitTimeToChase = waitTimeToChase;
+                break;
 
-        anim.ResetTrigger(idleAnimation.name);
-        anim.ResetTrigger(searchAnimation.name);
-        anim.ResetTrigger(chaseAnimation.name);
-        anim.ResetTrigger(attackAnimation.name);
-        anim.SetTrigger(patrolAnimation.name);
-    }
+            case State.Patrol:
+                animator.SetTrigger(patrolAnimation.name);
+                break;
 
-    // Change to search state.
-    private void SetStateToSearch() {
-        SearchTime = searchDuration;
+            case State.Search:
+                SearchTime = searchDuration;
+                lastHeardPos = player.transform.position;
+                exclamationMark.SetActive(false);
+                questionMark.SetActive(true);
+                animator.SetTrigger(searchAnimation.name);
+                break;
 
-        soundPos = player.transform.position;
-        currentState = AIState.Search;
+            case State.Chase:
+                chaseTime = Random.Range(minChaseTime, maxChaseTime);
+                exclamationMark.SetActive(true);
+                questionMark.SetActive(false);
+                animator.SetTrigger(chaseAnimation.name);
+                break;
 
-        // Suspicion Marks.
-        exclamationMark.SetActive(false);
-        questionMark.SetActive(true);
-
-        anim.ResetTrigger(idleAnimation.name);
-        anim.ResetTrigger(patrolAnimation.name);
-        anim.ResetTrigger(chaseAnimation.name);
-        anim.ResetTrigger(attackAnimation.name);
-        anim.SetTrigger(searchAnimation.name);
-    }
-
-    // Change to chase state.
-    private void SetStateToChase() {
-        chaseTime = Random.Range(minChaseTime, maxChaseTime);
-        currentState = AIState.Chase;
-
-        // Suspicion Marks.
-        exclamationMark.SetActive(true);
-        questionMark.SetActive(false);
-
-        anim.ResetTrigger(idleAnimation.name);
-        anim.ResetTrigger(patrolAnimation.name);
-        anim.ResetTrigger(searchAnimation.name);
-        anim.ResetTrigger(attackAnimation.name);
-        anim.SetTrigger(chaseAnimation.name);
-    }
-
-    // Change to attack state.
-    private void SetStateToAttack() {
-        if (attackTimer < 0) {
-            attackTimer = AttackInterval;
+            case State.Attack:
+                animator.SetTrigger(attackAnimation.name);
+                break;
         }
-        rotationProgress = 0;
-        currentState = AIState.Attack;
+    }
+
+    // Look around before resuming patrolling.
+    private void HandleIdleState() {
+        StartCoroutine(ChangeSoundTo(idleSoundPath));
+        nav.destination = transform.position;
+        nav.speed = 0;
+
+        // If the enemy has idled for this long,
+        idleTime -= Time.deltaTime;
+        if (idleTime < 0) SetState(State.Patrol);
+    }
+
+    private void HandlePatrolState() {
+        StartCoroutine(ChangeSoundTo(patrolSoundPath));
+        
+        nav.destination = currentPatrolPoint.position;
+        nav.speed = walkSpeed;
+
+        // Rotate smoothly towards movement direction
+        if (nav.velocity != Vector3.zero) {
+            float lookDirection = Mathf.SmoothDampAngle(transform.eulerAngles.y, Quaternion.LookRotation(nav.velocity).eulerAngles.y, ref yVelocity, rotationTime);
+            nav.transform.rotation = Quaternion.Euler(0, lookDirection, 0);
+        }
+        
+        // y is set to 0 so that the patrol point can be at any height.
+        var destinationPos = new Vector3(nav.destination.x, 0, nav.destination.z);
+        var currentPos = new Vector3(transform.position.x, 0, transform.position.z);
+
+        if (Vector3.Distance(destinationPos, currentPos) <= nav.stoppingDistance) {
+            SetState(State.Idle);
+            NextPatrolPoint();
+        }
+    }
+
+    // Patrolling through fixed points.
+    // If at end of patrol points, reset.
+    private void NextPatrolPoint() {
+        patrolIndex++;
+        if (patrolIndex >= patrolPoints.Count) {
+            patrolIndex = 0;
+        }
+        currentPatrolPoint = patrolPoints[patrolIndex];
+    }
+
+    private void HandleSearchState() {
+        StartCoroutine(ChangeSoundTo(searchSoundPath));
+        
+        nav.destination = lastHeardPos;
+        nav.speed = walkSpeed;
+
+        // Rotate smoothly towards movement direction
+        if (nav.velocity != Vector3.zero) {
+            float lookDirection = Mathf.SmoothDampAngle(transform.eulerAngles.y, Quaternion.LookRotation(nav.velocity).eulerAngles.y, ref yVelocity, rotationTime);
+            nav.transform.rotation = Quaternion.Euler(0, lookDirection, 0);
+        }
+
+        // y is set to 0 so that the sound position can be at any height.
+        var destinationPos = new Vector3(nav.destination.x, 0, nav.destination.z);
+        var currentPos = new Vector3(transform.position.x, 0, transform.position.z);
+
+        // If enemy has reached the position where they last heard a sound.
+        if (Vector3.Distance(destinationPos, currentPos) <= nav.stoppingDistance) {
+            questionMark.SetActive(false);
+            SetState(State.Idle);
+        }
+
+        // If the enemy has spent too much time searching.
+        SearchTime -= Time.deltaTime;
+        if (SearchTime < 0) {
+            questionMark.SetActive(false);
+            SetState(State.Idle);
+        }
+    }
+
+    private void HandleChaseState(Vector3 playerDirection) {
+        StartCoroutine(ChangeSoundTo(chaseSoundPath));
+
+        nav.destination = player.transform.position;
+        nav.speed = chaseSpeed;
+
+        // If moving,
+        if (nav.velocity != Vector3.zero) {
+            // Rotate smoothly towards movement direction
+            float lookDirection = Mathf.SmoothDampAngle(transform.eulerAngles.y, Quaternion.LookRotation(nav.velocity).eulerAngles.y, ref yVelocity, rotationTime);
+            nav.transform.rotation = Quaternion.Euler(0, lookDirection, 0);
+        } else {
+            // Rotate towards player
+            Vector3 playerDirectionWithoutY = new Vector3(playerDirection.x, 0, playerDirection.z);
+            float lookDirection = Mathf.SmoothDampAngle(transform.eulerAngles.y, Quaternion.LookRotation(playerDirectionWithoutY).eulerAngles.y, ref yVelocity, rotationTime);
+            nav.transform.rotation = Quaternion.Euler(0, lookDirection, 0);
+        }
+
+        // If the player has exited the enemy's line of sight for chaseTime.
+        chaseTime -= Time.deltaTime;
+        if (chaseTime < 0) {
+            exclamationMark.SetActive(false);
+            SetState(State.Idle);
+        }
+    }
+
+    // If within attack range, stop moving.
+    private void HandleAttackState(Vector3 playerDirection) {
+        StartCoroutine(ChangeSoundTo(attackSoundPath));
+        nav.destination = player.transform.position;
+        nav.speed = 0;
+        
+        // Rotate towards player
+        Vector3 playerDirectionWithoutY = new Vector3(playerDirection.x, 0, playerDirection.z);
+        float lookDirection = Mathf.SmoothDampAngle(transform.eulerAngles.y, Quaternion.LookRotation(playerDirectionWithoutY).eulerAngles.y, ref yVelocity, rotationTime);
+        nav.transform.rotation = Quaternion.Euler(0, lookDirection, 0);
     }
 
     // Change the current audio file
@@ -330,100 +357,14 @@ public class GoblinAI : MonoBehaviour
         audioSource.Play();
     }
 
-    // Look around before resuming patrolling.
-    private void Idle() {
-        StartCoroutine(ChangeSoundTo(idleSoundPath));
-        nav.destination = transform.position;
-        nav.speed = 0;
-    }
-
-    private void Patrol() {
-        StartCoroutine(ChangeSoundTo(patrolSoundPath));
-        
-        nav.destination = currentDest.position;
-        nav.speed = walkSpeed;
-    }
-
-    // Patrolling through fixed points.
-    // If at end of patrol points, reset.
-    private void NextPatrolPoint() {
-        patrolIndex++;
-        if (patrolIndex >= destinations.Count) {
-            patrolIndex = 0;
-        }
-        currentDest = destinations[patrolIndex];
-    }
-
-    private void Search() {
-        StartCoroutine(ChangeSoundTo(searchSoundPath));
-        
-        nav.destination = soundPos;
-        nav.speed = walkSpeed;
-    }
-
-    private void Chase(float distanceToTarget) {
-        StartCoroutine(ChangeSoundTo(chaseSoundPath));
-        
-        if (distanceToTarget <= attackDistance) {
-            nav.destination = transform.position;
-            nav.speed = 0;
-        } else {
-            nav.destination = player.transform.position;
-            nav.speed = chaseSpeed;
-        }
-    }
-
-    // If within attack range, stop moving and rotate towards the player.
-    private void FocusOnPlayer(Vector3 playerTarget) {
-        StartCoroutine(ChangeSoundTo(attackSoundPath));
-
-        // Stop moving.
-        nav.destination = transform.position;
-        nav.speed = 0;
-        
-        // What rotation to face.
-        Quaternion lookRotation = Quaternion.LookRotation(new Vector3(playerTarget.x, 0, playerTarget.z));
-        
-        // Increment the time count based on the rotation speed and deltaTime.
-        rotationProgress += Time.deltaTime * attackRotationRate;
-
-        // Ensure rotationProgress is clamped between 0 and 1.
-        rotationProgress = Mathf.Clamp01(rotationProgress);
-
-        // Smoothly rotate from current rotation to this rotation.
-        transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, rotationProgress);
-
-        if (rotationProgress >= 1) {
-            rotationProgress = 0;
-        }
-    }
-
-    // Note: changeSoundTo(attackSoundPath) is in FocusOnPlayer.
-    private void Attack() {
-        // If the enemy's weapon has hit the player, reduce the player's HP.
-        // This can be checked with a OnCollision/Trigger Enter, or sth else.
-
-        anim.ResetTrigger(idleAnimation.name);
-        anim.ResetTrigger(patrolAnimation.name);
-        anim.ResetTrigger(searchAnimation.name);
-        anim.ResetTrigger(chaseAnimation.name);
-        anim.SetTrigger(attackAnimation.name);
-
-        Debug.Log("Attack");
-    }
-
-
     // Returns true if the enemy can be killed, false otherwise.
     public bool IsKillable() {
-        if (currentState == AIState.Idle || currentState == AIState.Patrol || currentState == AIState.Search) {
-            return true;
-        }
-        return false;
+        return currentState == State.Idle || currentState == State.Patrol || currentState == State.Search;
     }
 
     // This triggers the death animation, removes this script so enemy cannot move.
     public IEnumerator Die() {
-        if (currentState != AIState.Dead) {
+        if (currentState != State.Dead) {
             questionMark.SetActive(false);
             exclamationMark.SetActive(false);
             StartCoroutine(ChangeSoundTo(dieSoundPath));
@@ -432,14 +373,14 @@ public class GoblinAI : MonoBehaviour
             Destroy(gameObject.GetComponent<BoxCollider>());
             Destroy(nav);
 
-            anim.ResetTrigger(idleAnimation.name);
-            anim.ResetTrigger(patrolAnimation.name);
-            anim.ResetTrigger(searchAnimation.name);
-            anim.ResetTrigger(chaseAnimation.name);
-            anim.ResetTrigger(attackAnimation.name);
-            anim.SetTrigger(dieAnimation.name);
+            animator.ResetTrigger(idleAnimation.name);
+            animator.ResetTrigger(patrolAnimation.name);
+            animator.ResetTrigger(searchAnimation.name);
+            animator.ResetTrigger(chaseAnimation.name);
+            animator.ResetTrigger(attackAnimation.name);
+            animator.SetTrigger(dieAnimation.name);
 
-            currentState = AIState.Dead;
+            currentState = State.Dead;
 
             // Add this to update instead.
             StartCoroutine(Die());
@@ -448,7 +389,7 @@ public class GoblinAI : MonoBehaviour
         // Wait until the animation has finished playing.
         yield return new WaitForSeconds(deathAnimTime);
 
-        Destroy(anim);
+        Destroy(animator);
 
         // Set the body parts of the enemy to holdable.
         ChangeTagRecursively(transform, holdableTag);
@@ -484,11 +425,11 @@ public class GoblinAI : MonoBehaviour
         // Can do whichever.
         // player.SetActive(false);
 
-        anim.ResetTrigger(idleAnimation.name);
-        anim.ResetTrigger(patrolAnimation.name);
-        anim.ResetTrigger(searchAnimation.name);
-        anim.ResetTrigger(chaseAnimation.name);
-        anim.ResetTrigger(attackAnimation.name);
+        animator.ResetTrigger(idleAnimation.name);
+        animator.ResetTrigger(patrolAnimation.name);
+        animator.ResetTrigger(searchAnimation.name);
+        animator.ResetTrigger(chaseAnimation.name);
+        animator.ResetTrigger(attackAnimation.name);
         // anim.SetTrigger(killAnimation.name);
 
         // SceneManager.LoadScene(deathScene);

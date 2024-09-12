@@ -12,12 +12,16 @@ public class OnAttacked : MonoBehaviour
     }
     private void OnCollisionEnter(Collision collision)
     {
+        Debug.Log("Collision");
+
         if (collision.gameObject.tag == "Weapon") 
         {
-            print("Should die");
-            // Kill parent goblin.
-            StartCoroutine(goblinAI.Die());
-            Destroy(gameObject);
+            if (goblinAI.IsKillable()) {
+                print("Should die");
+                // Kill parent goblin.
+                StartCoroutine(goblinAI.Die());
+                Destroy(gameObject);
+            }
         }
     }
 }
