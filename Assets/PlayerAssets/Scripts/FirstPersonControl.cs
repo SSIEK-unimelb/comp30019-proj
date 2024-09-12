@@ -44,6 +44,11 @@ public class FirstPersonControl : MonoBehaviour
     [Header("Jump")]
     [SerializeField] private float jumpStrength = 8.0f;
     [SerializeField] private float gravity = 9.81f;
+    private bool wasInAir = false;
+    private bool hasLanded => characterController.isGrounded && wasInAir;
+    // Prevent false isGrounded during crouch transition.
+    private float crouchTransitionTimeOffset = 0.1f;
+    private float timeSinceCrouchTransition;
 
     [Header("Crouch")]
     [SerializeField] private float crouchHeight = 0.5f;
@@ -77,6 +82,8 @@ public class FirstPersonControl : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         holder = GetComponentInChildren<HoldingScript>();
+
+        timeSinceCrouchTransition = crouchTransitionTime + crouchTransitionTimeOffset;
     }
     void Update()
     {
@@ -91,7 +98,6 @@ public class FirstPersonControl : MonoBehaviour
                 CheckInteraction();
                 RegisterInteractInput();
             }
-
         }
     }
 
@@ -123,7 +129,14 @@ public class FirstPersonControl : MonoBehaviour
     private void ApplyMovement()
     {
         if (!characterController.isGrounded) { 
-            moveDir.y -= gravity * Time.deltaTime;   
+            moveDir.y -= gravity * Time.deltaTime;
+            // timeSinceStandUp prevents false isGrounded during crouch transition.
+            timeSinceCrouchTransition -= Time.deltaTime;
+            if (timeSinceCrouchTransition <= 0) {
+                wasInAir = true;
+            }
+        } else {
+            timeSinceCrouchTransition = crouchTransitionTime + crouchTransitionTimeOffset;
         }
         characterController.Move(moveDir * Time.deltaTime);
     }
@@ -208,6 +221,13 @@ public class FirstPersonControl : MonoBehaviour
         if (inputDir != Vector2.zero) {
             return currentSpeed;
         }
+
+        // If the player has landed after jumping or falling,
+        if (hasLanded) {
+            wasInAir = false;
+            return walkSpeed;
+        }
+
         return 0;
     }
 }
