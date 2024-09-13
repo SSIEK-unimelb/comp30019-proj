@@ -47,7 +47,7 @@ public class FirstPersonControl : MonoBehaviour
     private bool wasInAir = false;
     private bool hasLanded => characterController.isGrounded && wasInAir;
     // Prevent false isGrounded during crouch transition.
-    private float crouchTransitionTimeOffset = 0.1f;
+    [SerializeField] private float crouchTransitionTimeOffset = 0.2f;
     private float timeSinceCrouchTransition;
 
     [Header("Crouch")]

@@ -4,26 +4,32 @@ using UnityEngine;
 
 public class LockedDoor : MonoBehaviour
 {
-    private Animator Animator;
+    private NavMeshSurfaceBuilder navMeshSurfaceBuilder;
+
+    private Animator animator;
     [SerializeField] private string doorOpenStr;
+    [SerializeField] private float doorOpenTime = 0.5f;
     public bool isOpen = false;
+
     // Start is called before the first frame update
     void Start()
     {
-        Animator = GetComponent<Animator>();
+        navMeshSurfaceBuilder = GameObject.Find("Floor").GetComponent<NavMeshSurfaceBuilder>();
+        animator = GetComponent<Animator>();
     }
 
     public void OnTrigger() {
         if (!isOpen) {
-            Animator.Play(doorOpenStr);
+            animator.Play(doorOpenStr);
+            GetComponent<SoundMaker>().MakeSound();
             isOpen = true;
+            StartCoroutine(WaitToOpen());
         }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    private IEnumerator WaitToOpen() {
+        yield return new WaitForSeconds(doorOpenTime);
+        navMeshSurfaceBuilder.BuildNavMeshSurface();
     }
 
 }

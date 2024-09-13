@@ -19,15 +19,11 @@ public class SacrificeCircle : MonoBehaviour
     [SerializeField] public float rotationAcceleration = 30f; // How much the rotation speed increases per second
     private float currentRotationSpeed;
 
-    private AudioSource audioSource;
-    [SerializeField] private AudioClip sacrificeSound;
-    [SerializeField] private float sacrificeSoundLength = 3f;
-    private float sacrificeSoundTime = 0;
+    [SerializeField] private float sacrificeDuration = 3f;
+    private float currentSacrificeTime = 0;
 
     void Start() {
         enemyMask = LayerMask.GetMask(enemyLayer);
-        audioSource = GetComponent<AudioSource>();
-        audioSource.clip = sacrificeSound;
         door = objectToTrigger.GetComponent<LockedDoor>();
         currentRotationSpeed = initialRotationSpeed;
     }
@@ -37,7 +33,7 @@ public class SacrificeCircle : MonoBehaviour
         if (!isSacrificed) {
             if (isInside) {
                 HoldStatus holdStatus = enemySacrifice.GetComponentInParent<HoldStatus>();
-                if (holdStatus == null || holdStatus.IsHeld) {
+                if (holdStatus == null || holdStatus.IsHeld || !holdStatus.CanBeHeld) {
                     timeInside = 0f;
                     if (holdStatus) Debug.Log(holdStatus.IsHeld);
                 }
@@ -46,18 +42,18 @@ public class SacrificeCircle : MonoBehaviour
                 timeInside += Time.deltaTime;
                 if (timeInside >= sacrificeTime) {
                     Debug.Log("Sacrifice");
-                    audioSource.Play();
                     isSacrificed = true;
                     holdStatus.CanBeHeld = false;
                     door.OnTrigger();
+                    GetComponent<SoundMaker>().MakeSound();
                 }
             }
         } else {
             // Increase rotation speed
             currentRotationSpeed += Time.deltaTime * rotationAcceleration;
 
-            sacrificeSoundTime += Time.deltaTime;
-            if (sacrificeSoundTime >= sacrificeSoundLength) {
+            currentSacrificeTime += Time.deltaTime;
+            if (currentSacrificeTime >= sacrificeDuration) {
                 Destroy(GetRootParent(enemySacrifice).gameObject);
                 Destroy(gameObject);
             }

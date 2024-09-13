@@ -98,7 +98,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 26546178237309208}
   serializedVersion: 4
-  m_Mass: 1.875
+  m_Mass: 5
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -116,7 +116,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!144 &4922510674625597083
 CharacterJoint:
   m_ObjectHideFlags: 0
@@ -229,7 +229,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 109987841930570037}
   serializedVersion: 4
-  m_Mass: 1.875
+  m_Mass: 15
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -247,7 +247,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!144 &7671657968211667451
 CharacterJoint:
   m_ObjectHideFlags: 0
@@ -1093,7 +1093,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2075785038710208083}
   serializedVersion: 4
-  m_Mass: 1.25
+  m_Mass: 3
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -1111,7 +1111,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!144 &6953649729277886910
 CharacterJoint:
   m_ObjectHideFlags: 0
@@ -1351,7 +1351,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2668037806783134994}
   serializedVersion: 4
-  m_Mass: 3.125
+  m_Mass: 50
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -1369,7 +1369,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!1 &2792987625315573321
 GameObject:
   m_ObjectHideFlags: 0
@@ -1383,7 +1383,6 @@ GameObject:
   - component: {fileID: 3259383682513359202}
   - component: {fileID: 2434724926875695611}
   - component: {fileID: 6844532812586888743}
-  - component: {fileID: 1054273889181216965}
   - component: {fileID: 759455478297755203}
   m_Layer: 10
   m_Name: Goblin
@@ -1477,6 +1476,7 @@ MonoBehaviour:
   killSoundPath: {fileID: 8300000, guid: bf5d4102f62c644aa91a146267aaf815, type: 3}
   pitch: 1
   pitchVariance: 0.1
+  groundOffset: 0.2
 --- !u!195 &2434724926875695611
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1595,27 +1595,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!65 &1054273889181216965
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2792987625315573321}
-  m_Material: {fileID: 13400000, guid: e0e19fac9c421a94a9d8a3f74460fa4d, type: 2}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 2.0958226, z: 1}
-  m_Center: {x: 0, y: 1.0356017, z: 0}
 --- !u!114 &759455478297755203
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1694,7 +1673,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2890436680457347422}
   serializedVersion: 4
-  m_Mass: 1.25
+  m_Mass: 5
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -1712,7 +1691,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!144 &6288344116330152678
 CharacterJoint:
   m_ObjectHideFlags: 0
@@ -2646,7 +2625,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5567750133455347836}
   serializedVersion: 4
-  m_Mass: 1.25
+  m_Mass: 10
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -2664,7 +2643,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!144 &8805225318061154105
 CharacterJoint:
   m_ObjectHideFlags: 0
@@ -2777,7 +2756,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5790713170486810267}
   serializedVersion: 4
-  m_Mass: 1.25
+  m_Mass: 5
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -2795,7 +2774,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!144 &8771595822392928138
 CharacterJoint:
   m_ObjectHideFlags: 0
@@ -2908,7 +2887,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5905567807483960551}
   serializedVersion: 4
-  m_Mass: 1.25
+  m_Mass: 3
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -2926,7 +2905,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!144 &4258305658085672844
 CharacterJoint:
   m_ObjectHideFlags: 0
@@ -3133,7 +3112,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6280278243413380895}
   serializedVersion: 4
-  m_Mass: 3.125
+  m_Mass: 30
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -3151,7 +3130,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!144 &4149839826532896454
 CharacterJoint:
   m_ObjectHideFlags: 0
@@ -3426,7 +3405,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7628223256142696016}
   serializedVersion: 4
-  m_Mass: 1.875
+  m_Mass: 5
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -3444,7 +3423,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!144 &1122563227211917029
 CharacterJoint:
   m_ObjectHideFlags: 0
@@ -3891,7 +3870,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9162855343351207827}
   serializedVersion: 4
-  m_Mass: 1.875
+  m_Mass: 15
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -3909,7 +3888,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!144 &4310416158779388997
 CharacterJoint:
   m_ObjectHideFlags: 0

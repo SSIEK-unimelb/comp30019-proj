@@ -22,15 +22,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0b28cc652c912504c9b7b32dc47ec02b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 39.13
+      value: 3.91
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0b28cc652c912504c9b7b32dc47ec02b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -5.651
+      value: 0.09
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0b28cc652c912504c9b7b32dc47ec02b, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 26.32
+      value: 5.06
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0b28cc652c912504c9b7b32dc47ec02b, type: 3}
       propertyPath: m_LocalRotation.w
@@ -97,6 +97,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 0b28cc652c912504c9b7b32dc47ec02b, type: 3}
       insertIndex: -1
       addedObject: {fileID: 6547537901966804996}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 0b28cc652c912504c9b7b32dc47ec02b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4958798534209320380}
   m_SourcePrefab: {fileID: 100100000, guid: 0b28cc652c912504c9b7b32dc47ec02b, type: 3}
 --- !u!1 &4099006741369889108 stripped
 GameObject:
@@ -121,8 +124,7 @@ MonoBehaviour:
   isInside: 0
   initialRotationSpeed: 30
   rotationAcceleration: 30
-  sacrificeSound: {fileID: 8300000, guid: cb770652ce9d9c246baaaa0eb96f595a, type: 3}
-  sacrificeSoundLength: 3
+  sacrificeDuration: 3
 --- !u!135 &2664002381808834035
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -240,3 +242,16 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &4958798534209320380
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4099006741369889108}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b70a432b30402e84a802065f383f30bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundRadius: 10

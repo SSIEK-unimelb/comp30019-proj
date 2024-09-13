@@ -44,6 +44,8 @@ public class GoblinAI : MonoBehaviour
     [SerializeField] private float hearRadius = 10f;
     [SerializeField] private float hearLoudness = 3f;   // Match to player's walkSpeed.
     [SerializeField] private float attackDistance = 2f;
+    private Vector3 soundOrigin;
+    private bool isSoundHeard = false;
 
     [Header("Timing")]
     [SerializeField] private float idleDuration = 5f;
@@ -81,6 +83,8 @@ public class GoblinAI : MonoBehaviour
     [SerializeField] private float pitch = 1.0f;
     [SerializeField] private float pitchVariance = 0.1f;
 
+    [Header("Ragdoll and Clipping")]
+    [SerializeField] private float groundOffset = 0.1f;
 
     void Start()
     {
@@ -128,8 +132,15 @@ public class GoblinAI : MonoBehaviour
                 }
             }
         }
-        // If enemy does not see player, but hears a sound, search for sound.
+        // If enemy does not see player, but hears a sound from player, search for sound.
         else if (currentState != State.Chase && currentState != State.Attack && CanHearPlayer(distanceToPlayer)) {
+            lastHeardPos = player.transform.position;
+            SetState(State.Search);
+        }
+        // If enemy does not see or hear player, but hears a sound from an object, search for sound.
+        else if (currentState != State.Chase && currentState != State.Attack && isSoundHeard) {
+            isSoundHeard = false;
+            lastHeardPos = soundOrigin;
             SetState(State.Search);
         }
 
@@ -171,7 +182,7 @@ public class GoblinAI : MonoBehaviour
         return false;
     }
 
-    // Enemy Hearing.
+    // Enemy Hearing for player.
     private bool CanHearPlayer(float distanceToPlayer) {
         // If the player is in hearing range,
         if (distanceToPlayer <= hearRadius) {
@@ -183,6 +194,16 @@ public class GoblinAI : MonoBehaviour
             }
         }
         return false;
+    }
+
+    // Enemy Hearing for objects.
+    public void OnSoundHeard(Vector3 soundOrigin) {
+        float distance = Vector3.Distance(soundOrigin, transform.position);
+        if (distance <= hearRadius) {
+            Debug.Log(gameObject.name + " heard a sound from: " + soundOrigin);
+            this.soundOrigin = soundOrigin;
+            isSoundHeard = true;
+        }
     }
 
     private void SetState(State newState) {
@@ -208,7 +229,6 @@ public class GoblinAI : MonoBehaviour
 
             case State.Search:
                 SearchTime = searchDuration;
-                lastHeardPos = player.transform.position;
                 exclamationMark.SetActive(false);
                 questionMark.SetActive(true);
                 animator.SetTrigger(searchAnimation.name);
@@ -371,7 +391,9 @@ public class GoblinAI : MonoBehaviour
         Destroy(nav);
 
         // To start ragdoll, need a rigidbody.
+        transform.position += new Vector3(0, groundOffset, 0);
         gameObject.AddComponent(typeof(Rigidbody));
+        gameObject.GetComponent<Rigidbody>().isKinematic = true;
 
         animator.ResetTrigger(idleAnimation.name);
         animator.ResetTrigger(patrolAnimation.name);
