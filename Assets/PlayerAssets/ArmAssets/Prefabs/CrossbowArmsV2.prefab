@@ -1077,6 +1077,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2609137257568721031}
+  - component: {fileID: 347451649485271669}
+  - component: {fileID: 4288054905921593593}
+  - component: {fileID: 8675548994297338370}
   m_Layer: 0
   m_Name: Medieval_crossbow_02
   m_TagString: Untagged
@@ -1102,6 +1105,45 @@ Transform:
   - {fileID: 5158029778292782997}
   m_Father: {fileID: 3040755595222037584}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &347451649485271669
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3422265330191204925}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99399840a92a9e644b593d889a1e435b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentWeapon: 1
+--- !u!114 &4288054905921593593
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3422265330191204925}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d145478cd53061a4a9eb5bba8b175adb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &8675548994297338370
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3422265330191204925}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 698bf6351bfdc214c9eb909b5008bc12, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  arrowPrefab: {fileID: 2422282626406373295, guid: 50f737d85485bc340ad60fc0d993deec, type: 3}
+  arrowSpeed: 50
 --- !u!1 &3649566469936524071
 GameObject:
   m_ObjectHideFlags: 0
