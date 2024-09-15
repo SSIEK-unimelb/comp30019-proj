@@ -4,6 +4,12 @@ using UnityEngine;
 
 public class ArrowCollision : MonoBehaviour
 {
+    [SerializeField] float destroyTime = 10f;
+    private void Start()
+    {
+        Destroy(gameObject, destroyTime);
+    }
+
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.layer == LayerMask.NameToLayer("Obstacle") ||
@@ -11,6 +17,18 @@ public class ArrowCollision : MonoBehaviour
             collision.gameObject.layer == LayerMask.NameToLayer("Enemy")) {
                 Debug.Log("Arrow hit a target");
                 // Arrow logic here
+                if (collision.gameObject.layer == LayerMask.NameToLayer("Enemy"))
+                {
+                    GoblinAI goblinAI = collision.gameObject.GetComponentInParent<GoblinAI>();
+                    if (goblinAI == null)
+                    {
+                        Debug.LogError("Can't find goblin reference");
+                    }
+                    if (goblinAI.IsKillable())
+                    {
+                        goblinAI.Die();
+                    }
+                }
                 Destroy(gameObject);
 
         }
