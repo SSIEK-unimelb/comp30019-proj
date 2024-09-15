@@ -448,6 +448,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerUI
       objectReference: {fileID: 0}
+    - target: {fileID: 3968204836989197519, guid: 714fb6a42eea6a7448bbedb216f9b118, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3968204836989197519, guid: 714fb6a42eea6a7448bbedb216f9b118, type: 3}
+      propertyPath: m_TagString
+      value: InteractText
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
