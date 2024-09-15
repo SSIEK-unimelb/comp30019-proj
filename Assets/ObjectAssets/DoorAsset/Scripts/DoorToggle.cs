@@ -19,13 +19,19 @@ public class DoorToggle : Interactible
         print("Door open!");
         if (!isOpen)
         {
-            Animator.Play(doorOpenStr);
-            isOpen = !isOpen;
+            if (!AnimatorIsPlaying())
+            {
+                Animator.Play(doorOpenStr);
+                isOpen = !isOpen;
+            }
         }
         else 
         {
-            Animator.Play(doorCloseStr);
-            isOpen = !isOpen;
+            if (!AnimatorIsPlaying())
+            {
+                Animator.Play(doorCloseStr);
+                isOpen = !isOpen;
+            }
         }
     }
 
@@ -40,4 +46,9 @@ public class DoorToggle : Interactible
         Animator = GetComponent<Animator>();
     }
 
+    bool AnimatorIsPlaying()
+    {
+        return Animator.GetCurrentAnimatorStateInfo(0).length >
+               Animator.GetCurrentAnimatorStateInfo(0).normalizedTime;
+    }
 }

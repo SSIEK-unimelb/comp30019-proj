@@ -37,7 +37,12 @@ public class LeftMouseActivate : MonoBehaviour
 
             // do action - stabbing animation
             if (weaponType.currentWeapon == WeaponType.Weapon.Knife) {
-                animator.Play("LeftClick");
+                AnimatorClipInfo[] animatorinfo;
+                animatorinfo = this.animator.GetCurrentAnimatorClipInfo(0);
+                if ((animatorinfo.Length == 0) || animatorinfo[0].clip.name.Equals("Reset"))
+                {
+                    animator.Play("LeftClick");
+                }
             }
             else if (weaponType.currentWeapon == WeaponType.Weapon.Crossbow) {
                 // insert crossbow firing logic here
