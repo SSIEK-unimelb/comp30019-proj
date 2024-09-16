@@ -29,7 +29,10 @@ public class LockedDoor : MonoBehaviour
 
     private IEnumerator WaitToOpen() {
         yield return new WaitForSeconds(doorOpenTime);
-        navMeshSurfaceBuilder.BuildNavMeshSurface();
+        if (navMeshSurfaceBuilder != null)
+        {
+            navMeshSurfaceBuilder.BuildNavMeshSurface();
+        }
     }
 
 }

@@ -12,6 +12,7 @@ public class ArrowCollision : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        Debug.Log(collision.gameObject.layer);
         if (collision.gameObject.layer == LayerMask.NameToLayer("Obstacle") ||
             collision.gameObject.layer == LayerMask.NameToLayer("HitboxLayer") ||
             collision.gameObject.layer == LayerMask.NameToLayer("Enemy")) {

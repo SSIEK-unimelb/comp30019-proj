@@ -11,7 +11,7 @@ public class HoldingScript : MonoBehaviour
     public GameObject player;
     public Transform holdPos;
     
-    [SerializeField ]public float throwForce = 500f; 
+    [SerializeField ]public float throwForce = 1000f; 
     [SerializeField] public float pickUpRange = 5f; 
     [SerializeField] private float rotationSensitivity = 1f;
     private GameObject heldObj; 
@@ -133,17 +133,20 @@ public class HoldingScript : MonoBehaviour
         heldObjRb.isKinematic = false;
         heldObj.transform.parent = objectParent;
         // find the root parent with rigid body
-        var parent = transform.root;
+        //var parent = transform.root.transform;
+        var parent = objectParent.transform;
+        print(parent.gameObject.name);
+        print(objectParent.gameObject.name);    
         Rigidbody parentObjRb = null;
         foreach (Transform child in parent) {
             if (child.GetComponent<Rigidbody>() != null) {
                 parentObjRb = child.GetComponent<Rigidbody>();
-                print(child.GetComponent<GameObject>().name);
+                print(parentObjRb.name);
             }
         }
         if (parentObjRb != null)
         {
-            parentObjRb.AddForce(transform.forward * throwForce);
+            parentObjRb.AddForce(transform.forward * throwForce, ForceMode.Impulse);
         }
         heldObj = null;
     }
