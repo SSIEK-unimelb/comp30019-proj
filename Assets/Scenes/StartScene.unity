@@ -9279,6 +9279,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 959908869151884145, guid: e3c1c684ea08a5c499955139516b419c, type: 3}
+      propertyPath: itemPrefabs.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 959908869151884145, guid: e3c1c684ea08a5c499955139516b419c, type: 3}
+      propertyPath: itemPrefabs.Array.data[3]
+      value: 
+      objectReference: {fileID: 1836670750850304629, guid: 8fda247b0bbf22747a63bd18326c9cdd, type: 3}
     - target: {fileID: 3016322525516154914, guid: e3c1c684ea08a5c499955139516b419c, type: 3}
       propertyPath: m_Name
       value: FPCE
