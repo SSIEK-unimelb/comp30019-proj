@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ArrowCollision : MonoBehaviour
 {
-    [SerializeField] float destroyTime = 10f;
+    [SerializeField] float destroyTime = 2.5f;
     private void Start()
     {
         Destroy(gameObject, destroyTime);
@@ -25,10 +25,13 @@ public class ArrowCollision : MonoBehaviour
                     {
                         Debug.LogError("Can't find goblin reference");
                     }
+                    /*
                     if (goblinAI.IsKillable())
                     {
                         goblinAI.Die();
+                        // Transform backHitpoint = collision.gameObject.transform.Find("BackHitpoint")
                     }
+                    */
                 }
                 Destroy(gameObject);
 

@@ -5,7 +5,7 @@ using UnityEngine;
 public class FireArrow : MonoBehaviour
 {
     [SerializeField] GameObject arrowPrefab;
-    [SerializeField] float arrowSpeed = 50f;
+    [SerializeField] float arrowSpeed = 100f;
     // Start is called before the first frame update
     void Start()
     {
