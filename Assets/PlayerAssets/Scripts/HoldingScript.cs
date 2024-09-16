@@ -148,6 +148,7 @@ public class HoldingScript : MonoBehaviour
         {
             parentObjRb.AddForce(transform.forward * throwForce, ForceMode.Impulse);
         }
+        heldObj.GetComponentInParent<HoldStatus>().IsHeld = false;
         heldObj = null;
     }
     void StopClipping() //function only called when dropping/throwing
