@@ -9,7 +9,6 @@
 
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -46,6 +45,16 @@ public class GoblinAI : MonoBehaviour
     [SerializeField] private float attackDistance = 2f;
     private Vector3 soundOrigin;
     private bool isSoundHeard = false;
+    private Vector3 attackPos;
+
+    [Header("Damage")]
+    [SerializeField] private string damageTriggerName = "mixamorig:Hips/mixamorig:Spine/mixamorig:Spine1/mixamorig:Spine2/" +
+                                                        "mixamorig:RightShoulder/mixamorig:RightArm/mixamorig:RightForeArm/" +
+                                                        "DamageTrigger";
+    [SerializeField] private int damageAmount = 1;
+    [SerializeField] private string tagToDamage;
+    public int GetDamageAmount() { return damageAmount; }
+    public string GetTagToDamage() { return tagToDamage; }
 
     [Header("Timing")]
     [SerializeField] private float idleDuration = 5f;
@@ -57,6 +66,8 @@ public class GoblinAI : MonoBehaviour
     [SerializeField] private float minChaseTime = 10f;
     [SerializeField] private float maxChaseTime = 15f;
     private float chaseTime;
+    [SerializeField] private float attackInterval = 1f;
+    public float GetAttackInterval() { return attackInterval; }
 
     [Header("Suspicion Icons")]
     private GameObject questionMark;
@@ -114,22 +125,26 @@ public class GoblinAI : MonoBehaviour
     {
         if (currentState == State.Dead) return;
 
-        Vector3 playerDirection = (player.transform.position - transform.position).normalized;
-        float distanceToPlayer = Vector3.Distance(transform.position, player.transform.position);
+        UnityEngine.Vector3 playerDirection = (player.transform.position - transform.position).normalized;
 
+        // y is set to 0 to check for horizontal distance only.
+        // Quick fix for crouching.
+        Vector3 goblinPos = new Vector3(transform.position.x, 0f, transform.position.z);
+        Vector3 playerPos = new Vector3(player.transform.position.x, 0f, player.transform.position.z);
+        float distanceToPlayer = Vector3.Distance(goblinPos, playerPos);
+
+        if (currentState == State.Chase && distanceToPlayer <= attackDistance) {
+            attackPos = transform.position + playerDirection;
+            SetState(State.Attack);
+        }
         // If enemy sees player,
-        if (CanSeePlayer(playerDirection, distanceToPlayer)) {
+        else if (CanSeePlayer(playerDirection, distanceToPlayer)) {
             // Identifying player takes some time
             currentWaitTimeToChase -= Time.deltaTime;
             if (currentWaitTimeToChase > 0) {
                 SetState(State.Search);
             } else {
-                // If player is in attack range,
-                if (distanceToPlayer <= attackDistance) {
-                    SetState(State.Attack);
-                } else {
-                    SetState(State.Chase);
-                }
+                SetState(State.Chase);
             }
         }
         // If enemy does not see player, but hears a sound from player, search for sound.
@@ -187,7 +202,8 @@ public class GoblinAI : MonoBehaviour
         // If the player is in hearing range,
         if (distanceToPlayer <= hearRadius) {
             // If the player is being loud (i.e. not crouching while moving)
-            if (player.GetComponent<FirstPersonControl>().GetCurrentSpeed() >= hearLoudness) {
+            FirstPersonControl firstPersonControl = player.GetComponent<FirstPersonControl>();
+            if (firstPersonControl != null && firstPersonControl.GetCurrentSpeed() >= hearLoudness) {
                 // The enemy can hear the player.
                 // Debug.Log("I hear you!");
                 return true;
@@ -349,7 +365,7 @@ public class GoblinAI : MonoBehaviour
     // If within attack range, stop moving.
     private void HandleAttackState(Vector3 playerDirection) {
         StartCoroutine(ChangeSoundTo(attackSoundPath));
-        nav.destination = player.transform.position;
+        nav.destination = attackPos;
         nav.speed = 0;
         
         // Rotate towards player
@@ -390,6 +406,12 @@ public class GoblinAI : MonoBehaviour
         Destroy(gameObject.GetComponent<BoxCollider>());
         Destroy(nav);
 
+        // To stop being damaged by goblin.
+        Destroy(transform.Find(damageTriggerName).gameObject);
+
+        // Can now be held
+        GetComponent<HoldStatus>().CanBeHeld = true;
+
         // To start ragdoll, need a rigidbody.
         transform.position += new Vector3(0, groundOffset, 0);
         gameObject.AddComponent(typeof(Rigidbody));
@@ -412,18 +434,11 @@ public class GoblinAI : MonoBehaviour
         exclamationMark.SetActive(false);
         StartCoroutine(ChangeSoundTo(killSoundPath));
 
-        // The player is set to inactive, so that the player cannot be moved.
-        // This will remove the player from the scene but not destroy it.
-        // Can do whichever.
-        // player.SetActive(false);
-
         animator.ResetTrigger(idleAnimation.name);
         animator.ResetTrigger(patrolAnimation.name);
         animator.ResetTrigger(searchAnimation.name);
         animator.ResetTrigger(chaseAnimation.name);
         animator.ResetTrigger(attackAnimation.name);
         // anim.SetTrigger(killAnimation.name);
-
-        // SceneManager.LoadScene(deathScene);
     }
 }
