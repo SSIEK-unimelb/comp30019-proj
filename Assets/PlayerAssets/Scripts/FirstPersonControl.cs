@@ -75,6 +75,9 @@ public class FirstPersonControl : MonoBehaviour
 
     private HoldingScript holder;
 
+    private GameObject cameraHierarchy;
+    private bool isCameraActive;
+
     private void Awake()
     {
         playerCamera = GetComponentInChildren<Camera>();
@@ -82,12 +85,14 @@ public class FirstPersonControl : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         holder = GetComponentInChildren<HoldingScript>();
+        cameraHierarchy = transform.GetChild(1).gameObject;
+        isCameraActive = true;
 
         timeSinceCrouchTransition = crouchTransitionTime + crouchTransitionTimeOffset;
     }
     void Update()
     {
-        if (CanMove)
+        if (CanMove && isCameraActive)
         {
             ValidateMovement(); 
             RegisterMouseMovement(); 
@@ -123,7 +128,6 @@ public class FirstPersonControl : MonoBehaviour
         // horizontal looking moves the character
         transform.rotation *= Quaternion.Euler(0, Input.GetAxis("Mouse X") * lookSpeedX, 0);
 
-        
     }
      
     private void ApplyMovement()
@@ -229,5 +233,10 @@ public class FirstPersonControl : MonoBehaviour
         }
 
         return 0;
+    }
+
+    public void toggleCamera() { 
+        isCameraActive = !isCameraActive;
+        cameraHierarchy.SetActive(isCameraActive);
     }
 }
