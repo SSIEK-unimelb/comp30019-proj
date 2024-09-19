@@ -2125,6 +2125,30 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8076123252382457064, guid: caa266546a744514c9db9e723efcd661, type: 3}
+      propertyPath: walkBobSpeed
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 8076123252382457064, guid: caa266546a744514c9db9e723efcd661, type: 3}
+      propertyPath: crouchBobSpeed
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8076123252382457064, guid: caa266546a744514c9db9e723efcd661, type: 3}
+      propertyPath: sprintBobSpeed
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 8076123252382457064, guid: caa266546a744514c9db9e723efcd661, type: 3}
+      propertyPath: walkBobIntensity
+      value: 0.03
+      objectReference: {fileID: 0}
+    - target: {fileID: 8076123252382457064, guid: caa266546a744514c9db9e723efcd661, type: 3}
+      propertyPath: crouchBobIntensity
+      value: 0.015
+      objectReference: {fileID: 0}
+    - target: {fileID: 8076123252382457064, guid: caa266546a744514c9db9e723efcd661, type: 3}
+      propertyPath: sprintBobIntensity
+      value: 0.04
+      objectReference: {fileID: 0}
     - target: {fileID: 8196521875244355552, guid: caa266546a744514c9db9e723efcd661, type: 3}
       propertyPath: m_Name
       value: FPCE
