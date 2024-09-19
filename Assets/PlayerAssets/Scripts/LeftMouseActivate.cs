@@ -59,9 +59,12 @@ public class LeftMouseActivate : MonoBehaviour
             {
                 AnimatorClipInfo[] animatorinfo;
                 animatorinfo = this.animator.GetCurrentAnimatorClipInfo(0);
-                if ((animatorinfo.Length == 0) || animatorinfo[0].clip.name.Equals("Reset"))
+                print(animatorinfo[0].clip.name);
+                if ((animatorinfo[0].clip.name.Equals("IdleKnife")) || animatorinfo[0].clip.name.Equals("Reset"))
                 {
-                    animator.Play("LeftClick");
+                    animator.SetTrigger("doStabAnim");
+                    Debug.Log("stab anim");
+                    //animator.Play("LeftClick");
                 }
             }
             else if (weaponType.currentWeapon == WeaponType.Weapon.Crossbow)
