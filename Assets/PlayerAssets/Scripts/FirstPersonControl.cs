@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using UnityEditor;
 using UnityEngine;
 
@@ -28,6 +29,7 @@ public class FirstPersonControl : MonoBehaviour
     [SerializeField] private bool canJump = true;
     [SerializeField] private bool canCrouch = true;
     [SerializeField] private bool canInteract = true;
+    [SerializeField] private bool canUseHeadBob = true;
 
     [Header("Controls")]
     [SerializeField] private KeyCode sprintKey = KeyCode.LeftShift;
@@ -47,7 +49,7 @@ public class FirstPersonControl : MonoBehaviour
     private bool wasInAir = false;
     private bool hasLanded => characterController.isGrounded && wasInAir;
     // Prevent false isGrounded during crouch transition.
-    private float crouchTransitionTimeOffset = 0.1f;
+    [SerializeField] private float crouchTransitionTimeOffset = 0.2f;
     private float timeSinceCrouchTransition;
 
     [Header("Crouch")]
@@ -59,6 +61,15 @@ public class FirstPersonControl : MonoBehaviour
     private bool isCrouched;
     private bool isInCrouchAnimation;
 
+    [Header("Headbob")]
+    [SerializeField] private float walkBobSpeed = 10f;
+    [SerializeField] private float walkBobIntensity = 0.05f;
+    [SerializeField] private float crouchBobSpeed = 6f;
+    [SerializeField] private float crouchBobIntensity = 0.025f;
+    [SerializeField] private float sprintBobSpeed = 12f;
+    [SerializeField] private float sprintBobIntensity = 0.1f;
+    private float defaultYPos = 0;
+    private float bobTimer;
 
     [Header("Interaction")]
     [SerializeField] private Vector3 interactRayIntersect = default;
@@ -75,6 +86,9 @@ public class FirstPersonControl : MonoBehaviour
 
     private HoldingScript holder;
 
+    private GameObject cameraHierarchy;
+    private bool isCameraActive;
+
     private void Awake()
     {
         playerCamera = GetComponentInChildren<Camera>();
@@ -82,17 +96,22 @@ public class FirstPersonControl : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         holder = GetComponentInChildren<HoldingScript>();
+        cameraHierarchy = transform.GetChild(1).gameObject;
+        isCameraActive = true;
 
         timeSinceCrouchTransition = crouchTransitionTime + crouchTransitionTimeOffset;
+
+        defaultYPos = playerCamera.transform.localPosition.y;
     }
     void Update()
     {
-        if (CanMove)
+        if (CanMove && isCameraActive)
         {
             ValidateMovement(); 
             RegisterMouseMovement(); 
             if (canJump) RegisterJump();  
             if (canCrouch) RegisterCrouch();
+            if (canUseHeadBob) DoHeadBob();
             ApplyMovement();
             if (canInteract) { 
                 CheckInteraction();
@@ -123,7 +142,6 @@ public class FirstPersonControl : MonoBehaviour
         // horizontal looking moves the character
         transform.rotation *= Quaternion.Euler(0, Input.GetAxis("Mouse X") * lookSpeedX, 0);
 
-        
     }
      
     private void ApplyMovement()
@@ -229,5 +247,30 @@ public class FirstPersonControl : MonoBehaviour
         }
 
         return 0;
+    }
+
+    public void toggleCamera() { 
+        isCameraActive = !isCameraActive;
+        cameraHierarchy.SetActive(isCameraActive);
+    }
+
+    public void DoHeadBob() 
+    {
+        if (characterController.isGrounded) 
+        {
+            bobTimer += Time.deltaTime * (isCrouched ? crouchBobSpeed : isSprinting ? sprintBobSpeed : walkBobSpeed);
+            if (Mathf.Abs(new Vector2(characterController.velocity.x, characterController.velocity.z).magnitude) > 0.1f 
+                || (Mathf.Abs(defaultYPos - playerCamera.transform.localPosition.y) > 0.005f))
+            {
+                playerCamera.transform.localPosition = new Vector3(
+                        playerCamera.transform.localPosition.x,
+                        defaultYPos + Mathf.Sin(bobTimer) * (isCrouched ? crouchBobIntensity : isSprinting ? sprintBobIntensity : walkBobIntensity),
+                        playerCamera.transform.localPosition.z);
+            }
+            else if (defaultYPos != playerCamera.transform.localPosition.y)
+            {
+                playerCamera.transform.localPosition = new Vector3(playerCamera.transform.localPosition.x, defaultYPos, playerCamera.transform.localPosition.z);
+            }
+        }
     }
 }

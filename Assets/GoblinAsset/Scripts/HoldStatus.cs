@@ -5,5 +5,5 @@ using UnityEngine;
 public class HoldStatus : MonoBehaviour
 {
     public bool IsHeld { get; set; } = false;
-    public bool CanBeHeld { get; set; } = true;
+    public bool CanBeHeld { get; set; } = false;
 }

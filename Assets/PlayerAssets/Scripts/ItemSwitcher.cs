@@ -30,9 +30,10 @@ public class ItemSwitcher : MonoBehaviour
         else if (Input.GetKeyDown(KeyCode.Alpha3)) {
             SwitchItem(2);
         }
+        else if (Input.GetKeyDown(KeyCode.Alpha4)) { SwitchItem(3); }
     }
 
-    void SwitchItem(int itemIndex) {
+    public void SwitchItem(int itemIndex) {
         // could also add a condition here to only allow items that the player has in inventory
         if (itemIndex < 0 || itemIndex >= itemPrefabs.Length || itemIndex == currentItemIndex) {
             return;

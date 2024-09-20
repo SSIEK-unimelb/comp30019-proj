@@ -11,7 +11,7 @@ public class HoldingScript : MonoBehaviour
     public GameObject player;
     public Transform holdPos;
     
-    [SerializeField ]public float throwForce = 500f; 
+    [SerializeField ]public float throwForce = 1000f; 
     [SerializeField] public float pickUpRange = 5f; 
     [SerializeField] private float rotationSensitivity = 1f;
     private GameObject heldObj; 
@@ -75,10 +75,10 @@ public class HoldingScript : MonoBehaviour
     void PickUpObject(GameObject pickUpObj)
     {
         // If the object cannot be held, do not hold
-        HoldStatus holdStatus = pickUpObj.GetComponentInParent<HoldStatus>();
+        HoldStatus holdStatus = pickUpObj.transform.root.GetComponent<HoldStatus>();
         if (holdStatus != null && !holdStatus.CanBeHeld) {
             return;
-        } 
+        }
 
         if (pickUpObj.GetComponent<Rigidbody>()) //make sure the object has a RigidBody
         {
@@ -133,23 +133,27 @@ public class HoldingScript : MonoBehaviour
         heldObjRb.isKinematic = false;
         heldObj.transform.parent = objectParent;
         // find the root parent with rigid body
-        var parent = transform.root;
+        //var parent = transform.root.transform;
+        var parent = objectParent.transform;
+        print(parent.gameObject.name);
+        print(objectParent.gameObject.name);    
         Rigidbody parentObjRb = null;
         foreach (Transform child in parent) {
             if (child.GetComponent<Rigidbody>() != null) {
                 parentObjRb = child.GetComponent<Rigidbody>();
-                print(child.GetComponent<GameObject>().name);
+                print(parentObjRb.name);
             }
         }
         if (parentObjRb != null)
         {
-            parentObjRb.AddForce(transform.forward * throwForce);
+            parentObjRb.AddForce(transform.forward * throwForce, ForceMode.Impulse);
         }
+        heldObj.GetComponentInParent<HoldStatus>().IsHeld = false;
         heldObj = null;
     }
     void StopClipping() //function only called when dropping/throwing
     {
-        var clipRange = Vector3.Distance(heldObj.transform.position, transform.position); //distance from holdPos to the camera
+        var clipRange = Vector3.Distance(heldObj.transform.position, transform.position); //distance from holdPos to the cam
         //have to use RaycastAll as object blocks raycast in center screen
         //RaycastAll returns array of all colliders hit within the cliprange
         RaycastHit[] hits;
@@ -157,7 +161,7 @@ public class HoldingScript : MonoBehaviour
         //if the array length is greater than 1, meaning it has hit more than just the object we are carrying
         if (hits.Length > 1)
         {
-            //change object position to camera position 
+            //change object position to cam position 
             heldObj.transform.position = transform.position + new Vector3(0f, -0.5f, 0f); //offset slightly downward to stop object dropping above player 
             //if your player is small, change the -0.5f to a smaller number (in magnitude) ie: -0.1f
         }
