@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 399262298649045608}
   - component: {fileID: 9223353321758844902}
   - component: {fileID: 7504390977241287685}
+  - component: {fileID: 8200661695768453409}
   m_Layer: 0
   m_Name: Eye
   m_TagString: Untagged
@@ -136,7 +137,7 @@ Rigidbody:
   m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 80
-  m_CollisionDetection: 0
+  m_CollisionDetection: 3
 --- !u!114 &399262298649045608
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -149,6 +150,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d145478cd53061a4a9eb5bba8b175adb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  prefabParent: {fileID: 0}
 --- !u!114 &9223353321758844902
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -179,6 +181,27 @@ MonoBehaviour:
   aboveLookClamp: 90
   belowLookClamp: 90
   cam: {fileID: 5670070244699662162}
+--- !u!95 &8200661695768453409
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3033057934806655690}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 6a9deec99a3a60f488ab571cd11124a5, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &6039479946393787785
 GameObject:
   m_ObjectHideFlags: 0
