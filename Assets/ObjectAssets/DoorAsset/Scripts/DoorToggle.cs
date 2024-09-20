@@ -10,12 +10,14 @@ public class DoorToggle : Interactible
     [SerializeField] private string doorOpenStr;
     [SerializeField] private string doorCloseStr;
     public bool isOpen = true;
+    private FirstPersonControl firstPersonControl;
 
     private GameObject interactionText;
     public override void OnFocus()
     {
         // Implement on focus tooltip activate
-        interactionText.SetActive(true);
+        firstPersonControl.SetInteractText(true);
+        Debug.Log("Looking at door");
         return;
     }
 
@@ -42,7 +44,8 @@ public class DoorToggle : Interactible
 
     public override void OnLoseFocus()
     {
-        interactionText.SetActive(false);
+        firstPersonControl.SetInteractText(false);
+        Debug.Log("Stop looking at door");
         return;
         // Implement off focus tooltip 
     }
@@ -55,10 +58,7 @@ public class DoorToggle : Interactible
 
     public void Start()
     {
-        print(GameObject.FindGameObjectWithTag("InteractText"));
-        interactionText = GameObject.FindGameObjectWithTag("InteractText");
-        print(interactionText);
-        interactionText.SetActive(false);
+        firstPersonControl = GameObject.FindGameObjectWithTag("Player").GetComponent<FirstPersonControl>();
     }
 
     bool AnimatorIsPlaying()

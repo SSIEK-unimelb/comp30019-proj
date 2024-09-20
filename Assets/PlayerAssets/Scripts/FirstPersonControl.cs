@@ -77,6 +77,8 @@ public class FirstPersonControl : MonoBehaviour
     [SerializeField] private LayerMask interactLayerMask = default;
     private Interactible currentInteractible;
 
+    [SerializeField] private GameObject interactTextMesh;
+
     private Camera playerCamera;
     private CharacterController characterController;
 
@@ -105,6 +107,7 @@ public class FirstPersonControl : MonoBehaviour
     }
     void Update()
     {
+        SetInteractText(false);
         if (CanMove && isCameraActive)
         {
             ValidateMovement(); 
@@ -272,5 +275,9 @@ public class FirstPersonControl : MonoBehaviour
                 playerCamera.transform.localPosition = new Vector3(playerCamera.transform.localPosition.x, defaultYPos, playerCamera.transform.localPosition.z);
             }
         }
+    }
+
+    public void SetInteractText(bool val) {
+        interactTextMesh.SetActive(val);
     }
 }
