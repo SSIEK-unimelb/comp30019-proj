@@ -666,42 +666,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c8fcb67cb3d648b4b87d500ece16b15f, type: 3}
---- !u!1 &877397034 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7205497078005313587, guid: 8095aea1b5584714e8a5b3626eed903f, type: 3}
-  m_PrefabInstance: {fileID: 1817612896}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &877397040
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 877397034}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4435767637b94c1438372cf0133c7dee, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  shader: {fileID: 4800000, guid: fa58e8ad3ae16324cb72526470e344d0, type: 3}
-  waveX: 0.1
-  waveY: 1
-  waveStrength: 0.01
-  waveSpeed: 1
-  barSpeed: 1
-  barAmount: 100
-  barThickness: 10
-  barIntensity: 1
-  tearThreshold: 0.999
-  tearSpeed: 10
-  shiftAmount: 1
-  chromaticDistortionAmount: 0.005
-  noiseTexture: {fileID: 2800000, guid: 54c9514d3305422408497689b06c6bc4, type: 3}
-  noiseSpeed: 0.05
-  noiseIntensity: 0.01
-  fogColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
-  fogDensity: 0.01
-  fogOffset: 1
 --- !u!1 &880728993
 GameObject:
   m_ObjectHideFlags: 0
@@ -1512,18 +1476,6 @@ PrefabInstance:
       value: FPCE
       objectReference: {fileID: 0}
     - target: {fileID: 4765567072854298104, guid: 8095aea1b5584714e8a5b3626eed903f, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4765567072854298104, guid: 8095aea1b5584714e8a5b3626eed903f, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4765567072854298104, guid: 8095aea1b5584714e8a5b3626eed903f, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4765567072854298104, guid: 8095aea1b5584714e8a5b3626eed903f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -1566,10 +1518,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 7205497078005313587, guid: 8095aea1b5584714e8a5b3626eed903f, type: 3}
-      insertIndex: 2
-      addedObject: {fileID: 877397040}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8095aea1b5584714e8a5b3626eed903f, type: 3}
 --- !u!1001 &1871507791
 PrefabInstance:
