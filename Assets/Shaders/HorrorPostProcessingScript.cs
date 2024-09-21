@@ -15,8 +15,8 @@ public class HorrorPostProcessingScript : MonoBehaviour
     [SerializeField] private float waveSpeed = 1.0f;
 
     [Header("Screen Tearing")]
-    [SerializeField] private float tearThreshold = 0.5f;
-    [SerializeField] private float tearSpeed = 1.0f;
+    [SerializeField] private float tearThreshold = 0.999f;
+    [SerializeField] private float tearSpeed = 10.0f;
     [SerializeField] private float shiftAmount = 1.0f;
 
     [Header("Jitter")]
@@ -26,17 +26,17 @@ public class HorrorPostProcessingScript : MonoBehaviour
     [SerializeField] private float jitterY = 0f;
 
     [Header("RGB Split")]
-    [SerializeField] private float chromaticDistortionAmount = 1.0f;
+    [SerializeField] private float chromaticDistortionAmount = 0.005f;
 
     [Header("Noise Overlay")]
     [SerializeField] private Texture noiseTexture;
-    [SerializeField] private float noiseSpeed;
-    [SerializeField] private float noiseIntensity;
+    [SerializeField] private float noiseSpeed = 0.05f;
+    [SerializeField] private float noiseIntensity = 0.01f;
 
     [Header("Scanning Bars")]
     [SerializeField] private float barSpeed = 1.0f;
-    [SerializeField] private float barAmount = 1.0f;
-    [SerializeField] private float barThickness = 1.0f;
+    [SerializeField] private float barAmount = 100.0f;
+    [SerializeField] private float barThickness = 10.0f;
     [SerializeField] private float barIntensity = 1.0f;
 
     [Header("Fog")]

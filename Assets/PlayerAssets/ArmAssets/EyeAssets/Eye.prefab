@@ -67,7 +67,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 574a32f1fd43e0e498988286b3eeb64b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -189,6 +189,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4055189670415252085}
   - component: {fileID: 5670070244699662162}
+  - component: {fileID: 6148331277867415904}
   m_Layer: 0
   m_Name: Camera
   m_TagString: Untagged
@@ -262,3 +263,38 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
+--- !u!114 &6148331277867415904
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6039479946393787785}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4435767637b94c1438372cf0133c7dee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shader: {fileID: 4800000, guid: fa58e8ad3ae16324cb72526470e344d0, type: 3}
+  waveX: 0.1
+  waveY: 1
+  waveStrength: 0.01
+  waveSpeed: 1
+  tearThreshold: 0.999
+  tearSpeed: 10
+  shiftAmount: 1
+  jitterSpeed: 2
+  jitterThreshold: 0.01
+  jitterX: 0.005
+  jitterY: 0
+  chromaticDistortionAmount: 0.005
+  noiseTexture: {fileID: 2800000, guid: 54c9514d3305422408497689b06c6bc4, type: 3}
+  noiseSpeed: 0.05
+  noiseIntensity: 0.01
+  barSpeed: 1
+  barAmount: 100
+  barThickness: 10
+  barIntensity: 1
+  fogColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  fogDensity: 0.01
+  fogOffset: 1
