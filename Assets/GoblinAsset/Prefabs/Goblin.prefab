@@ -1380,7 +1380,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3281294395484095731}
   - component: {fileID: 8892730244238319241}
-  - component: {fileID: 3259383682513359202}
+  - component: {fileID: 4403697789942099863}
   - component: {fileID: 2434724926875695611}
   - component: {fileID: 6844532812586888743}
   - component: {fileID: 759455478297755203}
@@ -1409,7 +1409,6 @@ Transform:
   - {fileID: 7050716249734587495}
   - {fileID: 8796003705239395574}
   - {fileID: 1141991031431641861}
-  - {fileID: 916759418484715717}
   - {fileID: 4587549453046407395}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1434,7 +1433,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &3259383682513359202
+--- !u!114 &4403697789942099863
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1443,45 +1442,38 @@ MonoBehaviour:
   m_GameObject: {fileID: 2792987625315573321}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a930c667e32abcf4fb639997548be67e, type: 3}
+  m_Script: {fileID: 11500000, guid: ad964a627024c5e48b6f78f913cf6dfc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  backHitPoint: {fileID: 8375472142938462195}
+  idleDuration: 5
+  idleAnimation: {fileID: 7400000, guid: 901c8e8b37fe02546956aea75d5c52e1, type: 2}
+  walkSpeed: 3
   patrolPoints:
   - {fileID: 0}
   - {fileID: 0}
-  walkSpeed: 3
-  chaseSpeed: 6
-  rotationTime: 0.3
-  viewRadius: 15
-  viewAngle: 90
+  walkAnimation: {fileID: 7400000, guid: c61e7f9ef26a31641acd112cdeffbe61, type: 2}
+  walkAudio: {fileID: 8300000, guid: a883fe83c54f3104ea5e3eea1ed3257a, type: 3}
   hearRadius: 10
-  hearLoudness: 3
-  attackDistance: 1.8
+  searchDuration: 10
+  viewRange: 15
+  viewAngle: 90
+  waitDurationToChase: 1
+  playerLocationCheckInterval: 0.1
+  chaseDuration: 10
+  chaseSpeed: 6
+  chaseAnimation: {fileID: 7400000, guid: 1be4201f944218f4780fc4e9cd1eab96, type: 2}
+  chaseAudio: {fileID: 8300000, guid: 73db322163c22b84ebcf374aa88b70f5, type: 3}
+  discoverAudio: {fileID: 8300000, guid: 2812cd86d0d0c694caacdc6fb1453bf3, type: 3}
+  attackRange: 2
+  outsideAttackRangeDuration: 0.5
+  attackCooldown: 1
+  attackAnimation: {fileID: 7400000, guid: 5204128a068fe3c4da4c88f7cf04256a, type: 2}
+  idleAttackAnimation: {fileID: 7400000, guid: 901c8e8b37fe02546956aea75d5c52e1, type: 2}
+  attackAudio: {fileID: 8300000, guid: a9fe83366307d414ea5aec26a348f3ea, type: 3}
   damageTriggerName: mixamorig:Hips/mixamorig:Spine/mixamorig:Spine1/mixamorig:Spine2/mixamorig:RightShoulder/mixamorig:RightArm/mixamorig:RightForeArm/DamageTrigger
   damageAmount: 1
   tagToDamage: Player
-  idleDuration: 5
-  searchDuration: 10
-  waitTimeToChase: 0.3
-  minChaseTime: 10
-  maxChaseTime: 15
-  attackInterval: 1
-  idleAnimation: {fileID: 7400000, guid: 901c8e8b37fe02546956aea75d5c52e1, type: 2}
-  patrolAnimation: {fileID: 7400000, guid: c61e7f9ef26a31641acd112cdeffbe61, type: 2}
-  searchAnimation: {fileID: 7400000, guid: c61e7f9ef26a31641acd112cdeffbe61, type: 2}
-  chaseAnimation: {fileID: 7400000, guid: 1be4201f944218f4780fc4e9cd1eab96, type: 2}
-  attackAnimation: {fileID: 7400000, guid: 5204128a068fe3c4da4c88f7cf04256a, type: 2}
-  idleSoundPath: {fileID: 8300000, guid: 2bffc6a78a1534549a1ab2124a23ea39, type: 3}
-  patrolSoundPath: {fileID: 8300000, guid: 05a08dd4ee0c046a6b56466d5c9aa9b8, type: 3}
-  searchSoundPath: {fileID: 8300000, guid: f626dafe2c3e045cd852e86532182f70, type: 3}
-  chaseSoundPath: {fileID: 8300000, guid: c118d1cdc5f634c28bfb87ef52703522, type: 3}
-  attackSoundPath: {fileID: 8300000, guid: 0cd0367ce705e426e944079a1e47eb84, type: 3}
-  dieSoundPath: {fileID: 8300000, guid: f32d44a6bdb854aa5b10a83f60a507ab, type: 3}
-  killSoundPath: {fileID: 8300000, guid: bf5d4102f62c644aa91a146267aaf815, type: 3}
-  pitch: 1
-  pitchVariance: 0.1
-  groundOffset: 0.2
+  rotationTime: 0.3
 --- !u!195 &2434724926875695611
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1496,7 +1488,7 @@ NavMeshAgent:
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 0
-  m_StoppingDistance: 0.1
+  m_StoppingDistance: 2
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
@@ -1515,10 +1507,10 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -2527,12 +2519,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5375147197009907986}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.758, z: 0.323}
+  m_LocalRotation: {x: 0.000000009546056, y: 0.000000002891636, z: 0.00000001395093, w: 1}
+  m_LocalPosition: {x: 0.0007013575, y: 0.077475004, z: 0.27627766}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 3281294395484095731}
+  m_Father: {fileID: 8927802596904294000}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5490895067832698552
 GameObject:
@@ -2599,6 +2591,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5961818195186766494}
+  - {fileID: 916759418484715717}
   m_Father: {fileID: 8101891155382959882}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!135 &1328214107357568013

@@ -89,6 +89,8 @@ public class FirstPersonControl : MonoBehaviour
     private GameObject cameraHierarchy;
     private bool isCameraActive;
 
+    private SoundMaker soundMaker;
+
     private void Awake()
     {
         playerCamera = GetComponentInChildren<Camera>();
@@ -98,6 +100,7 @@ public class FirstPersonControl : MonoBehaviour
         holder = GetComponentInChildren<HoldingScript>();
         cameraHierarchy = transform.GetChild(1).gameObject;
         isCameraActive = true;
+        soundMaker = GetComponent<SoundMaker>();
 
         timeSinceCrouchTransition = crouchTransitionTime + crouchTransitionTimeOffset;
 
@@ -117,6 +120,7 @@ public class FirstPersonControl : MonoBehaviour
                 CheckInteraction();
                 RegisterInteractInput();
             }
+            PlayerMakeSound();
         }
     }
 
@@ -152,6 +156,7 @@ public class FirstPersonControl : MonoBehaviour
             timeSinceCrouchTransition -= Time.deltaTime;
             if (timeSinceCrouchTransition <= 0) {
                 wasInAir = true;
+                Debug.Log("False isGrounded");
             }
         } else {
             timeSinceCrouchTransition = crouchTransitionTime + crouchTransitionTimeOffset;
@@ -234,19 +239,17 @@ public class FirstPersonControl : MonoBehaviour
         }
     }
 
-    public float GetCurrentSpeed() {
+    public void PlayerMakeSound() {
         // If the player is moving,
         if (inputDir != Vector2.zero) {
-            return currentSpeed;
+            if (currentSpeed >= walkSpeed) soundMaker.MakeSound();
         }
 
         // If the player has landed after jumping or falling,
         if (hasLanded) {
             wasInAir = false;
-            return walkSpeed;
+            soundMaker.MakeSound();
         }
-
-        return 0;
     }
 
     public void toggleCamera() { 

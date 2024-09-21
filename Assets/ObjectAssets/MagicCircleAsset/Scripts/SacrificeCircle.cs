@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class SacrificeCircle : MonoBehaviour
 {
+    private AudioSource audioSource;
     [SerializeField] private GameObject objectToTrigger;
     private LockedDoor door;
     [SerializeField] private string enemyLayer = "Enemy";
@@ -23,6 +24,7 @@ public class SacrificeCircle : MonoBehaviour
     private float currentSacrificeTime = 0;
 
     void Start() {
+        audioSource = GetComponent<AudioSource>();
         enemyMask = LayerMask.GetMask(enemyLayer);
         door = objectToTrigger.GetComponent<LockedDoor>();
         currentRotationSpeed = initialRotationSpeed;
@@ -45,6 +47,7 @@ public class SacrificeCircle : MonoBehaviour
                     isSacrificed = true;
                     holdStatus.CanBeHeld = false;
                     door.OnTrigger();
+                    audioSource.Play();
                     GetComponent<SoundMaker>().MakeSound();
                 }
             }

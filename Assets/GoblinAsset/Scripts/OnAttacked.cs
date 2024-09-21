@@ -12,7 +12,7 @@ public class OnAttacked : MonoBehaviour
     }
     private void OnCollisionEnter(Collision collision)
     {
-        //Debug.Log("Collision");
+        Debug.Log("Collision");
 
         if (collision.gameObject.tag == "Weapon") 
         {
