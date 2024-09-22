@@ -1503,7 +1503,7 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2792987625315573321}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
@@ -3671,9 +3671,9 @@ GameObject:
   - component: {fileID: 5364006925478341067}
   - component: {fileID: 3202553112016200228}
   - component: {fileID: 2598487975425887024}
-  - component: {fileID: 4045787644151089820}
   - component: {fileID: 3666777077903515760}
   - component: {fileID: 5970353094735763673}
+  - component: {fileID: 1337285520713816328}
   m_Layer: 10
   m_Name: BackHitpoint
   m_TagString: Untagged
@@ -3691,7 +3691,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0.0028277098, y: -0.0000015176665, z: 0.000000012874331, w: 0.999996}
   m_LocalPosition: {x: 0.0007020067, y: 0.2908999, z: -0.21211134}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_LocalScale: {x: 0.5, y: 1, z: 0.5}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 7327872014437013492}
@@ -3746,27 +3746,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!135 &4045787644151089820
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8375472142938462195}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 0.50000006
-  m_Center: {x: 0, y: 0.0000009536743, z: 0.000008583069}
 --- !u!114 &3666777077903515760
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3806,6 +3785,29 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
+--- !u!136 &1337285520713816328
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8375472142938462195}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 1024
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.50000006
+  m_Height: 1
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0.0000023841858}
 --- !u!1 &8748074647625860591
 GameObject:
   m_ObjectHideFlags: 0

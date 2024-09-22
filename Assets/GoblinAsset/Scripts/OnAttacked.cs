@@ -12,6 +12,7 @@ public class OnAttacked : MonoBehaviour
     }
 
     private void OnTriggerEnter(Collider collider) {
+        print(collider.name);   
         if (collider.gameObject.tag == "Weapon") {
             if (goblinAI.IsKillable()) {
                 //print("Should die");
