@@ -91,10 +91,8 @@ Gameplay Mechanics:
 
 <p align="center">
   <img src="Images/GameMechanics/Enemy_Awareness.png" width="600">
-  <img src="Images/GameMechanics/MoveStealth.mp4" width="600">
   <img src="Images/GameMechanics/Distract.png" width="600">
   <img src="Images/GameMechanics/Locked Door.png" width="600">
-  <img src="Images/GameMechanics/SacrificialCircle_LockedDoor.mp4" width="600">
 </p>
 
 * Rules/Laws: While holding a body, the player’s speed is greatly reduced.
@@ -118,9 +116,9 @@ Gameplay Mechanics:
 * Sacrifice Circles: The occult gods honour the player's wishes if they present a flesh sacrifice - drag dead enemy bodies onto the circle to trigger helpful events
 
 <p align="center">
-  <img src="Images/Objetcs/SacrificeCircle_1.png" width="600">
-  <img src="Images/Objetcs/SacrificeCircle_2.png" width="600">
-  <img src="Images/GameMechanics/sacrificialCircle.gif" width="600">
+  <img src="Images/Objects/SacrificeCircle_1.png" width="600">
+  <img src="Images/Objects/SacrificeCircle_2.png" width="600">
+  <img src="Images/Objects/sacrificialCircle.gif" width="600">
 </p>
 
 * Lantern: Wax refills, lighting points (specific locations where the lantern can be refreshed and replenished). There is a 'fuel level' that tells you how long the lantern will shine for.
@@ -132,7 +130,7 @@ Gameplay Mechanics:
 * Bear traps: Trap and hold the player down for a period of time, leaving them susceptible to enemies.
 
 <p align="center">
-  <img src="Images/Objetcs/BearTrap.png" width="300">
+  <img src="Images/Objects/BearTrap.png" width="300">
 </p>
 
 * Smoke bombs: Consumables, can be picked up. Generate a cloud of smoke, allowing the player to escape sticky situations.
