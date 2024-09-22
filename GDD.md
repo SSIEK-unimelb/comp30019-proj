@@ -88,6 +88,7 @@ Progression:
 
 Gameplay Mechanics:
 * Core Mechanics: The player has to move stealthily, clear obstacles, and interact with enemy bodies to progress.
+    * While crouching enemies cannot hear you. 
 
 <p align="center">
   <img src="Images/GameMechanics/Enemy_Awareness.png" width="600">
@@ -111,9 +112,7 @@ Gameplay Mechanics:
 
 ### Interactive Objects
 
-* Bed: Makes no noise when falling on it.
-
-* Sacrifice Circles: The occult gods honour the player's wishes if they present a flesh sacrifice - drag dead enemy bodies onto the circle to trigger helpful events
+* Sacrifice Circles: The occult gods honour the player's wishes if they present a flesh sacrifice - drag dead enemy bodies onto the circle to trigger helpful events, such as opening locked doors.
 
 <p align="center">
   <img src="Images/Objects/SacrificeCircle_1.png" width="600">
