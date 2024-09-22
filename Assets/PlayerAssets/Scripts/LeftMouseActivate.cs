@@ -15,6 +15,8 @@ public class LeftMouseActivate : MonoBehaviour
     private EyeScript eyeController;
     private bool isThrowingEye;
     private EyeScript EyeScript;
+
+    [SerializeField] Transform prefabParent;
     void Awake()
     {
         player = GameObject.FindWithTag("Player");
@@ -42,7 +44,7 @@ public class LeftMouseActivate : MonoBehaviour
             return;
         }
         // also make sure that the object this is attached to is the active prefab arm
-        if (itemSwitcher.currentItem.Equals(transform.parent.gameObject) && Input.GetKeyDown(KeyCode.Mouse0) && !holdScript.isHolding())
+        if (transform.parent != null && itemSwitcher.currentItem.Equals(prefabParent.gameObject) && Input.GetKeyDown(KeyCode.Mouse0) && !holdScript.isHolding())
         {
             WeaponType weaponType = transform.GetComponent<WeaponType>();
 
@@ -59,11 +61,11 @@ public class LeftMouseActivate : MonoBehaviour
             {
                 AnimatorClipInfo[] animatorinfo;
                 animatorinfo = this.animator.GetCurrentAnimatorClipInfo(0);
-                print(animatorinfo[0].clip.name);
-                if ((animatorinfo[0].clip.name.Equals("IdleKnife")) || animatorinfo[0].clip.name.Equals("Reset"))
+                Debug.Log(animatorinfo[0].clip.name);
+                if ((animatorinfo[0].clip.name.Equals("IdleKnife")))
                 {
+                    
                     animator.SetTrigger("doStabAnim");
-                    Debug.Log("stab anim");
                     //animator.Play("LeftClick");
                 }
             }
@@ -84,6 +86,7 @@ public class LeftMouseActivate : MonoBehaviour
                     body.AddForce(transform.forward * 20, ForceMode.Impulse);
 
                     transform.parent = null;
+                    prefabParent = transform.parent;
                     isThrowingEye = true;
                     EyeScript = transform.GetComponent<EyeScript>();    
                 }

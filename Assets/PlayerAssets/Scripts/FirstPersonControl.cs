@@ -77,6 +77,8 @@ public class FirstPersonControl : MonoBehaviour
     [SerializeField] private LayerMask interactLayerMask = default;
     private Interactible currentInteractible;
 
+    [SerializeField] private GameObject interactTextMesh;
+
     private Camera playerCamera;
     private CharacterController characterController;
 
@@ -89,7 +91,7 @@ public class FirstPersonControl : MonoBehaviour
     private GameObject cameraHierarchy;
     private bool isCameraActive;
 
-    private SoundMaker soundMaker;
+    private ItemSwitcher itemSwitcher;
 
     private void Awake()
     {
@@ -100,27 +102,37 @@ public class FirstPersonControl : MonoBehaviour
         holder = GetComponentInChildren<HoldingScript>();
         cameraHierarchy = transform.GetChild(1).gameObject;
         isCameraActive = true;
-        soundMaker = GetComponent<SoundMaker>();
 
         timeSinceCrouchTransition = crouchTransitionTime + crouchTransitionTimeOffset;
 
         defaultYPos = playerCamera.transform.localPosition.y;
+        itemSwitcher = GetComponentInChildren<ItemSwitcher>();
     }
     void Update()
     {
-        if (CanMove && isCameraActive)
+        SetInteractText(false);
+        if (CanMove)
         {
-            ValidateMovement(); 
-            RegisterMouseMovement(); 
-            if (canJump) RegisterJump();  
-            if (canCrouch) RegisterCrouch();
-            if (canUseHeadBob) DoHeadBob();
-            ApplyMovement();
-            if (canInteract) { 
-                CheckInteraction();
-                RegisterInteractInput();
+            if (isCameraActive)
+            {
+                ValidateMovement();
+                RegisterMouseMovement();
+                if (canJump) RegisterJump();
+                if (canCrouch) RegisterCrouch();
+                if (canUseHeadBob) DoHeadBob();
+                if (canInteract)
+                {
+                    CheckInteraction();
+                    RegisterInteractInput();
+                }
             }
-            PlayerMakeSound();
+            else { 
+                // Reject all movement except gravity
+                moveDir = new Vector3(0f, moveDir.y, 0f);
+            }
+
+            ApplyMovement();
+
         }
     }
 
@@ -156,7 +168,6 @@ public class FirstPersonControl : MonoBehaviour
             timeSinceCrouchTransition -= Time.deltaTime;
             if (timeSinceCrouchTransition <= 0) {
                 wasInAir = true;
-                Debug.Log("False isGrounded");
             }
         } else {
             timeSinceCrouchTransition = crouchTransitionTime + crouchTransitionTimeOffset;
@@ -239,21 +250,42 @@ public class FirstPersonControl : MonoBehaviour
         }
     }
 
-    public void PlayerMakeSound() {
+    public float GetCurrentSpeed() {
         // If the player is moving,
         if (inputDir != Vector2.zero) {
-            if (currentSpeed >= walkSpeed) soundMaker.MakeSound();
+            return currentSpeed;
         }
 
         // If the player has landed after jumping or falling,
         if (hasLanded) {
             wasInAir = false;
-            soundMaker.MakeSound();
+            return walkSpeed;
         }
+
+        return 0;
     }
 
-    public void toggleCamera() { 
+    public void toggleCamera() {
+
         isCameraActive = !isCameraActive;
+
+        if (!isCameraActive)
+        {
+            Transform ap;
+            foreach (Transform child in playerCamera.transform)
+            {
+                if (itemSwitcher.currentItem.Equals(child.gameObject))
+                {
+                    // found arm prefab
+                    ap = child;
+                    print(playerCamera.transform.parent);
+                    ap.parent = playerCamera.transform.parent;
+
+                    break;
+                }
+            }
+            
+        }
         cameraHierarchy.SetActive(isCameraActive);
     }
 
@@ -275,5 +307,9 @@ public class FirstPersonControl : MonoBehaviour
                 playerCamera.transform.localPosition = new Vector3(playerCamera.transform.localPosition.x, defaultYPos, playerCamera.transform.localPosition.z);
             }
         }
+    }
+
+    public void SetInteractText(bool val) {
+        interactTextMesh.SetActive(val);
     }
 }

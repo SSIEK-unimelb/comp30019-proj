@@ -42,7 +42,6 @@ public class EyeScript : MonoBehaviour
 
         // horizontal looking moves the character
         transform.rotation *= Quaternion.Euler(0, Input.GetAxis("Mouse X") * lookSpeedX, 0);
-        // print(rotationX);
     }
 
     public void ActivateEye() {
