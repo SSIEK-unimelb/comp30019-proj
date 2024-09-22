@@ -7,10 +7,10 @@ using UnityEngine.AI;
 public class GoblinAI : MonoBehaviour
 {
     private FirstPersonControl player;
-    private LayerMask obstacleMask;
     private Transform rayOrigin;
     private string rayOriginName = "mixamorig:Hips/mixamorig:Spine/mixamorig:Spine1/mixamorig:Spine2/" +
                                     "mixamorig:Neck/mixamorig:Head/Raycast_Position";
+    RaycastHit hit;
     private NavMeshAgent navMeshAgent;
     private Animator animator;
     private AudioSource goblinSounds;
@@ -73,6 +73,7 @@ public class GoblinAI : MonoBehaviour
     [Header("Other")]
     [SerializeField] private float rotationTime = 0.3f;
     private float yVelocity;    // This variable does not do anything, just to plug something in the method.
+    private string headColliderName = "ColliderToPreventPlayerJumpingOnGoblin";
 
     [Header("States")]
     private BaseEnemyState currentState;
@@ -117,7 +118,6 @@ public class GoblinAI : MonoBehaviour
 
     void Awake() {
         player = FindObjectOfType<FirstPersonControl>();
-        obstacleMask = LayerMask.GetMask("Obstacle");
         rayOrigin = transform.Find(rayOriginName).transform;
         navMeshAgent = GetComponent<NavMeshAgent>();
         navMeshAgent.updateRotation = false;
@@ -168,7 +168,12 @@ public class GoblinAI : MonoBehaviour
         } else {
             RotateTowardsMovementDirection();
         }
-        navMeshAgent.destination = soundHeardPos;
+
+        if (CanSeePlayer()) {
+            navMeshAgent.destination = player.transform.position;
+        } else {
+            navMeshAgent.destination = soundHeardPos;
+        }
     }
 
     public void Chase() {
@@ -236,6 +241,11 @@ public class GoblinAI : MonoBehaviour
 
         // To stop the player from being damaged by the enemy.
         Destroy(transform.Find(damageTriggerName).gameObject);
+        Destroy(transform.Find(headColliderName).gameObject);
+
+        // Destroy the audiosources
+        Destroy(goblinSounds);
+        Destroy(soundEffects);
 
         // Can now be held.
         GetComponent<HoldStatus>().CanBeHeld = true;
@@ -280,11 +290,14 @@ public class GoblinAI : MonoBehaviour
         if (distanceToPlayer <= viewRange) {
             // If player is in the current field of view,
             if (Vector3.Angle(transform.forward, playerDirection) <= viewAngle / 2) {
-                // If there are no obstacles between player and enemy,
-                if (Physics.Raycast(rayOrigin.position, playerDirection, distanceToPlayer, obstacleMask) == false) {
-                    // The enemy can see the player.
-                    // Debug.Log("I see you!");
-                    return true;
+                // Cast a ray towards the player
+                if (Physics.Raycast(rayOrigin.position, playerDirection, out hit, distanceToPlayer)) {
+                    // Check if the ray hit the player
+                    if (hit.collider.gameObject == player.gameObject) {
+                        // The enemy can see the player
+                        // Debug.Log("I see you!");
+                        return true;
+                    }
                 }
             }
         }

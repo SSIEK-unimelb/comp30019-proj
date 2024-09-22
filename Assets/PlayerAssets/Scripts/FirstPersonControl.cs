@@ -22,6 +22,7 @@ public class FirstPersonControl : MonoBehaviour
     [SerializeField] private float sprintSpeed = 8.0f;
     [SerializeField] private float crouchSpeed = 2.0f;
     private float currentSpeed;
+    private SoundMaker soundMaker;
     
 
     [Header("Movement Options")]
@@ -95,6 +96,7 @@ public class FirstPersonControl : MonoBehaviour
 
     private void Awake()
     {
+        soundMaker = GetComponent<SoundMaker>();
         playerCamera = GetComponentInChildren<Camera>();
         characterController = GetComponent<CharacterController>();
         Cursor.lockState = CursorLockMode.Locked;
@@ -132,6 +134,7 @@ public class FirstPersonControl : MonoBehaviour
             }
 
             ApplyMovement();
+            MakeSound();
 
         }
     }
@@ -250,19 +253,17 @@ public class FirstPersonControl : MonoBehaviour
         }
     }
 
-    public float GetCurrentSpeed() {
-        // If the player is moving,
-        if (inputDir != Vector2.zero) {
-            return currentSpeed;
+    public void MakeSound() {
+        // If the player is moving at walk speed or faster.
+        if (inputDir != Vector2.zero && currentSpeed >= walkSpeed) {
+            soundMaker.MakeSound();
         }
 
-        // If the player has landed after jumping or falling,
+        // If the player has landed after jumping or falling.
         if (hasLanded) {
             wasInAir = false;
-            return walkSpeed;
+            soundMaker.MakeSound();
         }
-
-        return 0;
     }
 
     public void toggleCamera() {
