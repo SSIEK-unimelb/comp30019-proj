@@ -6,16 +6,13 @@ using UnityEngine;
 public class OnAttacked : MonoBehaviour
 {
     private GoblinAI goblinAI;
-    public void Awake()
-    {
+
+    public void Awake() {
         goblinAI = GetComponentInParent<GoblinAI>();
     }
-    private void OnCollisionEnter(Collision collision)
-    {
-        Debug.Log("Collision");
 
-        if (collision.gameObject.tag == "Weapon") 
-        {
+    private void OnTriggerEnter(Collider collider) {
+        if (collider.gameObject.tag == "Weapon") {
             if (goblinAI.IsKillable()) {
                 //print("Should die");
                 // Kill parent goblin.

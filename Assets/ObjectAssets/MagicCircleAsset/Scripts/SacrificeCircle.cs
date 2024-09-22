@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class SacrificeCircle : MonoBehaviour
 {
-    private AudioSource audioSource;
+    private SoundManager soundManager;
+    [SerializeField] private AudioClip sacrificeAudio;
     [SerializeField] private GameObject objectToTrigger;
     private LockedDoor door;
     [SerializeField] private string enemyLayer = "Enemy";
@@ -24,7 +25,7 @@ public class SacrificeCircle : MonoBehaviour
     private float currentSacrificeTime = 0;
 
     void Start() {
-        audioSource = GetComponent<AudioSource>();
+        soundManager = GameObject.Find("SoundManager").GetComponent<SoundManager>();
         enemyMask = LayerMask.GetMask(enemyLayer);
         door = objectToTrigger.GetComponent<LockedDoor>();
         currentRotationSpeed = initialRotationSpeed;
@@ -35,7 +36,7 @@ public class SacrificeCircle : MonoBehaviour
         if (!isSacrificed) {
             if (isInside) {
                 HoldStatus holdStatus = enemySacrifice.GetComponentInParent<HoldStatus>();
-                if (holdStatus == null || holdStatus.IsHeld || !holdStatus.CanBeHeld) {
+                if (holdStatus == null || holdStatus.IsHeld) {
                     timeInside = 0f;
                     if (holdStatus) Debug.Log(holdStatus.IsHeld);
                 }
@@ -47,7 +48,7 @@ public class SacrificeCircle : MonoBehaviour
                     isSacrificed = true;
                     holdStatus.CanBeHeld = false;
                     door.OnTrigger();
-                    audioSource.Play();
+                    soundManager.PlaySoundEffect(sacrificeAudio, 1.0f);
                     GetComponent<SoundMaker>().MakeSound();
                 }
             }
@@ -57,7 +58,7 @@ public class SacrificeCircle : MonoBehaviour
 
             currentSacrificeTime += Time.deltaTime;
             if (currentSacrificeTime >= sacrificeDuration) {
-                Destroy(GetRootParent(enemySacrifice).gameObject);
+                Destroy(enemySacrifice.root.gameObject);
                 Destroy(gameObject);
             }
         }
@@ -65,23 +66,15 @@ public class SacrificeCircle : MonoBehaviour
         transform.Rotate(Vector3.up, currentRotationSpeed * Time.deltaTime);
     }
 
-    private Transform GetRootParent(Transform child)
-    {
-        var currentParent = child;
-        // Traverse up the hierarchy until the topmost parent is found
-        while (currentParent.parent != null) {
-            currentParent = currentParent.parent;
-        }
-        return currentParent;
-    }
-
     private void OnTriggerEnter(Collider col)
     {
         // Check if enemy has entered the circle.
         Debug.Log(LayerMask.LayerToName(col.gameObject.layer));
         if ((enemyMask & (1 << col.gameObject.layer)) != 0) {
-            enemySacrifice = col.transform;
-            isInside = true;
+            if (col.transform.GetComponentInParent<HoldStatus>().CanBeHeld) {
+                enemySacrifice = col.transform;
+                isInside = true;
+            }
         }
     }
 

@@ -7,13 +7,12 @@ public class DamageTrigger : MonoBehaviour
 {
     private int damageAmount;
     private string tagToDamage;
-    private float attackCooldownDuration;
+    private float attackCooldownDuration = 0.5f;
     private float currentAttackCooldownTime;
 
     void Start() {
         damageAmount = GetComponentInParent<GoblinAI>().GetDamageAmount();
         tagToDamage = GetComponentInParent<GoblinAI>().GetTagToDamage();
-        attackCooldownDuration = GetComponentInParent<GoblinAI>().GetAttackCooldown();
         currentAttackCooldownTime = attackCooldownDuration;
     }
 

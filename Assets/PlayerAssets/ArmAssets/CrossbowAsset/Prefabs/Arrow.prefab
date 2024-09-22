@@ -246,6 +246,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a796e2984cd564047b3886c9e699c5ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  arrowHitFleshAudio: {fileID: 8300000, guid: 7282ca5a2495791438d14a92c68afd17, type: 3}
+  arrowHitObstacleAudio: {fileID: 8300000, guid: d19fbf2ffc3058c47b2470da79cc5431, type: 3}
   destroyTime: 10
 --- !u!136 &-3065490170521578024
 CapsuleCollider:

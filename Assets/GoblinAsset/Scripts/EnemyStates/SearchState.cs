@@ -16,6 +16,7 @@ public class SearchState : BaseEnemyState
 
     public override void EnterState() {
         Debug.Log("Entering Search State");
+        goblinAI.SetCanHearSound(false);
         
         navMeshAgent.speed = goblinAI.GetWalkSpeed();
 

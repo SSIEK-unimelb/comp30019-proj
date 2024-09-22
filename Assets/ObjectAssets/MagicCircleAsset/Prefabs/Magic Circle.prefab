@@ -64,9 +64,53 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -8644714960155702269, guid: 0b28cc652c912504c9b7b32dc47ec02b, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: -7687438177253093489, guid: 0b28cc652c912504c9b7b32dc47ec02b, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: -7649873993169604703, guid: 0b28cc652c912504c9b7b32dc47ec02b, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: -2941608891773563654, guid: 0b28cc652c912504c9b7b32dc47ec02b, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: -138938735764934748, guid: 0b28cc652c912504c9b7b32dc47ec02b, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: -6758700736596563, guid: 0b28cc652c912504c9b7b32dc47ec02b, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 204222098064831397, guid: 0b28cc652c912504c9b7b32dc47ec02b, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 612173978835224768, guid: 0b28cc652c912504c9b7b32dc47ec02b, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 734523030226054066, guid: 0b28cc652c912504c9b7b32dc47ec02b, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 0b28cc652c912504c9b7b32dc47ec02b, type: 3}
       propertyPath: m_Name
       value: Magic Circle
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0b28cc652c912504c9b7b32dc47ec02b, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 4144601257448400722, guid: 0b28cc652c912504c9b7b32dc47ec02b, type: 3}
+      propertyPath: m_Layer
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 4767710146939955057, guid: 0b28cc652c912504c9b7b32dc47ec02b, type: 3}
       propertyPath: m_LocalScale.x
@@ -84,6 +128,14 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6033841465781430958, guid: 0b28cc652c912504c9b7b32dc47ec02b, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 7953606483559150473, guid: 0b28cc652c912504c9b7b32dc47ec02b, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -94,9 +146,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 0b28cc652c912504c9b7b32dc47ec02b, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2664002381808834035}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 0b28cc652c912504c9b7b32dc47ec02b, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 6547537901966804996}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 0b28cc652c912504c9b7b32dc47ec02b, type: 3}
       insertIndex: -1
       addedObject: {fileID: 4958798534209320380}
@@ -118,6 +167,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbdb644b0add88148a13ab8662b18a8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sacrificeAudio: {fileID: 8300000, guid: 998cf7c9b93181a4eae0373b6195a5a6, type: 3}
   objectToTrigger: {fileID: 0}
   enemyLayer: Enemy
   sacrificeTime: 3
@@ -146,102 +196,6 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.3
   m_Center: {x: 0, y: 0, z: 0}
---- !u!82 &6547537901966804996
-AudioSource:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4099006741369889108}
-  m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 998cf7c9b93181a4eae0373b6195a5a6, type: 3}
-  m_PlayOnAwake: 0
-  m_Volume: 1
-  m_Pitch: 1
-  Loop: 0
-  Mute: 0
-  Spatialize: 0
-  SpatializePostEffects: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0.8
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
 --- !u!114 &4958798534209320380
 MonoBehaviour:
   m_ObjectHideFlags: 0

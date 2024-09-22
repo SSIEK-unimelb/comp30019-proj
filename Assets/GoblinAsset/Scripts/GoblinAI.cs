@@ -1,11 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-[RequireComponent(typeof(NavMeshAgent))]
-[RequireComponent(typeof(Animator))]
-[RequireComponent(typeof(AudioSource))]
 public class GoblinAI : MonoBehaviour
 {
     private FirstPersonControl player;
@@ -89,6 +87,7 @@ public class GoblinAI : MonoBehaviour
     public Transform GetCurrentPatrolPoint() { return currentPatrolPoint; }
     public float GetSearchDuration() { return searchDuration; }
     public bool GetCanHearSound() { return canHearSound; }
+    public void SetCanHearSound(bool canHearSound) { this.canHearSound = canHearSound; }
     public float GetViewRange() { return viewRange; }
     public float GetWaitDurationToChase() { return waitDurationToChase; }
     public float GetChaseDuration() { return chaseDuration; }
@@ -287,19 +286,9 @@ public class GoblinAI : MonoBehaviour
                     // Debug.Log("I see you!");
                     return true;
                 }
-                // In edge cases where the player is too close to the enemy.
-                else if (IsFacingPlayer() && distanceToPlayer <= attackRange) {
-                    return true;
-                }
             }
         }
         return false;
-    }
-
-    private bool IsFacingPlayer() {
-        Vector3 playerDirection = (player.transform.position - transform.position).normalized;
-        float angle = Vector3.Angle(transform.forward, playerDirection);
-        return angle <= (viewAngle / 2);
     }
 
     // Enemy Hearing for player/objects.
@@ -312,7 +301,7 @@ public class GoblinAI : MonoBehaviour
         canHearSound = false;
         // If the player/object is in hearing range,
         if (distance <= hearRadius) {
-            Debug.Log(gameObject.name + " heard a sound from: " + soundOrigin);
+            // Debug.Log(gameObject.name + " heard a sound from: " + soundOrigin);
             soundHeardPos = soundOrigin;
             canHearSound = true;
         }

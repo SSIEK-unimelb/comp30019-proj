@@ -9,6 +9,7 @@ public class LockedDoor : MonoBehaviour
     private AudioSource audioSource;
 
     private Animator animator;
+    [SerializeField] private AudioClip openAudio;
     [SerializeField] private string doorOpenStr;
     [SerializeField] private float doorOpenTime = 0.5f;
     public bool isOpen = false;
@@ -18,12 +19,13 @@ public class LockedDoor : MonoBehaviour
     {
         navMeshSurfaceBuilder = GameObject.Find("Floor").GetComponent<NavMeshSurfaceBuilder>();
         animator = GetComponent<Animator>();
-        audioSource.GetComponent<AudioSource>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     public void OnTrigger() {
         if (!isOpen) {
             animator.Play(doorOpenStr);
+            audioSource.clip = openAudio;
             audioSource.Play();
 
             GetComponent<SoundMaker>().MakeSound();
@@ -36,7 +38,7 @@ public class LockedDoor : MonoBehaviour
         yield return new WaitForSeconds(doorOpenTime);
         if (navMeshSurfaceBuilder != null)
         {
-            navMeshSurfaceBuilder.BuildNavMeshSurface();
+            navMeshSurfaceBuilder.SetBuildToTrue();
         }
     }
 

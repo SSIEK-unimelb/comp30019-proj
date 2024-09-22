@@ -13,6 +13,8 @@ public class IdleState : BaseEnemyState
 
     public override void EnterState() {
         Debug.Log("Entering Idle State");
+        navMeshAgent.destination = goblinAI.transform.position;
+        navMeshAgent.speed = 0;
         idleDuration = goblinAI.GetIdleDuration();
         idleTime = idleDuration;
     }
