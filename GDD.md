@@ -27,7 +27,7 @@ Players who enjoy stealth-based games, and appreciate a different take on eerie 
 The game features unique ragdoll body mechanics, allowing the player to pick up defeated enemies to hide them from other enemies, throw them as an attack, trigger traps and more!
 
 <p align="center">
-  <img src="Images/Characters/Golem_Ragdoll.gif" width="600">
+  <img src="Images/Characters/ragdoll.gif" width="600">
 </p>
 
 Genres: Stealth, Psychological, Fantasy, Thriller.
@@ -48,19 +48,14 @@ The player is set to steal the treasure at the top of an ancient, mystical tower
 
 ### Characters
 
-1. Player: The protagonist - a brave adventurer determined to take the ancient treasure for themselves
-
-<p align="center">
-  <img src="Images/Characters/Player_1.png" width="300">
-</p>
+1. Player: The protagonist - a brave adventurer determined to take the ancient treasure for themselves - you!
 
 2. Enemies: An evil army of goblins patrolling the tower and its riches. They are brutal killing machines, but not the sharpest tools in the shed...
     * Regular Goblin: Henchmen of the king. Quick and dangerous, but can be outsmarted. Takes a backstab to murder.
     * Boss Goblin: A huge, buff goblin with ample health. Impervious to the player's hits, the goblin king has to be defeated by leading him through various traps to outwit him.
 
 <p align="center">
-  <img src="Images/Characters/Goblin_Idle.gif" width="300">
-  <img src="Images/Characters/golem.png" width="300">
+  <img src="Images/Characters/goblin.gif" width="300">
 </p>
 
 ### Gameplay and Mechanics
@@ -96,8 +91,10 @@ Gameplay Mechanics:
 
 <p align="center">
   <img src="Images/GameMechanics/Enemy_Awareness.png" width="600">
+  <img src="Images/GameMechanics/MoveStealth.mp4" width="600">
   <img src="Images/GameMechanics/Distract.png" width="600">
   <img src="Images/GameMechanics/Locked Door.png" width="600">
+  <img src="Images/GameMechanics/SacrificialCircle_LockedDoor.mp4" width="600">
 </p>
 
 * Rules/Laws: While holding a body, the player’s speed is greatly reduced.
@@ -126,13 +123,13 @@ Gameplay Mechanics:
 </p>
 
 <p align="center">
-  <img src="Images/GameMechanics/SacrificeCircle.png" width="600">
+  <img src="Images/GameMechanics/sacrificialCircle.gif" width="600">
 </p>
 
 * Lantern: Wax refills, lighting points (specific locations where the lantern can be refreshed and replenished). There is a 'fuel level' that tells you how long the lantern will shine for.
 
 <p align="center">
-  <img src="Images/Objetcs/Lantern.PNG" width="600">
+  <img src="Images/Weapons/lantern.gif" width="600">
 </p>
 
 * Bear traps: Trap and hold the player down for a period of time, leaving them susceptible to enemies.
@@ -144,24 +141,25 @@ Gameplay Mechanics:
 * Smoke bombs: Consumables, can be picked up. Generate a cloud of smoke, allowing the player to escape sticky situations.
 
 <p align="center">
-  <img src="Images/Objetcs/SmokeBomb_1.png" width="300">
-  <img src="Images/Objetcs/SmokeBomb_2.png" width="300">
-</p>
-
-<p align="center">
   <img src="Images/GameMechanics/Trap_SmokeBomb.png" width="800">
 </p>
 
 * Trusty dagger: The player's tried-and-true stabbing tool (has a very short range, can only backstab enemies).
 
 <p align="center">
-  <img src="Images/Weapons/Knife.PNG" width="600">
+  <img src="Images/Weapons/knife.gif" width="600">
 </p>
 
 * Crossbow: One-hit-kills regular goblins, but is incredibly loud and attracts the attention of all enemies nearby
 
 <p align="center">
-  <img src="Images/Weapons/crossbow.png" width="600">
+  <img src="Images/Weapons/crossbow.gif" width="600">
+</p>
+
+* GobEye: Can throw it and acts as a camera...
+
+<p align="center">
+  <img src="Images/Weapons/EyeMechanic.gif" width="600">
 </p>
 
 * Bodies: The player can pick up, move, and place the bodies of dead enemies in different locations.
@@ -245,6 +243,33 @@ https://github.com/user-attachments/assets/9eee83be-0af7-4335-aae1-d47824cf0c96
 
 Sources: Free assets from Unity Asset Store, free assets from other sources (Mixamo), simple custom assets.
 
+### References:
+
+Goblin:
+
+https://assetstore.unity.com/packages/3d/props/mobile-power-ups-free-vol-1-36106
+
+Level:
+
+https://assetstore.unity.com/packages/3d/environments/dungeons/decrepit-dungeon-lite-33936
+
+Objects:
+
+UI:
+
+https://assetstore.unity.com/packages/2d/gui/icons/heart-in-pixel-287862
+
+Sounds:
+
+https://assetstore.unity.com/packages/audio/sound-fx/weapons/bow-and-hammer-sound-effects-163948
+
+https://assetstore.unity.com/packages/audio/sound-fx/footsteps-small-sound-pack-262072
+
+https://assetstore.unity.com/packages/audio/sound-fx/scary-sound-fx-21523
+
+Shaders:
+
+https://assetstore.unity.com/packages/2d/textures-materials/101-artistic-noise-textures-233672
 
 ### Technology and Tools
 
