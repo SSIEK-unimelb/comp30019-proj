@@ -182,7 +182,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0.17314132, z: -0, w: -0.984897}
   m_LocalPosition: {x: 0.333889, y: 2.31, z: 5.064288}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2426406088737931547}
@@ -626,7 +626,7 @@ Transform:
   m_GameObject: {fileID: 4236747850156965892}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.08, y: 0, z: 1.221}
+  m_LocalPosition: {x: 0, y: 0, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -862,8 +862,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 2934488329236920693}
   holdPos: {fileID: 3172919568130031327}
-  throwForce: 500
-  pickUpRange: 5
+  throwForce: 1500
+  pickUpRange: 6
   rotationSensitivity: 1
   pickupTag: HoldableItem
   interactRayIntersect: {x: 0.5, y: 0.5, z: 0}

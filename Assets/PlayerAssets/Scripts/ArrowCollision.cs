@@ -30,13 +30,14 @@ public class ArrowCollision : MonoBehaviour
                     {
                         Debug.LogError("Can't find goblin reference");
                     }
-                    /*
-                    if (goblinAI.IsKillable())
+
+                    else 
                     {
+                        //if (goblinAI.IsKillable()) { }
                         goblinAI.Die();
-                        // Transform backHitpoint = collision.gameObject.transform.Find("BackHitpoint")
+                            // Transform backHitpoint = collision.gameObject.transform.Find("BackHitpoint")
                     }
-                    */
+                    
                 } else {
                     soundManager.PlaySoundEffect(arrowHitObstacleAudio, 0.1f);
                 }
