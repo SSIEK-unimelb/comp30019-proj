@@ -120,9 +120,6 @@ Gameplay Mechanics:
 <p align="center">
   <img src="Images/Objetcs/SacrificeCircle_1.png" width="600">
   <img src="Images/Objetcs/SacrificeCircle_2.png" width="600">
-</p>
-
-<p align="center">
   <img src="Images/GameMechanics/sacrificialCircle.gif" width="600">
 </p>
 
