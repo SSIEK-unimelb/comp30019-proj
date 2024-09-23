@@ -88,12 +88,26 @@ Progression:
 
 Gameplay Mechanics:
 * Core Mechanics: The player has to move stealthily, clear obstacles, and interact with enemy bodies to progress.
-    * While crouching enemies cannot hear you. 
 
 <p align="center">
   <img src="Images/GameMechanics/Enemy_Awareness.png" width="600">
   <img src="Images/GameMechanics/Distract.png" width="600">
   <img src="Images/GameMechanics/Locked Door.png" width="600">
+</p>
+
+  * Enemies cannot hear you while crouching.
+  * When walking, running, jumping, enemies can hear you and will investigate. Enemies can also hear other objects such as a sacrificial circle activating or a door opening.
+  * Move stealthily and kill enemies.
+
+<p align="center">
+  <img src="Images/GameMechanics/crouch.gif" width="600">
+  <img src="Images/GameMechanics/MoveStealth.gif" width="600">
+</p>
+
+  * Sacrificial circles can activate mechanisms after receiving a sacrifice.
+
+<p align="center">
+  <img src="Images/GameMechanics/sacrificialCircle-lockedDoor.gif" width="600">
 </p>
 
 * Rules/Laws: While holding a body, the player’s speed is greatly reduced.
