@@ -182,7 +182,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0.17314132, z: -0, w: -0.984897}
   m_LocalPosition: {x: 0.333889, y: 2.31, z: 5.064288}
-  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
+  m_LocalScale: {x: 1.8, y: 1.8, z: 1.8}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2426406088737931547}
@@ -237,6 +237,7 @@ MonoBehaviour:
   canCrouch: 1
   canInteract: 1
   canUseHeadBob: 1
+  canMidairCrouch: 1
   sprintKey: 304
   jumpKey: 32
   crouchKey: 306
@@ -245,8 +246,8 @@ MonoBehaviour:
   lookSpeedY: 2
   aboveLookClamp: 85
   belowLookClamp: 85
-  jumpStrength: 8
-  gravity: 15
+  jumpStrength: 7
+  gravity: 17
   crouchTransitionTimeOffset: 0.2
   crouchHeight: 1.5
   standHeight: 2
@@ -793,7 +794,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 1911
+    m_Bits: 6007
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0

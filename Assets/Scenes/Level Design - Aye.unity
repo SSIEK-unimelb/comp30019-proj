@@ -14544,33 +14544,33 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2316943088603762402, guid: 8095aea1b5584714e8a5b3626eed903f, type: 3}
-      propertyPath: near clip plane
-      value: 0.01
-      objectReference: {fileID: 0}
-    - target: {fileID: 2934183375553443310, guid: 8095aea1b5584714e8a5b3626eed903f, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 2934488329236920693, guid: 8095aea1b5584714e8a5b3626eed903f, type: 3}
       propertyPath: m_Name
       value: FPCE
       objectReference: {fileID: 0}
     - target: {fileID: 3044967882051143194, guid: 8095aea1b5584714e8a5b3626eed903f, type: 3}
-      propertyPath: interactTextMesh
-      value: 
-      objectReference: {fileID: 2087256795}
+      propertyPath: gravity
+      value: 17
+      objectReference: {fileID: 0}
+    - target: {fileID: 3044967882051143194, guid: 8095aea1b5584714e8a5b3626eed903f, type: 3}
+      propertyPath: jumpStrength
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3044967882051143194, guid: 8095aea1b5584714e8a5b3626eed903f, type: 3}
+      propertyPath: canMidairCrouch
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4765567072854298104, guid: 8095aea1b5584714e8a5b3626eed903f, type: 3}
       propertyPath: m_LocalScale.x
-      value: 2
+      value: 1.8
       objectReference: {fileID: 0}
     - target: {fileID: 4765567072854298104, guid: 8095aea1b5584714e8a5b3626eed903f, type: 3}
       propertyPath: m_LocalScale.y
-      value: 2
+      value: 1.8
       objectReference: {fileID: 0}
     - target: {fileID: 4765567072854298104, guid: 8095aea1b5584714e8a5b3626eed903f, type: 3}
       propertyPath: m_LocalScale.z
-      value: 2
+      value: 1.8
       objectReference: {fileID: 0}
     - target: {fileID: 4765567072854298104, guid: 8095aea1b5584714e8a5b3626eed903f, type: 3}
       propertyPath: m_LocalPosition.x
@@ -14611,16 +14611,6 @@ PrefabInstance:
     - target: {fileID: 4765567072854298104, guid: 8095aea1b5584714e8a5b3626eed903f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6165113006764261532, guid: 8095aea1b5584714e8a5b3626eed903f, type: 3}
-      propertyPath: m_text
-      value: '[F]
-
-'
-      objectReference: {fileID: 0}
-    - target: {fileID: 7890785021825521664, guid: 8095aea1b5584714e8a5b3626eed903f, type: 3}
-      propertyPath: near clip plane
-      value: 0.01
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -36467,11 +36457,6 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: c8fcb67cb3d648b4b87d500ece16b15f, type: 3}
   m_PrefabInstance: {fileID: 2082842148}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &2087256795 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2934183375553443310, guid: 8095aea1b5584714e8a5b3626eed903f, type: 3}
-  m_PrefabInstance: {fileID: 748814375}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2090817629
 PrefabInstance:

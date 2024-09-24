@@ -14,7 +14,7 @@ public class FirstPersonControl : MonoBehaviour
     private bool isSprinting => canSprint && Input.GetKey(sprintKey) && !holder.isHolding();
 
     private bool shouldJump => characterController.isGrounded && Input.GetKeyDown(jumpKey) && !holder.isHolding();
-    private bool shouldCrouch => !isInCrouchAnimation && characterController.isGrounded && Input.GetKeyDown(crouchKey);
+    private bool shouldCrouch => !isInCrouchAnimation && (canMidairCrouch? true : characterController.isGrounded)  && Input.GetKeyDown(crouchKey);
 
 
     [Header("Movement")]
@@ -31,6 +31,7 @@ public class FirstPersonControl : MonoBehaviour
     [SerializeField] private bool canCrouch = true;
     [SerializeField] private bool canInteract = true;
     [SerializeField] private bool canUseHeadBob = true;
+    [SerializeField] private bool canMidairCrouch = false;
 
     [Header("Controls")]
     [SerializeField] private KeyCode sprintKey = KeyCode.LeftShift;
