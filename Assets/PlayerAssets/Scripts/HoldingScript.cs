@@ -129,26 +129,33 @@ public class HoldingScript : MonoBehaviour
     {
         //same as drop function, but add force to object before undefining it
         //Physics.IgnoreCollision(heldObj.GetComponent<Collider>(), player.GetComponent<Collider>(), false);
-        heldObj.layer = 0;
-        heldObjRb.isKinematic = false;
-        heldObj.transform.parent = objectParent;
+        //heldObj.layer = 0;
+        //heldObjRb.isKinematic = false;
+        //heldObj.transform.parent = objectParent;
         // find the root parent with rigid body
-        //var parent = transform.root.transform;
         var parent = objectParent.transform;
         print(parent.gameObject.name);
         print(objectParent.gameObject.name);    
         Rigidbody parentObjRb = null;
         foreach (Transform child in parent) {
-            if (child.GetComponent<Rigidbody>() != null) {
+            if (child.GetComponent<Rigidbody>() != null && child.Equals(heldObj)) {
                 parentObjRb = child.GetComponent<Rigidbody>();
                 print(parentObjRb.name);
             }
         }
+        Physics.IgnoreCollision(heldObj.GetComponent<Collider>(), player.GetComponent<Collider>(), false);
+        heldObj.layer = 0;
+        heldObjRb.isKinematic = false;
+        heldObj.transform.parent = objectParent;
+        //print(parentObjRb.name);
         if (parentObjRb != null)
         {
             parentObjRb.AddForce(transform.forward * throwForce, ForceMode.Impulse);
         }
-        heldObj.GetComponentInParent<HoldStatus>().IsHeld = false;
+        else {
+            heldObjRb.AddForce(transform.forward * throwForce, ForceMode.Impulse);
+        }
+        if (heldObj.GetComponentInParent<HoldStatus>()) heldObj.GetComponentInParent<HoldStatus>().IsHeld = false;
         heldObj = null;
     }
     void StopClipping() //function only called when dropping/throwing
