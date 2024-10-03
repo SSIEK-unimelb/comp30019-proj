@@ -8,6 +8,10 @@ public class ItemSwitcher : MonoBehaviour
     public GameObject[] itemPrefabs;
     public GameObject currentItem { get; private set; }
     private int currentItemIndex = -1;
+    private int inventorySize = 4;
+    private int lastUnlocked;
+
+    public bool[] isUnlocked;
 
     // Start is called before the first frame update
     void Awake()
@@ -15,27 +19,59 @@ public class ItemSwitcher : MonoBehaviour
         for (int i = 0; i < itemPrefabs.Length; i++) {
             itemPrefabs[i].SetActive(true);
         }
+        isUnlocked = new bool[inventorySize];
+        // testing unlocking
+        unlock(0);
+        unlock(1);
         SwitchItem(0);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Alpha1)) {
+        // these can be turned off until needed
+        unlock(2);
+        unlock(3);
+
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
             SwitchItem(0);
         }
-        else if (Input.GetKeyDown(KeyCode.Alpha2)) {
+        else if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
             SwitchItem(1);
         }
-        else if (Input.GetKeyDown(KeyCode.Alpha3)) {
+        else if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
             SwitchItem(2);
         }
-        else if (Input.GetKeyDown(KeyCode.Alpha4)) { SwitchItem(3); }
+        else if (Input.GetKeyDown(KeyCode.Alpha4))
+        {
+            SwitchItem(3);
+        }
+        else if (Input.GetAxis("Mouse ScrollWheel") > 0f) {
+            SwitchItem(currentItemIndex + 1);
+        }
+        else if (Input.GetAxis("Mouse ScrollWheel") < 0f)
+        {
+            SwitchItem(currentItemIndex - 1);
+        }
     }
 
     public void SwitchItem(int itemIndex) {
         // could also add a condition here to only allow items that the player has in inventory
-        if (itemIndex < 0 || itemIndex >= itemPrefabs.Length || itemIndex == currentItemIndex) {
+        print(itemIndex + ", " + lastUnlocked);
+        //print(lastUnlocked);
+        if ((itemIndex >= 0) && (itemIndex <= lastUnlocked) && !isUnlocked[itemIndex]) { return; }
+        if (itemIndex == currentItemIndex) {
+            return;
+        }
+        if (itemIndex == -1) {
+            // go to last item in inventory
+            SwitchItem(lastUnlocked);
+            return;
+        } else if (itemIndex == lastUnlocked + 1){
+            SwitchItem(0);
             return;
         }
 
@@ -52,5 +88,14 @@ public class ItemSwitcher : MonoBehaviour
         */
         
         currentItemIndex = itemIndex; // update current item
+    }
+
+    public void UpdateInventorySize() { 
+        // todo  : dynamic resizing of inventory
+    }
+
+    public void unlock(int itemIndex) {
+        isUnlocked[itemIndex] = true;
+        lastUnlocked = itemIndex;
     }
 }
