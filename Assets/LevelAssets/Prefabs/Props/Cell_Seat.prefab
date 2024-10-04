@@ -46,6 +46,7 @@ GameObject:
   - component: {fileID: 3363730}
   - component: {fileID: 2377912}
   - component: {fileID: 6420942}
+  - component: {fileID: 2095295185315499872}
   m_Layer: 0
   m_Name: Stone_2
   m_TagString: Untagged
@@ -135,11 +136,32 @@ MeshCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 5
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300226, guid: fd75e63c14c4540438372a6844af68b6, type: 3}
+--- !u!65 &2095295185315499872
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 153208}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.8997288, y: 0.78433824, z: 1.0382233}
+  m_Center: {x: 0.00000059604645, y: 0.39216912, z: -0.00000423193}
 --- !u!1 &155408
 GameObject:
   m_ObjectHideFlags: 0
@@ -152,6 +174,7 @@ GameObject:
   - component: {fileID: 3359040}
   - component: {fileID: 2358284}
   - component: {fileID: 6416724}
+  - component: {fileID: 668973644536458203}
   m_Layer: 0
   m_Name: Wood_Seat
   m_TagString: Untagged
@@ -241,11 +264,32 @@ MeshCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 5
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300222, guid: fd75e63c14c4540438372a6844af68b6, type: 3}
+--- !u!65 &668973644536458203
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 155408}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.9205189, y: 0.15684891, z: 4.1679516}
+  m_Center: {x: -0.014999002, y: 0.078237444, z: -0.0005440712}
 --- !u!1 &164756
 GameObject:
   m_ObjectHideFlags: 0
@@ -258,7 +302,7 @@ GameObject:
   - component: {fileID: 3365630}
   - component: {fileID: 2385142}
   - component: {fileID: 6430832}
-  - component: {fileID: 6402952}
+  - component: {fileID: 7430239810726932040}
   m_Layer: 0
   m_Name: Stone_1
   m_TagString: Untagged
@@ -348,13 +392,13 @@ MeshCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 5
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300224, guid: fd75e63c14c4540438372a6844af68b6, type: 3}
---- !u!64 &6402952
-MeshCollider:
+--- !u!65 &7430239810726932040
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -371,7 +415,6 @@ MeshCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300224, guid: fd75e63c14c4540438372a6844af68b6, type: 3}
+  serializedVersion: 3
+  m_Size: {x: 0.8997288, y: 0.7843384, z: 1.0382156}
+  m_Center: {x: 0.0000015199184, y: 0.3921691, z: -0.00000047683716}
