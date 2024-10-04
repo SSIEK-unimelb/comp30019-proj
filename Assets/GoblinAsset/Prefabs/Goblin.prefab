@@ -1445,7 +1445,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad964a627024c5e48b6f78f913cf6dfc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  idleDuration: 5
+  idleDuration: 10
   idleAnimation: {fileID: 7400000, guid: 901c8e8b37fe02546956aea75d5c52e1, type: 2}
   walkSpeed: 3
   patrolPoints:
@@ -1459,7 +1459,7 @@ MonoBehaviour:
   viewAngle: 90
   waitDurationToChase: 1
   playerLocationCheckInterval: 0.1
-  chaseDuration: 10
+  chaseDuration: 5
   chaseSpeed: 6
   chaseAnimation: {fileID: 7400000, guid: 1be4201f944218f4780fc4e9cd1eab96, type: 2}
   chaseAudio: {fileID: 8300000, guid: 73db322163c22b84ebcf374aa88b70f5, type: 3}
@@ -1503,7 +1503,7 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2792987625315573321}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
