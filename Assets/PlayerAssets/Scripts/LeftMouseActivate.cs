@@ -62,7 +62,7 @@ public class LeftMouseActivate : MonoBehaviour
                 AnimatorClipInfo[] animatorinfo;
                 animatorinfo = this.animator.GetCurrentAnimatorClipInfo(0);
                 Debug.Log(animatorinfo[0].clip.name);
-                if ((animatorinfo[0].clip.name.Equals("IdleKnife")))
+                if (animatorinfo[0].clip.name.Equals("IdleKnife"))
                 {
                     
                     animator.SetTrigger("doStabAnim");
