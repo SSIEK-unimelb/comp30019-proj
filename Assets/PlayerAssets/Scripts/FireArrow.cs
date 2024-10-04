@@ -6,32 +6,22 @@ public class FireArrow : MonoBehaviour
 {
     [SerializeField] GameObject arrowPrefab;
     [SerializeField] float arrowSpeed = 100f;
-    [SerializeField] int startingAmmo = 3;
-    private GameObject ammoText;
-    private int currentAmmo;
-    // Start is called before the first frame update
+    private AmmoManager ammoManager;
     void Start()
     {
-        currentAmmo = startingAmmo;
-        
+        GetAmmoManagerRef();
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        UpdateAmmoUI();
-    }
-
     public void Fire()
     {
         if (arrowPrefab != null)
         {
-            if (currentAmmo > 0)
+            if (ammoManager.GetCurrentAmmo() > 0)
             {
                 GameObject arrow = Instantiate(arrowPrefab, transform.position, transform.rotation * Quaternion.Euler(0, 90, 90));
                 Rigidbody rb = arrow.GetComponent<Rigidbody>();
                 rb.velocity = transform.forward * arrowSpeed;
-                currentAmmo--;
+                // decrease ammo by one
+                ammoManager.ChangeAmmo(-1);
             }
         }
         else
@@ -40,13 +30,32 @@ public class FireArrow : MonoBehaviour
         }
     }
 
-    public void AddAmmo(int amount) 
+    public void GetAmmoManagerRef()
     {
-        currentAmmo += amount;
-    }
+        // Access the grandparent Transform
+        Transform grandparentTransform = transform.parent?.parent; // Using the null-conditional operator
+        
+        if (grandparentTransform != null)
+        {
+            // Access the grandparent GameObject
+            GameObject grandparentGameObject = grandparentTransform.gameObject;
 
-    public void UpdateAmmoUI()
-    {
+            // Get the desired component from the grandparent GameObject
+            ammoManager = grandparentGameObject.GetComponent<AmmoManager>();
 
+            if (ammoManager != null)
+            {
+                // Successfully accessed the component, do something with it
+                Debug.Log("Component found: " + ammoManager);
+            }
+            else
+            {
+                Debug.Log("Component not found on the grandparent GameObject.");
+            }
+        }
+        else
+        {
+            Debug.Log("This GameObject has no grandparent.");
+        }
     }
 }

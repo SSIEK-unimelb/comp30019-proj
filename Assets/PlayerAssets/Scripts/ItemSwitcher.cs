@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Diagnostics;
 using UnityEngine;
 
 public class ItemSwitcher : MonoBehaviour
@@ -10,16 +9,18 @@ public class ItemSwitcher : MonoBehaviour
     private int currentItemIndex = -1;
     private int inventorySize = 4;
     private int lastUnlocked;
-
+    private AmmoUI ammoUI;
     public bool[] isUnlocked;
 
     // Start is called before the first frame update
-    void Awake()
+    void Start()
     {
         for (int i = 0; i < itemPrefabs.Length; i++) {
             itemPrefabs[i].SetActive(true);
         }
         isUnlocked = new bool[inventorySize];
+
+        GetAmmoUIRef();
         // testing unlocking
         unlock(0);
         unlock(1);
@@ -56,6 +57,7 @@ public class ItemSwitcher : MonoBehaviour
         {
             SwitchItem(currentItemIndex - 1);
         }
+        UpdateAmmoUI();
     }
 
     public void SwitchItem(int itemIndex) {
@@ -97,5 +99,38 @@ public class ItemSwitcher : MonoBehaviour
     public void unlock(int itemIndex) {
         isUnlocked[itemIndex] = true;
         lastUnlocked = itemIndex;
+    }
+
+    public void UpdateAmmoUI()
+    {
+        if (currentItemIndex == 2)
+        {
+            ammoUI.ShowAmmoUI();
+        }
+        else
+        {
+            ammoUI.HideAmmoUI();
+        }
+    }
+
+    void GetAmmoUIRef()
+    {
+        // Get the parent of this Object (FPCE)
+        Transform parentTransform = transform.parent;
+
+        if (parentTransform != null)
+        {
+            // Search for AmmoManager in the children of the parent GameObject
+            ammoUI = parentTransform.GetComponentInChildren<AmmoUI>();
+
+            if (ammoUI == null)
+            {
+                Debug.LogError("AmmoUI not found in the children of the parent GameObject.");
+            }
+        }
+        else
+        {
+            Debug.LogError("This GameObject has no parent.");
+        }
     }
 }
