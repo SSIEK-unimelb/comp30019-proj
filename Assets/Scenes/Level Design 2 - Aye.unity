@@ -14390,29 +14390,9 @@ PrefabInstance:
       propertyPath: gravity
       value: 17
       objectReference: {fileID: 0}
-    - target: {fileID: 3044967882051143194, guid: 8095aea1b5584714e8a5b3626eed903f, type: 3}
-      propertyPath: jumpStrength
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 3044967882051143194, guid: 8095aea1b5584714e8a5b3626eed903f, type: 3}
-      propertyPath: canMidairCrouch
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4224404280794871938, guid: 8095aea1b5584714e8a5b3626eed903f, type: 3}
       propertyPath: m_LocalPosition.z
       value: -0.4
-      objectReference: {fileID: 0}
-    - target: {fileID: 4765567072854298104, guid: 8095aea1b5584714e8a5b3626eed903f, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1.8
-      objectReference: {fileID: 0}
-    - target: {fileID: 4765567072854298104, guid: 8095aea1b5584714e8a5b3626eed903f, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1.8
-      objectReference: {fileID: 0}
-    - target: {fileID: 4765567072854298104, guid: 8095aea1b5584714e8a5b3626eed903f, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1.8
       objectReference: {fileID: 0}
     - target: {fileID: 4765567072854298104, guid: 8095aea1b5584714e8a5b3626eed903f, type: 3}
       propertyPath: m_LocalPosition.x
@@ -14453,6 +14433,14 @@ PrefabInstance:
     - target: {fileID: 4765567072854298104, guid: 8095aea1b5584714e8a5b3626eed903f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5232844320660652962, guid: 8095aea1b5584714e8a5b3626eed903f, type: 3}
+      propertyPath: antialiasingMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5232844320660652962, guid: 8095aea1b5584714e8a5b3626eed903f, type: 3}
+      propertyPath: fastApproximateAntialiasing.fastMode
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -18626,6 +18614,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: torch_remade
       objectReference: {fileID: 0}
+    - target: {fileID: 2819269953674770381, guid: 029e86309236b34498a00d4b81384f17, type: 3}
+      propertyPath: LightsModule.enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3651410326205195917, guid: 029e86309236b34498a00d4b81384f17, type: 3}
       propertyPath: m_LocalPosition.x
       value: -4.99543
@@ -18665,6 +18657,14 @@ PrefabInstance:
     - target: {fileID: 3651410326205195917, guid: 029e86309236b34498a00d4b81384f17, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7416860856027038528, guid: 029e86309236b34498a00d4b81384f17, type: 3}
+      propertyPath: m_MaxParticleSize
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7416860856027038528, guid: 029e86309236b34498a00d4b81384f17, type: 3}
+      propertyPath: m_ApplyActiveColorSpace
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

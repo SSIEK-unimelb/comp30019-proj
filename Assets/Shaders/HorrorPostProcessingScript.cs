@@ -8,6 +8,16 @@ public class HorrorPostProcessingScript : MonoBehaviour
     [SerializeField] private Shader shader;
     private Material material;
 
+    [Header("Effects Options")]
+    [SerializeField] private bool waveEnabled = true;
+    [SerializeField] private bool screenTearingEnabled = true;
+    [SerializeField] private bool jitterEnabled = true;
+    [SerializeField] private bool RGBSplitEnabled = true;
+    [SerializeField] private bool noiseEnabled = true;
+    [SerializeField] private bool scanningBarsEnabled = true;
+    [SerializeField] private bool fogEnabled = true;
+
+
     [Header("Wave Distortion")]
     [SerializeField] private float waveX = 0.1f;
     [SerializeField] private float waveY = 1.0f;
@@ -56,6 +66,40 @@ public class HorrorPostProcessingScript : MonoBehaviour
 
         // So that the camera includes depth information for calculating fog effect.
         camera.depthTextureMode = camera.depthTextureMode | DepthTextureMode.Depth;
+
+        if (!waveEnabled) {
+            waveX = 0.0f;
+            waveY = 0.0f;
+            waveStrength = 0.0f;
+            waveSpeed = 0.0f;
+        }
+        if (!fogEnabled) { 
+            fogDensity = 0.0f;
+            fogOffset = 0.0f;
+        }
+        if (!screenTearingEnabled) { 
+            shiftAmount = 0.0f; 
+        }
+        if (!jitterEnabled) { 
+            jitterSpeed = 0.0f;
+            jitterX = 0.0f;
+            jitterY = 0.0f;
+        }
+        if (!RGBSplitEnabled) { 
+            chromaticDistortionAmount = 0.0f;
+        }
+        if (!noiseEnabled) { 
+            noiseSpeed = 0.0f;
+            noiseIntensity = 0.0f;
+        }
+        if (!scanningBarsEnabled)
+        {
+            barSpeed = 0.0f;
+            barIntensity = 0.0f;
+            barAmount = 0.0f;
+            barThickness = 0.0f;
+        }
+
     }
 
     // OnRenderImage is called after the camera has finished rendering, but before the image is displayed.
