@@ -19,7 +19,124 @@ placeholder for it [here](GDD.md).
 
 ## Evaluation Plan
 
-TODO (due milestone 1) - see specification for details
+**Evaluation Techniques**
+
+Which evaluation techniques will you use and why? What tasks will you ask participants to perform?
+- In-person
+  - Observational technique - cooperative evaluation
+  - Tasks need to cover various areas of the game
+    - Level design/navigation – can the user find their way through the levels; do they understand what they are expected to do?
+    - Controls – can the user understand and use the controls properly; are they intuitive?
+    - Mechanics – does the user understand how the different objects and items in the game function; do they need to be explained?
+  - Initially simple tasks
+    - Switch through inventory
+    - Use weapon
+    - Open door
+    - Walk forward
+    - Etc.
+  - Progressing to more complex tasks as the evaluation continues
+    - Use the sacrifice circle to open the door
+    - Use the crossbow to kill an enemy
+    - Use the GobEye to view into the next room
+    - Etc.
+  - Eventually, hopefully the player can play through with less input from experimenter and just describe their experience
+
+- Online
+  - Post-gameplay questionnaire
+  - Ask players to complete a single, complete play-through before filling out survey
+  - Provide a walkthrough/explanation video if they get stuck
+  - Some fixed and some open-ended questions for participants
+  - Fixed/quantitative
+    - Likert scale (1-5, strongly disagree to strongly agree)
+  - Open-ended/qualitative
+    - Favourites and least favourites
+    - Improvement suggestions
+    - Etc.
+
+
+**Participants**
+
+How will you recruit participants? What qualifying criteria will you use to ensure that they are representative of your target audience?
+- Some participants recruited from personal connections (friends and family)
+  - Due to time and location limitations these will likely be the in-person test group
+- Prioritise people who are unfamiliar with the game, but familiar with games in general, especially stealth/fantasy games
+- Target audience is:
+  - Age: 16-35
+  - Enjoys fantasy and stealth games
+  - Intermediate to advanced skill level
+  - Familiar with puzzle games/mechanics
+  - Likes challenging puzzle/stealth games
+
+
+**Data collection**
+
+What sort of data is being collected? How will you collect the data? What tools will you use?
+- In-person
+  - Initially, entire conversation + gameplay recorded
+    - Record video of gameplay and audio of player/experimenter conversation
+  - OBS Studio used for video recording
+  - Audacity for audio recording
+  - Get the player to jump and say “jump” verbally to sync recordings
+
+- Online
+  - Use surveys (Google Forms) on online forums (r/unimelb subreddit, r/gaming, etc.) as well as posted on notice boards around the University
+  - Personal information (to verify target audience)
+    - Age
+    - Gaming experience
+    - Favourite genre of games
+    - Etc.
+  - Quantitative
+    - Likert scale rating (rate from strongly disagree (1) - strongly agree (5))
+    - Questions are actually statements, users rate how strongly they agree
+    - E.g. The controls were intuitive and easy to use, the mechanics were well-fleshed out and interesting, etc.
+  - Qualitative
+    - What was your favourite feature of the game?
+    - What was your least favourite feature of the game?
+    - What is the most important thing you think we should fix/improve?
+    - Were the controls easy to understand?
+    - Were there any sections of the game you found overly difficult? If so, where and how come?
+  - Survey: https://forms.gle/3ku3bfxjhWBWn1sA9
+
+
+**Data analysis**
+
+How will you analyse the data? What metrics will you use to evaluate your game, and provide a basis for making changes?
+- In-person playthrough
+  - Separate feedback/issues into groups by
+    - Topic/component of game
+    - Level design
+    - Mechanics
+    - Controls
+    - Character/environment design
+  - Location
+    - Level 1 - spawn room
+    - Level 2 - final room
+    - Etc.
+  - Compare these groups for multiple users to identify repeating issues/trends for users
+
+- Online survey
+  - Simple statistical measures can be used for the quantitative questions to observe trends in the data
+    - Filter to look at target audience vs non-target audience
+    - Calculate mean/median/range etc. for our Likert scale ratings (1 = strongly disagree, 5 = strongly agree) and look for consistent trends across surveys
+  - Group and analyse similar open-ended responses to identify key trends in the qualitative data
+    - Same as in-person, group by component/section
+
+
+**Timeline**
+
+What is your timeline for completing the evaluation? When will you make changes to the game?
+- Evaluation will begin as soon as the evaluation demo is complete (4-7 Oct)
+- Due to time constraints, work on the provided feedback will begin at latest by the 16th of October to ensure that there is time to implement the changes
+- Feedback/evaluation process is 100% finished by 20 Oct
+- Work on game feedback is 100% finished in time for submission by 27th Oct
+
+
+**Responsibilities**
+
+Who is responsible for each task? How will you ensure that everyone contributes equally?
+- Every member of the group needs to recruit AT LEAST 2 people for an in-person cooperative evaluation (we need at least 5 participants)
+- The online survey will be created by Zach and reviewed by all members before going live
+
 
 ## Evaluation Report
 
