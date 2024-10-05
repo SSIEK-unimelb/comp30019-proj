@@ -10,6 +10,7 @@ public class ItemSwitcher : MonoBehaviour
     private int inventorySize = 4;
     private int lastUnlocked;
     private AmmoUI ammoUI;
+    private LanternManager lanternManager;
     public bool[] isUnlocked;
 
     // Start is called before the first frame update
@@ -21,6 +22,7 @@ public class ItemSwitcher : MonoBehaviour
         isUnlocked = new bool[inventorySize];
 
         GetAmmoUIRef();
+        lanternManager = GetComponent<LanternManager>();
         // testing unlocking
         unlock(0);
         unlock(1);
@@ -57,7 +59,7 @@ public class ItemSwitcher : MonoBehaviour
         {
             SwitchItem(currentItemIndex - 1);
         }
-        UpdateAmmoUI();
+        UpdateUI();
     }
 
     public void SwitchItem(int itemIndex) {
@@ -83,12 +85,6 @@ public class ItemSwitcher : MonoBehaviour
 
         currentItem = Instantiate(itemPrefabs[itemIndex], transform.position, transform.rotation, transform);
         
-        /*
-        itemPrefabs[currentItemIndex].SetActive(false); // unequip current item
-
-        itemPrefabs[itemIndex].SetActive(true); // equip selected item
-        */
-        
         currentItemIndex = itemIndex; // update current item
     }
 
@@ -101,8 +97,9 @@ public class ItemSwitcher : MonoBehaviour
         lastUnlocked = itemIndex;
     }
 
-    public void UpdateAmmoUI()
+    public void UpdateUI()
     {
+        // Update crossbow ammo UI
         if (currentItemIndex == 2)
         {
             ammoUI.ShowAmmoUI();
@@ -110,6 +107,15 @@ public class ItemSwitcher : MonoBehaviour
         else
         {
             ammoUI.HideAmmoUI();
+        }
+        // Update lantern burn time UI
+        if (currentItemIndex == 1)
+        {
+            lanternManager.ActivateLantern();
+        }
+        else
+        {
+            lanternManager.DeactivateLantern();
         }
     }
 
