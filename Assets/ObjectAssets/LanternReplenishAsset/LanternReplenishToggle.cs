@@ -30,8 +30,8 @@ public class LanternReplenishToggle : Interactible
     {
         // Implement interaction protocol
         amountText.gameObject.SetActive(false);
-        Destroy(gameObject);
         lanternManager.AddBurnTime(refillBurnTime);
+        Destroy(gameObject);
         // add a pick-up sound here through sound manager
     }
 

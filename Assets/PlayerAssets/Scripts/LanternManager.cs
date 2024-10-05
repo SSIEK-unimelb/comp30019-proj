@@ -23,6 +23,8 @@ public class LanternManager : MonoBehaviour
         if (isLanternActive && currentBurnTime > 0)
         {
             // Decrease burn time
+            ActivateLantern();
+            TurnOnLantern();
             currentBurnTime -= Time.deltaTime;
             UpdateLanternUI();
 
@@ -42,7 +44,6 @@ public class LanternManager : MonoBehaviour
         lanternParticle = GameObject.Find("Lantern_Particle");
         if (lanternLight == null || lanternParticle == null)
         {
-            Debug.LogError("Lantern objects not found!");
             return;
         }
         ShowLanternUI();
@@ -70,6 +71,16 @@ public class LanternManager : MonoBehaviour
         lanternLight.enabled = false;
         lanternParticle.SetActive(false);
         currentBurnTime = 0;
+        UpdateLanternUI();
+    }
+
+    private void TurnOnLantern()
+    {
+        lanternLight = GameObject.Find("Lantern Light").GetComponent<Light>();
+        lanternParticle = GameObject.Find("Lantern_Particle");
+        isLanternActive = true;
+        lanternLight.enabled = true;
+        lanternParticle.SetActive(true);
         UpdateLanternUI();
     }
 
