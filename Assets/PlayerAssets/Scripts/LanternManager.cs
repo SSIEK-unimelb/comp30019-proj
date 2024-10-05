@@ -87,4 +87,10 @@ public class LanternManager : MonoBehaviour
     {
         lanternText.gameObject.SetActive(false);
     }
+
+    public void AddBurnTime(float burnTime)
+    {
+        currentBurnTime += burnTime;
+        UpdateLanternUI();
+    }
 }
