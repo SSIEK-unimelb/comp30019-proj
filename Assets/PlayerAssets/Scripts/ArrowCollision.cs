@@ -10,7 +10,7 @@ public class ArrowCollision : MonoBehaviour
     [SerializeField] float destroyTime = 2.5f;
     private void Start()
     {
-        soundManager = GameObject.Find("SoundManager").GetComponent<SoundManager>();
+        //soundManager = GameObject.Find("SoundManager").GetComponent<SoundManager>();
         Destroy(gameObject, destroyTime);
     }
 
@@ -24,7 +24,7 @@ public class ArrowCollision : MonoBehaviour
                 // Arrow logic here
                 if (collision.gameObject.layer == LayerMask.NameToLayer("Enemy"))
                 {
-                    soundManager.PlaySoundEffect(arrowHitFleshAudio, 0.1f);
+                    //soundManager.PlaySoundEffect(arrowHitFleshAudio, 0.1f);
                     GoblinAI goblinAI = collision.gameObject.GetComponentInParent<GoblinAI>();
                     if (goblinAI == null)
                     {
@@ -39,7 +39,7 @@ public class ArrowCollision : MonoBehaviour
                     }
                     
                 } else {
-                    soundManager.PlaySoundEffect(arrowHitObstacleAudio, 0.1f);
+                    //soundManager.PlaySoundEffect(arrowHitObstacleAudio, 0.1f);
                 }
                 Destroy(gameObject);
 
