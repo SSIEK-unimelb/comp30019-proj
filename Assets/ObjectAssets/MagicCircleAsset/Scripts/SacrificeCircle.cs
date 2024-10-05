@@ -11,6 +11,7 @@ public class SacrificeCircle : MonoBehaviour
     [SerializeField] private string enemyLayer = "Enemy";
     private LayerMask enemyMask;
     private Transform enemySacrifice;
+    private ParticleSystem particleEffect;
 
     [SerializeField] private float sacrificeTime = 5f;
     [SerializeField] private bool isInside = false;
@@ -25,10 +26,12 @@ public class SacrificeCircle : MonoBehaviour
     private float currentSacrificeTime = 0;
 
     void Start() {
+        particleEffect = GetComponentInChildren<ParticleSystem>();
         soundManager = GameObject.Find("SoundManager").GetComponent<SoundManager>();
         enemyMask = LayerMask.GetMask(enemyLayer);
         door = objectToTrigger.GetComponent<LockedDoor>();
         currentRotationSpeed = initialRotationSpeed;
+        particleEffect.Stop();
     }
 
     void Update()
@@ -61,6 +64,12 @@ public class SacrificeCircle : MonoBehaviour
                 Destroy(enemySacrifice.root.gameObject);
                 Destroy(gameObject);
             }
+
+            // Start particle Effect if it has not been started
+            if (!particleEffect.isPlaying) {
+                particleEffect.Play();
+                Debug.Log("Particle playing");
+            }
         }
 
         transform.Rotate(Vector3.up, currentRotationSpeed * Time.deltaTime);
@@ -74,6 +83,7 @@ public class SacrificeCircle : MonoBehaviour
             if (col.transform.GetComponentInParent<HoldStatus>().CanBeHeld) {
                 enemySacrifice = col.transform;
                 isInside = true;
+                
             }
         }
     }
