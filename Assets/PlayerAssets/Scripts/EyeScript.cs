@@ -51,7 +51,6 @@ public class EyeScript : MonoBehaviour
             audioListener.enabled = !audioListener.enabled;
             transform.GetComponent<Rigidbody>().isKinematic = true;
             transform.rotation = Quaternion.Euler(0f, transform.rotation.eulerAngles.y, 0f);
-
             eyeForm = true;
         }
         else {

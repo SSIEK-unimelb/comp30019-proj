@@ -2625,6 +2625,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5670070244699662162, guid: 7f7a6effa367f404cb85ddf630d342df, type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 30711
+      objectReference: {fileID: 0}
     - target: {fileID: 5909878207555230549, guid: 7f7a6effa367f404cb85ddf630d342df, type: 3}
       propertyPath: m_Constraints
       value: 112
