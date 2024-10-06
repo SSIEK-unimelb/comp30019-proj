@@ -73,7 +73,8 @@ Controls:
 * Jump: SPACE.
 * Crouch: Ctrl.
 * Look around: Mouse movement to move the camera.
-* Interaction: E for picking up / dropping bodies / objects.
+* Holding: Right-click for picking up / dropping bodies / objects, left-click while holding to throw.
+* Interaction: F to interact with doors, ammo refills, etc.
 * Items: Left-click to use items.
 * Scroll wheel to cycle through items - or use 1,2,3,4… to select specific items.
 
@@ -116,12 +117,12 @@ Gameplay Mechanics:
   <img src="Images/GameMechanics/RuleSpeed.png" width="600">
 </p>
 
-* Lantern: Illuminates dark areas, limited burning time, occasionally flickers or dims. Needed to find certain useful items like keys and maps in dark rooms.
+* Lantern: Illuminates dark areas but has limited burning time. Needed to find certain useful items like keys and maps in dark rooms.
 
 * Puzzle Mechanics:
     * Sacrifice circles - function like pressure plates for the enemy bodies, where the body activates some kind of event.
-    * Bear trap - traps the player when stepped on, but can also be used to trap enemies if you trick them into walking on it!
     * Navigation - maps on each floor that inform the player about the layout of each area including alternate paths.
+
 
 
 ### Interactive Objects
@@ -134,22 +135,10 @@ Gameplay Mechanics:
   <img src="Images/Objects/sacrificialCircle.gif" width="600">
 </p>
 
-* Lantern: Wax refills, lighting points (specific locations where the lantern can be refreshed and replenished). There is a 'fuel level' that tells you how long the lantern will shine for.
+* Lantern: There is a 'fuel level' that tells you how long the lantern will shine for. Be sure to pickup oil refills to keep the lantern running!
 
 <p align="center">
   <img src="Images/Weapons/lantern.gif" width="600">
-</p>
-
-* Bear traps: Trap and hold the player down for a period of time, leaving them susceptible to enemies.
-
-<p align="center">
-  <img src="Images/Objects/BearTrap.png" width="300">
-</p>
-
-* Smoke bombs: Consumables, can be picked up. Generate a cloud of smoke, allowing the player to escape sticky situations.
-
-<p align="center">
-  <img src="Images/GameMechanics/Trap_SmokeBomb.png" width="800">
 </p>
 
 * Trusty dagger: The player's tried-and-true stabbing tool (has a very short range, can only backstab enemies).
@@ -221,10 +210,10 @@ Game World:
 
 ### UI
 
-* Lantern Fuel: Displayed in a corner of the screen. Shows up when you equip the lantern.
-* Health Bar/Marker: Displayed in a corner of the screen.
+* Lantern Burn Time: Displayed in the bottom-right corner of the screen. Shows up when you equip the lantern.
+* Health Points: Displayed in bottom-left corner of the screen.
 * Item you have in hand.
-* A Minimap: Only shows the areas the player has explored.
+* Minimap: Only shows the areas the player has explored.
 * Simple Menu for starting, pausing the game.
 * Design: Minimalistic Design.
 
