@@ -22,6 +22,7 @@ public class ArrowReplenishToggle : Interactible
     public override void OnFocus()
     {
         // Implement on focus tooltip activate
+        amountText.text = pickUpStr;
         amountText.gameObject.SetActive(true);
         firstPersonControl.SetInteractText(true);
     }
