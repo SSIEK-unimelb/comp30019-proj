@@ -630,6 +630,7 @@ GameObject:
   - component: {fileID: 2114529963315052456}
   - component: {fileID: 4518454548818322674}
   - component: {fileID: 5232844320660652962}
+  - component: {fileID: 6393468587664445485}
   m_Layer: 13
   m_Name: Camera
   m_TagString: Untagged
@@ -870,6 +871,20 @@ MonoBehaviour:
   m_BeforeTransparentBundles: []
   m_BeforeStackBundles: []
   m_AfterStackBundles: []
+--- !u!114 &6393468587664445485
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7205497078005313587}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4220f53758ae6274da4e34833959ca8e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  initialBurnTime: 60
+  lanternText: {fileID: 389938830180094444}
 --- !u!1 &8696034469356232560
 GameObject:
   m_ObjectHideFlags: 0
@@ -1439,6 +1454,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 714fb6a42eea6a7448bbedb216f9b118, type: 3}
+--- !u!114 &389938830180094444 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4594041289520067308, guid: 714fb6a42eea6a7448bbedb216f9b118, type: 3}
+  m_PrefabInstance: {fileID: 4226636473947267840}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1143301391549846093 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3852220301758689613, guid: 714fb6a42eea6a7448bbedb216f9b118, type: 3}
