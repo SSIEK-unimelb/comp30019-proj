@@ -8084,6 +8084,14 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2114529963315052456, guid: 8095aea1b5584714e8a5b3626eed903f, type: 3}
+      propertyPath: itemPrefabs.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2114529963315052456, guid: 8095aea1b5584714e8a5b3626eed903f, type: 3}
+      propertyPath: itemPrefabs.Array.data[4]
+      value: 
+      objectReference: {fileID: 8050042691476756858, guid: 23373c879ea2681448f4349cb0462b27, type: 3}
     - target: {fileID: 2934183375553443310, guid: 8095aea1b5584714e8a5b3626eed903f, type: 3}
       propertyPath: m_IsActive
       value: 0

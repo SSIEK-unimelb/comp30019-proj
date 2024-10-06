@@ -23,12 +23,14 @@ public class HoldingScript : MonoBehaviour
     [SerializeField] private Vector3 interactRayIntersect = default;
     private Camera playerCamera;
     private Transform objectParent;
+    private ItemSwitcher itemSwitcher;
 
 
     void Start()
     {
         LayerNumber = LayerMask.NameToLayer("Holdable"); 
         playerCamera = GetComponent<Camera>();
+        itemSwitcher = GetComponent<ItemSwitcher>();
     }
     void Update()
     {
@@ -48,6 +50,8 @@ public class HoldingScript : MonoBehaviour
                     {
                         //pass in object hit into the PickUpObject function
                         PickUpObject(hit.transform.gameObject);
+                        itemSwitcher.SwitchToHoldArms();
+                        itemSwitcher.canSwitch = false;
                     }
                 }
             }
@@ -57,17 +61,22 @@ public class HoldingScript : MonoBehaviour
                 {
                     StopClipping();
                     DropObject();
+                    itemSwitcher.canSwitch = true;
+                    itemSwitcher.SwitchItem(0);
                 }
             }
         }
         if (heldObj != null) //if player is holding object
         {
+            // itemSwitcher.SwitchToHoldArms();
             MoveObject(); //keep object position at holdPos
             RotateObject();
             if (Input.GetKeyDown(KeyCode.Mouse0) && canDrop == true) 
             {
                 StopClipping();
                 ThrowObject();
+                itemSwitcher.canSwitch = true;
+                itemSwitcher.SwitchItem(0);
             }
 
         }

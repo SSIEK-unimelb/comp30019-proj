@@ -12,6 +12,7 @@ public class ItemSwitcher : MonoBehaviour
     private AmmoUI ammoUI;
     private LanternManager lanternManager;
     public bool[] isUnlocked;
+    public bool canSwitch = true;
 
     // Start is called before the first frame update
     void Start()
@@ -67,6 +68,7 @@ public class ItemSwitcher : MonoBehaviour
         print(itemIndex + ", " + lastUnlocked);
         //print(lastUnlocked);
         if ((itemIndex >= 0) && (itemIndex <= lastUnlocked) && !isUnlocked[itemIndex]) { return; }
+        if (!canSwitch) { return; }
         if (itemIndex == currentItemIndex) {
             return;
         }
@@ -86,6 +88,15 @@ public class ItemSwitcher : MonoBehaviour
         currentItem = Instantiate(itemPrefabs[itemIndex], transform.position, transform.rotation, transform);
         
         currentItemIndex = itemIndex; // update current item
+    }
+
+    public void SwitchToHoldArms()
+    {
+        Vector3 offset = new Vector3(-0.018f, -0.411f, 0.253f); 
+        Vector3 localOffset = transform.TransformPoint(offset);
+        Destroy(currentItem);
+        currentItemIndex = 4;
+        currentItem = Instantiate(itemPrefabs[currentItemIndex], localOffset, transform.rotation, transform);
     }
 
     public void UpdateInventorySize() { 
