@@ -83,7 +83,7 @@ Controls:
 </p>
 
 Progression:
-* Objective: Progress through groups of enemies on each floor, collecting useful items, keys to open locked doors and maps to help you navigate. The overarching goal is to climb to the highest level of the tower, beat the goblin king and collect his treasure.
+* Objective: Progress through groups of enemies on each floor, collecting useful items, using sacrifice circles to open locked doors and maps to help you navigate. The overarching goal is to climb to the highest level of the tower, beat the goblin king and collect his treasure.
 * Difficulty: As the player progresses through the levels, they are introduced to more difficult enemies and challenging mechanics, culminating in a boss battle against the king goblin at the final level of the tower.
 * Failure Condition: The player fails if they get defeated (killed) by the enemies, who work together to outnumber and swarm the player once noticed. The player has limited health, so gameplay is more focused on stealth.
 
@@ -117,7 +117,7 @@ Gameplay Mechanics:
   <img src="Images/GameMechanics/RuleSpeed.png" width="600">
 </p>
 
-* Lantern: Illuminates dark areas but has limited burning time. Needed to find certain useful items like keys and maps in dark rooms.
+* Lantern: Illuminates dark areas but has limited burning time. Needed to find certain useful items like maps in dark rooms.
 
 * Puzzle Mechanics:
     * Sacrifice circles - function like pressure plates for the enemy bodies, where the body activates some kind of event.
@@ -188,10 +188,10 @@ Game World:
     * The red capsule is an enemy.
     * The yellow capsule is an NPC giving instructions to the player, the others are skeletons for ambience.
     * The black box is a bed - falling on the bed makes no noise.
-    * The intended path is leave the cell, enter the top cell, climb boxes, and fall onto the bed, where the player can now kill the enemy. The player can then leave through the left door and enter another room. The right door is locked and requires a key, which the player will need to find in other rooms.
+    * The intended path is leave the cell, enter the top cell, climb boxes, and fall onto the bed, where the player can now kill the enemy. The player can then leave through the left door and enter another room. The right door is locked and requires a sacrifice.
 
   * Level 2: Builds on the first level - introduces player to traps (pressure plates and more) as well as some new items
-  * Level 3: Boss level - a few more regular rooms with increased difficulty before a final boss battle against the king goblin, featuring innovative use of traps, items the player has picked up and key mechanics the player has been introduced to.
+  * Level 3: Boss level - a few more regular rooms with increased difficulty before a final boss battle against the king goblin, featuring innovative use of traps, items the player has picked up and other mechanics the player has been introduced to.
 
 <p align="center">
   <img src="Images/LevelDesign/Level3.PNG" width="500">
