@@ -117,9 +117,10 @@ How will you analyse the data? What metrics will you use to evaluate your game, 
 - Online survey
   - Simple statistical measures can be used for the quantitative questions to observe trends in the data
     - Filter to look at target audience vs non-target audience
-    - Calculate mean/median/range etc. for our Likert scale ratings (1 = strongly disagree, 5 = strongly agree) and look for consistent trends across surveys
+    - Calculate mean/median/range etc. for our Likert scale ratings (1 = strongly disagree, 5 = strongly agree) and look for consistent trends across surveys and questions
   - Group and analyse similar open-ended responses to identify key trends in the qualitative data
     - Same as in-person, group by component/section
+    - Note the key feedback from each survey response
 
 
 **Timeline**
@@ -136,6 +137,7 @@ What is your timeline for completing the evaluation? When will you make changes 
 Who is responsible for each task? How will you ensure that everyone contributes equally?
 - Every member of the group needs to recruit AT LEAST 2 people for an in-person cooperative evaluation (we need at least 5 participants)
 - The online survey will be created by Zach and reviewed by all members before going live
+- Frequent meetings through Discord where everyone shares and discusses their evaluation work to ensure equal contribution
 
 
 ## Evaluation Report
