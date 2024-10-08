@@ -15,10 +15,15 @@ public class LockedDoor : MonoBehaviour
     public bool isOpen = false;
 
     // Start is called before the first frame update
+
+    private void Awake()
+    {
+        animator = GetComponent<Animator>();
+    }
     void Start()
     {
         navMeshSurfaceBuilder = GameObject.Find("Floor").GetComponent<NavMeshSurfaceBuilder>();
-        animator = GetComponent<Animator>();
+        
         audioSource = GetComponent<AudioSource>();
     }
 
