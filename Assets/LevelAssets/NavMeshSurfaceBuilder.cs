@@ -15,6 +15,7 @@ public class NavMeshSurfaceBuilder : MonoBehaviour
     }
 
     public void SetBuildToTrue() {
+        Debug.Log("Rebuild Navmesh");
         buildNavMesh = true;
     }
 

@@ -30,6 +30,7 @@ public class SacrificeCircle : MonoBehaviour
         soundManager = GameObject.Find("SoundManager").GetComponent<SoundManager>();
         enemyMask = LayerMask.GetMask(enemyLayer);
         door = objectToTrigger.GetComponent<LockedDoor>();
+        Debug.Log("The door is currently: " + door);
         currentRotationSpeed = initialRotationSpeed;
         particleEffect.Stop();
     }
@@ -50,6 +51,7 @@ public class SacrificeCircle : MonoBehaviour
                     Debug.Log("Sacrifice");
                     isSacrificed = true;
                     holdStatus.CanBeHeld = false;
+                    Debug.Log("The door is currently: " + door);
                     door.OnTrigger();
                     soundManager.PlaySoundEffect(sacrificeAudio, 1.0f);
                     GetComponent<SoundMaker>().MakeSound();
