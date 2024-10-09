@@ -13,11 +13,11 @@ public class HoldingScript : MonoBehaviour
     
     [SerializeField ]public float throwForce = 1000f; 
     [SerializeField] public float pickUpRange = 5f; 
-    [SerializeField] private float rotationSensitivity = 1f;
     private GameObject heldObj; 
     private Rigidbody heldObjRb; 
     private bool canDrop = true; 
-    private int LayerNumber; 
+    private int LayerNumber;
+    [SerializeField] private float pickupForce = 150.0f;
 
     [SerializeField] private string pickupTag = "HoldableItem";
     [SerializeField] private Vector3 interactRayIntersect = default;
@@ -25,7 +25,7 @@ public class HoldingScript : MonoBehaviour
     private Transform objectParent;
     private ItemSwitcher itemSwitcher;
 
-
+    [SerializeField] int layerToIgnore = 12;
     void Start()
     {
         LayerNumber = LayerMask.NameToLayer("Holdable"); 
@@ -40,7 +40,7 @@ public class HoldingScript : MonoBehaviour
             {
                 //perform raycast to check if player is looking at object within pickuprange
                 RaycastHit hit;
-                if (Physics.Raycast(playerCamera.ViewportPointToRay(interactRayIntersect), out hit, pickUpRange))
+                if (Physics.Raycast(playerCamera.ViewportPointToRay(interactRayIntersect), out hit, pickUpRange, ~layerToIgnore))
                 {
                     print("HIT");
                     print(hit.collider.gameObject.name);
@@ -70,7 +70,6 @@ public class HoldingScript : MonoBehaviour
         {
             // itemSwitcher.SwitchToHoldArms();
             MoveObject(); //keep object position at holdPos
-            RotateObject();
             if (Input.GetKeyDown(KeyCode.Mouse0) && canDrop == true) 
             {
                 StopClipping();
@@ -88,16 +87,30 @@ public class HoldingScript : MonoBehaviour
         if (holdStatus != null && !holdStatus.CanBeHeld) {
             return;
         }
-
-        if (pickUpObj.GetComponent<Rigidbody>()) //make sure the object has a RigidBody
+        GameObject pickedObj = pickUpObj;
+        ParentReference parentRef = pickUpObj.GetComponentInParent<ParentReference>();
+        if (parentRef != null)
         {
-            heldObj = pickUpObj; //assign heldObj to the object that was hit by the raycast (no longer == null)
+            pickedObj = parentRef.getTransform().gameObject;
+            print("Got parent from parent ref!");
+            print(pickedObj.name);
+        }
+        if (pickedObj.GetComponent<Rigidbody>()) //make sure the object has a RigidBody
+        {
+
+
+            heldObj = pickedObj; //assign heldObj to the object that was hit by the raycast (no longer == null)
             if (heldObj.GetComponentInParent<HoldStatus>()) heldObj.GetComponentInParent<HoldStatus>().IsHeld = true;
-            heldObjRb = pickUpObj.GetComponent<Rigidbody>(); //assign Rigidbody
-            heldObjRb.isKinematic = true;
-            objectParent = heldObjRb.transform.parent;
+            heldObjRb = heldObj.GetComponent<Rigidbody>(); //assign Rigidbody
+            //heldObjRb.isKinematic = true;
+
+            heldObjRb.useGravity = false;
+            heldObjRb.drag = 10;
+            heldObjRb.constraints = RigidbodyConstraints.FreezeRotation;
+
+            objectParent = heldObj.transform.parent;
             heldObjRb.transform.parent = holdPos.transform; //parent object to holdposition
-            heldObj.layer = LayerNumber; //change the object layer to the holdLayer
+            //heldObj.layer = LayerNumber; //change the object layer to the holdLayer
             //make sure object doesnt collide with player, it can cause weird bugs
             Physics.IgnoreCollision(heldObj.GetComponent<Collider>(), player.GetComponent<Collider>(), true);
         }
@@ -105,33 +118,26 @@ public class HoldingScript : MonoBehaviour
     void DropObject()
     {
         //re-enable collision with player
-        //Physics.IgnoreCollision(heldObj.GetComponent<Collider>(), player.GetComponent<Collider>(), false);
+        Physics.IgnoreCollision(heldObj.GetComponent<Collider>(), player.GetComponent<Collider>(), false);
         heldObj.layer = 0; //object assigned back to default layer
-        heldObjRb.isKinematic = false;
+        //heldObjRb.isKinematic = false;
+
+        heldObjRb.useGravity = true;
+        heldObjRb.drag = 1;
+        heldObjRb.constraints = RigidbodyConstraints.None;
+
         heldObj.transform.parent = objectParent; //unparent object
         if (heldObj.GetComponentInParent<HoldStatus>()) heldObj.GetComponentInParent<HoldStatus>().IsHeld = false;
         heldObj = null; //undefine game object
     }
     void MoveObject()
     {
-        //keep object position the same as the holdPosition position
-        heldObj.transform.position = holdPos.transform.position;
-    }
-    void RotateObject()
-    {
-        if (Input.GetKey(KeyCode.R)) //hold R key to rotate
+        if (Vector3.Distance(heldObj.transform.position, holdPos.position) > 0.1f)
         {
-            canDrop = false; //make sure throwing can't occur during rotating
+            Vector3 moveDir = (holdPos.position - heldObj.transform.position);
+            heldObjRb.AddForce(moveDir * (pickupForce), ForceMode.Impulse);
+            // check if the force added made the object overshoot, if it did then reposition
 
-            float XaxisRotation = Input.GetAxis("Mouse X") * rotationSensitivity;
-            float YaxisRotation = Input.GetAxis("Mouse Y") * rotationSensitivity;
-            //rotate the object depending on mouse X-Y Axis
-            heldObj.transform.Rotate(Vector3.down, XaxisRotation);
-            heldObj.transform.Rotate(Vector3.right, YaxisRotation);
-        }
-        else
-        {
-            canDrop = true;
         }
     }
     void ThrowObject()
@@ -142,28 +148,32 @@ public class HoldingScript : MonoBehaviour
         //heldObjRb.isKinematic = false;
         //heldObj.transform.parent = objectParent;
         // find the root parent with rigid body
-        var parent = objectParent.transform;
-        print(parent.gameObject.name);
-        print(objectParent.gameObject.name);    
-        Rigidbody parentObjRb = null;
-        foreach (Transform child in parent) {
-            if (child.GetComponent<Rigidbody>() != null && child.Equals(heldObj)) {
-                parentObjRb = child.GetComponent<Rigidbody>();
-                print(parentObjRb.name);
-            }
-        }
+        //var parent = objectParent.transform;
+        //print(parent.gameObject.name);
+        //print(objectParent.gameObject.name);    
+        //Rigidbody parentObjRb = null;
+        //foreach (Transform child in parent) {
+        //  if (child.GetComponent<Rigidbody>() != null && child.Equals(heldObj)) {
+        //    parentObjRb = child.GetComponent<Rigidbody>();
+        //  print(parentObjRb.name);
+        //}
+        //}
+        heldObjRb.useGravity = true;
+        heldObjRb.drag = 1;
+        heldObjRb.constraints = RigidbodyConstraints.None;
         Physics.IgnoreCollision(heldObj.GetComponent<Collider>(), player.GetComponent<Collider>(), false);
         heldObj.layer = 0;
         heldObjRb.isKinematic = false;
         heldObj.transform.parent = objectParent;
-        //print(parentObjRb.name);
-        if (parentObjRb != null)
+        //print(parentObjRb.name);\
+        //var mainObjectRb = heldObj.GetComponent <Rigidbody>();
+        //if (parentRb != null)
         {
-            parentObjRb.AddForce(transform.forward * throwForce, ForceMode.Impulse);
+            //parentRb.AddForce(transform.forward * throwForce, ForceMode.Impulse);
         }
-        else {
+        //else {
             heldObjRb.AddForce(transform.forward * throwForce, ForceMode.Impulse);
-        }
+        //}
         if (heldObj.GetComponentInParent<HoldStatus>()) heldObj.GetComponentInParent<HoldStatus>().IsHeld = false;
         heldObj = null;
     }
