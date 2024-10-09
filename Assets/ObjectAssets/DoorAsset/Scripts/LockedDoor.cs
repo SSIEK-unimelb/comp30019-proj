@@ -46,7 +46,7 @@ public class LockedDoor : MonoBehaviour
         yield return new WaitForSeconds(doorOpenTime);
         if (navMeshSurfaceBuilder != null)
         {
-            navMeshSurfaceBuilder.SetBuildToTrue();
+            //navMeshSurfaceBuilder.SetBuildToTrue();
         }
     }
 
