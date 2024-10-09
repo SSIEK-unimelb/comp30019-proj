@@ -2,8 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(AudioSource))]
+[RequireComponent(typeof(SoundMaker))]
 public class LockedDoor : MonoBehaviour
 {
+    [SerializeField] private string levelObjectName = "Level";
     private NavMeshSurfaceBuilder navMeshSurfaceBuilder;
 
     private AudioSource audioSource;
@@ -22,8 +25,8 @@ public class LockedDoor : MonoBehaviour
     }
     void Start()
     {
-        navMeshSurfaceBuilder = GameObject.Find("Floor").GetComponent<NavMeshSurfaceBuilder>();
-        
+        navMeshSurfaceBuilder = GameObject.Find(levelObjectName).GetComponent<NavMeshSurfaceBuilder>();
+        animator = GetComponent<Animator>();
         audioSource = GetComponent<AudioSource>();
     }
 
