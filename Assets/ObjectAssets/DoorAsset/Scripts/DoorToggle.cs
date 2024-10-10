@@ -11,15 +11,7 @@ public class DoorToggle : Interactible
     [SerializeField] private string doorOpenStr;
     [SerializeField] private string doorCloseStr;
     public bool isOpen = true;
-    // wasOpen should be the same as isOpen.
-    // isOpen is false in the editor, so wasOpen is set to false.
-    private bool wasOpen = false;
     private FirstPersonControl firstPersonControl;
-
-    [SerializeField] private string levelObjectName = "Level";
-    [SerializeField] private float doorOpenTime = 0.5f;
-    private NavMeshSurfaceBuilder navMeshSurfaceBuilder;
-    [SerializeField] private GameObject quadrantToLoad;
 
     private GameObject interactionText;
     public override void OnFocus()
@@ -51,12 +43,6 @@ public class DoorToggle : Interactible
             }
         }
 
-        // Rebuilds the navmesh once, otherwise the navmesh will try building too often.
-        if (wasOpen != isOpen) {
-            //StartCoroutine(WaitToOpenOrClose());
-            wasOpen = isOpen;
-        }
-
         if (gameObject.tag == "LevelExit") {
             Invoke("LoadNextScene", 2f);
         }
@@ -78,7 +64,6 @@ public class DoorToggle : Interactible
     public override void Awake()
     {
         Animator = GetComponent<Animator>();
-        navMeshSurfaceBuilder = GameObject.Find(levelObjectName).GetComponent<NavMeshSurfaceBuilder>();
     }
 
     public void Start()
@@ -93,12 +78,5 @@ public class DoorToggle : Interactible
     {
         return Animator.GetCurrentAnimatorStateInfo(0).length >
                Animator.GetCurrentAnimatorStateInfo(0).normalizedTime;
-    }
-
-    private IEnumerator WaitToOpenOrClose() {
-        yield return new WaitForSeconds(doorOpenTime);
-        if (navMeshSurfaceBuilder != null) {
-            navMeshSurfaceBuilder.SetBuildToTrue();
-        }
     }
 }
