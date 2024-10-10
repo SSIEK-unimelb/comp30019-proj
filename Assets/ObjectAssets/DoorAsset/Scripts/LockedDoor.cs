@@ -23,9 +23,6 @@ public class LockedDoor : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         audioSource = GetComponent<AudioSource>();
-        if (quadrantToLoad != null) { 
-            quadrantToLoad.SetActive(false);
-        }
     }
 
     public void OnTrigger() {

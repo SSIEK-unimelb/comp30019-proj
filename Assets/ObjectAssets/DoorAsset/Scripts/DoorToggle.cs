@@ -31,7 +31,6 @@ public class DoorToggle : Interactible
             {
                 Animator.Play(doorOpenStr);
                 isOpen = !isOpen;
-                quadrantToLoad.SetActive(true);
             }
         }
         else 
@@ -69,9 +68,6 @@ public class DoorToggle : Interactible
     public void Start()
     {
         firstPersonControl = GameObject.FindGameObjectWithTag("Player").GetComponent<FirstPersonControl>();
-        if (quadrantToLoad != null) { 
-            quadrantToLoad.SetActive(false);
-        }
     }
 
     bool AnimatorIsPlaying()
