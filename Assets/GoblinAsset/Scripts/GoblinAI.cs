@@ -6,7 +6,7 @@ using UnityEngine.AI;
 
 public class GoblinAI : MonoBehaviour
 {
-    private FirstPersonControl player;
+    private GameObject player;
     private Transform rayOrigin;
     private string rayOriginName = "mixamorig:Hips/mixamorig:Spine/mixamorig:Spine1/mixamorig:Spine2/" +
                                     "mixamorig:Neck/mixamorig:Head/Raycast_Position";
@@ -117,7 +117,7 @@ public class GoblinAI : MonoBehaviour
     public AttackState GetAttackState() { return attackState; }
 
     void Awake() {
-        player = FindObjectOfType<FirstPersonControl>();
+        player = GameObject.FindWithTag("Player");
         rayOrigin = transform.Find(rayOriginName).transform;
         navMeshAgent = GetComponent<NavMeshAgent>();
         navMeshAgent.updateRotation = false;
@@ -283,7 +283,7 @@ public class GoblinAI : MonoBehaviour
         // y is set to 0 to check for horizontal distance only - Quick fix for crouching.
         Vector3 enemyPos = new Vector3(transform.position.x, 0f, transform.position.z);
         Vector3 playerPos = new Vector3(player.transform.position.x, 0f, player.transform.position.z);
-        float distanceToPlayer = Vector3.Distance(enemyPos, playerPos);
+        float distanceToPlayer = Vector3.Distance(enemyPos, playerPos) + 0.1f;
 
         // Debug.DrawRay(_rayOrigin.position, playerTarget * distanceToTarget, Color.red);
         // If player is in view range,
@@ -293,7 +293,7 @@ public class GoblinAI : MonoBehaviour
                 // Cast a ray towards the player
                 if (Physics.Raycast(rayOrigin.position, playerDirection, out hit, distanceToPlayer)) {
                     // Check if the ray hit the player
-                    if (hit.collider.gameObject == player.gameObject) {
+                    if (hit.transform.root.CompareTag("Player")) {
                         // The enemy can see the player
                         // Debug.Log("I see you!");
                         return true;

@@ -11,7 +11,7 @@ public class SearchState : BaseEnemyState
     private float searchDuration;
     private float currentSearchTime;
 
-    public SearchState(GoblinAI goblinAI, NavMeshAgent navMeshAgent, FirstPersonControl player) : 
+    public SearchState(GoblinAI goblinAI, NavMeshAgent navMeshAgent, GameObject player) : 
                         base(goblinAI, navMeshAgent, player) { }
 
     public override void EnterState() {
@@ -61,7 +61,8 @@ public class SearchState : BaseEnemyState
             }
 
             // Reset wait time.
-            currentWaitTime = waitDuration;
+            // This might be messing with the way the raycast is implemented, so remove this temporarily.
+            // currentWaitTime = waitDuration;
         }
     }
 

@@ -9,7 +9,7 @@ public class ChaseState : BaseEnemyState
     private float chaseDuration;
     private bool firstTime = true;
 
-    public ChaseState(GoblinAI goblinAI, NavMeshAgent navMeshAgent, FirstPersonControl player) : 
+    public ChaseState(GoblinAI goblinAI, NavMeshAgent navMeshAgent, GameObject player) : 
                     base(goblinAI, navMeshAgent, player) { }
 
     public override void EnterState() {

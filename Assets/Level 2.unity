@@ -246,6 +246,27 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: d460f9d98afa7634199641174bd537b3, type: 3}
   m_PrefabInstance: {fileID: 5716959}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &9481666 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1145256346194637805, guid: 8037588ed41431546bcceb66a0e91849, type: 3}
+  m_PrefabInstance: {fileID: 841658015}
+  m_PrefabAsset: {fileID: 0}
+--- !u!208 &9481667
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9481666}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.30400002, y: 2.5440001, z: 1.761}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0.171, y: 2.542, z: -1.7600001}
+  m_TimeToStationary: 0.5
 --- !u!1001 &15033083
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1468,6 +1489,10 @@ PrefabInstance:
     - target: {fileID: 100000, guid: 9947a6e7e8c8208469c1c86e15f5c089, type: 3}
       propertyPath: m_Name
       value: Ceiling (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 9947a6e7e8c8208469c1c86e15f5c089, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 9947a6e7e8c8208469c1c86e15f5c089, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3420,6 +3445,10 @@ PrefabInstance:
     - target: {fileID: 100000, guid: 9947a6e7e8c8208469c1c86e15f5c089, type: 3}
       propertyPath: m_Name
       value: Ceiling (15)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 9947a6e7e8c8208469c1c86e15f5c089, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 9947a6e7e8c8208469c1c86e15f5c089, type: 3}
       propertyPath: m_LocalPosition.x
@@ -7989,6 +8018,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ceiling (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 9947a6e7e8c8208469c1c86e15f5c089, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 9947a6e7e8c8208469c1c86e15f5c089, type: 3}
       propertyPath: m_LocalPosition.x
       value: -8.58534
@@ -10141,6 +10174,22 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!208 &520821714
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 520821703}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.30400002, y: 2.5440001, z: 1.761}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0.171, y: 2.542, z: -1.7600001}
+  m_TimeToStationary: 0.5
 --- !u!1 &522034668
 GameObject:
   m_ObjectHideFlags: 0
@@ -10592,6 +10641,10 @@ PrefabInstance:
     - target: {fileID: 100000, guid: 9947a6e7e8c8208469c1c86e15f5c089, type: 3}
       propertyPath: m_Name
       value: Ceiling (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 9947a6e7e8c8208469c1c86e15f5c089, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 9947a6e7e8c8208469c1c86e15f5c089, type: 3}
       propertyPath: m_LocalPosition.x
@@ -11330,6 +11383,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ceiling (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 9947a6e7e8c8208469c1c86e15f5c089, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 9947a6e7e8c8208469c1c86e15f5c089, type: 3}
       propertyPath: m_LocalPosition.x
       value: -8.58534
@@ -11450,6 +11507,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1145256346194637805, guid: 8037588ed41431546bcceb66a0e91849, type: 3}
       insertIndex: -1
       addedObject: {fileID: 592359822}
+    - targetCorrespondingSourceObject: {fileID: 1145256346194637805, guid: 8037588ed41431546bcceb66a0e91849, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 592359824}
   m_SourcePrefab: {fileID: 100100000, guid: 8037588ed41431546bcceb66a0e91849, type: 3}
 --- !u!4 &592359819 stripped
 Transform:
@@ -11585,6 +11645,22 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!208 &592359824
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 592359820}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.30400002, y: 2.5440001, z: 1.761}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0.171, y: 2.542, z: -1.7600001}
+  m_TimeToStationary: 0.5
 --- !u!1 &592421795
 GameObject:
   m_ObjectHideFlags: 0
@@ -13312,13 +13388,37 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1145256346194637805, guid: 8037588ed41431546bcceb66a0e91849, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 672702535}
   m_SourcePrefab: {fileID: 100100000, guid: 8037588ed41431546bcceb66a0e91849, type: 3}
 --- !u!4 &672702533 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 540058568346195984, guid: 8037588ed41431546bcceb66a0e91849, type: 3}
   m_PrefabInstance: {fileID: 672702532}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &672702534 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1145256346194637805, guid: 8037588ed41431546bcceb66a0e91849, type: 3}
+  m_PrefabInstance: {fileID: 672702532}
+  m_PrefabAsset: {fileID: 0}
+--- !u!208 &672702535
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 672702534}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.30400002, y: 2.5440001, z: 1.761}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0.171, y: 2.542, z: -1.7600001}
+  m_TimeToStationary: 0.5
 --- !u!1001 &674025305
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14750,6 +14850,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1145256346194637805, guid: 8037588ed41431546bcceb66a0e91849, type: 3}
       insertIndex: -1
       addedObject: {fileID: 758065423}
+    - targetCorrespondingSourceObject: {fileID: 1145256346194637805, guid: 8037588ed41431546bcceb66a0e91849, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 758065425}
   m_SourcePrefab: {fileID: 100100000, guid: 8037588ed41431546bcceb66a0e91849, type: 3}
 --- !u!1 &758065420 stripped
 GameObject:
@@ -14885,6 +14988,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   soundRadius: 10
+--- !u!208 &758065425
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 758065420}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.30400002, y: 2.5440001, z: 1.761}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0.171, y: 2.542, z: -1.7600001}
+  m_TimeToStationary: 0.5
 --- !u!1001 &758256616
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16051,6 +16170,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ceiling (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 9947a6e7e8c8208469c1c86e15f5c089, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 9947a6e7e8c8208469c1c86e15f5c089, type: 3}
       propertyPath: m_LocalPosition.x
       value: 8.720001
@@ -17025,6 +17148,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 7399343605592053698, guid: 8037588ed41431546bcceb66a0e91849, type: 3}
       insertIndex: -1
       addedObject: {fileID: 841658019}
+    - targetCorrespondingSourceObject: {fileID: 1145256346194637805, guid: 8037588ed41431546bcceb66a0e91849, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 9481667}
   m_SourcePrefab: {fileID: 100100000, guid: 8037588ed41431546bcceb66a0e91849, type: 3}
 --- !u!4 &841658016 stripped
 Transform:
@@ -18228,13 +18354,37 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1145256346194637805, guid: 8037588ed41431546bcceb66a0e91849, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 890888624}
   m_SourcePrefab: {fileID: 100100000, guid: 8037588ed41431546bcceb66a0e91849, type: 3}
 --- !u!4 &890888622 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 540058568346195984, guid: 8037588ed41431546bcceb66a0e91849, type: 3}
   m_PrefabInstance: {fileID: 890888621}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &890888623 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1145256346194637805, guid: 8037588ed41431546bcceb66a0e91849, type: 3}
+  m_PrefabInstance: {fileID: 890888621}
+  m_PrefabAsset: {fileID: 0}
+--- !u!208 &890888624
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 890888623}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.30400002, y: 2.5440001, z: 1.761}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0.171, y: 2.542, z: -1.7600001}
+  m_TimeToStationary: 0.5
 --- !u!1001 &892853369
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18982,6 +19132,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ceiling (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 9947a6e7e8c8208469c1c86e15f5c089, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 9947a6e7e8c8208469c1c86e15f5c089, type: 3}
       propertyPath: m_LocalPosition.x
       value: 2.9000006
@@ -19266,6 +19420,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1145256346194637805, guid: 8037588ed41431546bcceb66a0e91849, type: 3}
       insertIndex: -1
       addedObject: {fileID: 927492427}
+    - targetCorrespondingSourceObject: {fileID: 1145256346194637805, guid: 8037588ed41431546bcceb66a0e91849, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 927492431}
   m_SourcePrefab: {fileID: 100100000, guid: 8037588ed41431546bcceb66a0e91849, type: 3}
 --- !u!4 &927492423 stripped
 Transform:
@@ -19525,6 +19682,22 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!208 &927492431
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 927492425}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.30400002, y: 2.5440001, z: 1.761}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0.171, y: 2.542, z: -1.7600001}
+  m_TimeToStationary: 0.5
 --- !u!1 &932526686
 GameObject:
   m_ObjectHideFlags: 0
@@ -21575,6 +21748,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ceiling (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 9947a6e7e8c8208469c1c86e15f5c089, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 9947a6e7e8c8208469c1c86e15f5c089, type: 3}
       propertyPath: m_LocalPosition.x
       value: -2.765339
@@ -22364,13 +22541,37 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1145256346194637805, guid: 8037588ed41431546bcceb66a0e91849, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1046983869}
   m_SourcePrefab: {fileID: 100100000, guid: 8037588ed41431546bcceb66a0e91849, type: 3}
 --- !u!4 &1046983867 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 540058568346195984, guid: 8037588ed41431546bcceb66a0e91849, type: 3}
   m_PrefabInstance: {fileID: 1046983866}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1046983868 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1145256346194637805, guid: 8037588ed41431546bcceb66a0e91849, type: 3}
+  m_PrefabInstance: {fileID: 1046983866}
+  m_PrefabAsset: {fileID: 0}
+--- !u!208 &1046983869
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1046983868}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.30400002, y: 2.5440001, z: 1.761}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0.171, y: 2.542, z: -1.7600001}
+  m_TimeToStationary: 0.5
 --- !u!1001 &1047012894
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -24010,6 +24211,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ceiling (11)
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 9947a6e7e8c8208469c1c86e15f5c089, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 9947a6e7e8c8208469c1c86e15f5c089, type: 3}
       propertyPath: m_LocalPosition.x
       value: -8.58534
@@ -24443,6 +24648,10 @@ PrefabInstance:
     - target: {fileID: 100000, guid: 9947a6e7e8c8208469c1c86e15f5c089, type: 3}
       propertyPath: m_Name
       value: Ceiling (14)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 9947a6e7e8c8208469c1c86e15f5c089, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 9947a6e7e8c8208469c1c86e15f5c089, type: 3}
       propertyPath: m_LocalPosition.x
@@ -26046,6 +26255,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1145256346194637805, guid: 8037588ed41431546bcceb66a0e91849, type: 3}
       insertIndex: -1
       addedObject: {fileID: 520821712}
+    - targetCorrespondingSourceObject: {fileID: 1145256346194637805, guid: 8037588ed41431546bcceb66a0e91849, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 520821714}
   m_SourcePrefab: {fileID: 100100000, guid: 8037588ed41431546bcceb66a0e91849, type: 3}
 --- !u!4 &1206027070 stripped
 Transform:
@@ -30413,6 +30625,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ceiling (9)
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 9947a6e7e8c8208469c1c86e15f5c089, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 9947a6e7e8c8208469c1c86e15f5c089, type: 3}
       propertyPath: m_LocalPosition.x
       value: 8.720001
@@ -31069,6 +31285,10 @@ PrefabInstance:
     - target: {fileID: 100000, guid: 9947a6e7e8c8208469c1c86e15f5c089, type: 3}
       propertyPath: m_Name
       value: Ceiling (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 9947a6e7e8c8208469c1c86e15f5c089, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 9947a6e7e8c8208469c1c86e15f5c089, type: 3}
       propertyPath: m_LocalPosition.x
@@ -32302,6 +32522,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ceiling (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 9947a6e7e8c8208469c1c86e15f5c089, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 9947a6e7e8c8208469c1c86e15f5c089, type: 3}
       propertyPath: m_LocalPosition.x
       value: -8.58534
@@ -33128,6 +33352,10 @@ PrefabInstance:
     - target: {fileID: 100000, guid: 9947a6e7e8c8208469c1c86e15f5c089, type: 3}
       propertyPath: m_Name
       value: Ceiling (13)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 9947a6e7e8c8208469c1c86e15f5c089, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 9947a6e7e8c8208469c1c86e15f5c089, type: 3}
       propertyPath: m_LocalPosition.x
@@ -36969,6 +37197,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ceiling (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 9947a6e7e8c8208469c1c86e15f5c089, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 9947a6e7e8c8208469c1c86e15f5c089, type: 3}
       propertyPath: m_LocalPosition.x
       value: -8.58534
@@ -40309,7 +40541,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3722586030167620590, guid: 78637a503bee8a749be7c10932320cd7, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 5.9782696
+      value: 6.13
       objectReference: {fileID: 0}
     - target: {fileID: 3722586030167620590, guid: 78637a503bee8a749be7c10932320cd7, type: 3}
       propertyPath: m_LocalPosition.z
@@ -40777,6 +41009,10 @@ PrefabInstance:
     - target: {fileID: 100000, guid: 9947a6e7e8c8208469c1c86e15f5c089, type: 3}
       propertyPath: m_Name
       value: Ceiling (10)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 9947a6e7e8c8208469c1c86e15f5c089, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 9947a6e7e8c8208469c1c86e15f5c089, type: 3}
       propertyPath: m_LocalPosition.x
@@ -41255,6 +41491,10 @@ PrefabInstance:
     - target: {fileID: 100000, guid: 9947a6e7e8c8208469c1c86e15f5c089, type: 3}
       propertyPath: m_Name
       value: Ceiling (8)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 9947a6e7e8c8208469c1c86e15f5c089, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 9947a6e7e8c8208469c1c86e15f5c089, type: 3}
       propertyPath: m_LocalPosition.x
@@ -44157,6 +44397,10 @@ PrefabInstance:
     - target: {fileID: 100000, guid: 9947a6e7e8c8208469c1c86e15f5c089, type: 3}
       propertyPath: m_Name
       value: Ceiling (12)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 9947a6e7e8c8208469c1c86e15f5c089, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 9947a6e7e8c8208469c1c86e15f5c089, type: 3}
       propertyPath: m_LocalPosition.x

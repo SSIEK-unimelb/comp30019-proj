@@ -6,7 +6,7 @@ using UnityEngine.Diagnostics;
 
 public class PatrolState : BaseEnemyState
 {
-    public PatrolState(GoblinAI goblinAI, NavMeshAgent navMeshAgent, FirstPersonControl player) : 
+    public PatrolState(GoblinAI goblinAI, NavMeshAgent navMeshAgent, GameObject player) : 
                         base(goblinAI, navMeshAgent, player) { }
 
     public override void EnterState() {

@@ -8,7 +8,7 @@ public class AttackState : BaseEnemyState
     private float outsideAttackRangeTime;
     private float outsideAttackRangeDuration = 0.5f;
     
-    public AttackState(GoblinAI goblinAI, NavMeshAgent navMeshAgent, FirstPersonControl player) : 
+    public AttackState(GoblinAI goblinAI, NavMeshAgent navMeshAgent, GameObject player) : 
                         base(goblinAI, navMeshAgent, player) { }
 
     public override void EnterState() {
