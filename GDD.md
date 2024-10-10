@@ -173,15 +173,15 @@ Game World:
   * Level 1: A basic level to introduce the player to the core mechanics of the game and ease them into their surroundings. It also has a secret room, one that the player can walk into to find some treasures in a chest.
 
 <p align="center">
-  <img src="Images/LevelDesign/Level1.PNG" width="600">
-  <img src="Images/LevelDesign/Level1_SecretRoom.PNG" width="600">
+  <img src="Images/LevelDesign/Level1.jpg" width="600">
+  <img src="Images/LevelDesign/Level1_SecretRoom.jpg" width="600">
 </p>
 
   * Level 2: A two-leveled map layout to add depth to the gameplay. The player will be required to move up and down the level, a mini-parkour area and certain placement of floor tiles to trick the player to falling, making a loud noise to attract the goblins.
 
 <p align="center">
-  <img src="Images/LevelDesign/Level2_Upper.PNG" width="600">
-  <img src="Images/LevelDesign/Level2_Bottom.PNG" width="600">
+  <img src="Images/LevelDesign/Level2_Upper.jpg" width="600">
+  <img src="Images/LevelDesign/Level2_Bottom.jpg" width="600">
 </p>
 
 
