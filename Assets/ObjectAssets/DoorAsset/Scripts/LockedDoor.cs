@@ -8,6 +8,7 @@ public class LockedDoor : MonoBehaviour
 {
     [SerializeField] private string levelObjectName = "Level";
     private NavMeshSurfaceBuilder navMeshSurfaceBuilder;
+    [SerializeField] private GameObject quadrantToLoad;
 
     private AudioSource audioSource;
 
@@ -28,6 +29,9 @@ public class LockedDoor : MonoBehaviour
         navMeshSurfaceBuilder = GameObject.Find(levelObjectName).GetComponent<NavMeshSurfaceBuilder>();
         animator = GetComponent<Animator>();
         audioSource = GetComponent<AudioSource>();
+        if (quadrantToLoad != null) { 
+            quadrantToLoad.SetActive(false);
+        }
     }
 
     public void OnTrigger() {
@@ -38,7 +42,11 @@ public class LockedDoor : MonoBehaviour
 
             GetComponent<SoundMaker>().MakeSound();
             isOpen = true;
-            StartCoroutine(WaitToOpen());
+            if (quadrantToLoad != null)
+            {
+                quadrantToLoad.SetActive(true);
+            }
+            //StartCoroutine(WaitToOpen());
         }
     }
 
