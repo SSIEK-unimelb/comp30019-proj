@@ -164,38 +164,42 @@ Gameplay Mechanics:
 ### Levels and World Design
 
 Game World:
-* Levels: There will be 3 different levels including the final boss battle floor. Each level will be loosely based around a universal layout (similar to Spelunky), with varying items, enemy locations, spawn rooms and more for each floor.
+* Levels: There will be 2 different levels. Each level will be loosely based around a universal layout (similar to Spelunky), with varying items, enemy locations, spawn rooms and more for each floor.
 
 <p align="center">
   <img src="Images/LevelDesign/Universal_Layout.PNG" width="300">
 </p>
 
-  * Level 1: A basic level to introduce the player to the core mechanics of the game and ease them into their surroundings.
+  * Level 1: A basic level to introduce the player to the core mechanics of the game and ease them into their surroundings. It also has a secret room, one that the player can walk into to find some treasures in a chest.
 
 <p align="center">
-  <img src="Images/LevelDesign/Level1.PNG" width="600">
+  <img src="Images/LevelDesign/Level1.jpg" width="600">
+  <img src="Images/LevelDesign/Level1_SecretRoom.jpg" width="600">
 </p>
 
-* The starting room (light blue) looks like this:
+  * Level 2: A two-leveled map layout to add depth to the gameplay. The player will be required to move up and down the level, a mini-parkour area and certain placement of floor tiles to trick the player to falling, making a loud noise to attract the goblins.
 
 <p align="center">
-  <img src="Images/LevelDesign/Level1_Unity_1.png" width="600">
-  <img src="Images/LevelDesign/Level1_Unity_2.png" width="600">
+  <img src="Images/LevelDesign/Level2_Upper.jpg" width="600">
+  <img src="Images/LevelDesign/Level2_Bottom.jpg" width="600">
 </p>
+
 
   * It consists of the following game objects:
-    * The player spawns in the lower middle jail cell.
-    * The red capsule is an enemy.
-    * The yellow capsule is an NPC giving instructions to the player, the others are skeletons for ambience.
-    * The black box is a bed - falling on the bed makes no noise.
-    * The intended path is leave the cell, enter the top cell, climb boxes, and fall onto the bed, where the player can now kill the enemy. The player can then leave through the left door and enter another room. The right door is locked and requires a sacrifice.
+    * The player spawns in the lower middle jail cell, represented by a circle with a cross in it.
+    * A sacrifice circle is represented by a circle with the letters 'SC' and a number in it. The number is tied to the goblin that it should be sacrificed at and the door it unlocks.
+    * The goblin is represented by a circle with a line coming out of it. The number beside the goblin ties it to the sacrifice circle the player should place the goblin at. This dictates the direction of the game.
+    * The doors are represented by red rectangles on the walls separating two rooms.
+     * A locked door is represented by a hollow rectangle with a number beside it. The number is tied to the sacrifice circle that it is unlocked by.
+     * An unlocked door is represented by a hollow rectangle without a number beside it.
+     * A rectangle with a cross in it represents an empty hallway.
+    * The black squares scattered across the entire level are obstacles.
+    * The black rectangle within the room, labelled with a 'C' is a chest, which can store items or resources.
+    * The blue rectangle on the right is an entrance to a 'Secret Room'. The Secret Room also holds a chest that holds items and it may be something worth checking out. The entrance to the Secret Room looks just like a regular wall, except it can be walked through, like Platform 9 and 3/4 in Harry Potter.
+    * The black square with a 'P' in it represents a pillar.
+    * The rectangle with arrow heads across the length of the rectangle in Level 2 shows the stairs and the way it is positioned to go up the stairs.
 
-  * Level 2: Builds on the first level - introduces player to traps (pressure plates and more) as well as some new items
-  * Level 3: Boss level - a few more regular rooms with increased difficulty before a final boss battle against the king goblin, featuring innovative use of traps, items the player has picked up and other mechanics the player has been introduced to.
-
-<p align="center">
-  <img src="Images/LevelDesign/Level3.PNG" width="500">
-</p>
+  * Level 2: Builds on the first level. There is an upper and lower level.
 
 * Environment: The tower interior is a maze of rooms and corridors, consisting of cave systems, dungeons, prison cells and more!
 
