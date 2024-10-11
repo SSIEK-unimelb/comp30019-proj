@@ -1146,7 +1146,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   arrowPrefab: {fileID: 2422282626406373295, guid: 50f737d85485bc340ad60fc0d993deec, type: 3}
   arrowSpeed: 100
-  startingAmmo: 3
 --- !u!95 &4792423283901267444
 Animator:
   serializedVersion: 5
