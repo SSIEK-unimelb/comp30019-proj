@@ -66,11 +66,11 @@ public class ItemSwitcher : MonoBehaviour
             }
         }
         else if (Input.GetAxis("Mouse ScrollWheel") > 0f) {
-            SwitchItem(currentItemIndex + 1);
+            SwitchItem(currentItemIndex - 1);
         }
         else if (Input.GetAxis("Mouse ScrollWheel") < 0f)
         {
-            SwitchItem(currentItemIndex - 1);
+            SwitchItem(currentItemIndex + 1);
         }
         UpdateUI();
     }
@@ -97,9 +97,12 @@ public class ItemSwitcher : MonoBehaviour
             Destroy(currentItem);
         }
 
+        inventoryIconController.Highlight(currentItemIndex, false);
         currentItem = Instantiate(itemPrefabs[itemIndex], transform.position, transform.rotation, transform);
         
         currentItemIndex = itemIndex; // update current item
+        inventoryIconController.Highlight(currentItemIndex, true);
+
     }
 
     public void SwitchToHoldArms()
