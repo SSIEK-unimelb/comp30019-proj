@@ -41,9 +41,9 @@ public class AttackState : BaseEnemyState
         }
 
         // y is set to 0 to check for horizontal distance only.
-        Vector3 enemyPos = new Vector3(goblinAI.transform.position.x, 0f, goblinAI.transform.position.z);
-        Vector3 playerPos = new Vector3(player.transform.position.x, 0f, player.transform.position.z);
-        bool inAttackRange = Vector3.Distance(enemyPos, playerPos) <= goblinAI.GetAttackRange();
+        Vector2 enemyPos = new Vector2(goblinAI.transform.position.x, goblinAI.transform.position.z);
+        Vector2 playerPos = new Vector2(player.transform.position.x, player.transform.position.z);
+        bool inAttackRange = Vector2.Distance(enemyPos, playerPos) <= goblinAI.GetAttackRange();
 
         // If the enemy is currently attacking, wait for the attack to finish first before checking anything.
         if (goblinAI.IsAttacking()) return;

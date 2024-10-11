@@ -43,7 +43,8 @@ public class GoblinAI : MonoBehaviour
     [SerializeField] private float waitDurationToChase = 1f;
     [SerializeField] private float playerLocationCheckInterval = 0.1f;
     private float currentPlayerLocationCheckTime = 0;
-    [SerializeField] private float chaseDuration = 10f;
+    [SerializeField] private float chaseDurationInRange = 5f;
+    [SerializeField] private float chaseDurationOutsideRange = 2f;
     [SerializeField] private float chaseSpeed = 6f;
     [SerializeField] private AnimationClip chaseAnimation;
     [SerializeField] private AudioClip chaseAudio;
@@ -96,7 +97,8 @@ public class GoblinAI : MonoBehaviour
     public void SetCanHearSound(bool canHearSound) { this.canHearSound = canHearSound; }
     public float GetViewRange() { return viewRange; }
     public float GetWaitDurationToChase() { return waitDurationToChase; }
-    public float GetChaseDuration() { return chaseDuration; }
+    public float GetChaseDurationInRange() { return chaseDurationInRange; }
+    public float GetChaseDurationOutsideRange() { return chaseDurationOutsideRange; }
     public float GetChaseSpeed() { return chaseSpeed; }
     public float GetOutsideAttackRangeDuration() { return outsideAttackRangeDuration; }
     public float GetAttackCooldown() { return attackCooldown; }
@@ -287,9 +289,9 @@ public class GoblinAI : MonoBehaviour
         Vector3 playerDirection = (player.transform.position - transform.position).normalized;
 
         // y is set to 0 to check for horizontal distance only - Quick fix for crouching.
-        Vector3 enemyPos = new Vector3(transform.position.x, 0f, transform.position.z);
-        Vector3 playerPos = new Vector3(player.transform.position.x, 0f, player.transform.position.z);
-        float distanceToPlayer = Vector3.Distance(enemyPos, playerPos) + 0.1f;
+        Vector2 enemyPos = new Vector2(transform.position.x,transform.position.z);
+        Vector2 playerPos = new Vector2(player.transform.position.x, player.transform.position.z);
+        float distanceToPlayer = Vector2.Distance(enemyPos, playerPos) + 0.1f;
 
         // Debug.DrawRay(_rayOrigin.position, playerTarget * distanceToTarget, Color.red);
         // If player is in view range,
@@ -313,9 +315,9 @@ public class GoblinAI : MonoBehaviour
     // Enemy Hearing for player/objects.
     public void CanHearSound(Vector3 soundOrigin) {
         // y is set to 0 to check for horizontal distance only - Quick fix for crouching.
-        Vector3 enemyPos = new Vector3(transform.position.x, 0f, transform.position.z);
-        Vector3 soundPos = new Vector3(soundOrigin.x, 0f, soundOrigin.z);
-        float distance = Vector3.Distance(enemyPos, soundPos);
+        Vector2 enemyPos = new Vector2(transform.position.x, transform.position.z);
+        Vector2 soundPos = new Vector2(soundOrigin.x, soundOrigin.z);
+        float distance = Vector2.Distance(enemyPos, soundPos);
 
         canHearSound = false;
         // If the player/object is in hearing range,

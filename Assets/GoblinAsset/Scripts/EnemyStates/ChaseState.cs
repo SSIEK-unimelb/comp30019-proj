@@ -6,8 +6,10 @@ using UnityEngine.AI;
 public class ChaseState : BaseEnemyState
 {
     private float currentUpdateTime;
-    private float chaseTime;
-    private float chaseDuration;
+    private float chaseDurationInRange;
+    private float chaseTimeInRange;
+    private float chaseDurationOutsideRange;
+    private float chaseTimeOutsideRange;
     private bool firstTime = true;
 
     public ChaseState(GoblinAI goblinAI, NavMeshAgent navMeshAgent, GameObject player) : 
@@ -18,8 +20,11 @@ public class ChaseState : BaseEnemyState
 
         navMeshAgent.speed = goblinAI.GetChaseSpeed();
 
-        chaseDuration = goblinAI.GetChaseDuration();
-        chaseTime = chaseDuration;
+        chaseDurationInRange = goblinAI.GetChaseDurationInRange();
+        chaseTimeInRange = chaseDurationInRange;
+
+        chaseDurationOutsideRange = goblinAI.GetChaseDurationOutsideRange();
+        chaseTimeOutsideRange = chaseDurationOutsideRange;
 
         goblinAI.GetExclamationMark().SetActive(true);
 
@@ -44,29 +49,37 @@ public class ChaseState : BaseEnemyState
         currentUpdateTime = updateTimeStep;
 
         // y is set to 0 to check for horizontal distance only.
-        Vector3 enemyPos = new Vector3(goblinAI.transform.position.x, 0f, goblinAI.transform.position.z);
-        Vector3 playerPos = new Vector3(player.transform.position.x, 0f, player.transform.position.z);
-        bool inAttackRange = Vector3.Distance(enemyPos, playerPos) <= goblinAI.GetAttackRange();
-        bool outsideChaseRange = Vector3.Distance(enemyPos, playerPos) > goblinAI.GetViewRange();
+        Vector2 enemyPos = new Vector2(goblinAI.transform.position.x, goblinAI.transform.position.z);
+        Vector2 playerPos = new Vector2(player.transform.position.x, player.transform.position.z);
+        float distance = Vector2.Distance(enemyPos, playerPos);
+        bool inAttackRange = distance <= goblinAI.GetAttackRange();
+        bool outsideChaseRange = distance > goblinAI.GetViewRange();
 
         // If the player was killed, transition to idle state.
         if (player == null) {
             goblinAI.TransitionToState(goblinAI.GetIdleState());
+            return;
         }
-        // Else if the player is within attack range, transition to attack state.
-        else if (player != null && inAttackRange) {
+
+        // If the player is within attack range, transition to attack state.
+        if (inAttackRange) {
             goblinAI.TransitionToState(goblinAI.GetAttackState());
         }
         // Else if the player has exited the enemy's aggro range for chaseTime, transition to idle state.
         else if (outsideChaseRange) {
-            chaseTime -= updateTimeStep;
-            if (chaseTime <= 0) {
+            chaseTimeInRange = chaseDurationInRange;
+
+            chaseTimeOutsideRange -= updateTimeStep;
+            if (chaseTimeOutsideRange <= 0) {
                 goblinAI.TransitionToState(goblinAI.GetIdleState());
             }
         }
-        // Else if the player is in the enemy's aggro range, reset chaseTime.
+        // Else if the player is in the enemy's aggro range.
         else {
-            chaseTime = chaseDuration;
+            chaseTimeInRange -= updateTimeStep;
+            if (chaseTimeInRange <= 0) {
+                goblinAI.TransitionToState(goblinAI.GetIdleState());
+            }
         }
     }
 

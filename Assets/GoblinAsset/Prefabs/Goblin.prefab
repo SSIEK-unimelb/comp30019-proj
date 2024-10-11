@@ -1460,6 +1460,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad964a627024c5e48b6f78f913cf6dfc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  updateTimeStep: 0.2
   idleDuration: 10
   idleAnimation: {fileID: 7400000, guid: 901c8e8b37fe02546956aea75d5c52e1, type: 2}
   walkSpeed: 3
@@ -1474,7 +1475,8 @@ MonoBehaviour:
   viewAngle: 90
   waitDurationToChase: 1
   playerLocationCheckInterval: 0.1
-  chaseDuration: 2
+  chaseDurationInRange: 10
+  chaseDurationOutsideRange: 2
   chaseSpeed: 6
   chaseAnimation: {fileID: 7400000, guid: 1be4201f944218f4780fc4e9cd1eab96, type: 2}
   chaseAudio: {fileID: 8300000, guid: 73db322163c22b84ebcf374aa88b70f5, type: 3}
@@ -3327,8 +3329,8 @@ Transform:
   m_GameObject: {fileID: 7120692647204321855}
   serializedVersion: 2
   m_LocalRotation: {x: -0.50434434, y: -0.4956175, z: 0.4956176, w: 0.50434434}
-  m_LocalPosition: {x: -0.013283767, y: 0.20197938, z: -0.01075234}
-  m_LocalScale: {x: 1, y: 0.3, z: 0.29999998}
+  m_LocalPosition: {x: -0.008, y: 0.471, z: -0.011}
+  m_LocalScale: {x: 0.34805238, y: 0.22755, z: 0.29999998}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 689218186881685168}
@@ -3925,8 +3927,8 @@ Transform:
   m_GameObject: {fileID: 8988763609242409510}
   serializedVersion: 2
   m_LocalRotation: {x: 0.0000000023894877, y: -1.1368684e-13, z: 3.6378936e-12, w: 1}
-  m_LocalPosition: {x: 0, y: 2.5105252, z: 0}
-  m_LocalScale: {x: 0.5, y: 2, z: 0.5}
+  m_LocalPosition: {x: 0, y: 2.543, z: 0}
+  m_LocalScale: {x: 0.6784, y: 1.20166, z: 0.71215}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3281294395484095731}

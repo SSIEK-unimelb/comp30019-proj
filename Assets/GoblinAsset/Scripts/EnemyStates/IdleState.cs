@@ -29,8 +29,6 @@ public class IdleState : BaseEnemyState
         }
         currentUpdateTime = updateTimeStep;
 
-        if (player == null) return;
-
         // If enough time has passed, transition to patrol state.
         idleTime -= updateTimeStep;
         if (idleTime <= 0) {

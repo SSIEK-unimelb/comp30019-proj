@@ -42,24 +42,36 @@ public class SearchState : BaseEnemyState
         }
         currentUpdateTime = updateTimeStep;
 
-        // y is set to 0 so that the search point can be at any height.
-        Vector3 destinationPos = new Vector3(navMeshAgent.destination.x, 0, navMeshAgent.destination.z);
-        Vector3 currentPos = new Vector3(goblinAI.transform.position.x, 0, goblinAI.transform.position.z);
-        bool hasReachedSoundHeardPoint = Vector3.Distance(destinationPos, currentPos) <= navMeshAgent.stoppingDistance;
+        if (player == null) {
+            goblinAI.TransitionToState(goblinAI.GetIdleState());
+            return;
+        }
 
         // If the enemy can see the player, and some time has passed, transition to chase state.
-        if (player != null && goblinAI.CanSeePlayer()) {
+        if (goblinAI.CanSeePlayer()) {
             currentWaitTime -= updateTimeStep;
             if (currentWaitTime <= 0) {
                 goblinAI.TransitionToState(goblinAI.GetChaseState());
             }
         }
         // Else if the enemy cannot see the player, 
-        else if (!goblinAI.CanSeePlayer()) {
+        else {
+            // y is set to 0 so that the search point can be at any height.
+            Vector2 destinationPos = new Vector2(navMeshAgent.destination.x, navMeshAgent.destination.z);
+            Vector2 currentPos = new Vector2(goblinAI.transform.position.x, goblinAI.transform.position.z);
+            bool hasReachedSoundHeardPoint = Vector2.Distance(destinationPos, currentPos) <= navMeshAgent.stoppingDistance;
+
+            Vector2 playerPos = new Vector2(player.transform.position.x, player.transform.position.z);
+            bool inAttackRange = Vector2.Distance(currentPos, playerPos) <= goblinAI.GetAttackRange();
+
             currentSearchTime -= updateTimeStep;
 
+            // If the enemy is within attack range, transition to attack range.
+            if (inAttackRange) {
+                goblinAI.TransitionToState(goblinAI.GetAttackState());
+            }
             // If the enemy has reached its destination, transition to idle state.
-            if (hasReachedSoundHeardPoint) {
+            else if (hasReachedSoundHeardPoint) {
                 goblinAI.TransitionToState(goblinAI.GetIdleState());
             }
             // If the enemy has spent too much time trying to reach its destination.

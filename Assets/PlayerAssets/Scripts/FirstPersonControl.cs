@@ -25,6 +25,8 @@ public class FirstPersonControl : MonoBehaviour
     [SerializeField] private float crouchSpeed = 2.0f;
     private float currentSpeed;
     private SoundMaker soundMaker;
+    private float soundMakerInterval = 0.2f;
+    private float currentSoundMakerTime = 0.2f;
     
 
     [Header("Movement Options")]
@@ -257,6 +259,11 @@ public class FirstPersonControl : MonoBehaviour
     }
 
     public void MakeSound() {
+        // Do not check this every frame.
+        currentSoundMakerTime -= Time.deltaTime;
+        if (currentSoundMakerTime > 0) return;
+        currentSoundMakerTime = soundMakerInterval;
+
         // If the player is moving at walk speed or faster.
         if (inputDir != Vector2.zero && currentSpeed >= walkSpeed) {
             soundMaker.MakeSound();

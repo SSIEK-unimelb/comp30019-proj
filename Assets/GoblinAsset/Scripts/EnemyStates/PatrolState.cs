@@ -7,7 +7,7 @@ using UnityEngine.Diagnostics;
 public class PatrolState : BaseEnemyState
 {
     private float currentUpdateTime;
-    
+
     public PatrolState(GoblinAI goblinAI, NavMeshAgent navMeshAgent, GameObject player) : 
                         base(goblinAI, navMeshAgent, player) { }
 
@@ -30,9 +30,9 @@ public class PatrolState : BaseEnemyState
         currentUpdateTime = updateTimeStep;
 
         // y is set to 0 so that the patrol point can be at any height.
-        Vector3 destinationPos = new Vector3(navMeshAgent.destination.x, 0, navMeshAgent.destination.z);
-        Vector3 currentPos = new Vector3(goblinAI.transform.position.x, 0, goblinAI.transform.position.z);
-        bool hasReachedPatrolPoint = Vector3.Distance(destinationPos, currentPos) <= navMeshAgent.stoppingDistance;
+        Vector2 destinationPos = new Vector2(navMeshAgent.destination.x, navMeshAgent.destination.z);
+        Vector2 currentPos = new Vector2(goblinAI.transform.position.x, goblinAI.transform.position.z);
+        bool hasReachedPatrolPoint = Vector2.Distance(destinationPos, currentPos) <= navMeshAgent.stoppingDistance;
 
         // If the enemy can see the player or hear something, transition to search state.
         if (goblinAI.CanSeePlayer() || goblinAI.GetCanHearSound()) {
