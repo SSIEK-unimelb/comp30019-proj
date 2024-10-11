@@ -17,11 +17,11 @@ TagManager:
   - UI
   - Interactible
   - Holdable
-  - Obstacle
+  - 
   - HitboxLayer
   - Enemy
   - Arms
-  - IgnoreNavMesh
+  - 
   - Volume
   - EyeCamOnly
   - SceneCollisionCheck

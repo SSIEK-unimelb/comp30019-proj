@@ -5,6 +5,7 @@ using UnityEngine.AI;
 
 public class AttackState : BaseEnemyState
 {
+    private float currentUpdateTime;
     private float outsideAttackRangeTime;
     private float outsideAttackRangeDuration = 0.5f;
     
@@ -28,6 +29,12 @@ public class AttackState : BaseEnemyState
     public override void UpdateState() {
         goblinAI.Attack();
 
+        currentUpdateTime -= Time.deltaTime;
+        if (currentUpdateTime > 0) {
+            return;
+        }
+        currentUpdateTime = updateTimeStep;
+
         // If player was killed, transition to idle state.
         if (player == null) {
             goblinAI.TransitionToState(goblinAI.GetIdleState());
@@ -42,7 +49,7 @@ public class AttackState : BaseEnemyState
         if (goblinAI.IsAttacking()) return;
         // Else if the player has exited attack range for some time, transition to chase state.
         else if (!inAttackRange) {
-            outsideAttackRangeTime -= Time.deltaTime;
+            outsideAttackRangeTime -= updateTimeStep;
             if (outsideAttackRangeTime <= 0) {
                 goblinAI.TransitionToState(goblinAI.GetChaseState());
             }

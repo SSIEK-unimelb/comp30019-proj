@@ -5,6 +5,7 @@ using UnityEngine.AI;
 
 public class IdleState : BaseEnemyState
 {
+    private float currentUpdateTime;
     private float idleTime;
     private float idleDuration;
 
@@ -22,10 +23,16 @@ public class IdleState : BaseEnemyState
     public override void UpdateState() {
         goblinAI.Idle();
 
+        currentUpdateTime -= Time.deltaTime;
+        if (currentUpdateTime > 0) {
+            return;
+        }
+        currentUpdateTime = updateTimeStep;
+
         if (player == null) return;
 
         // If enough time has passed, transition to patrol state.
-        idleTime -= Time.deltaTime;
+        idleTime -= updateTimeStep;
         if (idleTime <= 0) {
             goblinAI.TransitionToState(goblinAI.GetPatrolState());
         }

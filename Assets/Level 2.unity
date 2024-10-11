@@ -3017,6 +3017,11 @@ Transform:
   - {fileID: 1921982204}
   m_Father: {fileID: 1170151129}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &145371394 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2792987625315573321, guid: 408440ed1ac65324fb3d0cdf1c27a4c0, type: 3}
+  m_PrefabInstance: {fileID: 895262224}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &145388385
 GameObject:
   m_ObjectHideFlags: 0
@@ -6852,6 +6857,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 9947a6e7e8c8208469c1c86e15f5c089, type: 3}
   m_PrefabInstance: {fileID: 350922973}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &351111400 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2792987625315573321, guid: 408440ed1ac65324fb3d0cdf1c27a4c0, type: 3}
+  m_PrefabInstance: {fileID: 829470797}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &353342128
 GameObject:
   m_ObjectHideFlags: 0
@@ -10077,7 +10087,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b70a432b30402e84a802065f383f30bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  soundRadius: 10
+  goblins: []
 --- !u!82 &520821713
 AudioSource:
   m_ObjectHideFlags: 0
@@ -11493,6 +11503,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Door_B
       objectReference: {fileID: 0}
+    - target: {fileID: 7399343605592053698, guid: 8037588ed41431546bcceb66a0e91849, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 212016462502173622, guid: 8037588ed41431546bcceb66a0e91849, type: 3}
     m_RemovedGameObjects: []
@@ -11548,7 +11562,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b70a432b30402e84a802065f383f30bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  soundRadius: 10
+  goblins:
+  - {fileID: 1901965168}
 --- !u!82 &592359823
 AudioSource:
   m_ObjectHideFlags: 0
@@ -13385,6 +13400,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Door_B
       objectReference: {fileID: 0}
+    - target: {fileID: 7399343605592053698, guid: 8037588ed41431546bcceb66a0e91849, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -14836,6 +14855,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Door_B
       objectReference: {fileID: 0}
+    - target: {fileID: 7399343605592053698, guid: 8037588ed41431546bcceb66a0e91849, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 212016462502173622, guid: 8037588ed41431546bcceb66a0e91849, type: 3}
     m_RemovedGameObjects: []
@@ -14987,7 +15010,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b70a432b30402e84a802065f383f30bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  soundRadius: 10
+  goblins: []
 --- !u!208 &758065425
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -16105,6 +16128,38 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2320789299697733672, guid: 8095aea1b5584714e8a5b3626eed903f, type: 3}
+      propertyPath: goblins.Array.size
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 2320789299697733672, guid: 8095aea1b5584714e8a5b3626eed903f, type: 3}
+      propertyPath: goblins.Array.data[0]
+      value: 
+      objectReference: {fileID: 145371394}
+    - target: {fileID: 2320789299697733672, guid: 8095aea1b5584714e8a5b3626eed903f, type: 3}
+      propertyPath: goblins.Array.data[1]
+      value: 
+      objectReference: {fileID: 1873623354}
+    - target: {fileID: 2320789299697733672, guid: 8095aea1b5584714e8a5b3626eed903f, type: 3}
+      propertyPath: goblins.Array.data[2]
+      value: 
+      objectReference: {fileID: 1901965168}
+    - target: {fileID: 2320789299697733672, guid: 8095aea1b5584714e8a5b3626eed903f, type: 3}
+      propertyPath: goblins.Array.data[3]
+      value: 
+      objectReference: {fileID: 1373637430}
+    - target: {fileID: 2320789299697733672, guid: 8095aea1b5584714e8a5b3626eed903f, type: 3}
+      propertyPath: goblins.Array.data[4]
+      value: 
+      objectReference: {fileID: 351111400}
+    - target: {fileID: 2320789299697733672, guid: 8095aea1b5584714e8a5b3626eed903f, type: 3}
+      propertyPath: goblins.Array.data[5]
+      value: 
+      objectReference: {fileID: 840196906}
+    - target: {fileID: 2320789299697733672, guid: 8095aea1b5584714e8a5b3626eed903f, type: 3}
+      propertyPath: goblins.Array.data[6]
+      value: 
+      objectReference: {fileID: 1686024977}
     - target: {fileID: 2934488329236920693, guid: 8095aea1b5584714e8a5b3626eed903f, type: 3}
       propertyPath: m_Name
       value: FPCE
@@ -16151,6 +16206,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4765567072854298104, guid: 8095aea1b5584714e8a5b3626eed903f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5232844320660652962, guid: 8095aea1b5584714e8a5b3626eed903f, type: 3}
+      propertyPath: m_ShowCustomSorter
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -16955,6 +17014,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: c8fcb67cb3d648b4b87d500ece16b15f, type: 3}
   m_PrefabInstance: {fileID: 838624132}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &840196906 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2792987625315573321, guid: 408440ed1ac65324fb3d0cdf1c27a4c0, type: 3}
+  m_PrefabInstance: {fileID: 1918579466}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &840235482
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -17135,6 +17199,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Door_B
       objectReference: {fileID: 0}
+    - target: {fileID: 7399343605592053698, guid: 8037588ed41431546bcceb66a0e91849, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -17189,7 +17257,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b70a432b30402e84a802065f383f30bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  soundRadius: 10
+  goblins: []
 --- !u!82 &841658020
 AudioSource:
   m_ObjectHideFlags: 0
@@ -18351,6 +18419,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Door_B
       objectReference: {fileID: 0}
+    - target: {fileID: 7399343605592053698, guid: 8037588ed41431546bcceb66a0e91849, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -18600,6 +18672,46 @@ PrefabInstance:
       propertyPath: patrolPoints.Array.data[1]
       value: 
       objectReference: {fileID: 446094664}
+    - target: {fileID: 4587549453046407395, guid: 408440ed1ac65324fb3d0cdf1c27a4c0, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.6784
+      objectReference: {fileID: 0}
+    - target: {fileID: 4587549453046407395, guid: 408440ed1ac65324fb3d0cdf1c27a4c0, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.20166
+      objectReference: {fileID: 0}
+    - target: {fileID: 4587549453046407395, guid: 408440ed1ac65324fb3d0cdf1c27a4c0, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.71215
+      objectReference: {fileID: 0}
+    - target: {fileID: 4587549453046407395, guid: 408440ed1ac65324fb3d0cdf1c27a4c0, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.543
+      objectReference: {fileID: 0}
+    - target: {fileID: 4665029120350447133, guid: 408440ed1ac65324fb3d0cdf1c27a4c0, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.34805238
+      objectReference: {fileID: 0}
+    - target: {fileID: 4665029120350447133, guid: 408440ed1ac65324fb3d0cdf1c27a4c0, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.22755
+      objectReference: {fileID: 0}
+    - target: {fileID: 4665029120350447133, guid: 408440ed1ac65324fb3d0cdf1c27a4c0, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.008
+      objectReference: {fileID: 0}
+    - target: {fileID: 4665029120350447133, guid: 408440ed1ac65324fb3d0cdf1c27a4c0, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.471
+      objectReference: {fileID: 0}
+    - target: {fileID: 4665029120350447133, guid: 408440ed1ac65324fb3d0cdf1c27a4c0, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.011
+      objectReference: {fileID: 0}
+    - target: {fileID: 7203919614808959948, guid: 408440ed1ac65324fb3d0cdf1c27a4c0, type: 3}
+      propertyPath: m_Parent
+      value: 
+      objectReference: {fileID: 695664382}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -19397,6 +19509,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Door_B
       objectReference: {fileID: 0}
+    - target: {fileID: 7399343605592053698, guid: 8037588ed41431546bcceb66a0e91849, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 212016462502173622, guid: 8037588ed41431546bcceb66a0e91849, type: 3}
     m_RemovedGameObjects: []
@@ -19572,7 +19688,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b70a432b30402e84a802065f383f30bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  soundRadius: 10
+  goblins: []
 --- !u!114 &927492429
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19585,7 +19701,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b70a432b30402e84a802065f383f30bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  soundRadius: 10
+  goblins:
+  - {fileID: 1373637430}
 --- !u!82 &927492430
 AudioSource:
   m_ObjectHideFlags: 0
@@ -22537,6 +22654,10 @@ PrefabInstance:
     - target: {fileID: 7399343605592053698, guid: 8037588ed41431546bcceb66a0e91849, type: 3}
       propertyPath: m_Name
       value: Door_B
+      objectReference: {fileID: 0}
+    - target: {fileID: 7399343605592053698, guid: 8037588ed41431546bcceb66a0e91849, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -26241,6 +26362,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Door_B
       objectReference: {fileID: 0}
+    - target: {fileID: 7399343605592053698, guid: 8037588ed41431546bcceb66a0e91849, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 212016462502173622, guid: 8037588ed41431546bcceb66a0e91849, type: 3}
     m_RemovedGameObjects: []
@@ -29323,6 +29448,11 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 9947a6e7e8c8208469c1c86e15f5c089, type: 3}
   m_PrefabInstance: {fileID: 1367433901}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1373637430 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2792987625315573321, guid: 408440ed1ac65324fb3d0cdf1c27a4c0, type: 3}
+  m_PrefabInstance: {fileID: 842074325}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1378367861
 PrefabInstance:
@@ -35480,6 +35610,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 91d652779ec7140488b6b8e360497937, type: 3}
   m_PrefabInstance: {fileID: 1683855087}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1686024977 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2792987625315573321, guid: 408440ed1ac65324fb3d0cdf1c27a4c0, type: 3}
+  m_PrefabInstance: {fileID: 493537310}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1687345813
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -37702,7 +37837,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3722586030167620590, guid: 78637a503bee8a749be7c10932320cd7, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 5.776082
+      value: 5.9
       objectReference: {fileID: 0}
     - target: {fileID: 3722586030167620590, guid: 78637a503bee8a749be7c10932320cd7, type: 3}
       propertyPath: m_LocalPosition.z
@@ -39465,6 +39600,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: c8fcb67cb3d648b4b87d500ece16b15f, type: 3}
   m_PrefabInstance: {fileID: 1873545037}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1873623354 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2792987625315573321, guid: 408440ed1ac65324fb3d0cdf1c27a4c0, type: 3}
+  m_PrefabInstance: {fileID: 1087944298}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1876422141
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -39774,6 +39914,11 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 9947a6e7e8c8208469c1c86e15f5c089, type: 3}
   m_PrefabInstance: {fileID: 1893996992}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1901965168 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2792987625315573321, guid: 408440ed1ac65324fb3d0cdf1c27a4c0, type: 3}
+  m_PrefabInstance: {fileID: 1614016789}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1903360042
 PrefabInstance:

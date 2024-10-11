@@ -5,6 +5,7 @@ using UnityEngine.AI;
 
 public class SearchState : BaseEnemyState
 {
+    private float currentUpdateTime;
     private float waitDuration;
     private float currentWaitTime;
 
@@ -35,6 +36,12 @@ public class SearchState : BaseEnemyState
     public override void UpdateState() {
         goblinAI.Search();
 
+        currentUpdateTime -= Time.deltaTime;
+        if (currentUpdateTime > 0) {
+            return;
+        }
+        currentUpdateTime = updateTimeStep;
+
         // y is set to 0 so that the search point can be at any height.
         Vector3 destinationPos = new Vector3(navMeshAgent.destination.x, 0, navMeshAgent.destination.z);
         Vector3 currentPos = new Vector3(goblinAI.transform.position.x, 0, goblinAI.transform.position.z);
@@ -42,14 +49,14 @@ public class SearchState : BaseEnemyState
 
         // If the enemy can see the player, and some time has passed, transition to chase state.
         if (player != null && goblinAI.CanSeePlayer()) {
-            currentWaitTime -= Time.deltaTime;
+            currentWaitTime -= updateTimeStep;
             if (currentWaitTime <= 0) {
                 goblinAI.TransitionToState(goblinAI.GetChaseState());
             }
         }
         // Else if the enemy cannot see the player, 
         else if (!goblinAI.CanSeePlayer()) {
-            currentSearchTime -= Time.deltaTime;
+            currentSearchTime -= updateTimeStep;
 
             // If the enemy has reached its destination, transition to idle state.
             if (hasReachedSoundHeardPoint) {
@@ -61,7 +68,6 @@ public class SearchState : BaseEnemyState
             }
 
             // Reset wait time.
-            // This might be messing with the way the raycast is implemented, so remove this temporarily.
             // currentWaitTime = waitDuration;
         }
     }

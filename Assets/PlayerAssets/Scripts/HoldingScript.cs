@@ -83,7 +83,7 @@ public class HoldingScript : MonoBehaviour
     void PickUpObject(GameObject pickUpObj)
     {
         // If the object cannot be held, do not hold
-        HoldStatus holdStatus = pickUpObj.transform.root.GetComponent<HoldStatus>();
+        HoldStatus holdStatus = pickUpObj.GetComponentInParent<HoldStatus>();
         if (holdStatus != null && !holdStatus.CanBeHeld) {
             return;
         }

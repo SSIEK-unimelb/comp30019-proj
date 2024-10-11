@@ -5,6 +5,7 @@ using UnityEngine.AI;
 
 public class ChaseState : BaseEnemyState
 {
+    private float currentUpdateTime;
     private float chaseTime;
     private float chaseDuration;
     private bool firstTime = true;
@@ -36,6 +37,12 @@ public class ChaseState : BaseEnemyState
     public override void UpdateState() {
         goblinAI.Chase();
 
+        currentUpdateTime -= Time.deltaTime;
+        if (currentUpdateTime > 0) {
+            return;
+        }
+        currentUpdateTime = updateTimeStep;
+
         // y is set to 0 to check for horizontal distance only.
         Vector3 enemyPos = new Vector3(goblinAI.transform.position.x, 0f, goblinAI.transform.position.z);
         Vector3 playerPos = new Vector3(player.transform.position.x, 0f, player.transform.position.z);
@@ -52,7 +59,7 @@ public class ChaseState : BaseEnemyState
         }
         // Else if the player has exited the enemy's aggro range for chaseTime, transition to idle state.
         else if (outsideChaseRange) {
-            chaseTime -= Time.deltaTime;
+            chaseTime -= updateTimeStep;
             if (chaseTime <= 0) {
                 goblinAI.TransitionToState(goblinAI.GetIdleState());
             }

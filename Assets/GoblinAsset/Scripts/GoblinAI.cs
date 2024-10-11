@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -15,6 +16,8 @@ public class GoblinAI : MonoBehaviour
     private Animator animator;
     private AudioSource goblinSounds;
     private AudioSource soundEffects;
+
+    [SerializeField] private float updateTimeStep = 0.2f;
 
     [Header("Idle")]
     [SerializeField] private float idleDuration = 5f;
@@ -54,6 +57,7 @@ public class GoblinAI : MonoBehaviour
     private bool isAttacking = false;
     [SerializeField] private AnimationClip attackAnimation;
     private float attackAnimationLength;
+    private float currentAttackAnimationLength;
     [SerializeField] private AnimationClip idleAttackAnimation;
     [SerializeField] private AudioClip attackAudio;
 
@@ -83,6 +87,7 @@ public class GoblinAI : MonoBehaviour
     private ChaseState chaseState;
     private AttackState attackState;
 
+    public float GetUpdateTimeStep() { return updateTimeStep; }
     public float GetIdleDuration() { return idleDuration; }
     public float GetWalkSpeed() { return walkSpeed; }
     public Transform GetCurrentPatrolPoint() { return currentPatrolPoint; }
@@ -138,6 +143,16 @@ public class GoblinAI : MonoBehaviour
         currentState.EnterState();
 
         currentPatrolPoint = patrolPoints[patrolIndex];
+
+        // Get the length of the attack animation
+        // Get the RuntimeAnimatorController from the Animator
+        RuntimeAnimatorController controller = animator.runtimeAnimatorController;
+        // Iterate through all AnimationClips in the controller
+        foreach (AnimationClip clip in controller.animationClips) {
+            if (clip.name == attackAnimation.name) {
+                attackAnimationLength = clip.length;
+            }
+        }
     }
 
     void Update() {
@@ -192,8 +207,8 @@ public class GoblinAI : MonoBehaviour
 
     public void Attack() {
         if (isAttacking) {
-            attackAnimationLength -= Time.deltaTime;
-            if (attackAnimationLength <= 0) {
+            currentAttackAnimationLength -= Time.deltaTime;
+            if (currentAttackAnimationLength <= 0) {
                 isAttacking = false;
             }
         } else {
@@ -211,16 +226,7 @@ public class GoblinAI : MonoBehaviour
                 goblinSounds.PlayOneShot(attackAudio);
 
                 isAttacking = true;
-
-                // Get the length of the attack animation
-                // Get the RuntimeAnimatorController from the Animator
-                RuntimeAnimatorController controller = animator.runtimeAnimatorController;
-                // Iterate through all AnimationClips in the controller
-                foreach (AnimationClip clip in controller.animationClips) {
-                    if (clip.name == attackAnimation.name) {
-                        attackAnimationLength = clip.length;
-                    }
-                }
+                currentAttackAnimationLength = attackAnimationLength;
             }
         }
     }

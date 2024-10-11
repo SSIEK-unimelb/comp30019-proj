@@ -64,7 +64,8 @@ public class SacrificeCircle : MonoBehaviour
             currentSacrificeTime += Time.deltaTime;
             if (currentSacrificeTime >= sacrificeDuration) {
                 ParentReference parentReference = enemySacrifice.GetComponentInParent<ParentReference>();
-                Destroy(parentReference.gameObject);
+                Debug.Log("The object to be destroyed is: " + parentReference.getTransform().parent.gameObject);
+                Destroy(parentReference.getTransform().parent.gameObject);
                 Destroy(gameObject);
             }
 

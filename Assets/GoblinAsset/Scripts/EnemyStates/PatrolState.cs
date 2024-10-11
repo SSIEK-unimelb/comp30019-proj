@@ -6,6 +6,8 @@ using UnityEngine.Diagnostics;
 
 public class PatrolState : BaseEnemyState
 {
+    private float currentUpdateTime;
+    
     public PatrolState(GoblinAI goblinAI, NavMeshAgent navMeshAgent, GameObject player) : 
                         base(goblinAI, navMeshAgent, player) { }
 
@@ -20,6 +22,12 @@ public class PatrolState : BaseEnemyState
 
     public override void UpdateState() {
         goblinAI.Patrol();
+
+        currentUpdateTime -= Time.deltaTime;
+        if (currentUpdateTime > 0) {
+            return;
+        }
+        currentUpdateTime = updateTimeStep;
 
         // y is set to 0 so that the patrol point can be at any height.
         Vector3 destinationPos = new Vector3(navMeshAgent.destination.x, 0, navMeshAgent.destination.z);
