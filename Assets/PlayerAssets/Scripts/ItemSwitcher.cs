@@ -14,6 +14,8 @@ public class ItemSwitcher : MonoBehaviour
     public bool[] isUnlocked;
     public bool canSwitch = true;
 
+    [SerializeField] private InventoryIconController inventoryIconController;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -34,8 +36,8 @@ public class ItemSwitcher : MonoBehaviour
     void Update()
     {
         // these can be turned off until needed
-        unlock(2);
-        unlock(3);
+        //unlock(2);
+        //unlock(3);
 
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
@@ -47,18 +49,28 @@ public class ItemSwitcher : MonoBehaviour
         }
         else if (Input.GetKeyDown(KeyCode.Alpha3))
         {
-            SwitchItem(2);
+            //todo remove this : only for testing
+            unlock(2);
+            if (isUnlocked[2])
+            {
+                SwitchItem(2);
+            }
         }
         else if (Input.GetKeyDown(KeyCode.Alpha4))
         {
-            SwitchItem(3);
+            unlock(3);
+
+            if (isUnlocked[3])
+            {
+                SwitchItem(3);
+            }
         }
         else if (Input.GetAxis("Mouse ScrollWheel") > 0f) {
-            SwitchItem(currentItemIndex + 1);
+            SwitchItem(currentItemIndex - 1);
         }
         else if (Input.GetAxis("Mouse ScrollWheel") < 0f)
         {
-            SwitchItem(currentItemIndex - 1);
+            SwitchItem(currentItemIndex + 1);
         }
         UpdateUI();
     }
@@ -85,9 +97,12 @@ public class ItemSwitcher : MonoBehaviour
             Destroy(currentItem);
         }
 
+        inventoryIconController.Highlight(currentItemIndex, false);
         currentItem = Instantiate(itemPrefabs[itemIndex], transform.position, transform.rotation, transform);
         
         currentItemIndex = itemIndex; // update current item
+        inventoryIconController.Highlight(currentItemIndex, true);
+
     }
 
     public void SwitchToHoldArms()
@@ -106,6 +121,8 @@ public class ItemSwitcher : MonoBehaviour
     public void unlock(int itemIndex) {
         isUnlocked[itemIndex] = true;
         lastUnlocked = itemIndex;
+
+        inventoryIconController.SetIcon(itemIndex, true);
     }
 
     public void UpdateUI()

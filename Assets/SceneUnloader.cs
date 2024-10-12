@@ -13,7 +13,6 @@ public class SceneUnloader : MonoBehaviour
             // unload scenes
             foreach (var scene in ScenesToUnload)
             {
-                print(scene.name);
                 scene.SetActive(false);
             }
         }
