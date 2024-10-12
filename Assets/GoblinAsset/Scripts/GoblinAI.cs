@@ -268,8 +268,6 @@ public class GoblinAI : MonoBehaviour
         // To start ragdoll, need a rigidbody.
         gameObject.AddComponent(typeof(Rigidbody));
         gameObject.GetComponent<Rigidbody>().isKinematic = true;
-        // For collision sounds.
-        objectSoundCollision.AssignRigidbodyOfGoblins();
 
         ResetAnimationTriggers();
         Destroy(animator);

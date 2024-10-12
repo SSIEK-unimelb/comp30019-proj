@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,7 +12,9 @@ public class ObjectSoundCollision : MonoBehaviour
     private float velocityThreshold = 0.5f;
 
     private bool canCollide = false;
-    private float ignoreCollisionsDuration = 2f;
+    private float ignoreCollisionsDurationAtStart = 2f;
+    private float cooldownDuration = 0.5f;
+    private float currentCooldownTime = 0f;
 
     private void Start() {
         soundManager = GameObject.Find("SoundManager").GetComponent<SoundManager>();
@@ -20,15 +23,13 @@ public class ObjectSoundCollision : MonoBehaviour
 
     private void Update() {
         if (!canCollide) {
-            ignoreCollisionsDuration -=  Time.deltaTime;
-            if (ignoreCollisionsDuration <= 0) {
+            ignoreCollisionsDurationAtStart -=  Time.deltaTime;
+            if (ignoreCollisionsDurationAtStart <= 0) {
                 canCollide = true;
             }
         }
-    }
 
-    public void AssignRigidbodyOfGoblins() {
-        _rigidbody = GetComponent<Rigidbody>();
+        currentCooldownTime -= Time.deltaTime;
     }
 
     private void OnCollisionEnter(Collision collision) {
@@ -36,13 +37,36 @@ public class ObjectSoundCollision : MonoBehaviour
             return;
         }
 
+        if (currentCooldownTime > 0) {
+            return;
+        }
+
+        // So that the goblin does not collide with itself.
+        if (gameObject.layer == LayerMask.NameToLayer("Enemy")) {
+            if (collision.gameObject.layer == LayerMask.NameToLayer("Enemy")) {
+                // Debug.Log("Cannot collide with oneself");
+                return;
+            }
+
+            // If alive, goblin makes no sound.
+            HoldStatus holdStatus = gameObject.GetComponentInParent<HoldStatus>();
+            if (holdStatus != null) {
+                if (!holdStatus.CanBeHeld) {
+                    return;
+                }
+            }
+        }
+
         if (_rigidbody.velocity.magnitude < velocityThreshold) {
             return;
         }
 
-        soundManager.PlaySoundEffect(collideSound, 1.0f);
+        soundManager.PlaySoundEffect(collideSound, 0.6f);
 
-        Debug.Log("This object made sound: " + gameObject);
+        // Now that a collision sound has played, cooldown.
+        currentCooldownTime = cooldownDuration;
+
+        Debug.Log("This object made sound: " + gameObject + " due to colliding with: " + collision.transform.gameObject);
         Debug.Log("This object's velocity is: " + _rigidbody.velocity.magnitude);
     }
 }

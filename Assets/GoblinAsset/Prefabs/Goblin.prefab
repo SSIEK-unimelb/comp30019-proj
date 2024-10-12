@@ -1296,6 +1296,7 @@ GameObject:
   - component: {fileID: 5148371945002785402}
   - component: {fileID: 8315871593080671199}
   - component: {fileID: 6352548314010363830}
+  - component: {fileID: 4962144975479654308}
   m_Layer: 10
   m_Name: mixamorig:Hips
   m_TagString: HoldableItem
@@ -1384,6 +1385,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Parent: {fileID: 7050716249734587495}
+--- !u!114 &4962144975479654308
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2668037806783134994}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0cdc74096a8e6f4c95ab09e7b5c26f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  collideSound: {fileID: 8300000, guid: cdfae31f0b58546d3ac1015effc38f01, type: 3}
 --- !u!1 &2792987625315573321
 GameObject:
   m_ObjectHideFlags: 0
@@ -1399,7 +1413,6 @@ GameObject:
   - component: {fileID: 6844532812586888743}
   - component: {fileID: 759455478297755203}
   - component: {fileID: 7203919614808959948}
-  - component: {fileID: 7801022394991363782}
   m_Layer: 10
   m_Name: Goblin
   m_TagString: HoldableItem
@@ -1635,19 +1648,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Parent: {fileID: 3281294395484095731}
---- !u!114 &7801022394991363782
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2792987625315573321}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c0cdc74096a8e6f4c95ab09e7b5c26f4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  collideSound: {fileID: 8300000, guid: cdfae31f0b58546d3ac1015effc38f01, type: 3}
 --- !u!1 &2890436680457347422
 GameObject:
   m_ObjectHideFlags: 0

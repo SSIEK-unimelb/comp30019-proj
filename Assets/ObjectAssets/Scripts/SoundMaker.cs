@@ -9,6 +9,7 @@ public class SoundMaker : MonoBehaviour
             if (goblin != null) {
                 GoblinAI goblinAI = goblin.GetComponent<GoblinAI>();
                 if (goblinAI) {
+                    Debug.Log("Calling goblin CanHearSound");
                     goblinAI.CanHearSound(transform.position);
                 }
             }

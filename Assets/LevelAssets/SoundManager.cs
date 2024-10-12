@@ -63,12 +63,14 @@ public class SoundManager : MonoBehaviour
         isChased = true;
         personBreathingAudioSource.clip = breathingChase;
         personBreathingAudioSource.Play();
+        heartBeatAudioSource.pitch = 1.5f;
     }
 
     public void OnExitChase() {
         isChased = false;
         personBreathingAudioSource.clip = breathingNoChase;
         personBreathingAudioSource.Play();
+        heartBeatAudioSource.pitch = 1.0f;
     }
 
     public void DecreaseHeartBeatAndBreathing() {
