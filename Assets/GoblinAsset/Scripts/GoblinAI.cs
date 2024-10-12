@@ -17,6 +17,7 @@ public class GoblinAI : MonoBehaviour
     private Animator animator;
     private AudioSource goblinSounds;
     private SoundManager soundManager;
+    private ObjectSoundCollision objectSoundCollision;
 
     [SerializeField] private float updateTimeStep = 0.2f;
 
@@ -132,6 +133,7 @@ public class GoblinAI : MonoBehaviour
         animator = GetComponent<Animator>();
         goblinSounds = GetComponent<AudioSource>();
         soundManager = GameObject.Find("SoundManager").GetComponent<SoundManager>();
+        objectSoundCollision = GetComponent<ObjectSoundCollision>();
 
         questionMark = transform.Find("Question_Mark").gameObject;
         exclamationMark = transform.Find("Exclamation_Mark").gameObject;
@@ -261,6 +263,8 @@ public class GoblinAI : MonoBehaviour
         // To start ragdoll, need a rigidbody.
         gameObject.AddComponent(typeof(Rigidbody));
         gameObject.GetComponent<Rigidbody>().isKinematic = true;
+        // For collision sounds.
+        objectSoundCollision.AssignRigidbodyOfGoblins();
 
         ResetAnimationTriggers();
         Destroy(animator);

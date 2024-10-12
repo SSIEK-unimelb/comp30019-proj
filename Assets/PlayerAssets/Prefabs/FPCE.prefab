@@ -540,6 +540,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a46f8799cf0b5bd4091a26f6d32984bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pickUpSound: {fileID: 8300000, guid: 7b38b1b758f207b48a4a78cd0b7b94fa, type: 3}
+  dropSound: {fileID: 8300000, guid: 7b38b1b758f207b48a4a78cd0b7b94fa, type: 3}
+  throwSound: {fileID: 8300000, guid: 076c674d9627d49d7bc9428ecb754613, type: 3}
   player: {fileID: 2934488329236920693}
   holdPos: {fileID: 3172919568130031327}
   throwForce: 1500
