@@ -22,6 +22,16 @@ public class OnAttacked : MonoBehaviour
                 //print("Should die");
                 soundManager.PlaySoundEffect(hitSound, 0.3f);
                 // Kill parent goblin.
+                // check : the gameobject is a knife AND the knife is in stabbing animation
+                StabbingStatus status = collider.gameObject.GetComponent<StabbingStatus>();
+                if (status != null)
+                {
+                    // this is a knife
+                    if (!status.isStabbing)
+                    {
+                        return;
+                    }
+                }
                 goblinAI.Die();
                 Destroy(gameObject);
             }

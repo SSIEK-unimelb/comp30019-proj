@@ -94,8 +94,8 @@ MonoBehaviour:
   jumpKey: 32
   crouchKey: 306
   interactKey: 102
-  lookSpeedX: 2
-  lookSpeedY: 2
+  lookSpeedX: 1
+  lookSpeedY: 1
   aboveLookClamp: 85
   belowLookClamp: 85
   jumpStrength: 7
@@ -233,7 +233,7 @@ Transform:
   m_GameObject: {fileID: 4236747850156965892}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 2}
+  m_LocalPosition: {x: 0, y: 0, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -544,7 +544,7 @@ MonoBehaviour:
   player: {fileID: 2934488329236920693}
   holdPos: {fileID: 3172919568130031327}
   throwForce: 1500
-  pickUpRange: 6
+  pickUpRange: 5
   pickupForce: 150
   pickupTag: HoldableItem
   interactRayIntersect: {x: 0.5, y: 0.5, z: 0}

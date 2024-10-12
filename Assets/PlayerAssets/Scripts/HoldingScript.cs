@@ -131,6 +131,8 @@ public class HoldingScript : MonoBehaviour
     void DropObject()
     {
         soundManager.PlaySoundEffect(dropSound, 1.0f);
+        heldObj.SetActive(false);
+        heldObj.SetActive(true);
 
         //re-enable collision with player
         Physics.IgnoreCollision(heldObj.GetComponent<Collider>(), player.GetComponent<Collider>(), false);
