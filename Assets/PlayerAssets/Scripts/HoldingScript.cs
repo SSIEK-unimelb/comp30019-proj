@@ -8,6 +8,11 @@ using UnityEngine;
 
 public class HoldingScript : MonoBehaviour
 {
+    private SoundManager soundManager;
+    [SerializeField] private AudioClip pickUpSound;
+    [SerializeField] private AudioClip dropSound;
+    [SerializeField] private AudioClip throwSound;
+
     public GameObject player;
     public Transform holdPos;
     
@@ -31,6 +36,7 @@ public class HoldingScript : MonoBehaviour
         LayerNumber = LayerMask.NameToLayer("Holdable"); 
         playerCamera = GetComponent<Camera>();
         itemSwitcher = GetComponent<ItemSwitcher>();
+        soundManager = GameObject.Find("SoundManager").GetComponent<SoundManager>();
     }
     void Update()
     {
@@ -97,7 +103,7 @@ public class HoldingScript : MonoBehaviour
         }
         if (pickedObj.GetComponent<Rigidbody>()) //make sure the object has a RigidBody
         {
-
+            soundManager.PlaySoundEffect(pickUpSound, 1.0f);
 
             heldObj = pickedObj; //assign heldObj to the object that was hit by the raycast (no longer == null)
             if (heldObj.GetComponentInParent<HoldStatus>()) heldObj.GetComponentInParent<HoldStatus>().IsHeld = true;
@@ -117,6 +123,8 @@ public class HoldingScript : MonoBehaviour
     }
     void DropObject()
     {
+        soundManager.PlaySoundEffect(dropSound, 1.0f);
+
         //re-enable collision with player
         Physics.IgnoreCollision(heldObj.GetComponent<Collider>(), player.GetComponent<Collider>(), false);
         heldObj.layer = 0; //object assigned back to default layer
@@ -158,6 +166,8 @@ public class HoldingScript : MonoBehaviour
         //  print(parentObjRb.name);
         //}
         //}
+        soundManager.PlaySoundEffect(throwSound, 1.0f);
+
         heldObjRb.useGravity = true;
         heldObjRb.drag = 1;
         heldObjRb.constraints = RigidbodyConstraints.None;

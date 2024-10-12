@@ -1131,6 +1131,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d145478cd53061a4a9eb5bba8b175adb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stabSound: {fileID: 0}
   prefabParent: {fileID: 3040755595222037584}
 --- !u!114 &8675548994297338370
 MonoBehaviour:
@@ -1144,6 +1145,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 698bf6351bfdc214c9eb909b5008bc12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bowFire: {fileID: 8300000, guid: 07cc499b4e48b544aadf3af4b86365bd, type: 3}
   arrowPrefab: {fileID: 2422282626406373295, guid: 50f737d85485bc340ad60fc0d993deec, type: 3}
   arrowSpeed: 100
 --- !u!95 &4792423283901267444

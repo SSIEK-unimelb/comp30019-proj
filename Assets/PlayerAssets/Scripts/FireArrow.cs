@@ -4,12 +4,16 @@ using UnityEngine;
 
 public class FireArrow : MonoBehaviour
 {
+    private SoundManager soundManager;
+    [SerializeField] private AudioClip bowFire;
+
     [SerializeField] GameObject arrowPrefab;
     [SerializeField] float arrowSpeed = 100f;
     private AmmoManager ammoManager;
     void Start()
     {
         GetAmmoManagerRef();
+        soundManager = GameObject.Find("SoundManager").GetComponent<SoundManager>();
     }
     public void Fire()
     {
@@ -22,6 +26,8 @@ public class FireArrow : MonoBehaviour
                 rb.velocity = transform.forward * arrowSpeed;
                 // decrease ammo by one
                 ammoManager.ChangeAmmo(-1);
+
+                soundManager.PlaySoundEffect(bowFire, 0.2f);
             }
         }
         else

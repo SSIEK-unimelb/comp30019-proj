@@ -150,6 +150,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d145478cd53061a4a9eb5bba8b175adb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stabSound: {fileID: 0}
+  activateEyeSound: {fileID: 8300000, guid: 5dc0d27bde15c4bb7bafcde9f394bc12, type: 3}
+  deactivateEyeSound: {fileID: 8300000, guid: 945068035d6f84ee2bd2da8e08e7b375, type: 3}
   prefabParent: {fileID: 0}
 --- !u!114 &9223353321758844902
 MonoBehaviour:

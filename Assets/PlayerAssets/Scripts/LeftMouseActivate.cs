@@ -10,10 +10,15 @@ public class LeftMouseActivate : MonoBehaviour
     private HoldingScript holdScript;
     private Animator animator;
     private ItemSwitcher itemSwitcher;
+    private SoundManager soundManager;
+    [SerializeField] private AudioClip stabSound;
+    [SerializeField] private AudioClip activateEyeSound;
+    [SerializeField] private AudioClip deactivateEyeSound;
 
 
     private EyeScript eyeController;
     private bool isThrowingEye;
+    private bool isActivated = false;
     private EyeScript EyeScript;
 
     [SerializeField] Transform prefabParent;
@@ -26,6 +31,8 @@ public class LeftMouseActivate : MonoBehaviour
         itemSwitcher = player.GetComponentInChildren<ItemSwitcher>();
         eyeController = player.GetComponentInChildren<EyeScript>();
         isThrowingEye = false;
+
+        soundManager = GameObject.Find("SoundManager").GetComponent<SoundManager>();
     }
 
     // Update is called once per frame
@@ -35,6 +42,15 @@ public class LeftMouseActivate : MonoBehaviour
             // Switch cam
             fpc.toggleCamera();
             EyeScript.ActivateEye();
+
+            if (!isActivated) {
+                soundManager.PlaySoundEffect(activateEyeSound, 0.2f);
+                isActivated = true;
+            } else {
+                soundManager.PlaySoundEffect(deactivateEyeSound, 0.2f);
+                isActivated = false;
+            }
+
             // Reinstantiate eye arm prefab if done throwing
             if (!EyeScript.isEyeActive())
             {
@@ -67,6 +83,8 @@ public class LeftMouseActivate : MonoBehaviour
                     
                     animator.SetTrigger("doStabAnim");
                     //animator.Play("LeftClick");
+
+                    soundManager.PlaySoundEffect(stabSound, 0.2f);
                 }
             }
             else if (weaponType.currentWeapon == WeaponType.Weapon.Crossbow)
@@ -88,7 +106,7 @@ public class LeftMouseActivate : MonoBehaviour
                     transform.parent = null;
                     prefabParent = transform.parent;
                     isThrowingEye = true;
-                    EyeScript = transform.GetComponent<EyeScript>();    
+                    EyeScript = transform.GetComponent<EyeScript>();
                 }
             }
 

@@ -78,6 +78,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98fdb23c56a378442819848c76335f30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  jumpAudio: {fileID: 8300000, guid: bc7ef992cb4fe49a7855e3b508a0584c, type: 3}
+  landAudio: {fileID: 8300000, guid: 8dfc580618850428e904fc73c87a36db, type: 3}
   InteractibleLayer: 6
   walkSpeed: 4
   sprintSpeed: 8
@@ -155,6 +157,18 @@ MonoBehaviour:
       - m_Target: {fileID: 357145881235538395}
         m_TargetAssemblyTypeName: OnDeath, Assembly-CSharp
         m_MethodName: StartDeathAnimation
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
+        m_MethodName: DecreaseHeartBeatAndBreathing
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

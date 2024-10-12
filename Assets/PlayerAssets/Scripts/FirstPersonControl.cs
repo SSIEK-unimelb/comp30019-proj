@@ -11,6 +11,10 @@ using UnityEngine;
 
 public class FirstPersonControl : MonoBehaviour
 {
+    private SoundManager soundManager;
+    [SerializeField] private AudioClip jumpAudio;
+    [SerializeField] private AudioClip landAudio;
+
     public bool CanMove { get; private set; } = true;
     [SerializeField] private int InteractibleLayer = 6;
     private bool isSprinting => canSprint && Input.GetKey(sprintKey) && !holder.isHolding();
@@ -18,16 +22,16 @@ public class FirstPersonControl : MonoBehaviour
     private bool shouldJump => characterController.isGrounded && Input.GetKeyDown(jumpKey) && !holder.isHolding();
     private bool shouldCrouch => !isInCrouchAnimation && (canMidairCrouch? true : characterController.isGrounded)  && Input.GetKeyDown(crouchKey);
 
+    private SoundMaker soundMaker;
+    private float soundMakerInterval = 0.2f;
+    private float currentSoundMakerTime = 0.2f;
+    private bool playerMadeSound = false;
 
     [Header("Movement")]
     [SerializeField] private float walkSpeed = 4.0f;
     [SerializeField] private float sprintSpeed = 8.0f;
     [SerializeField] private float crouchSpeed = 2.0f;
     private float currentSpeed;
-    private SoundMaker soundMaker;
-    private float soundMakerInterval = 0.2f;
-    private float currentSoundMakerTime = 0.2f;
-    
 
     [Header("Movement Options")]
     [SerializeField] private bool canSprint = true;
@@ -114,6 +118,8 @@ public class FirstPersonControl : MonoBehaviour
 
         defaultYPos = playerCamera.transform.localPosition.y;
         itemSwitcher = GetComponentInChildren<ItemSwitcher>();
+
+        soundManager = GameObject.Find("SoundManager").GetComponent<SoundManager>();
     }
     void Update()
     {
@@ -188,6 +194,7 @@ public class FirstPersonControl : MonoBehaviour
     {
         if (shouldJump) {
             moveDir.y = jumpStrength;
+            soundManager.PlaySoundEffect(jumpAudio, 1.0f);
         }
     }
 
@@ -259,6 +266,13 @@ public class FirstPersonControl : MonoBehaviour
     }
 
     public void MakeSound() {
+        // If the player has landed after jumping or falling.
+        if (hasLanded) {
+            wasInAir = false;
+            playerMadeSound = true;
+            soundManager.PlaySoundEffect(landAudio, 1.0f);
+        }
+
         // Do not check this every frame.
         currentSoundMakerTime -= Time.deltaTime;
         if (currentSoundMakerTime > 0) return;
@@ -270,8 +284,8 @@ public class FirstPersonControl : MonoBehaviour
         }
 
         // If the player has landed after jumping or falling.
-        if (hasLanded) {
-            wasInAir = false;
+        if (playerMadeSound) {
+            playerMadeSound = false;
             soundMaker.MakeSound();
         }
     }
