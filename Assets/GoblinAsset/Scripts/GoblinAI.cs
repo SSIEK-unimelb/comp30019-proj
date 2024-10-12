@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Events;
 
 public class GoblinAI : MonoBehaviour
 {
@@ -15,7 +16,7 @@ public class GoblinAI : MonoBehaviour
     private NavMeshAgent navMeshAgent;
     private Animator animator;
     private AudioSource goblinSounds;
-    private AudioSource soundEffects;
+    private SoundManager soundManager;
 
     [SerializeField] private float updateTimeStep = 0.2f;
 
@@ -111,8 +112,8 @@ public class GoblinAI : MonoBehaviour
     public AudioSource GetGoblinSounds() { return goblinSounds; }
     public AudioClip GetWalkAudio() { return walkAudio; }
     public AudioClip GetChaseAudio() { return chaseAudio; }
-    public AudioSource GetSoundEffects() { return soundEffects; }
     public AudioClip GetDiscoverAudio() { return discoverAudio; }
+    public SoundManager GetSoundManager() { return soundManager; }
 
     public GameObject GetQuestionMark() { return questionMark; }
     public GameObject GetExclamationMark() { return exclamationMark; }
@@ -130,7 +131,7 @@ public class GoblinAI : MonoBehaviour
         navMeshAgent.updateRotation = false;
         animator = GetComponent<Animator>();
         goblinSounds = GetComponent<AudioSource>();
-        soundEffects = gameObject.AddComponent<AudioSource>();
+        soundManager = GameObject.Find("SoundManager").GetComponent<SoundManager>();
 
         questionMark = transform.Find("Question_Mark").gameObject;
         exclamationMark = transform.Find("Exclamation_Mark").gameObject;
@@ -253,7 +254,6 @@ public class GoblinAI : MonoBehaviour
 
         // Destroy the audiosources
         Destroy(goblinSounds);
-        Destroy(soundEffects);
 
         // Can now be held.
         GetComponent<HoldStatus>().CanBeHeld = true;
@@ -267,11 +267,6 @@ public class GoblinAI : MonoBehaviour
 
         // Destroy this script.
         Destroy(this);
-    }
-
-    public void Kill() {
-        ResetAnimationTriggers();
-        // anim.SetTrigger(killAnimation.name);
     }
 
     // Set the next patrol point. If the last patrol point was reached, reset.

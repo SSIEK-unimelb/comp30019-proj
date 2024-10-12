@@ -13356,6 +13356,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1985501920}
     m_Modifications:
+    - target: {fileID: 212016462502173622, guid: 8037588ed41431546bcceb66a0e91849, type: 3}
+      propertyPath: doorSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 310560a97665a4abb83ef914655c8711, type: 3}
     - target: {fileID: 540058568346195984, guid: 8037588ed41431546bcceb66a0e91849, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1.8
@@ -16120,18 +16124,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 502083925314075405, guid: 8095aea1b5584714e8a5b3626eed903f, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 809526179312245464, guid: 8095aea1b5584714e8a5b3626eed903f, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2320789299697733672, guid: 8095aea1b5584714e8a5b3626eed903f, type: 3}
-      propertyPath: goblins.Array.size
-      value: 7
-      objectReference: {fileID: 0}
     - target: {fileID: 2320789299697733672, guid: 8095aea1b5584714e8a5b3626eed903f, type: 3}
       propertyPath: goblins.Array.data[0]
       value: 
@@ -16163,10 +16155,6 @@ PrefabInstance:
     - target: {fileID: 2934488329236920693, guid: 8095aea1b5584714e8a5b3626eed903f, type: 3}
       propertyPath: m_Name
       value: FPCE
-      objectReference: {fileID: 0}
-    - target: {fileID: 2934488329236920693, guid: 8095aea1b5584714e8a5b3626eed903f, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4765567072854298104, guid: 8095aea1b5584714e8a5b3626eed903f, type: 3}
       propertyPath: m_LocalPosition.x
@@ -16208,9 +16196,33 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5232844320660652962, guid: 8095aea1b5584714e8a5b3626eed903f, type: 3}
-      propertyPath: m_ShowCustomSorter
-      value: 0
+    - target: {fileID: 8905586473032576132, guid: 8095aea1b5584714e8a5b3626eed903f, type: 3}
+      propertyPath: onDeath.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8905586473032576132, guid: 8095aea1b5584714e8a5b3626eed903f, type: 3}
+      propertyPath: onDeath.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8905586473032576132, guid: 8095aea1b5584714e8a5b3626eed903f, type: 3}
+      propertyPath: onDeath.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 845427531}
+    - target: {fileID: 8905586473032576132, guid: 8095aea1b5584714e8a5b3626eed903f, type: 3}
+      propertyPath: onDeath.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8905586473032576132, guid: 8095aea1b5584714e8a5b3626eed903f, type: 3}
+      propertyPath: onDeath.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: DecreaseHeartBeatAndBreathing
+      objectReference: {fileID: 0}
+    - target: {fileID: 8905586473032576132, guid: 8095aea1b5584714e8a5b3626eed903f, type: 3}
+      propertyPath: onDeath.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: SoundManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 8905586473032576132, guid: 8095aea1b5584714e8a5b3626eed903f, type: 3}
+      propertyPath: onDeath.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -17152,6 +17164,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 276703202}
     m_Modifications:
     - target: {fileID: 212016462502173622, guid: 8037588ed41431546bcceb66a0e91849, type: 3}
+      propertyPath: doorSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 310560a97665a4abb83ef914655c8711, type: 3}
+    - target: {fileID: 212016462502173622, guid: 8037588ed41431546bcceb66a0e91849, type: 3}
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
@@ -17560,6 +17576,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 36f258ea05b6e8644ae91a5b98eba017, type: 3}
   m_PrefabInstance: {fileID: 845334938}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &845427531 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 263992444998553084, guid: 778ed206023c99e43a038702e3a8f624, type: 3}
+  m_PrefabInstance: {fileID: 1668776071}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1969883105c99946bed9cb8336d85a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &856145349
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18355,6 +18382,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 325419186}
     m_Modifications:
+    - target: {fileID: 212016462502173622, guid: 8037588ed41431546bcceb66a0e91849, type: 3}
+      propertyPath: doorSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 310560a97665a4abb83ef914655c8711, type: 3}
     - target: {fileID: 540058568346195984, guid: 8037588ed41431546bcceb66a0e91849, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1.76
@@ -18672,6 +18703,10 @@ PrefabInstance:
       propertyPath: patrolPoints.Array.data[1]
       value: 
       objectReference: {fileID: 446094664}
+    - target: {fileID: 6844532812586888743, guid: 408440ed1ac65324fb3d0cdf1c27a4c0, type: 3}
+      propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
+      value: 0.8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -22551,6 +22586,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 443175300}
     m_Modifications:
+    - target: {fileID: 212016462502173622, guid: 8037588ed41431546bcceb66a0e91849, type: 3}
+      propertyPath: doorSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 310560a97665a4abb83ef914655c8711, type: 3}
     - target: {fileID: 540058568346195984, guid: 8037588ed41431546bcceb66a0e91849, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1.76

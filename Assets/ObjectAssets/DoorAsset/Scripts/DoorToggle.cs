@@ -7,6 +7,9 @@ using UnityEngine.SceneManagement;
 
 public class DoorToggle : Interactible
 {
+    private SoundManager soundManager;
+    [SerializeField] private AudioClip doorSound;
+
     private Animator Animator;
     [SerializeField] private string doorOpenStr;
     [SerializeField] private string doorCloseStr;
@@ -31,6 +34,7 @@ public class DoorToggle : Interactible
             {
                 Animator.Play(doorOpenStr);
                 isOpen = !isOpen;
+                soundManager.PlaySoundEffect(doorSound, 1.0f);
             }
         }
         else 
@@ -39,6 +43,7 @@ public class DoorToggle : Interactible
             {
                 Animator.Play(doorCloseStr);
                 isOpen = !isOpen;
+                soundManager.PlaySoundEffect(doorSound, 1.0f);
             }
         }
 
@@ -68,6 +73,7 @@ public class DoorToggle : Interactible
     public void Start()
     {
         firstPersonControl = GameObject.FindGameObjectWithTag("Player").GetComponent<FirstPersonControl>();
+        soundManager = GameObject.Find("SoundManager").GetComponent<SoundManager>();
     }
 
     bool AnimatorIsPlaying()

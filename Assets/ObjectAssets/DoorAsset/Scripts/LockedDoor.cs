@@ -6,10 +6,10 @@ using UnityEngine;
 [RequireComponent(typeof(SoundMaker))]
 public class LockedDoor : MonoBehaviour
 {
-    private AudioSource audioSource;
+    private SoundManager soundManager;
+    [SerializeField] private AudioClip openAudio;
 
     private Animator animator;
-    [SerializeField] private AudioClip openAudio;
     [SerializeField] private string doorOpenStr;
     public bool isOpen = false;
 
@@ -22,14 +22,13 @@ public class LockedDoor : MonoBehaviour
     void Start()
     {
         animator = GetComponent<Animator>();
-        audioSource = GetComponent<AudioSource>();
+        soundManager = GameObject.Find("SoundManager").GetComponent<SoundManager>();
     }
 
     public void OnTrigger() {
         if (!isOpen) {
             animator.Play(doorOpenStr);
-            audioSource.clip = openAudio;
-            audioSource.Play();
+            soundManager.PlaySoundEffect(openAudio, 1.0f);
 
             GetComponent<SoundMaker>().MakeSound();
             isOpen = true;

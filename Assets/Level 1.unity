@@ -1037,6 +1037,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1902020725}
     m_Modifications:
+    - target: {fileID: 212016462502173622, guid: 8037588ed41431546bcceb66a0e91849, type: 3}
+      propertyPath: doorSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 310560a97665a4abb83ef914655c8711, type: 3}
     - target: {fileID: 540058568346195984, guid: 8037588ed41431546bcceb66a0e91849, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1.24
@@ -7045,6 +7049,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1520782238}
     m_Modifications:
+    - target: {fileID: 212016462502173622, guid: 8037588ed41431546bcceb66a0e91849, type: 3}
+      propertyPath: doorSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 310560a97665a4abb83ef914655c8711, type: 3}
     - target: {fileID: 212016462502173622, guid: 8037588ed41431546bcceb66a0e91849, type: 3}
       propertyPath: quadrantToLoad
       value: 
@@ -42568,6 +42576,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 773195057}
     m_Modifications:
+    - target: {fileID: 212016462502173622, guid: 8037588ed41431546bcceb66a0e91849, type: 3}
+      propertyPath: doorSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 310560a97665a4abb83ef914655c8711, type: 3}
     - target: {fileID: 540058568346195984, guid: 8037588ed41431546bcceb66a0e91849, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.83

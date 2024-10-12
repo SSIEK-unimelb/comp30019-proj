@@ -5,9 +5,10 @@ using UnityEngine.SceneManagement;
 
 public class OnDeath : MonoBehaviour
 {
-    private AudioSource audioSource;
+    private SoundManager soundManager;
     [SerializeField] private AudioClip gameOver;
     private bool deathAnimationFinished = false;
+
     [SerializeField] private Transform pointToRotateAbout;
     private Vector3 axisToRotateAbout = Vector3.right;
     [SerializeField] private float rotationSpeed = 20f;
@@ -16,7 +17,7 @@ public class OnDeath : MonoBehaviour
     [SerializeField] private float deathAnimationTime = 1f;
 
     private void Start() {
-        audioSource = gameObject.AddComponent<AudioSource>();
+        soundManager = GameObject.Find("SoundManager").GetComponent<SoundManager>();
     }
 
     public void StartDeathAnimation() {
@@ -29,8 +30,7 @@ public class OnDeath : MonoBehaviour
             camera.transform.eulerAngles = rotation;  // Apply the modified rotation
         }
 
-        audioSource.clip = gameOver;
-        audioSource.Play();
+        soundManager.PlaySoundEffect(gameOver, 1.0f);
 
         StartCoroutine(PlayerDeathAnimation());
     }
