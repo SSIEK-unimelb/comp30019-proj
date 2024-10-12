@@ -48,16 +48,12 @@ public class HoldingScript : MonoBehaviour
                 RaycastHit hit;
                 if (Physics.Raycast(playerCamera.ViewportPointToRay(interactRayIntersect), out hit, pickUpRange, ~layerToIgnore))
                 {
-                    print("HIT");
-                    print(hit.collider.gameObject.name);
-                    print(hit.transform.gameObject.tag == pickupTag);
                     //make sure pickup tag is attached
                     if (hit.transform.gameObject.tag == pickupTag)
                     {
                         //pass in object hit into the PickUpObject function
                         PickUpObject(hit.transform.gameObject);
-                        itemSwitcher.SwitchToHoldArms();
-                        itemSwitcher.canSwitch = false;
+                        
                     }
                 }
             }
@@ -86,13 +82,20 @@ public class HoldingScript : MonoBehaviour
 
         }
     }
+
     void PickUpObject(GameObject pickUpObj)
     {
+        print(pickUpObj.name);
         // If the object cannot be held, do not hold
         HoldStatus holdStatus = pickUpObj.GetComponentInParent<HoldStatus>();
+        print("HoldStatus script is null: " + holdStatus == null);
+        if (holdStatus != null) { 
+            print("Hold status exists, at " + holdStatus.transform.name + ", canBeHeld set to : " + holdStatus.CanBeHeld);
+        }
         if (holdStatus != null && !holdStatus.CanBeHeld) {
             return;
         }
+
         GameObject pickedObj = pickUpObj;
         ParentReference parentRef = pickUpObj.GetComponentInParent<ParentReference>();
         if (parentRef != null)
@@ -120,6 +123,10 @@ public class HoldingScript : MonoBehaviour
             //make sure object doesnt collide with player, it can cause weird bugs
             Physics.IgnoreCollision(heldObj.GetComponent<Collider>(), player.GetComponent<Collider>(), true);
         }
+
+        // update arms
+        itemSwitcher.SwitchToHoldArms();
+        itemSwitcher.canSwitch = false;
     }
     void DropObject()
     {

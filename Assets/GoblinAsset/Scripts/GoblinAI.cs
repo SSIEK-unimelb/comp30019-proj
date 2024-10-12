@@ -144,6 +144,7 @@ public class GoblinAI : MonoBehaviour
         chaseState = new ChaseState(this, navMeshAgent, player);
         attackState = new AttackState(this, navMeshAgent, player);
 
+        
         currentState = idleState;
         currentState.EnterState();
 
@@ -160,6 +161,10 @@ public class GoblinAI : MonoBehaviour
         }
     }
 
+    void Start()
+    {
+        GetComponent<HoldStatus>().CanBeHeld = false;
+    }
     void Update() {
         currentState.UpdateState();
     }
