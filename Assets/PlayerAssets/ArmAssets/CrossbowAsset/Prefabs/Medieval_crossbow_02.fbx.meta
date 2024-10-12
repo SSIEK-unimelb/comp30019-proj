@@ -3,7 +3,32 @@ guid: 960384f1d81466f4ea310f11cc9ebe84
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lambert35
+    second: {fileID: 2100000, guid: 3a7804cb38cc05c489d75ee138584482, type: 2}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: lambert35_baseColor
+    second: {fileID: 2800000, guid: 488aac5f8bf852840944da19408105c5, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: lambert35_metallicRoughness_metal
+    second: {fileID: 2800000, guid: 47bd02af7ee629d45b5c94c722276c61, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: lambert35_metallicRoughness_occl
+    second: {fileID: 2800000, guid: 3d58e2abe70011a488789b9f1ccb4783, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: lambert35_normal
+    second: {fileID: 2800000, guid: 9eae195015d91c74bb7c17449522f056, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0

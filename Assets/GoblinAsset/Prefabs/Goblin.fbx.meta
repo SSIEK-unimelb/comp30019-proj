@@ -3,7 +3,22 @@ guid: c2add68875630cc409247606d7447b2a
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: goblin_diffuse
+    second: {fileID: 2800000, guid: 240241fa16ebd0542bff307fedd548d7, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: goblin_normal
+    second: {fileID: 2800000, guid: f08324c00a529f8439cd888d8c0c8ad6, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: goblin_specular
+    second: {fileID: 2800000, guid: 63519e42f6cdeca4db28fe8283f75d13, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0

@@ -157,7 +157,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -6417690392573947692, guid: 960384f1d81466f4ea310f11cc9ebe84, type: 3}
+  - {fileID: 2100000, guid: 3e3fe7d08624f594bb8e96487091bd1a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -240,7 +240,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -6417690392573947692, guid: 960384f1d81466f4ea310f11cc9ebe84, type: 3}
+  - {fileID: 2100000, guid: 6d88bf18ef43a0540948ff66dfc6a644, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1146,7 +1146,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   arrowPrefab: {fileID: 2422282626406373295, guid: 50f737d85485bc340ad60fc0d993deec, type: 3}
   arrowSpeed: 100
-  startingAmmo: 3
 --- !u!95 &4792423283901267444
 Animator:
   serializedVersion: 5
@@ -2540,7 +2539,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -6417690392573947692, guid: 960384f1d81466f4ea310f11cc9ebe84, type: 3}
+  - {fileID: 2100000, guid: bc679fd87626bf2428ec783d43f4fe1e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
