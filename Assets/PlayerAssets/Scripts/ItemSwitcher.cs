@@ -29,6 +29,7 @@ public class ItemSwitcher : MonoBehaviour
         // testing unlocking
         unlock(0);
         unlock(1);
+        SwitchItem(1);
         SwitchItem(0);
     }
 
