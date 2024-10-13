@@ -9,7 +9,6 @@ public class SacrificeCircle : MonoBehaviour
     [SerializeField] private GameObject objectToTrigger;
     private LockedDoor door;
     [SerializeField] private string enemyLayer = "Enemy";
-    private LayerMask enemyMask;
     private Transform enemySacrifice;
     private ParticleSystem particleEffect;
 
@@ -28,7 +27,6 @@ public class SacrificeCircle : MonoBehaviour
     void Start() {
         particleEffect = GetComponentInChildren<ParticleSystem>();
         soundManager = GameObject.Find("SoundManager").GetComponent<SoundManager>();
-        enemyMask = LayerMask.GetMask(enemyLayer);
         door = objectToTrigger.GetComponent<LockedDoor>();
         Debug.Log("The door is currently: " + door);
         currentRotationSpeed = initialRotationSpeed;
@@ -82,12 +80,12 @@ public class SacrificeCircle : MonoBehaviour
     private void OnTriggerEnter(Collider col)
     {
         // Check if enemy has entered the circle.
-        Debug.Log(LayerMask.LayerToName(col.gameObject.layer));
-        if ((enemyMask & (1 << col.gameObject.layer)) != 0) {
-            if (col.transform.GetComponentInParent<HoldStatus>().CanBeHeld) {
+        // Debug.Log(LayerMask.LayerToName(col.gameObject.layer));
+        if (col.gameObject.layer == LayerMask.NameToLayer(enemyLayer)) {
+            HoldStatus holdStatus = col.transform.GetComponentInParent<HoldStatus>();
+            if (holdStatus && holdStatus.CanBeHeld && !holdStatus.IsHeld) {
                 enemySacrifice = col.transform;
                 isInside = true;
-                
             }
         }
     }
@@ -95,7 +93,7 @@ public class SacrificeCircle : MonoBehaviour
     private void OnTriggerExit(Collider col)
     {
         // Check if the enemy has left the circle.
-        if ((enemyMask & (1 << col.gameObject.layer)) != 0) {
+        if (col.gameObject.layer == LayerMask.NameToLayer(enemyLayer)) {
             isInside = false;
             timeInside = 0f; // Reset the time when exiting
         }

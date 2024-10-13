@@ -3926,7 +3926,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4587549453046407395}
   - component: {fileID: 8822349120980019593}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: ColliderToPreventPlayerJumpingOnGoblin
   m_TagString: Untagged
   m_Icon: {fileID: 0}

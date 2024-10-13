@@ -66,5 +66,7 @@ public class AttackState : BaseEnemyState
         goblinAI.GetGoblinSounds().Stop();
 
         goblinAI.GetExclamationMark().SetActive(false);
+
+        goblinAI.GetSoundManager().OnExitChase();
     }
 }

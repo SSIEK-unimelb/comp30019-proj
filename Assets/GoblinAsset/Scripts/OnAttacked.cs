@@ -16,8 +16,8 @@ public class OnAttacked : MonoBehaviour
     }
 
     private void OnTriggerEnter(Collider collider) {
-        print(collider.name);   
-        if (collider.gameObject.tag == "Weapon") {
+        print(collider.gameObject.name);
+        if (collider.gameObject.CompareTag("Weapon")) {
             if (goblinAI.IsKillable()) {
                 //print("Should die");
                 soundManager.PlaySoundEffect(hitSound, 0.3f);
@@ -32,8 +32,8 @@ public class OnAttacked : MonoBehaviour
                         return;
                     }
                 }
-                goblinAI.Die();
-                Destroy(gameObject);
+
+                if (goblinAI != null) goblinAI.Die();
             }
         }
     }

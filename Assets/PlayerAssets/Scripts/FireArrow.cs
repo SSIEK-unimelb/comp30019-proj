@@ -8,13 +8,14 @@ public class FireArrow : MonoBehaviour
     [SerializeField] private AudioClip bowFire;
 
     [SerializeField] GameObject arrowPrefab;
-    [SerializeField] float arrowSpeed = 100f;
+    private float arrowSpeed = 28f;
     private AmmoManager ammoManager;
     void Start()
     {
         GetAmmoManagerRef();
         soundManager = GameObject.Find("SoundManager").GetComponent<SoundManager>();
     }
+    
     public void Fire()
     {
         if (arrowPrefab != null)

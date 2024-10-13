@@ -61,7 +61,10 @@ public class SearchState : BaseEnemyState
             Vector2 currentPos = new Vector2(goblinAI.transform.position.x, goblinAI.transform.position.z);
             bool hasReachedSoundHeardPoint = Vector2.Distance(destinationPos, currentPos) <= navMeshAgent.stoppingDistance;
 
-            bool inAttackRange = Vector3.Distance(goblinAI.transform.position, player.transform.position) <= goblinAI.GetAttackRange();
+            // attackOffset is used otherwise the goblin may not be in attackRange but may be in hasReachedSoundHeardPoint
+            float attackOffset = 1f;
+            bool inAttackRange = Vector3.Distance(goblinAI.transform.position, player.transform.position) <= 
+                                goblinAI.GetAttackRange() + attackOffset;
 
             currentSearchTime -= updateTimeStep;
 

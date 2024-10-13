@@ -65,6 +65,7 @@ public class GoblinAI : MonoBehaviour
     [SerializeField] private AudioClip attackAudio;
 
     [Header("Damage")]
+    private string backHitpointName = "mixamorig:Hips/mixamorig:Spine/BackHitpoint";
     [SerializeField] private string damageTriggerName = "mixamorig:Hips/mixamorig:Spine/mixamorig:Spine1/mixamorig:Spine2/" +
                                                         "mixamorig:RightShoulder/mixamorig:RightArm/mixamorig:RightForeArm/" +
                                                         "DamageTrigger";
@@ -248,6 +249,9 @@ public class GoblinAI : MonoBehaviour
 
     // This triggers the death animation, removes this script so enemy cannot move.
     public void Die() {
+        if (currentState == null) {
+            return;
+        }
         currentState.ExitState();
         currentState = null;
 
@@ -258,6 +262,7 @@ public class GoblinAI : MonoBehaviour
         // To stop the player from being damaged by the enemy.
         Destroy(transform.Find(damageTriggerName).gameObject);
         Destroy(transform.Find(headColliderName).gameObject);
+        Destroy(transform.Find(backHitpointName).gameObject);
 
         // Destroy the audiosources
         Destroy(goblinSounds);

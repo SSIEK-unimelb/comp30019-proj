@@ -67,6 +67,6 @@ public class ObjectSoundCollision : MonoBehaviour
         currentCooldownTime = cooldownDuration;
 
         Debug.Log("This object made sound: " + gameObject + " due to colliding with: " + collision.transform.gameObject);
-        Debug.Log("This object's velocity is: " + _rigidbody.velocity.magnitude);
+        // Debug.Log("This object's velocity is: " + _rigidbody.velocity.magnitude);
     }
 }

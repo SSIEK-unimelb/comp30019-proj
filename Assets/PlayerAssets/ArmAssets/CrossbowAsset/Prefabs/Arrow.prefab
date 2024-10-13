@@ -116,7 +116,7 @@ Rigidbody:
     m_Bits: 0
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
@@ -163,7 +163,7 @@ TrailRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Time: 1
+  m_Time: 0.5
   m_PreviewTimeScale: 1
   m_Parameters:
     serializedVersion: 3
@@ -246,8 +246,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a796e2984cd564047b3886c9e699c5ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  arrowHitFleshAudio: {fileID: 8300000, guid: 7282ca5a2495791438d14a92c68afd17, type: 3}
-  arrowHitObstacleAudio: {fileID: 8300000, guid: d19fbf2ffc3058c47b2470da79cc5431, type: 3}
   destroyTime: 5
 --- !u!136 &-3065490170521578024
 CapsuleCollider:
