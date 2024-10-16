@@ -82,7 +82,7 @@ MonoBehaviour:
   landAudio: {fileID: 8300000, guid: 8dfc580618850428e904fc73c87a36db, type: 3}
   InteractibleLayer: 6
   walkSpeed: 4
-  sprintSpeed: 8
+  sprintSpeed: 6
   crouchSpeed: 2
   canSprint: 1
   canJump: 1
@@ -92,10 +92,10 @@ MonoBehaviour:
   canMidairCrouch: 1
   sprintKey: 304
   jumpKey: 32
-  crouchKey: 306
+  crouchKey: 99
   interactKey: 102
-  lookSpeedX: 1
-  lookSpeedY: 1
+  lookSpeedX: 0.8
+  lookSpeedY: 0.8
   aboveLookClamp: 85
   belowLookClamp: 85
   jumpStrength: 7
@@ -592,7 +592,7 @@ MonoBehaviour:
   volumeLayer:
     serializedVersion: 2
     m_Bits: 8192
-  stopNaNPropagation: 1
+  stopNaNPropagation: 0
   finalBlitToCameraTarget: 0
   antialiasingMode: 1
   temporalAntialiasing:

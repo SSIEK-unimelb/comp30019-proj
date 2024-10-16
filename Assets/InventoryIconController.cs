@@ -22,7 +22,7 @@ public class InventoryIconController : MonoBehaviour
     {
         foreach (var item in inventorySquares)
         {
-            //item.SetActive(false);
+            item.SetActive(false);
         }
     }
 

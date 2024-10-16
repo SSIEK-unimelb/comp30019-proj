@@ -2120,7 +2120,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 1113897305256250758, guid: 22a82a1302e1a7f4e93b9fadc9eea315, type: 3}
+  - {fileID: 2100000, guid: c5555e15157998b4c9b6e9feeb9a6f39, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2725,8 +2725,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 499.18695, y: 4192.363, z: 1025.051}
-  m_Center: {x: 3.5937335, y: 41.494576, z: -23.973446}
+  m_Size: {x: 778.0391, y: 4696.16, z: 1572.2119}
+  m_Center: {x: -6.5804815, y: -210.40738, z: -41.50862}
 --- !u!114 &499211332754068756
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -46,8 +46,10 @@ public class HoldingScript : MonoBehaviour
             {
                 //perform raycast to check if player is looking at object within pickuprange
                 RaycastHit hit;
-                if (Physics.Raycast(playerCamera.ViewportPointToRay(interactRayIntersect), out hit, pickUpRange, ~layerToIgnore))
+                
+                if (Physics.Raycast(playerCamera.ViewportPointToRay(interactRayIntersect), out hit, pickUpRange))
                 {
+                    print(hit.transform.name);
                     //make sure pickup tag is attached
                     if (hit.transform.gameObject.tag == pickupTag)
                     {

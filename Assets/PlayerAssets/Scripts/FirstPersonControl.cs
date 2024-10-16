@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
@@ -21,6 +22,8 @@ public class FirstPersonControl : MonoBehaviour
 
     private bool shouldJump => characterController.isGrounded && Input.GetKeyDown(jumpKey) && !holder.isHolding();
     private bool shouldCrouch => !isInCrouchAnimation && (canMidairCrouch? true : characterController.isGrounded)  && Input.GetKeyDown(crouchKey);
+    //private bool shouldCrouch => !isInCrouchAnimation && (canMidairCrouch ? true : characterController.isGrounded) && Input.GetKey(crouchKey);
+
 
     private SoundMaker soundMaker;
     private float soundMakerInterval = 0.2f;
@@ -102,6 +105,8 @@ public class FirstPersonControl : MonoBehaviour
     private bool isCameraActive;
 
     private ItemSwitcher itemSwitcher;
+
+    private bool crouchToggled = false;
 
     private void Awake()
     {
@@ -200,7 +205,16 @@ public class FirstPersonControl : MonoBehaviour
 
     private void RegisterCrouch() 
     {
-        if (shouldCrouch || isCrouched && !isInCrouchAnimation && !Input.GetKey(crouchKey))
+        /**
+        if (shouldCrouch) {
+            crouchToggled = true;
+        }
+        if (shouldCrouch || isCrouched && !isInCrouchAnimation && (!Input.GetKey(crouchKey) || crouchToggled))
+        {
+            StartCoroutine(CrouchStandTransition());
+        }
+        **/
+        if (shouldCrouch || (isCrouched && isSprinting))
         {
             StartCoroutine(CrouchStandTransition());
         }
@@ -234,6 +248,7 @@ public class FirstPersonControl : MonoBehaviour
         characterController.center = targetCenter;
 
         isInCrouchAnimation = false;
+        crouchToggled = false;
     }
 
     private void CheckInteraction() 

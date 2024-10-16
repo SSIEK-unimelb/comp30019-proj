@@ -17113,9 +17113,37 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5232844320660652962, guid: 8095aea1b5584714e8a5b3626eed903f, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5904640579348365747, guid: 8095aea1b5584714e8a5b3626eed903f, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5943528711391182277, guid: 8095aea1b5584714e8a5b3626eed903f, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7588312527402809472, guid: 8095aea1b5584714e8a5b3626eed903f, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7641871471815623284, guid: 8095aea1b5584714e8a5b3626eed903f, type: 3}
+      propertyPath: m_ShowToolkit
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7641871471815623284, guid: 8095aea1b5584714e8a5b3626eed903f, type: 3}
+      propertyPath: m_ShowCustomSorter
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7641871471815623284, guid: 8095aea1b5584714e8a5b3626eed903f, type: 3}
+      propertyPath: stopNaNPropagation
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7890785021825521664, guid: 8095aea1b5584714e8a5b3626eed903f, type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 81911
       objectReference: {fileID: 0}
     - target: {fileID: 8140709938084606812, guid: 8095aea1b5584714e8a5b3626eed903f, type: 3}
       propertyPath: m_IsActive
@@ -30163,6 +30191,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3103338189326950623, guid: 78637a503bee8a749be7c10932320cd7, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3722586030167620590, guid: 78637a503bee8a749be7c10932320cd7, type: 3}
       propertyPath: m_LocalPosition.x
       value: 39.86
@@ -37131,6 +37163,10 @@ PrefabInstance:
     - target: {fileID: 5744225276900857090, guid: e7ca2c20311d9aa4fb405c6ac4dcb153, type: 3}
       propertyPath: m_Name
       value: ArrowReplenishPack
+      objectReference: {fileID: 0}
+    - target: {fileID: 7483441250422135091, guid: e7ca2c20311d9aa4fb405c6ac4dcb153, type: 3}
+      propertyPath: numArrows
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7483441250422135091, guid: e7ca2c20311d9aa4fb405c6ac4dcb153, type: 3}
       propertyPath: amountText

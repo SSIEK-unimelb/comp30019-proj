@@ -110,8 +110,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.39, y: 4.9, z: 3.49}
-  m_Center: {x: 0.1709131, y: 2.5422273, z: -1.7600985}
+  m_Size: {x: 0.53723866, y: 4.9000006, z: 3.49}
+  m_Center: {x: 0.18528512, y: 2.5422273, z: -1.7600985}
 --- !u!114 &212016462502173622
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -124,11 +124,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 483fd8ef968d5d54787bd78583d52101, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  doorSound: {fileID: 0}
   doorOpenStr: DoorOpen
   doorCloseStr: DoorClose
   isOpen: 0
-  levelObjectName: Level
-  doorOpenTime: 0.5
 --- !u!95 &2808147623976145440
 Animator:
   serializedVersion: 5

@@ -36,6 +36,7 @@ public class ItemSwitcher : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!canSwitch) { return; }
         // these can be turned off until needed
         //unlock(2);
         //unlock(3);

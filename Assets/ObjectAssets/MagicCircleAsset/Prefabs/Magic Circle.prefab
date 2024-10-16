@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5364793726668854202}
   - component: {fileID: 6272356093294631700}
   - component: {fileID: 4263762666145227729}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Particle System
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4954,39 +4954,39 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8644714960155702269, guid: 0b28cc652c912504c9b7b32dc47ec02b, type: 3}
       propertyPath: m_Layer
-      value: 0
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: -7687438177253093489, guid: 0b28cc652c912504c9b7b32dc47ec02b, type: 3}
       propertyPath: m_Layer
-      value: 0
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: -7649873993169604703, guid: 0b28cc652c912504c9b7b32dc47ec02b, type: 3}
       propertyPath: m_Layer
-      value: 0
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: -2941608891773563654, guid: 0b28cc652c912504c9b7b32dc47ec02b, type: 3}
       propertyPath: m_Layer
-      value: 0
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: -138938735764934748, guid: 0b28cc652c912504c9b7b32dc47ec02b, type: 3}
       propertyPath: m_Layer
-      value: 0
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: -6758700736596563, guid: 0b28cc652c912504c9b7b32dc47ec02b, type: 3}
       propertyPath: m_Layer
-      value: 0
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 204222098064831397, guid: 0b28cc652c912504c9b7b32dc47ec02b, type: 3}
       propertyPath: m_Layer
-      value: 0
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 612173978835224768, guid: 0b28cc652c912504c9b7b32dc47ec02b, type: 3}
       propertyPath: m_Layer
-      value: 0
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 734523030226054066, guid: 0b28cc652c912504c9b7b32dc47ec02b, type: 3}
       propertyPath: m_Layer
-      value: 0
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 0b28cc652c912504c9b7b32dc47ec02b, type: 3}
       propertyPath: m_Name
@@ -4994,11 +4994,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 0b28cc652c912504c9b7b32dc47ec02b, type: 3}
       propertyPath: m_Layer
-      value: 0
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 4144601257448400722, guid: 0b28cc652c912504c9b7b32dc47ec02b, type: 3}
       propertyPath: m_Layer
-      value: 0
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 4767710146939955057, guid: 0b28cc652c912504c9b7b32dc47ec02b, type: 3}
       propertyPath: m_LocalScale.x
@@ -5018,11 +5018,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6033841465781430958, guid: 0b28cc652c912504c9b7b32dc47ec02b, type: 3}
       propertyPath: m_Layer
-      value: 0
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 7953606483559150473, guid: 0b28cc652c912504c9b7b32dc47ec02b, type: 3}
       propertyPath: m_Layer
-      value: 0
+      value: 12
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5039,7 +5039,7 @@ PrefabInstance:
       addedObject: {fileID: 4958798534209320380}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 0b28cc652c912504c9b7b32dc47ec02b, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 3103338189326950623}
+      addedObject: {fileID: 6185975110541695391}
   m_SourcePrefab: {fileID: 100100000, guid: 0b28cc652c912504c9b7b32dc47ec02b, type: 3}
 --- !u!4 &3722586030167620590 stripped
 Transform:
@@ -5083,9 +5083,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b70a432b30402e84a802065f383f30bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  soundRadius: 10
---- !u!65 &3103338189326950623
-BoxCollider:
+  goblins: []
+--- !u!135 &6185975110541695391
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -5103,5 +5103,5 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.1279501, y: 0.13294017, z: 1.1595691}
-  m_Center: {x: 0.009835339, y: -0.030133689, z: -0.021832084}
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}

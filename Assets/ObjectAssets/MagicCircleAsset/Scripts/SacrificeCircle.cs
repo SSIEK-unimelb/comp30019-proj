@@ -86,6 +86,7 @@ public class SacrificeCircle : MonoBehaviour
             if (holdStatus && holdStatus.CanBeHeld && !holdStatus.IsHeld) {
                 enemySacrifice = col.transform;
                 isInside = true;
+                holdStatus.CanBeHeld = false;
             }
         }
     }

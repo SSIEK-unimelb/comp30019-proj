@@ -21,7 +21,7 @@ TagManager:
   - HitboxLayer
   - Enemy
   - Arms
-  - 
+  - MagicCircle
   - Volume
   - EyeCamOnly
   - SceneCollisionCheck

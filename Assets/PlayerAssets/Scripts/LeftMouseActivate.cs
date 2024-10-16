@@ -54,6 +54,7 @@ public class LeftMouseActivate : MonoBehaviour
             // Reinstantiate eye arm prefab if done throwing
             if (!EyeScript.isEyeActive())
             {
+                itemSwitcher.canSwitch = true;
                 itemSwitcher.SwitchItem(0);
                 itemSwitcher.SwitchItem(3);
             }
@@ -106,6 +107,7 @@ public class LeftMouseActivate : MonoBehaviour
                     prefabParent = transform.parent;
                     isThrowingEye = true;
                     EyeScript = transform.GetComponent<EyeScript>();
+                    itemSwitcher.canSwitch = false;
                 }
             }
 
