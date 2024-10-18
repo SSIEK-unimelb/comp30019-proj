@@ -53,7 +53,6 @@ public class HoldingScript : MonoBehaviour
                 {
                     //ACTIVATE HOLD ICON HERE
                     holdUI.SetActive(true);
-                    Debug.Log("Looking at holdable item");
                     if (Input.GetKeyDown(KeyCode.Mouse1))
                     {
                         //pass in object hit into the PickUpObject function
@@ -63,7 +62,6 @@ public class HoldingScript : MonoBehaviour
                 }
                 else
                 {
-                    Debug.Log("Looking at non-holdable item");
                     holdUI.SetActive(false);
                 }
             }
