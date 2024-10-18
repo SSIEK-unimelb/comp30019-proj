@@ -47,7 +47,7 @@ public class AmmoUI : MonoBehaviour
 
     private void UpdateAmmoText(int ammo)
     {
-        ammoText.text = "Arrows: " + ammo;
+        ammoText.text = ammo.ToString();
     }
 
     public void ShowAmmoUI()
