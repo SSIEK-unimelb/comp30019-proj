@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 0b28cc652c912504c9b7b32dc47ec02b
+guid: 4d8b3f95dbaf6284a9144b0973ff9ac9
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -8,7 +8,7 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: magic_circle
-    second: {fileID: 2100000, guid: ceebd33b00025394095477960182c13f, type: 2}
+    second: {fileID: 2100000, guid: ca035a16813e06c4cb1510983b5fa15b, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
