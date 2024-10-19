@@ -159,6 +159,9 @@ public class HoldingScript : MonoBehaviour
         heldObjRb.drag = 1;
         heldObjRb.constraints = RigidbodyConstraints.None;
 
+        // to prevent spazzing out
+        heldObjRb.velocity = Vector3.zero;
+
         heldObj.transform.parent = objectParent; //unparent object
         if (heldObj.GetComponentInParent<HoldStatus>()) heldObj.GetComponentInParent<HoldStatus>().IsHeld = false;
         heldObj = null; //undefine game object
@@ -169,7 +172,6 @@ public class HoldingScript : MonoBehaviour
         {
             Vector3 moveDir = (holdPos.position - heldObj.transform.position);
             heldObjRb.AddForce(moveDir * (pickupForce), ForceMode.Impulse);
-            // check if the force added made the object overshoot, if it did then reposition
 
         }
     }
@@ -203,11 +205,13 @@ public class HoldingScript : MonoBehaviour
         //print(parentObjRb.name);\
         //var mainObjectRb = heldObj.GetComponent <Rigidbody>();
         //if (parentRb != null)
-        {
-            //parentRb.AddForce(transform.forward * throwForce, ForceMode.Impulse);
-        }
+        //{
+        //parentRb.AddForce(transform.forward * throwForce, ForceMode.Impulse);
+        //}
         //else {
-            heldObjRb.AddForce(transform.forward * throwForce, ForceMode.Impulse);
+        // to prevent spazzing out
+        heldObjRb.velocity = Vector3.zero;
+        heldObjRb.AddForce(transform.forward * throwForce, ForceMode.Impulse);
         //}
         if (heldObj.GetComponentInParent<HoldStatus>()) heldObj.GetComponentInParent<HoldStatus>().IsHeld = false;
         heldObj = null;
