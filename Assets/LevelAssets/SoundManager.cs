@@ -16,7 +16,13 @@ public class SoundManager : MonoBehaviour
     [SerializeField] private AudioClip breathingChase;
     private float breathChangeTime = 2;
     private float currentBreathTime = 0;
-    private bool isChased = false;
+
+    private enum Health {
+        LOW_HEALTH,
+        MID_HEALTH,
+        HIGH_HEALTH
+    }
+    private Health healthState;
     private bool isDead = false;
 
     private void Awake() {
@@ -24,6 +30,7 @@ public class SoundManager : MonoBehaviour
         backgroundMusicAudioSource = gameObject.AddComponent<AudioSource>();
         heartBeatAudioSource = gameObject.AddComponent<AudioSource>();
         personBreathingAudioSource = gameObject.AddComponent<AudioSource>();
+        healthState = Health.HIGH_HEALTH;
     }
 
     private void Start() {
@@ -48,10 +55,16 @@ public class SoundManager : MonoBehaviour
         if (!isDead) {
             currentBreathTime -= Time.deltaTime;
             if (currentBreathTime <= 0) {
-                if (isChased) {
-                    personBreathingAudioSource.pitch = UnityEngine.Random.Range(0.85f, 0.95f);
-                } else {
-                    personBreathingAudioSource.pitch = UnityEngine.Random.Range(0.75f, 0.85f);
+                switch(healthState) {
+                    case Health.HIGH_HEALTH:
+                        personBreathingAudioSource.pitch = UnityEngine.Random.Range(0.75f, 0.85f);
+                        break;
+                    case Health.MID_HEALTH:
+                        personBreathingAudioSource.pitch = UnityEngine.Random.Range(0.95f, 1.05f);
+                        break;
+                    case Health.LOW_HEALTH:
+                        personBreathingAudioSource.pitch = UnityEngine.Random.Range(0.85f, 0.95f);
+                        break;
                 }
                 
                 currentBreathTime = breathChangeTime;
@@ -59,20 +72,27 @@ public class SoundManager : MonoBehaviour
         }
     }
 
-    public void OnEnterChase() {
-        isChased = true;
-        personBreathingAudioSource.clip = breathingChase;
+    public void HighHealth() {
+        healthState = Health.HIGH_HEALTH;
+        personBreathingAudioSource.clip = breathingNoChase;
         personBreathingAudioSource.Play();
-        heartBeatAudioSource.pitch = 1.5f;
+        heartBeatAudioSource.pitch = 0.8f;
     }
 
-    public void OnExitChase() {
-        isChased = false;
+    public void MidHealth() {
+        healthState = Health.MID_HEALTH;
         personBreathingAudioSource.clip = breathingNoChase;
         personBreathingAudioSource.Play();
         heartBeatAudioSource.pitch = 1.0f;
     }
 
+    public void LowHealth() {
+        healthState = Health.LOW_HEALTH;
+        personBreathingAudioSource.clip = breathingChase;
+        personBreathingAudioSource.Play();
+        heartBeatAudioSource.pitch = 0.9f;
+    }
+    
     public void DecreaseHeartBeatAndBreathing() {
         isDead = true;
         heartBeatAudioSource.volume = 0.1f;

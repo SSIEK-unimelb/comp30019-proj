@@ -19,13 +19,11 @@ public class AttackState : BaseEnemyState
         navMeshAgent.destination = goblinAI.transform.position + playerDirection;
         navMeshAgent.speed = 0;
 
-        goblinAI.SetCurrentAttackCooldown(goblinAI.GetAttackCooldown());
+        goblinAI.SetCurrentAttackCooldown(0);
         outsideAttackRangeDuration = goblinAI.GetOutsideAttackRangeDuration();
         outsideAttackRangeTime = outsideAttackRangeDuration;
 
         goblinAI.GetExclamationMark().SetActive(true);
-
-        goblinAI.GetSoundManager().OnEnterChase();
     }
 
     public override void UpdateState() {
@@ -66,7 +64,5 @@ public class AttackState : BaseEnemyState
         goblinAI.GetGoblinSounds().Stop();
 
         goblinAI.GetExclamationMark().SetActive(false);
-
-        goblinAI.GetSoundManager().OnExitChase();
     }
 }
