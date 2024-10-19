@@ -31,7 +31,7 @@ public class HoldingScript : MonoBehaviour
     private Transform objectParent;
     private ItemSwitcher itemSwitcher;
 
-    [SerializeField] int layerToIgnore = 12;
+    [SerializeField] LayerMask layerMask;
     void Start()
     {
         LayerNumber = LayerMask.NameToLayer("Holdable"); 
@@ -46,9 +46,11 @@ public class HoldingScript : MonoBehaviour
         {
             //perform raycast to check if player is looking at object within pickuprange
             RaycastHit hit;
-            if (Physics.Raycast(playerCamera.ViewportPointToRay(interactRayIntersect), out hit, pickUpRange, ~layerToIgnore))
+            if (Physics.Raycast(playerCamera.ViewportPointToRay(interactRayIntersect), out hit, pickUpRange, layerMask))
             {
                 //make sure pickup tag is attached
+                Debug.DrawLine(playerCamera.transform.position, hit.point);
+
                 if (hit.transform.gameObject.CompareTag(pickupTag))
                 {
                     //ACTIVATE HOLD ICON HERE
