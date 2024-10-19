@@ -12,6 +12,7 @@ public class HoldingScript : MonoBehaviour
     [SerializeField] private AudioClip pickUpSound;
     [SerializeField] private AudioClip dropSound;
     [SerializeField] private AudioClip throwSound;
+    [SerializeField] private GameObject holdUI;
 
     public GameObject player;
     public Transform holdPos;
@@ -37,41 +38,52 @@ public class HoldingScript : MonoBehaviour
         playerCamera = GetComponent<Camera>();
         itemSwitcher = GetComponent<ItemSwitcher>();
         soundManager = GameObject.Find("SoundManager").GetComponent<SoundManager>();
+        holdUI.SetActive(false);
     }
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Mouse1)) 
+        if (heldObj == null) //if currently not holding anything
         {
-            if (heldObj == null) //if currently not holding anything
+            //perform raycast to check if player is looking at object within pickuprange
+            RaycastHit hit;
+            if (Physics.Raycast(playerCamera.ViewportPointToRay(interactRayIntersect), out hit, pickUpRange, ~layerToIgnore))
             {
-                //perform raycast to check if player is looking at object within pickuprange
-                RaycastHit hit;
-                
-                if (Physics.Raycast(playerCamera.ViewportPointToRay(interactRayIntersect), out hit, pickUpRange))
+                //make sure pickup tag is attached
+                if (hit.transform.gameObject.CompareTag(pickupTag))
                 {
-                    print(hit.transform.name);
-                    //make sure pickup tag is attached
-                    if (hit.transform.gameObject.tag == pickupTag)
+                    //ACTIVATE HOLD ICON HERE
+                    holdUI.SetActive(true);
+                    if (Input.GetKeyDown(KeyCode.Mouse1))
                     {
                         //pass in object hit into the PickUpObject function
+                        holdUI.SetActive(false);
                         PickUpObject(hit.transform.gameObject);
-                        
                     }
+                }
+                else
+                {
+                    holdUI.SetActive(false);
                 }
             }
             else
             {
-                if (canDrop == true)
-                {
-                    StopClipping();
-                    DropObject();
-                    itemSwitcher.canSwitch = true;
-                    itemSwitcher.SwitchItem(0);
-                }
+                holdUI.SetActive(false);
+            }
+        }
+        else
+        {
+            holdUI.SetActive(false);
+            if (Input.GetKeyDown(KeyCode.Mouse1) && canDrop == true)
+            {
+                StopClipping();
+                DropObject();
+                itemSwitcher.canSwitch = true;
+                itemSwitcher.SwitchItem(0);
             }
         }
         if (heldObj != null) //if player is holding object
         {
+            holdUI.SetActive(false);
             // itemSwitcher.SwitchToHoldArms();
             MoveObject(); //keep object position at holdPos
             if (Input.GetKeyDown(KeyCode.Mouse0) && canDrop == true) 

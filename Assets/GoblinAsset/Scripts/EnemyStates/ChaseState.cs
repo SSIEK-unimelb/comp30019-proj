@@ -36,8 +36,6 @@ public class ChaseState : BaseEnemyState
             goblinAI.GetSoundManager().PlaySoundEffect(goblinAI.GetDiscoverAudio(), 1.0f);
             firstTime = false;
         }
-
-        goblinAI.GetSoundManager().OnEnterChase();
     }
 
     public override void UpdateState() {
@@ -90,7 +88,5 @@ public class ChaseState : BaseEnemyState
         goblinAI.GetGoblinSounds().pitch = 1.0f;
 
         goblinAI.GetExclamationMark().SetActive(false);
-
-        goblinAI.GetSoundManager().OnExitChase();
     }
 }

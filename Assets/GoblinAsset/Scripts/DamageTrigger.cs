@@ -28,8 +28,8 @@ public class DamageTrigger : MonoBehaviour
             if (goblinAI.IsAttacking()) {
                 // If attack on cooldown, do nothing.
                 if (currentAttackCooldownTime > 0) return;
-
                 currentAttackCooldownTime = attackCooldownDuration;
+
                 // Damage object with relevant tag. Note that this assumes the 
                 // HealthManager component is attached to the respective object.
                 var healthManager = col.transform.root.gameObject.GetComponentInParent<HealthManager>();
