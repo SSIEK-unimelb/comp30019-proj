@@ -37,4 +37,13 @@ public class HealthManager : MonoBehaviour
             isDead = true;
         }
     }
+
+    public void Heal(int healingAmount) {
+        // If dead or max health, do nothing.
+        if (isDead) return;
+        if (currentHealth >= startingHealth) return;
+
+        currentHealth += healingAmount;
+        heartScript.UpdateHearts(currentHealth);
+    }
 }
