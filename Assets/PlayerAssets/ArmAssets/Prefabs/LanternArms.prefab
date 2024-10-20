@@ -2750,7 +2750,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5272685656338057852, guid: e5761c5a9751f9542b3bb2ee85bc522d, type: 3}
       propertyPath: m_Range
-      value: 20
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5272685656338057852, guid: e5761c5a9751f9542b3bb2ee85bc522d, type: 3}
       propertyPath: m_Color.b
@@ -2770,11 +2770,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5272685656338057852, guid: e5761c5a9751f9542b3bb2ee85bc522d, type: 3}
       propertyPath: m_Intensity
-      value: 4
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5272685656338057852, guid: e5761c5a9751f9542b3bb2ee85bc522d, type: 3}
+      propertyPath: m_RenderMode
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5272685656338057852, guid: e5761c5a9751f9542b3bb2ee85bc522d, type: 3}
       propertyPath: m_BounceIntensity
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6058511142523976368, guid: e5761c5a9751f9542b3bb2ee85bc522d, type: 3}
       propertyPath: m_Layer

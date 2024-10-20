@@ -77,14 +77,15 @@ public class SacrificeCircle : MonoBehaviour
         transform.Rotate(Vector3.up, currentRotationSpeed * Time.deltaTime);
     }
 
-    private void OnTriggerEnter(Collider col)
+    
+    private void OnTriggerStay(Collider other)
     {
         // Check if enemy has entered the circle.
         // Debug.Log(LayerMask.LayerToName(col.gameObject.layer));
-        if (col.gameObject.layer == LayerMask.NameToLayer(enemyLayer)) {
-            HoldStatus holdStatus = col.transform.GetComponentInParent<HoldStatus>();
+        if (other.gameObject.layer == LayerMask.NameToLayer(enemyLayer)) {
+            HoldStatus holdStatus = other.transform.GetComponentInParent<HoldStatus>();
             if (holdStatus && holdStatus.CanBeHeld && !holdStatus.IsHeld) {
-                enemySacrifice = col.transform;
+                enemySacrifice = other.transform;
                 isInside = true;
                 holdStatus.CanBeHeld = false;
             }
@@ -97,6 +98,9 @@ public class SacrificeCircle : MonoBehaviour
         if (col.gameObject.layer == LayerMask.NameToLayer(enemyLayer)) {
             isInside = false;
             timeInside = 0f; // Reset the time when exiting
+            HoldStatus holdStatus = col.transform.GetComponentInParent<HoldStatus>();
+            holdStatus.CanBeHeld = true;
+
         }
     }
 }
