@@ -79,7 +79,7 @@ float2 uv_Normal;
 float2 uv_spec;
 
 			};
-
+			Input o;
 			void vert (inout appdata_full v, out Input o) {
 float4 VertexOutputMaster0_0_NoInput = float4(0,0,0,0);
 float4 VertexOutputMaster0_1_NoInput = float4(0,0,0,0);
