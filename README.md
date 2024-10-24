@@ -142,11 +142,39 @@ Who is responsible for each task? How will you ensure that everyone contributes 
 
 ## Evaluation Report
 
-TODO (due milestone 3) - see specification for details
 
 ## Shaders and Special Effects
 
-TODO (due milestone 3) - see specification for details
+Shader 1: Horror Post Processing Shader
+- Path: Assets/Shaders/HorrorPostProcessingShader.shader
+- Associated Script Path: Assets/Shaders/HorrorPostProcessingScript.cs
+Note: The specific implementation of this shader (i.e. what each parameter is used for) is explained in the code in comments (mainly in the shader code).
+
+Shader Effects:
+GIF here
+
+This shader aims to produce ‘horror’ effects reminiscent of surveillance camera footage commonly seen in horror films. The shader creates visual distortions, glitch effects, RGB splitting and other effects, which mimic the eerie, unreliable look of a malfunctioning camera. This enhances the atmosphere and adds an element of dread and tension, immersing the player in a creepy, unsettling environment.
+
+How the shader effects fit into the rendering pipeline:
+The shader processes the image that the camera has finished rendering, but before it is actually shown on the screen. It adds ‘special effects’ to the image.
+
+Some effects are done in the vertex shader (distortion, jitter, tearing) while others (RGB split, Noise overlay, scanning bars, glitch effect, fog effect) are done in the fragment shader.
+This is because:
+1. The vertex shader modifies the vertex positions, and effects like distortion and others change the shapes or positions of objects.
+2. The fragment shader handles pixel-level details. The effects mentioned above do not change the shapes or positions of objects. They only affect the appearance of each pixel; their colour, transparency, or overlays.
+
+How the parameters are set:
+Parameters such as wave distortion, fog density, and RGB split are set in the shader’s associated C# script using material.SetFloat() or material.SetTexture(). These parameters are set each time OnRenderImage() method is called (i.e. just before displaying the image on screen).
+
+Why parameters are set this way (i.e. from a script):
+These parameters allow real-time adjustments from the Unity Inspector (during runtime), so it is much easier to tweak these values to the desired amount.
+
+
+Shader 2: ?
+
+
+Particle Effect: ?
+
 
 ## Summary of Contributions
 
