@@ -53,8 +53,14 @@ public class DoorToggle : Interactible
     }
 
     private void LoadNextScene() {
-        print(SceneManager.GetActiveScene().buildIndex);  
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        print(SceneManager.GetActiveScene().buildIndex);
+
+        Debug.Log("Current scene name is: " + SceneManager.GetActiveScene().name);
+        if (SceneManager.GetActiveScene().name == "Level Tutorial") {
+            SceneManager.LoadScene("MainMenu");
+        } else {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        }
     }
 
     public override void OnLoseFocus()

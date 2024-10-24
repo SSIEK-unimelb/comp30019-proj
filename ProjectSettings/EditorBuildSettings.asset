@@ -18,6 +18,9 @@ EditorBuildSettings:
     path: Assets/Level 2.unity
     guid: dfe2a0fca351c3d4383d132c5c85b583
   - enabled: 1
+    path: Assets/Level End.unity
+    guid: 88fc630759da8c447b20d1acbb1cd0a4
+  - enabled: 1
     path: Assets/RestartMenu.unity
     guid: e38243bef8c8e024aa572d0322040eed
   m_configObjects: {}

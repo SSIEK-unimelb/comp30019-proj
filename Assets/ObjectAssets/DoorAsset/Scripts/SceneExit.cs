@@ -3,24 +3,21 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+// It seems this script is unused?
+// The script to change scenes is the DoorToggle script.
+
 public class SceneExit : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     private void OnInteract(Collider other) {
         if (other.tag == "LevelExit") {
             Debug.Log("Hello");
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+
+            Debug.Log("Current scene name is: " + SceneManager.GetActiveScene().name);
+            if (SceneManager.GetActiveScene().name == "Level Tutorial") {
+                SceneManager.LoadScene("MainMenu");
+            } else {
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            }
         }
     }
 }
