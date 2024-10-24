@@ -173,10 +173,10 @@ Why parameters are set this way (i.e. from a script):
 These parameters allow real-time adjustments from the Unity Inspector (during runtime), so it is much easier to tweak these values to the desired amount.
 
 
-Shader 2: ?
+**Shader 2: ?**
 
 
-Particle Effect: ?
+**Particle Effect: ?**
 
 
 ## Summary of Contributions
