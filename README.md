@@ -146,8 +146,9 @@ Who is responsible for each task? How will you ensure that everyone contributes 
 ## Shaders and Special Effects
 
 Shader 1: Horror Post Processing Shader
-- Path: [ShaderCode](Assets/Shaders/HorrorPostProcessingShader.shader)
-- Associated Script Path: [Associated Script Code](Assets/Shaders/HorrorPostProcessingScript.cs)
+- [Link to ShaderCode](Assets/Shaders/HorrorPostProcessingShader.shader)
+- [Link to Associated Script Code](Assets/Shaders/HorrorPostProcessingScript.cs)
+
 Note: The specific implementation of this shader (i.e. what each parameter is used for) is explained in the code in comments (mainly in the shader code).
 
 Shader Effects:
