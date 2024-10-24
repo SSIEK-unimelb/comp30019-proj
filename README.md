@@ -145,7 +145,7 @@ Who is responsible for each task? How will you ensure that everyone contributes 
 
 ## Shaders and Special Effects
 
-Shader 1: Horror Post Processing Shader
+**Shader 1: Horror Post Processing Shader**
 - [Link to ShaderCode](Assets/Shaders/HorrorPostProcessingShader.shader)
 - [Link to Associated Script Code](Assets/Shaders/HorrorPostProcessingScript.cs)
 
