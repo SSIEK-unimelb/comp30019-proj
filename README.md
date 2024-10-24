@@ -146,12 +146,14 @@ Who is responsible for each task? How will you ensure that everyone contributes 
 ## Shaders and Special Effects
 
 Shader 1: Horror Post Processing Shader
-- Path: Assets/Shaders/HorrorPostProcessingShader.shader
-- Associated Script Path: Assets/Shaders/HorrorPostProcessingScript.cs
+- Path: [ShaderCode](Assets/Shaders/HorrorPostProcessingShader.shader)
+- Associated Script Path: [Associated Script Code](Assets/Shaders/HorrorPostProcessingScript.cs)
 Note: The specific implementation of this shader (i.e. what each parameter is used for) is explained in the code in comments (mainly in the shader code).
 
 Shader Effects:
-GIF here
+<p align="center">
+  <img src="Images/Shaders_ParticleEffects/HorrorShaderGif.gif" width="600">
+</p>
 
 This shader aims to produce ‘horror’ effects reminiscent of surveillance camera footage commonly seen in horror films. The shader creates visual distortions, glitch effects, RGB splitting and other effects, which mimic the eerie, unreliable look of a malfunctioning camera. This enhances the atmosphere and adds an element of dread and tension, immersing the player in a creepy, unsettling environment.
 
