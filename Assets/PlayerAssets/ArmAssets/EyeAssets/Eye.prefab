@@ -249,7 +249,7 @@ Camera:
   m_Enabled: 0
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -303,15 +303,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shader: {fileID: 4800000, guid: fa58e8ad3ae16324cb72526470e344d0, type: 3}
-  waveEnabled: 0
-  screenTearingEnabled: 0
-  jitterEnabled: 0
-  RGBSplitEnabled: 0
-  noiseEnabled: 0
-  scanningBarsEnabled: 0
+  waveEnabled: 1
+  screenTearingEnabled: 1
+  jitterEnabled: 1
+  RGBSplitEnabled: 1
+  noiseEnabled: 1
+  scanningBarsEnabled: 1
   fogEnabled: 1
   waveX: 0.1
-  waveY: 1
+  waveY: 0.1
   waveStrength: 0.01
   waveSpeed: 1
   tearThreshold: 0.999
@@ -319,17 +319,17 @@ MonoBehaviour:
   shiftAmount: 1
   jitterSpeed: 2
   jitterThreshold: 0.01
-  jitterX: 0.005
+  jitterX: 0.003
   jitterY: 0
-  chromaticDistortionAmount: 0.005
+  chromaticDistortionAmount: 0.05
   noiseTexture: {fileID: 2800000, guid: 54c9514d3305422408497689b06c6bc4, type: 3}
   noiseSpeed: 0.05
-  noiseIntensity: 0.01
-  barSpeed: 1
-  barAmount: 100
-  barThickness: 10
+  noiseIntensity: 0.005
+  barSpeed: 1000
+  barAmount: 1000
+  barThickness: 1
   barIntensity: 1
-  fogColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  fogColor: {r: 1, g: 0.8066038, b: 0.8066038, a: 1}
   fogDensity: 0.05
   fogOffset: 1
 --- !u!114 &1060638272100955226

@@ -3047,7 +3047,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'WSAD to move
+  m_text: 'WASD to move
 
     Press space to jump
 
@@ -24100,7 +24100,7 @@ GameObject:
   - component: {fileID: 1087412648}
   - component: {fileID: 1087412647}
   m_Layer: 0
-  m_Name: Move Instructions (1)
+  m_Name: OpenDoor Instructions
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
