@@ -5163,7 +5163,7 @@ MonoBehaviour:
   sacrificeAudio: {fileID: 8300000, guid: 998cf7c9b93181a4eae0373b6195a5a6, type: 3}
   objectToTrigger: {fileID: 0}
   enemyLayer: Enemy
-  sacrificeTime: 3
+  sacrificeTime: 1
   isInside: 0
   initialRotationSpeed: 30
   rotationAcceleration: 30

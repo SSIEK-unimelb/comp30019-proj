@@ -53,14 +53,19 @@ public class HoldingScript : MonoBehaviour
 
                 if (hit.transform.gameObject.CompareTag(pickupTag))
                 {
-                    //ACTIVATE HOLD ICON HERE
-                    holdUI.SetActive(true);
-                    if (Input.GetKeyDown(KeyCode.Mouse1))
+                    HoldStatus holdStatus = hit.transform.gameObject.GetComponentInParent<HoldStatus>();
+                    if (holdStatus == null || (holdStatus != null && holdStatus.CanBeHeld))
                     {
-                        //pass in object hit into the PickUpObject function
-                        holdUI.SetActive(false);
-                        PickUpObject(hit.transform.gameObject);
+                        //ACTIVATE HOLD ICON HERE
+                        holdUI.SetActive(true);
+                        if (Input.GetKeyDown(KeyCode.Mouse1))
+                        {
+                            //pass in object hit into the PickUpObject function
+                            holdUI.SetActive(false);
+                            PickUpObject(hit.transform.gameObject);
+                        }
                     }
+                    
                 }
                 else
                 {
@@ -101,17 +106,6 @@ public class HoldingScript : MonoBehaviour
 
     void PickUpObject(GameObject pickUpObj)
     {
-        print(pickUpObj.name);
-        // If the object cannot be held, do not hold
-        HoldStatus holdStatus = pickUpObj.GetComponentInParent<HoldStatus>();
-        print("HoldStatus script is null: " + holdStatus == null);
-        if (holdStatus != null) { 
-            print("Hold status exists, at " + holdStatus.transform.name + ", canBeHeld set to : " + holdStatus.CanBeHeld);
-        }
-        if (holdStatus != null && !holdStatus.CanBeHeld) {
-            return;
-        }
-
         GameObject pickedObj = pickUpObj;
         ParentReference parentRef = pickUpObj.GetComponentInParent<ParentReference>();
         if (parentRef != null)

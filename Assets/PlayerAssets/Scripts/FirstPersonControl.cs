@@ -12,6 +12,8 @@ using UnityEngine;
 
 public class FirstPersonControl : MonoBehaviour
 {
+    [SerializeField] LayerMask layerMask;
+
     private SoundManager soundManager;
     [SerializeField] private AudioClip jumpAudio;
     [SerializeField] private AudioClip landAudio;
@@ -253,7 +255,7 @@ public class FirstPersonControl : MonoBehaviour
 
     private void CheckInteraction() 
     {
-        if (Physics.Raycast(playerCamera.ViewportPointToRay(interactRayIntersect), out RaycastHit hit, interactDistance)) 
+        if (Physics.Raycast(playerCamera.ViewportPointToRay(interactRayIntersect), out RaycastHit hit, interactDistance, ~layerMask)) 
         { 
             if(hit.collider.gameObject.layer == InteractibleLayer && 
                 (currentInteractible == null || hit.collider.gameObject.GetInstanceID() != currentInteractible.GetInstanceID()))

@@ -5065,10 +5065,10 @@ PrefabInstance:
       addedObject: {fileID: 3825505643137470117}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 4d8b3f95dbaf6284a9144b0973ff9ac9, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 915781757218389630}
+      addedObject: {fileID: 8697746377766510762}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 4d8b3f95dbaf6284a9144b0973ff9ac9, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 8697746377766510762}
+      addedObject: {fileID: 6576875837394227000}
   m_SourcePrefab: {fileID: 100100000, guid: 4d8b3f95dbaf6284a9144b0973ff9ac9, type: 3}
 --- !u!4 &2648858227795522640 stripped
 Transform:
@@ -5093,8 +5093,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   goblins: []
---- !u!65 &915781757218389630
-BoxCollider:
+--- !u!114 &8697746377766510762
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3425394519438208746}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5de26469b959b4f4d84c74d68fe56f98, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HealingAudio: {fileID: 8300000, guid: cb770652ce9d9c246baaaa0eb96f595a, type: 3}
+  healingTime: 1
+  isInside: 0
+  initialRotationSpeed: 30
+  rotationAcceleration: 30
+  healingDuration: 3
+--- !u!135 &6576875837394227000
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -5112,23 +5130,5 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 0.2663897, z: 1}
-  m_Center: {x: 0, y: 0.030849855, z: 0}
---- !u!114 &8697746377766510762
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3425394519438208746}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5de26469b959b4f4d84c74d68fe56f98, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  HealingAudio: {fileID: 8300000, guid: cb770652ce9d9c246baaaa0eb96f595a, type: 3}
-  healingTime: 5
-  isInside: 0
-  initialRotationSpeed: 30
-  rotationAcceleration: 30
-  healingDuration: 3
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}

@@ -78,6 +78,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98fdb23c56a378442819848c76335f30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 6144
   jumpAudio: {fileID: 8300000, guid: bc7ef992cb4fe49a7855e3b508a0584c, type: 3}
   landAudio: {fileID: 8300000, guid: 8dfc580618850428e904fc73c87a36db, type: 3}
   InteractibleLayer: 6
@@ -488,7 +491,7 @@ MonoBehaviour:
   barAmount: 100
   barThickness: 10
   barIntensity: 1
-  fogColor: {r: 0.46540874, g: 0.46540874, b: 0.46540874, a: 1}
+  fogColor: {r: 0, g: 0, b: 0, a: 1}
   fogDensity: 0.01
   fogOffset: 1
 --- !u!81 &5787108898890949189
