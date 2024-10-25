@@ -3116,7 +3116,7 @@ MonoBehaviour:
     Hold shift to run
 
     Press
-    C to crouch'
+    C (Not ctrl)to crouch'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c3b1df64ffb5db34eab1d93a419999ed, type: 2}
   m_sharedMaterial: {fileID: 3806485538036103260, guid: c3b1df64ffb5db34eab1d93a419999ed, type: 2}
