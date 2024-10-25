@@ -7,7 +7,7 @@ public class RestartMenu : MonoBehaviour
 {
     public void RestartGame() {
         Debug.Log(SceneManager.GetActiveScene().buildIndex);
-        SceneManager.LoadScene("MainMenu");
+        SceneManager.LoadScene("StartScene");
     }
     
     public void QuitGame() {
