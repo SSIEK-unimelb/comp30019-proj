@@ -304,7 +304,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shader: {fileID: 4800000, guid: fa58e8ad3ae16324cb72526470e344d0, type: 3}
   waveEnabled: 1
-  screenTearingEnabled: 1
+  screenTearingEnabled: 0
   jitterEnabled: 1
   RGBSplitEnabled: 1
   noiseEnabled: 1
