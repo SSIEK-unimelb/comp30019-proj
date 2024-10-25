@@ -24,6 +24,11 @@ public class AttackState : BaseEnemyState
         outsideAttackRangeTime = outsideAttackRangeDuration;
 
         goblinAI.GetExclamationMark().SetActive(true);
+
+        if (goblinAI.GetFirstTimeSeen()) {
+            goblinAI.GetSoundManager().PlaySoundEffect(goblinAI.GetDiscoverAudio(), 1.0f);
+            goblinAI.SetFirstTimeSeenToFalse();
+        }
     }
 
     public override void UpdateState() {

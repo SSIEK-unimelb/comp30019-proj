@@ -78,14 +78,16 @@ public class SacrificeCircle : MonoBehaviour
     }
 
     
-    private void OnTriggerStay(Collider other)
+    private void OnTriggerStay(Collider col)
     {
         // Check if enemy has entered the circle.
         // Debug.Log(LayerMask.LayerToName(col.gameObject.layer));
-        if (other.gameObject.layer == LayerMask.NameToLayer(enemyLayer)) {
-            HoldStatus holdStatus = other.transform.GetComponentInParent<HoldStatus>();
+        if (col.gameObject.layer == LayerMask.NameToLayer(enemyLayer)) {
+            // If goblin can be held (is dead) and is not currently being held.
+            HoldStatus holdStatus = col.transform.GetComponentInParent<HoldStatus>();
+            if (holdStatus) Debug.Log("Can goblin " + col.transform.parent.name + " be held? " + holdStatus.CanBeHeld);
             if (holdStatus && holdStatus.CanBeHeld && !holdStatus.IsHeld) {
-                enemySacrifice = other.transform;
+                enemySacrifice = col.transform;
                 isInside = true;
                 holdStatus.CanBeHeld = false;
             }
@@ -94,13 +96,14 @@ public class SacrificeCircle : MonoBehaviour
 
     private void OnTriggerExit(Collider col)
     {
-        // Check if the enemy has left the circle.
+        // Check if an enemy has left the circle.
         if (col.gameObject.layer == LayerMask.NameToLayer(enemyLayer)) {
+            // If the enemy was not sacrificed
+            if (enemySacrifice == null) return;
             isInside = false;
             timeInside = 0f; // Reset the time when exiting
             HoldStatus holdStatus = col.transform.GetComponentInParent<HoldStatus>();
             holdStatus.CanBeHeld = true;
-
         }
     }
 }

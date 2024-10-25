@@ -75,6 +75,7 @@ public class GoblinAI : MonoBehaviour
     [Header("Suspicion Icons")]
     private GameObject questionMark;
     private GameObject exclamationMark;
+    private bool firstTimeSeen = true;
 
     // These variables are used to turn the enemy so that it faces the direction it is moving in,
     // or so that it faces the player when in attack range.
@@ -119,6 +120,8 @@ public class GoblinAI : MonoBehaviour
 
     public GameObject GetQuestionMark() { return questionMark; }
     public GameObject GetExclamationMark() { return exclamationMark; }
+    public bool GetFirstTimeSeen() { return firstTimeSeen; }
+    public void SetFirstTimeSeenToFalse() { firstTimeSeen = false; }
 
     public IdleState GetIdleState() { return idleState; }
     public PatrolState GetPatrolState() { return patrolState; }

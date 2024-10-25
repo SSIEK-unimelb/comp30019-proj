@@ -108,7 +108,7 @@ public class FirstPersonControl : MonoBehaviour
 
     private ItemSwitcher itemSwitcher;
 
-    private bool crouchToggled = false;
+    // private bool crouchToggled = false;
 
     private void Awake()
     {
@@ -250,7 +250,7 @@ public class FirstPersonControl : MonoBehaviour
         characterController.center = targetCenter;
 
         isInCrouchAnimation = false;
-        crouchToggled = false;
+        // crouchToggled = false;
     }
 
     private void CheckInteraction() 

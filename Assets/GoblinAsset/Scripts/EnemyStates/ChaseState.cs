@@ -10,7 +10,6 @@ public class ChaseState : BaseEnemyState
     private float chaseTimeInRange;
     private float chaseDurationOutsideRange;
     private float chaseTimeOutsideRange;
-    private bool firstTime = true;
 
     public ChaseState(GoblinAI goblinAI, NavMeshAgent navMeshAgent, GameObject player) : 
                     base(goblinAI, navMeshAgent, player) { }
@@ -32,9 +31,9 @@ public class ChaseState : BaseEnemyState
         goblinAI.GetGoblinSounds().pitch = 3.0f;
         goblinAI.GetGoblinSounds().Play();
 
-        if (firstTime) {
+        if (goblinAI.GetFirstTimeSeen()) {
             goblinAI.GetSoundManager().PlaySoundEffect(goblinAI.GetDiscoverAudio(), 1.0f);
-            firstTime = false;
+            goblinAI.SetFirstTimeSeenToFalse();
         }
     }
 
