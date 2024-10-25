@@ -16,6 +16,9 @@ public class DoorToggle : Interactible
     public bool isOpen = true;
     private FirstPersonControl firstPersonControl;
 
+    private string tutorialSceneName = "Level Tutorial";
+    private string mainMenuSceneName = "StartScene";
+
     private GameObject interactionText;
     public override void OnFocus()
     {
@@ -56,8 +59,8 @@ public class DoorToggle : Interactible
         print(SceneManager.GetActiveScene().buildIndex);
 
         Debug.Log("Current scene name is: " + SceneManager.GetActiveScene().name);
-        if (SceneManager.GetActiveScene().name == "Level Tutorial") {
-            SceneManager.LoadScene("MainMenu");
+        if (SceneManager.GetActiveScene().name == tutorialSceneName) {
+            SceneManager.LoadScene(mainMenuSceneName);
         } else {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
