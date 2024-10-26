@@ -332,7 +332,7 @@ public class GoblinAI : MonoBehaviour
         canHearSound = false;
         // If the player/object is in hearing range,
         if (distance <= hearRadius) {
-            // Debug.Log(gameObject.name + " heard a sound from: " + soundOrigin);
+            Debug.Log(gameObject.name + " heard a sound from: " + soundOrigin);
             soundHeardPos = soundOrigin;
             canHearSound = true;
         }

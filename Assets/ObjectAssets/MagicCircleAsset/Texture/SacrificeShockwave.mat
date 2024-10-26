@@ -30,7 +30,7 @@ Material:
     m_Ints: []
     m_Floats:
     - _Radius: 1
-    - _TimeOffset: 0
+    - _TimeOffset: 50.699135
     - _WaveFrequency: 12
     - _WaveStrength: 0.1
     m_Colors:
