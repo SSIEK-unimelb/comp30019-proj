@@ -13805,8 +13805,20 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4842857274288144977, guid: 8095aea1b5584714e8a5b3626eed903f, type: 3}
+      propertyPath: fogColor.b
+      value: 0.007843138
+      objectReference: {fileID: 0}
+    - target: {fileID: 4842857274288144977, guid: 8095aea1b5584714e8a5b3626eed903f, type: 3}
+      propertyPath: fogColor.g
+      value: 0.007843138
+      objectReference: {fileID: 0}
+    - target: {fileID: 4842857274288144977, guid: 8095aea1b5584714e8a5b3626eed903f, type: 3}
+      propertyPath: fogColor.r
+      value: 0.007843138
+      objectReference: {fileID: 0}
+    - target: {fileID: 4842857274288144977, guid: 8095aea1b5584714e8a5b3626eed903f, type: 3}
       propertyPath: fogDensity
-      value: 0.12
+      value: 0.02
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

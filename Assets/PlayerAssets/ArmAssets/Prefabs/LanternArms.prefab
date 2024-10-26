@@ -2770,7 +2770,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5272685656338057852, guid: e5761c5a9751f9542b3bb2ee85bc522d, type: 3}
       propertyPath: m_Intensity
-      value: 1
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 5272685656338057852, guid: e5761c5a9751f9542b3bb2ee85bc522d, type: 3}
       propertyPath: m_RenderMode

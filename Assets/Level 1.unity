@@ -16475,27 +16475,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4842857274288144977, guid: 8095aea1b5584714e8a5b3626eed903f, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4842857274288144977, guid: 8095aea1b5584714e8a5b3626eed903f, type: 3}
       propertyPath: fogColor.b
-      value: 0.37106913
+      value: 0.007843138
       objectReference: {fileID: 0}
     - target: {fileID: 4842857274288144977, guid: 8095aea1b5584714e8a5b3626eed903f, type: 3}
       propertyPath: fogColor.g
-      value: 0.37106913
+      value: 0.007843138
       objectReference: {fileID: 0}
     - target: {fileID: 4842857274288144977, guid: 8095aea1b5584714e8a5b3626eed903f, type: 3}
       propertyPath: fogColor.r
-      value: 0.37106913
+      value: 0.007843138
       objectReference: {fileID: 0}
     - target: {fileID: 4842857274288144977, guid: 8095aea1b5584714e8a5b3626eed903f, type: 3}
       propertyPath: fogDensity
-      value: 0.063
+      value: 0.02
       objectReference: {fileID: 0}
     - target: {fileID: 4842857274288144977, guid: 8095aea1b5584714e8a5b3626eed903f, type: 3}
       propertyPath: fogEnabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5245822010487954139, guid: 8095aea1b5584714e8a5b3626eed903f, type: 3}
       propertyPath: m_SizeDelta.x
@@ -33368,6 +33368,10 @@ PrefabInstance:
     - target: {fileID: 3281294395484095731, guid: 408440ed1ac65324fb3d0cdf1c27a4c0, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4403697789942099863, guid: 408440ed1ac65324fb3d0cdf1c27a4c0, type: 3}
+      propertyPath: attackRange
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4403697789942099863, guid: 408440ed1ac65324fb3d0cdf1c27a4c0, type: 3}
       propertyPath: patrolPoints.Array.data[0]

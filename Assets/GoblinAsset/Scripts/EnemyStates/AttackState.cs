@@ -16,7 +16,7 @@ public class AttackState : BaseEnemyState
         Debug.Log("Entering Attack State");
 
         Vector3 playerDirection = (player.transform.position - goblinAI.transform.position).normalized;
-        navMeshAgent.destination = goblinAI.transform.position + playerDirection;
+        navMeshAgent.destination = goblinAI.transform.position + playerDirection * 0.1f;
         navMeshAgent.speed = 0;
 
         goblinAI.SetCurrentAttackCooldown(0);
