@@ -29,7 +29,11 @@ public class ItemSwitcher : MonoBehaviour
         // testing unlocking
         unlock(0);
         unlock(1);
+        unlock(2);
+        unlock(3);
         SwitchItem(1);
+        SwitchItem(2);
+        SwitchItem(3);
         SwitchItem(0);
     }
 
@@ -51,21 +55,12 @@ public class ItemSwitcher : MonoBehaviour
         }
         else if (Input.GetKeyDown(KeyCode.Alpha3))
         {
-            //todo remove this : only for testing
-            unlock(2);
-            if (isUnlocked[2])
-            {
-                SwitchItem(2);
-            }
+            SwitchItem(2);
         }
         else if (Input.GetKeyDown(KeyCode.Alpha4))
         {
-            unlock(3);
 
-            if (isUnlocked[3])
-            {
-                SwitchItem(3);
-            }
+            SwitchItem(3);
         }
         else if (Input.GetAxis("Mouse ScrollWheel") > 0f) {
             SwitchItem(currentItemIndex - 1);
@@ -79,7 +74,6 @@ public class ItemSwitcher : MonoBehaviour
 
     public void SwitchItem(int itemIndex) {
         // could also add a condition here to only allow items that the player has in inventory
-        print(itemIndex + ", " + lastUnlocked);
         //print(lastUnlocked);
         if ((itemIndex >= 0) && (itemIndex <= lastUnlocked) && !isUnlocked[itemIndex]) { return; }
         if (!canSwitch) { return; }
@@ -116,9 +110,6 @@ public class ItemSwitcher : MonoBehaviour
         currentItem = Instantiate(itemPrefabs[currentItemIndex], localOffset, transform.rotation, transform);
     }
 
-    public void UpdateInventorySize() { 
-        // todo  : dynamic resizing of inventory
-    }
 
     public void unlock(int itemIndex) {
         isUnlocked[itemIndex] = true;
