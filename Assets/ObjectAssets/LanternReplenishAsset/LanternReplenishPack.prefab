@@ -98,7 +98,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   amountText: {fileID: 0}
-  refillBurnTime: 20
+  refillBurnTime: 60
 --- !u!65 &5281636122290386482
 BoxCollider:
   m_ObjectHideFlags: 0
