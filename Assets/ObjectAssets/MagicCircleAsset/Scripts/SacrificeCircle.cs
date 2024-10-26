@@ -23,11 +23,13 @@ public class SacrificeCircle : MonoBehaviour
 
     [SerializeField] private float sacrificeDuration = 3f;
     private float currentSacrificeTime = 0;
+    private ShockwaveActivator shockwaveActivator;
 
     void Start() {
         particleEffect = GetComponentInChildren<ParticleSystem>();
         soundManager = GameObject.Find("SoundManager").GetComponent<SoundManager>();
         door = objectToTrigger.GetComponent<LockedDoor>();
+        shockwaveActivator = GetComponent<ShockwaveActivator>();
         Debug.Log("The door is currently: " + door);
         currentRotationSpeed = initialRotationSpeed;
         particleEffect.Stop();
@@ -48,6 +50,7 @@ public class SacrificeCircle : MonoBehaviour
                 if (timeInside >= sacrificeTime) {
                     Debug.Log("Sacrifice");
                     isSacrificed = true;
+                    shockwaveActivator.ActivateShockwave();
                     holdStatus.CanBeHeld = false;
                     Debug.Log("The door is currently: " + door);
                     door.OnTrigger();
