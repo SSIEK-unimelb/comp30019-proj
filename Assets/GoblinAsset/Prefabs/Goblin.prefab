@@ -1495,7 +1495,7 @@ MonoBehaviour:
   chaseAnimation: {fileID: 7400000, guid: 1be4201f944218f4780fc4e9cd1eab96, type: 2}
   chaseAudio: {fileID: 8300000, guid: 73db322163c22b84ebcf374aa88b70f5, type: 3}
   discoverAudio: {fileID: 8300000, guid: 2812cd86d0d0c694caacdc6fb1453bf3, type: 3}
-  attackRange: 2
+  attackRange: 1.5
   outsideAttackRangeDuration: 0.5
   attackCooldown: 1
   attackAnimation: {fileID: 7400000, guid: 5204128a068fe3c4da4c88f7cf04256a, type: 2}

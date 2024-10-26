@@ -25,7 +25,7 @@ public class HealingCircle : MonoBehaviour
 
     void Start() {
         particleEffect = GetComponentInChildren<ParticleSystem>();
-        soundManager = GameObject.Find("SoundManager").GetComponent<SoundManager>();
+        soundManager = GameObject.FindGameObjectWithTag("SoundManager").GetComponent<SoundManager>();
         healthManager = GameObject.FindWithTag("Player").GetComponent<HealthManager>();
         currentRotationSpeed = initialRotationSpeed;
         particleEffect.Stop();

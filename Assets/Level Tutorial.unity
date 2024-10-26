@@ -13822,9 +13822,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 4765567072854298104, guid: 8095aea1b5584714e8a5b3626eed903f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2040945942}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8095aea1b5584714e8a5b3626eed903f, type: 3}
+--- !u!4 &645434995 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4765567072854298104, guid: 8095aea1b5584714e8a5b3626eed903f, type: 3}
+  m_PrefabInstance: {fileID: 645434994}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &646506511
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -44649,11 +44657,23 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 645434995}
     m_Modifications:
     - target: {fileID: 559001345156920063, guid: 778ed206023c99e43a038702e3a8f624, type: 3}
       propertyPath: m_Name
       value: SoundManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 7652692752924614914, guid: 778ed206023c99e43a038702e3a8f624, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7652692752924614914, guid: 778ed206023c99e43a038702e3a8f624, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7652692752924614914, guid: 778ed206023c99e43a038702e3a8f624, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7652692752924614914, guid: 778ed206023c99e43a038702e3a8f624, type: 3}
       propertyPath: m_LocalPosition.x
@@ -44700,6 +44720,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 778ed206023c99e43a038702e3a8f624, type: 3}
+--- !u!4 &2040945942 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7652692752924614914, guid: 778ed206023c99e43a038702e3a8f624, type: 3}
+  m_PrefabInstance: {fileID: 2040945941}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2050784755
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -47164,4 +47189,3 @@ SceneRoots:
   - {fileID: 601341907}
   - {fileID: 1430529884}
   - {fileID: 645434994}
-  - {fileID: 2040945941}

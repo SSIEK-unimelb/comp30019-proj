@@ -8,6 +8,7 @@ TagManager:
   - Weapon
   - InteractText
   - LevelExit
+  - SoundManager
   layers:
   - Default
   - TransparentFX

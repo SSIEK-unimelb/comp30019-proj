@@ -32,7 +32,7 @@ public class LeftMouseActivate : MonoBehaviour
         eyeController = player.GetComponentInChildren<EyeScript>();
         isThrowingEye = false;
 
-        soundManager = GameObject.Find("SoundManager").GetComponent<SoundManager>();
+        soundManager = GameObject.FindGameObjectWithTag("SoundManager").GetComponent<SoundManager>();
     }
 
     // Update is called once per frame

@@ -17,7 +17,7 @@ public class OnDeath : MonoBehaviour
     [SerializeField] private float deathAnimationTime = 1f;
 
     private void Start() {
-        soundManager = GameObject.Find("SoundManager").GetComponent<SoundManager>();
+        soundManager = GameObject.FindGameObjectWithTag("SoundManager").GetComponent<SoundManager>();
     }
 
     public void StartDeathAnimation() {

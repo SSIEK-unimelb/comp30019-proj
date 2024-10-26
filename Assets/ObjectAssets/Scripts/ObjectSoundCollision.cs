@@ -17,7 +17,7 @@ public class ObjectSoundCollision : MonoBehaviour
     private float currentCooldownTime = 0f;
 
     private void Start() {
-        soundManager = GameObject.Find("SoundManager").GetComponent<SoundManager>();
+        soundManager = GameObject.FindGameObjectWithTag("SoundManager").GetComponent<SoundManager>();
         _rigidbody = GetComponent<Rigidbody>();
     }
 
@@ -66,7 +66,7 @@ public class ObjectSoundCollision : MonoBehaviour
         // Now that a collision sound has played, cooldown.
         currentCooldownTime = cooldownDuration;
 
-        Debug.Log("This object made sound: " + gameObject + " due to colliding with: " + collision.transform.gameObject);
+        // Debug.Log("This object made sound: " + gameObject + " due to colliding with: " + collision.transform.gameObject);
         // Debug.Log("This object's velocity is: " + _rigidbody.velocity.magnitude);
     }
 }

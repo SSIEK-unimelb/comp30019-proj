@@ -82,7 +82,7 @@ public class DoorToggle : Interactible
     public void Start()
     {
         firstPersonControl = GameObject.FindGameObjectWithTag("Player").GetComponent<FirstPersonControl>();
-        soundManager = GameObject.Find("SoundManager").GetComponent<SoundManager>();
+        soundManager = GameObject.FindGameObjectWithTag("SoundManager").GetComponent<SoundManager>();
     }
 
     bool AnimatorIsPlaying()

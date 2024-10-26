@@ -13,7 +13,7 @@ public class FireArrow : MonoBehaviour
     void Start()
     {
         GetAmmoManagerRef();
-        soundManager = GameObject.Find("SoundManager").GetComponent<SoundManager>();
+        soundManager = GameObject.FindGameObjectWithTag("SoundManager").GetComponent<SoundManager>();
     }
     
     public void Fire()

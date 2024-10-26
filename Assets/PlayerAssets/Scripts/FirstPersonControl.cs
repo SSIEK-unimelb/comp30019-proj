@@ -126,7 +126,7 @@ public class FirstPersonControl : MonoBehaviour
         defaultYPos = playerCamera.transform.localPosition.y;
         itemSwitcher = GetComponentInChildren<ItemSwitcher>();
 
-        soundManager = GameObject.Find("SoundManager").GetComponent<SoundManager>();
+        soundManager = GameObject.FindGameObjectWithTag("SoundManager").GetComponent<SoundManager>();
     }
     void Update()
     {

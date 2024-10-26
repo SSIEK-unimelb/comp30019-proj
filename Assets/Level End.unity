@@ -868,9 +868,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 4765567072854298104, guid: 8095aea1b5584714e8a5b3626eed903f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 599862329}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8095aea1b5584714e8a5b3626eed903f, type: 3}
+--- !u!4 &169283294 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4765567072854298104, guid: 8095aea1b5584714e8a5b3626eed903f, type: 3}
+  m_PrefabInstance: {fileID: 169283293}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &170723131
 GameObject:
   m_ObjectHideFlags: 0
@@ -2211,11 +2219,23 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 169283294}
     m_Modifications:
     - target: {fileID: 559001345156920063, guid: 778ed206023c99e43a038702e3a8f624, type: 3}
       propertyPath: m_Name
       value: SoundManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 7652692752924614914, guid: 778ed206023c99e43a038702e3a8f624, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7652692752924614914, guid: 778ed206023c99e43a038702e3a8f624, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7652692752924614914, guid: 778ed206023c99e43a038702e3a8f624, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7652692752924614914, guid: 778ed206023c99e43a038702e3a8f624, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2262,6 +2282,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 778ed206023c99e43a038702e3a8f624, type: 3}
+--- !u!4 &599862329 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7652692752924614914, guid: 778ed206023c99e43a038702e3a8f624, type: 3}
+  m_PrefabInstance: {fileID: 599862328}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &611625951
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4547,4 +4572,3 @@ SceneRoots:
   m_Roots:
   - {fileID: 594884088}
   - {fileID: 169283293}
-  - {fileID: 599862328}

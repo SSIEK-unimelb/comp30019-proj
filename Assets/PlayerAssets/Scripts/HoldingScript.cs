@@ -37,7 +37,7 @@ public class HoldingScript : MonoBehaviour
         LayerNumber = LayerMask.NameToLayer("Holdable"); 
         playerCamera = GetComponent<Camera>();
         itemSwitcher = GetComponent<ItemSwitcher>();
-        soundManager = GameObject.Find("SoundManager").GetComponent<SoundManager>();
+        soundManager = GameObject.FindGameObjectWithTag("SoundManager").GetComponent<SoundManager>();
         holdUI.SetActive(false);
     }
     void Update()

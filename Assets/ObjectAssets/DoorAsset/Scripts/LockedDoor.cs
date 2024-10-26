@@ -22,7 +22,7 @@ public class LockedDoor : MonoBehaviour
     void Start()
     {
         animator = GetComponent<Animator>();
-        soundManager = GameObject.Find("SoundManager").GetComponent<SoundManager>();
+        soundManager = GameObject.FindGameObjectWithTag("SoundManager").GetComponent<SoundManager>();
     }
 
     public void OnTrigger() {

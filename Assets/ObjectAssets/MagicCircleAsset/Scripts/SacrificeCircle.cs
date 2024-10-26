@@ -27,7 +27,7 @@ public class SacrificeCircle : MonoBehaviour
 
     void Start() {
         particleEffect = GetComponentInChildren<ParticleSystem>();
-        soundManager = GameObject.Find("SoundManager").GetComponent<SoundManager>();
+        soundManager = GameObject.FindGameObjectWithTag("SoundManager").GetComponent<SoundManager>();
         door = objectToTrigger.GetComponent<LockedDoor>();
         shockwaveActivator = GetComponent<ShockwaveActivator>();
         Debug.Log("The door is currently: " + door);

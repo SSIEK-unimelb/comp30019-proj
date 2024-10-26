@@ -136,7 +136,7 @@ public class GoblinAI : MonoBehaviour
         navMeshAgent.updateRotation = false;
         animator = GetComponent<Animator>();
         goblinSounds = GetComponent<AudioSource>();
-        soundManager = GameObject.Find("SoundManager").GetComponent<SoundManager>();
+        soundManager = GameObject.FindGameObjectWithTag("SoundManager").GetComponent<SoundManager>();
         objectSoundCollision = GetComponent<ObjectSoundCollision>();
 
         questionMark = transform.Find("Question_Mark").gameObject;
