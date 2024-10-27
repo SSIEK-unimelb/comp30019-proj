@@ -1495,7 +1495,7 @@ MonoBehaviour:
   chaseAnimation: {fileID: 7400000, guid: 1be4201f944218f4780fc4e9cd1eab96, type: 2}
   chaseAudio: {fileID: 8300000, guid: 73db322163c22b84ebcf374aa88b70f5, type: 3}
   discoverAudio: {fileID: 8300000, guid: 2812cd86d0d0c694caacdc6fb1453bf3, type: 3}
-  attackRange: 1.5
+  attackRange: 1.6
   outsideAttackRangeDuration: 0.5
   attackCooldown: 1
   attackAnimation: {fileID: 7400000, guid: 5204128a068fe3c4da4c88f7cf04256a, type: 2}
@@ -3368,8 +3368,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1.509024, y: 1.4104851, z: 1.4268734}
+  m_Center: {x: 0.031344038, y: -0.10232333, z: 0.032315377}
 --- !u!114 &408940230137160158
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -2750,7 +2750,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5272685656338057852, guid: e5761c5a9751f9542b3bb2ee85bc522d, type: 3}
       propertyPath: m_Range
-      value: 10
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5272685656338057852, guid: e5761c5a9751f9542b3bb2ee85bc522d, type: 3}
       propertyPath: m_Color.b
@@ -2770,15 +2770,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5272685656338057852, guid: e5761c5a9751f9542b3bb2ee85bc522d, type: 3}
       propertyPath: m_Intensity
-      value: 1.5
+      value: 1.2
       objectReference: {fileID: 0}
     - target: {fileID: 5272685656338057852, guid: e5761c5a9751f9542b3bb2ee85bc522d, type: 3}
       propertyPath: m_RenderMode
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5272685656338057852, guid: e5761c5a9751f9542b3bb2ee85bc522d, type: 3}
+      propertyPath: m_Shadows.m_Type
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5272685656338057852, guid: e5761c5a9751f9542b3bb2ee85bc522d, type: 3}
       propertyPath: m_BounceIntensity
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5272685656338057852, guid: e5761c5a9751f9542b3bb2ee85bc522d, type: 3}
+      propertyPath: m_Shadows.m_NearPlane
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5272685656338057852, guid: e5761c5a9751f9542b3bb2ee85bc522d, type: 3}
+      propertyPath: m_Shadows.m_NormalBias
+      value: 0.05
       objectReference: {fileID: 0}
     - target: {fileID: 6058511142523976368, guid: e5761c5a9751f9542b3bb2ee85bc522d, type: 3}
       propertyPath: m_Layer
