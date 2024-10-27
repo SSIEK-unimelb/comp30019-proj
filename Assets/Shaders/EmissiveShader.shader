@@ -5,7 +5,7 @@ Shader "Unlit/EmissiveShader"
         _Color ("Glow Color", Color) = (1, 1, 1, 1) // Color of the glow
         _GlowIntensity ("Glow Intensity", Float) = 1.0 // How bright the glow is
         _Radius ("Glow Radius", Float) = 1.0 // Radius for the glow
-        _MainTex ("Main Texture", 2D) = "white" {} // Texture for the circle
+        _MainTex ("Main Texture", 2D) = "white" {} // Texture for the circle (optional)
         _PulseSpeed ("Pulse Speed", Float) = 1.0 // Speed of the glow pulse
     }
 
@@ -50,7 +50,7 @@ Shader "Unlit/EmissiveShader"
                 float dist = distance(i.uv, center);
                 
                 // Create a pulse effect based on time
-                float pulse = sin(_Time.y * _PulseSpeed) * 0.5 + 0.5; // Normalized pulse value [0, 1]
+                float pulse = sin(_Time.y * _PulseSpeed) * 0.5 + 0.5; // Normalised pulse value [0, 1]
                 
                 // Calculate the glow based on distance
                 float glow = smoothstep(_Radius, _Radius * 0.5, dist) * pulse;
