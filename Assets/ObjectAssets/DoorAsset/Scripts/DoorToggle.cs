@@ -8,6 +8,7 @@ using UnityEngine.SceneManagement;
 public class DoorToggle : Interactible
 {
     private SoundManager soundManager;
+    private ScreenFader screenFader = new ScreenFader();
     [SerializeField] private AudioClip doorSound;
 
     private Animator Animator;
