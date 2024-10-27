@@ -1483,8 +1483,8 @@ MonoBehaviour:
   - {fileID: 0}
   walkAnimation: {fileID: 7400000, guid: c61e7f9ef26a31641acd112cdeffbe61, type: 2}
   walkAudio: {fileID: 8300000, guid: a883fe83c54f3104ea5e3eea1ed3257a, type: 3}
-  hearRadius: 10
-  searchDuration: 10
+  hearRadius: 5
+  searchDuration: 5
   viewRange: 15
   viewAngle: 90
   waitDurationToChase: 1
