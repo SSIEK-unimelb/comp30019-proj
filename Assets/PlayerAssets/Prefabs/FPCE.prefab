@@ -1114,14 +1114,6 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3012898727971349186, guid: 714fb6a42eea6a7448bbedb216f9b118, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 1040
-      objectReference: {fileID: 0}
-    - target: {fileID: 3012898727971349186, guid: 714fb6a42eea6a7448bbedb216f9b118, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -417
-      objectReference: {fileID: 0}
     - target: {fileID: 3166221270565796808, guid: 714fb6a42eea6a7448bbedb216f9b118, type: 3}
       propertyPath: m_Layer
       value: 0
