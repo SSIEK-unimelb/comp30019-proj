@@ -152,7 +152,8 @@ Who is responsible for each task? How will you ensure that everyone contributes 
 <p align="center">
   <img src="Images/EvaluationReport/GenreChart.png" width="600">
 </p>
-The participant demographics are a good fit to our target audience, especially in the age range and favourite genres. When analysing the responses, it was seen that more experienced (in game experience and by genre) players found the game to be relatively easy (usually due to their overuse of the crossbow), whereas less experienced players rated the game as being harder. Ideally, we wanted the game to be challenging even for players who are experienced and play a lot of stealth/puzzle games, so some changes needed to be made.
+The participant demographics are a good fit to our target audience, especially in the age range and favourite genres. When analysing the responses, it was seen that more experienced (gaming AND genre experience) players found the game to be relatively easy (usually due to their overuse of the crossbow), whereas less experienced players rated the game as being harder (usually due to mechanics and concepts being unclear/poorly explained in-game). Ideally, we wanted the game to be challenging even for players who are experienced and play a lot of stealth/puzzle games, but not impossible for new players to understand.
+
 
 **Methodology**
 
@@ -162,8 +163,9 @@ As explained in the evaluation plan, we used two different methods:
 
 For cooperative evaluation, the players were tasked with completing the game, but we also requested specific, simpler tasks throughout, such as “Use the eye to check for enemies”, “Open the door”, “Move the barrels to get through” and more. Participants were allowed and encouraged to ask questions and narrate their gameplay, and interviewers took notes of any sections where they struggled or needed help. At the end of the playthrough, we asked some general questions before instructing the participants to also fill out the questionnaire on their own.
 
-For the questionnaire, we used a combination of closed and open ended questions to determine the participants' opinions. We used a Likert scale (strongly agree to strongly disagree) for closed ended questions (like “The environment was eerie”), and allowed paragraph responses for more open ended questions (“Did you ever feel unsure about how to approach a stealth situation? What could’ve helped this?”).
+For the questionnaire, we used a combination of closed and open ended questions to determine the participants' opinions. We used a Likert scale (strongly agree to strongly disagree) for closed ended statements (like “The environment was eerie”), and allowed paragraph responses for more open ended questions (“Did you ever feel unsure about how to approach a stealth situation? What could’ve helped this?”).
 [Questionnaire Link](https://forms.gle/B2PW19q3WQMtekPx6)
+
 
 **Feedback and Changes**
 
