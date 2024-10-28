@@ -142,6 +142,91 @@ Who is responsible for each task? How will you ensure that everyone contributes 
 
 ## Evaluation Report
 
+**Participant Demographics**
+<p align="center">
+  <img src="Images/EvaluationReport/AgeChart.png" width="600">
+</p>
+<p align="center">
+  <img src="Images/EvaluationReport/ExperienceChart.png" width="600">
+</p>
+<p align="center">
+  <img src="Images/EvaluationReport/GenreChart.png" width="600">
+</p>
+The participant demographics are a good fit to our target audience, especially in the age range and favourite genres. When analysing the responses, it was seen that more experienced (in game experience and by genre) players found the game to be relatively easy (usually due to their overuse of the crossbow), whereas less experienced players rated the game as being harder. Ideally, we wanted the game to be challenging even for players who are experienced and play a lot of stealth/puzzle games, so some changes needed to be made.
+
+**Methodology**
+
+As explained in the evaluation plan, we used two different methods:
+- Cooperative evaluation
+- Post-gameplay questionnaire
+
+For cooperative evaluation, the players were tasked with completing the game, but we also requested specific, simpler tasks throughout, such as “Use the eye to check for enemies”, “Open the door”, “Move the barrels to get through” and more. Participants were allowed and encouraged to ask questions and narrate their gameplay, and interviewers took notes of any sections where they struggled or needed help. At the end of the playthrough, we asked some general questions before instructing the participants to also fill out the questionnaire on their own.
+
+For the questionnaire, we used a combination of closed and open ended questions to determine the participants' opinions. We used a Likert scale (strongly agree to strongly disagree) for closed ended questions (like “The environment was eerie”), and allowed paragraph responses for more open ended questions (“Did you ever feel unsure about how to approach a stealth situation? What could’ve helped this?”).
+[Questionnaire Link](https://forms.gle/B2PW19q3WQMtekPx6)
+
+**Feedback and Changes**
+
+Positive Feedback:
+- Players found the world immersive and scary
+- Sound effects, especially the heavy breathing and goblin noises, added a lot
+- Players liked using the crossbow weapon
+- Players enjoyed the parkour and platforming-based areas
+- 100% of players reported that they ‘agreed’ or ‘strongly agreed’ that the game was fun to play
+- Players enjoyed the creative eye mechanic once they understood it
+
+Constructive Feedback:
+- UI/mechanics were not intuitive
+  - Feedback:
+    - Players did not initially grasp that they were supposed to (or even able to) pick up dead enemies or barrels
+    - Players didn't understand how to use the eye mechanic
+    - There was too much text on screen with ammo count and lantern timer
+  - Changes:
+    - Added a tutorial level that explained the grabbing mechanic, how to use the eye and more
+    - Added a right-click icon that appears when players hover over grabbable objects
+    - Removed most of the UI text and replaced with icons for ammo and inventory
+
+- Crossbow was too overpowered
+  - Feedback:
+    - Players loved the crossbow, but used it as a primary weapon rather than the knife
+    - Large amount of ammo allowed players to just easily speedrun through like a shooter, rather than prioritising stealth and only using the crossbow when spotted
+  - Changes:
+    - Starting ammo was reduced from 5 to 0, so players had to get familiar with the knife
+    - Reduced the frequency of ammo refills
+    - Reduced number of arrows in the refills
+
+- Knife gameplay was unclear
+  - Feedback:
+    - Players weren't aware that they had to backstab goblins, and often tried attacking them head on
+  - Changes:
+    - Added an explanation and demonstration of the knife to the tutorial
+    - Really emphasised the stealth gameplay concept to players in the tutorial, encouraging them to avoid being spotted
+
+- Lantern was useless
+  - Feedback:
+    - The game environment was light enough that the lantern was totally useless, and most players reported it as their least favourite mechanic
+  - Changes:
+    - Lowered the brightness overall by a large amount and added some completely pitch-black areas
+    - Forces the player to utilise the lantern and increases difficulty since the player needs to manage fuel and switch between items more often
+   
+- Sprinting was too fast
+  - Feedback:
+    - Players could abuse high sprint speed to constantly outrun enemies
+    - Combined with the slow attack speed and short range of the goblins, players could easily escape them once spotted
+    - This detracted from the goblin's scariness and made the game very easy
+  - Changes:
+    - Decreased sprint speed of player
+    - Increased attack speed and range of goblin attack
+    - Makes goblin much more intimidating once the player is spotted
+
+- Stealthy movement was impossible
+  - Feedback:
+    - Players could not sneak around without alerting goblins due to the controls
+    - When 'ctrl' (crouch) and 'w' (forward) were pressed together, it would close the game tab
+  - Changes:
+    - Changed crouch button to 'c'
+    - Made crouch a toggle button instead of holding down
+
 
 ## Shaders and Special Effects
 
