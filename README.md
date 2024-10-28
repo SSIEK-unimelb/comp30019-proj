@@ -276,12 +276,44 @@ The fragment shader (which is essentially the last rendering step before we draw
 The parameters are set through the material using the shader because it allows for flexibility, so the shader effect can be used for different purposes with ease - like for our healing circle, which employs the same shader but via a different material with a green colour. This particular effect is not complex enough to require a script, as we don’t need to activate, deactivate or adjust the effects while they are playing. If this was required, using a script would be easier.
 
 
-**Particle Effect: ?**
+**Particle Effect: Torch Fire Particle System**
+- [Link to Particle System](Assets/ObjectAssets/TorchAsset/Prefabs/torch_remade.prefab)
+
+<p align="center">
+  <img src="Images/Shaders_ParticleEffects/ParticleEffect-TorchGif.gif" width="600">
+</p>
+
+In the particle system, we first made it so that the effect is on loop and had the prewarm turned on as the torch will be kept running throughout the game. Since the effect is on loop, the duration does not matter anymore. We had the start speed at 1 and start size at 2 since we wanted it to have a slow, crackly, campfire-like effect. We changed the colour to something more orange to fit the theme we were trying to build.
+
+In the Emission tab, only the rate over time was changed to 15 for a larger more voluminous fire.
+
+In the Shape tab, the shape is a cone. The angle is 0 and the radius is kept small at 0.5 to create a particle system that has the shape of a candle fire where the tip of the fire is a point. The arc is a full 360 and the mode is random to simulate an actual fire that crackles randomly.
+
+In the size over lifetime tab, the size of the particle now decreases over time so that the rogue flame particles grow smaller at the top.
+
+In the Renderer tab, we changed the material so that we used our own torch particle material.
 
 
 ## Summary of Contributions
 
-TODO (due milestone 3) - see specification for details
+**Zach:**
+- Item switching (ItemSwitcher.cs)
+- Sacrifice circle pulsing light shader (EmissiveShader.shader)
+- Animations (equip and idle) for lantern, crossbow, holding object and eyeball arms
+- Right-click to hold icon when holdable object is detected
+- Lantern and crossbow ammo/fuel management systems and refill packs
+- Edited gameplay video
+- Created Google Forms evaluation feedback survey
+- Evaluation plan
+- Crossbow logic and arrow firing
+
+**William:**
+- Goblin AI and Sound Detection
+- Horror Post Processing Shader
+- Tutorial Level Design
+- Sound Effects
+- Provided clips for gameplay video
+
 
 ## References and External Resources
 
