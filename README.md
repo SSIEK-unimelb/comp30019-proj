@@ -142,7 +142,7 @@ Who is responsible for each task? How will you ensure that everyone contributes 
 
 ## Evaluation Report
 
-**Participant Demographics**
+### Participant Demographics
 <p align="center">
   <img src="Images/EvaluationReport/AgeChart.png" width="600">
 </p>
@@ -154,8 +154,7 @@ Who is responsible for each task? How will you ensure that everyone contributes 
 </p>
 The participant demographics are a good fit to our target audience, especially in the age range and favourite genres. When analysing the responses, it was seen that more experienced (gaming AND genre experience) players found the game to be relatively easy (usually due to their overuse of the crossbow), whereas less experienced players rated the game as being harder (usually due to mechanics and concepts being unclear/poorly explained in-game). Ideally, we wanted the game to be challenging even for players who are experienced and play a lot of stealth/puzzle games, but not impossible for new players to understand.
 
-
-**Methodology**
+### Methodology
 
 As explained in the evaluation plan, we used two different methods:
 - Cooperative evaluation
@@ -167,7 +166,7 @@ For the questionnaire, we used a combination of closed and open ended questions 
 [Questionnaire Link](https://forms.gle/B2PW19q3WQMtekPx6)
 
 
-**Feedback and Changes**
+### Feedback and Changes
 
 Positive Feedback:
 - Players found the world immersive and scary
