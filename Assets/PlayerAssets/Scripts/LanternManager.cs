@@ -11,6 +11,8 @@ public class LanternManager : MonoBehaviour
     private GameObject lanternParticle;
     private bool isLanternActive = false;
 
+    public bool IsLanternActive() { return currentBurnTime > 0; }
+
     private void Start()
     {
         currentBurnTime = initialBurnTime;
@@ -20,6 +22,7 @@ public class LanternManager : MonoBehaviour
 
     private void Update()
     {
+        Debug.Log("Is Lantern Active? " + isLanternActive);
         if (isLanternActive && currentBurnTime > 0)
         {
             // Decrease burn time
@@ -27,7 +30,6 @@ public class LanternManager : MonoBehaviour
             TurnOnLantern();
             currentBurnTime -= Time.deltaTime;
             UpdateLanternUI();
-
             // If time runs out, turn off the lantern
             if (currentBurnTime <= 0)
             {
@@ -51,6 +53,7 @@ public class LanternManager : MonoBehaviour
         {
             lanternLight.enabled = true;
             lanternParticle.SetActive(true);
+            
         }
         else
         {
@@ -102,6 +105,10 @@ public class LanternManager : MonoBehaviour
     public void AddBurnTime(float burnTime)
     {
         currentBurnTime += burnTime;
-        UpdateLanternUI();
+        if (isLanternActive) {
+            UpdateLanternUI();
+        } else {
+            TurnOnLantern();
+        }
     }
 }

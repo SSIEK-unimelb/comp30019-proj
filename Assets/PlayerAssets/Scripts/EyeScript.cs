@@ -27,6 +27,8 @@ public class EyeScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (PauseMenu.gameIsPaused) return;
+        
         if (eyeForm)
         {
             RegisterMouseMovement();

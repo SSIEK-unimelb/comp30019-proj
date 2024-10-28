@@ -42,6 +42,8 @@ public class HoldingScript : MonoBehaviour
     }
     void Update()
     {
+        if (PauseMenu.gameIsPaused) return;
+
         if (heldObj == null) //if currently not holding anything
         {
             //perform raycast to check if player is looking at object within pickuprange

@@ -171,6 +171,12 @@ public class GoblinAI : MonoBehaviour
     }
     void Update() {
         currentState.UpdateState();
+
+        if (PauseMenu.gameIsPaused) {
+            if (goblinSounds.isPlaying) goblinSounds.Pause();
+        } else {
+            if (!goblinSounds.isPlaying && goblinSounds.clip != null) goblinSounds.Play();
+        }
     }
 
     // Exit the current state, and enter the new state.

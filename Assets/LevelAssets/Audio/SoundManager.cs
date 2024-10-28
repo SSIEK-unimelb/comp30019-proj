@@ -42,7 +42,7 @@ public class SoundManager : MonoBehaviour
         heartBeatAudioSource.clip = heartBeat;
         personBreathingAudioSource.clip = breathingNoChase;
 
-        personBreathingAudioSource.volume = 0.4f;
+        personBreathingAudioSource.volume = 0.2f;
         personBreathingAudioSource.pitch = 0.8f;
 
         backgroundMusicAudioSource.Play();
@@ -70,6 +70,22 @@ public class SoundManager : MonoBehaviour
                 currentBreathTime = breathChangeTime;
             }
         }
+    }
+
+    // Reduce sound when in pause menu
+    public void PauseSound() {
+        backgroundMusicAudioSource.volume *= 0.5f;
+        heartBeatAudioSource.volume *= 0.5f;
+        personBreathingAudioSource.volume *= 0.1f;
+        soundEffects.volume *= 0.2f;
+    }
+
+    // Put sound back to normal when exiting pause menu
+    public void ResumeSound() {
+        backgroundMusicAudioSource.volume *= 2f;
+        heartBeatAudioSource.volume *= 2f;
+        personBreathingAudioSource.volume *= 10f;
+        soundEffects.volume *= 5f;
     }
 
     public void HighHealth() {

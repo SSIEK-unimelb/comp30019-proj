@@ -20,22 +20,22 @@ public class HeartScript : MonoBehaviour
         heart1.enabled = true;
         heart2.enabled = true;
         heart3.enabled = true;
-        soundManager.HighHealth();
+        if (soundManager) soundManager.HighHealth();
     } else if (currentHealth == 2) {
         heart1.enabled = true;
         heart2.enabled = true;
         heart3.enabled = false;
-        soundManager.MidHealth();
+        if (soundManager) soundManager.MidHealth();
     } else if (currentHealth == 1) {
         heart1.enabled = true;
         heart2.enabled = false;
         heart3.enabled = false;
-        soundManager.LowHealth();
+        if (soundManager) soundManager.LowHealth();
     } else {
         heart1.enabled = false;
         heart2.enabled = false;
         heart3.enabled = false;
-        soundManager.DecreaseHeartBeatAndBreathing();
+        if (soundManager) soundManager.DecreaseHeartBeatAndBreathing();
     }
 }
 }

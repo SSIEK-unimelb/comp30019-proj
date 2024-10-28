@@ -18,6 +18,8 @@ public class IdleState : BaseEnemyState
         navMeshAgent.speed = 0;
         idleDuration = goblinAI.GetIdleDuration();
         idleTime = idleDuration;
+
+        goblinAI.GetGoblinSounds().clip = null;
     }
 
     public override void UpdateState() {

@@ -38,6 +38,8 @@ public class LeftMouseActivate : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (PauseMenu.gameIsPaused) return;
+        
         if (isThrowingEye && Input.GetKeyDown(KeyCode.Mouse0)) {
             // Switch cam
             fpc.toggleCamera();

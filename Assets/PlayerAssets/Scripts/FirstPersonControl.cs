@@ -130,6 +130,8 @@ public class FirstPersonControl : MonoBehaviour
     }
     void Update()
     {
+        if (PauseMenu.gameIsPaused) return;
+        
         SetInteractText(false);
         if (CanMove)
         {

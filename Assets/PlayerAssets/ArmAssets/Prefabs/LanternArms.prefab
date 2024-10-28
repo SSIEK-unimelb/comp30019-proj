@@ -806,6 +806,7 @@ GameObject:
   - component: {fileID: 654533996250514483}
   - component: {fileID: 7050222585287577615}
   - component: {fileID: 4691778020023065107}
+  - component: {fileID: 72933186095140937}
   m_Layer: 11
   m_Name: AnimateObj
   m_TagString: Untagged
@@ -862,7 +863,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 26c28902c490e4c128e59eefe0f6c229, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 1
@@ -947,6 +948,18 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &72933186095140937
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2545444839784556259}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 426907564f6f577429a830567074a25c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2635068461475440959
 GameObject:
   m_ObjectHideFlags: 0
