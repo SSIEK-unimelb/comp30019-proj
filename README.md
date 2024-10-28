@@ -173,7 +173,21 @@ Why parameters are set this way (i.e. from a script):
 These parameters allow real-time adjustments from the Unity Inspector (during runtime), so it is much easier to tweak these values to the desired amount.
 
 
-**Shader 2: ?**
+**Shader 2: Emissive Glow Shader for Sacrifice/Healing Circles**
+- [Link to ShaderCode](Assets/Shaders/EmissiveShader.shader)
+
+Shader Effects:
+<p align="center">
+  <img src="Images/Shaders_ParticleEffects/EmissiveShader.gif" width="600">
+</p>
+
+The intent of this shader was to create an emissive glowing effect from the sacrifice and healing circles to aid players in locating and using them in the darkened environment, as they are a key game mechanic. It also adds to the eeriness of the game, as the deep pulsating glow from the circles makes them seem otherworldly.
+
+This shader has a vertex and fragment shader. The vertex shader section (which occurs after the input assembly) is simple, as all we need to do is process each vertex by transforming it from object space to clip space, and then pass along its UV coordinates to set the stage for the fragment shader. 
+
+The fragment shader (which is essentially the last rendering step before we draw the output to our buffer) is where the emissive effect is created, based on some values which can be set in the material that parametrises this shader, allowing for many different uses. These parameters are: colour, glow intensity, glow radius and pulse speed. For each fragment, we calculate the distance from the central UV coordinates on the texture, which can then be used for calculating the glow effect. Additionally, we create a pulse effect using a sine function dependent on the time and the pulse speed that was set. Finally, we set the colour for the fragment using the colour and glow intensity parameters, plus the calculated glow effect for this fragment.
+
+The parameters are set through the material using the shader because it allows for flexibility, so the shader effect can be used for different purposes with ease - like for our healing circle, which employs the same shader but via a different material with a green colour. This particular effect is not complex enough to require a script, as we don’t need to activate, deactivate or adjust the effects while they are playing. If this was required, using a script would be easier.
 
 
 **Particle Effect: ?**
