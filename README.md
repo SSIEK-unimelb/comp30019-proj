@@ -313,7 +313,20 @@ In the Renderer tab, we changed the material so that we used our own torch parti
 - Tutorial Level Design
 - Sound Effects
 - Provided clips for gameplay video
+- Pause menu with resume, restart and quit to menu capabilities
 
+**Sak Panha (Kenneth):**
+- First Person controller movement + prefab (FirstPersonControl.cs)
+- Interaction with doors (DoorToggle.cs, Interactible.cs)
+- Holding, dropping and throwing barrels and goblins (HoldingScript.cs)
+- Optimized mesh colliders for barrels (bettercollider.fbx)
+- Animated stabbing animation for knife (M9_Knife.controller)
+- Lighting system and shadows 
+- Inventory panels UI (Panel.prefab)
+- Implemented eyeball mechanic (EyeScript.cs)
+- Enabling/Disabling quadrants of level to improve performance (QuadrantEnabler.prefab, SceneUnloader.cs)
+
+**Aye:**
 
 ## References and External Resources
 
