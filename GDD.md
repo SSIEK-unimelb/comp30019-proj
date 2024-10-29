@@ -54,7 +54,7 @@ The player is set to steal the treasure at the top of an ancient, mystical tower
     * Goblin: Quick and dangerous, but can be outsmarted. Takes a backstab or crossbow arrow to murder.
 
 <p align="center">
-  <img src="Images/Characters/goblin.gif" width="300">
+  <img src="Images/Characters/updated_goblin.gif" width="300">
 </p>
 
 ### Gameplay and Mechanics
@@ -92,7 +92,6 @@ Gameplay Mechanics:
 <p align="center">
   <img src="Images/GameMechanics/Enemy_Awareness.png" width="600">
   <img src="Images/GameMechanics/Distract.png" width="600">
-  <img src="Images/GameMechanics/Locked Door.png" width="600">
 </p>
 
   * Enemies cannot hear you while crouching.
@@ -221,8 +220,8 @@ Game World:
 * Design: Minimalistic Design.
 
 <p align="center">
-  <img src="Images/UI/Player_UI.PNG" width="800">
-  <img src="Images/UI/UI_1.png" width="800">
+  <img src="Images/UI/lantern_ui.PNG" width="50%">
+  <img src="Images/UI/crossbow_ui.png" width="50%">
 </p>
 
 ### Art and Audio
