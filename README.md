@@ -338,10 +338,40 @@ In the Renderer tab, we changed the material so that we used our own torch parti
 
 ## References and External Resources
 
+**Animations**
 - Animations for goblin run, walk, attack, idle: [Mixamo](https://www.mixamo.com/#/?page=1&type=Motion%2CMotionPack)
+
+**Models**
+- Goblin character model: [Mixamo](https://www.mixamo.com/#/?page=1&query=goblin&type=Character)
 - Player character model: [Mixamo](https://www.mixamo.com/#/?page=1&query=heraklios&type=Character)
 - Crates and barrels: [Unity Asset Store](https://assetstore.unity.com/packages/3d/props/exterior/crates-and-barrels-pack-volume-1-free-version-128829)
 - Torch (not including particle effect): [Unity Asset Store](https://assetstore.unity.com/packages/3d/environments/dungeons/lowpoly-dungeon-modules-108997)
 - Lantern: [Unity Asset Store](https://assetstore.unity.com/packages/3d/environments/historic/modular-medieval-lanterns-85527)
 - Crossbow: [Third Party Website - Sketchfab](https://sketchfab.com/3d-models/medieval-crossbow-02-5126230f8e7e4def9bc573c6c5ba24cc)
 - Knife: [Third Party Website - Sketchfab](https://sketchfab.com/3d-models/m9-phrobis-iii-1c0c4e74951b40ce83ff98aa649a191a)
+- Dungeon: [Unity Asset Store](https://assetstore.unity.com/packages/3d/environments/dungeons/decrepit-dungeon-lite-33936)
+- GobEye model: [Unity Asset Store](https://assetstore.unity.com/packages/3d/props/ball-pack-446)
+- Goblin exclamation and question mark: [Unity Asset Store](https://assetstore.unity.com/packages/3d/props/ten-power-ups-217666)
+
+**UI, Icons and Textures**
+- Heart Icons UI: [Unity Asset Store](https://assetstore.unity.com/packages/2d/gui/icons/heart-in-pixel-287862)
+- GobEye post-processing noise texture: [Unity Asset Store](https://assetstore.unity.com/packages/2d/textures-materials/101-artistic-noise-textures-233672)
+- F-key interact icon: [Third Party Image](https://www.svgrepo.com/show/38517/keyboard-key-f.svg)
+- Right-click hold icon: [Third Party Image](https://cdn-icons-png.flaticon.com/512/31/31532.png)
+- Arrow ammo icon: [Third Party Image](https://pngmaterial.com/dvsxyz02/uploads/arrow-head-png.png)
+- Crossbow inventory icon: [Third Party Image](https://w7.pngwing.com/pngs/584/563/png-transparent-crossbow-weapon-weapon-angle-triangle-crossbow-thumbnail.png)
+- Knife inventory icon: [Third Party Image](https://st5.depositphotos.com/69100638/66815/v/450/depositphotos_668152028-stock-illustration-military-knife-icon-vector-illustration.jpg)
+- GobEye inventory icon: [Third Party Image](https://static-00.iconduck.com/assets.00/eye-icon-1024x718-1jttom5a.png)
+- Lantern inventory icon: [Third Party Image](https://cdn-icons-png.flaticon.com/512/96/96340.png)
+
+**Sounds**
+- UI click sound effects: [Unity Asset Store](https://assetstore.unity.com/packages/audio/sound-fx/free-ui-click-sound-pack-244644)
+- Crossbow sound effects: [Unity Asset Store](https://assetstore.unity.com/packages/audio/sound-fx/weapons/bow-and-hammer-sound-effects-163948)
+- Footsteps sound effects: [Unity Asset Store](https://assetstore.unity.com/packages/audio/sound-fx/footsteps-small-sound-pack-262072)
+- [Unity Asset Store](https://assetstore.unity.com/packages/audio/sound-fx/grenade-sound-fx-147490)
+- Sacrifice circle sound effects: [Unity Asset Store](https://assetstore.unity.com/packages/audio/sound-fx/weapons/demo-ancient-magic-pack-free-175093)
+- [Unity Asset Store](https://assetstore.unity.com/packages/audio/sound-fx/rpg-essentials-sound-effects-free-227708)
+- Goblin chase and eerie sound effects: [Unity Asset Store](https://assetstore.unity.com/packages/audio/sound-fx/scary-sound-fx-21523)
+- Breathing sound effects: [Unity Asset Store](https://assetstore.unity.com/packages/audio/sound-fx/horror-sfx-32834)
+- Ambience and music: [Unity Asset Store](https://assetstore.unity.com/packages/audio/music/electronic/dark-atmospheric-free-track-music-pack-adaptive-tracks-244634)
+- [Unity Asset Store](https://assetstore.unity.com/packages/audio/sound-fx/western-audio-music-67788)
