@@ -126,6 +126,12 @@ Gameplay Mechanics:
 
 ### Interactive Objects
 
+* Door: You can open and close doors. Some doors can only be opened with the sacrifice circles.
+
+<p align="center">
+  <img src="Images/Objects/Door.png" width="600">
+</p>
+
 * Sacrifice Circles: The occult gods honour the player's wishes if they present a flesh sacrifice - drag dead enemy bodies onto the circle to trigger helpful events, such as opening locked doors.
 
 <p align="center">
@@ -134,10 +140,22 @@ Gameplay Mechanics:
   <img src="Images/Objects/sacrificialCircle.gif" width="600">
 </p>
 
+* Healing Circles: Heals the player.
+
+<p align="center">
+  <img src="Images/Objects/HealingCircle.png" width="600">
+</p>
+
 * Lantern: There is a 'fuel level' that tells you how long the lantern will shine for. Be sure to pickup oil refills to keep the lantern running!
 
 <p align="center">
   <img src="Images/Weapons/lantern.gif" width="600">
+</p>
+
+* Candles (Oil refills): You can refuel your lantern with candles.
+
+<p align="center">
+  <img src="Images/Objects/lanternRefuel.png" width="600">
 </p>
 
 * Trusty dagger: The player's tried-and-true stabbing tool (has a very short range, can only backstab enemies).
@@ -150,6 +168,12 @@ Gameplay Mechanics:
 
 <p align="center">
   <img src="Images/Weapons/crossbow.gif" width="600">
+</p>
+
+* Arrow Pack: Use these arrows to reload your crossbow.
+
+<p align="center">
+  <img src="Images/Objects/arrowPack.png" width="600">
 </p>
 
 * GobEye: Can throw it and acts as a camera to observe enemy movement...
