@@ -309,6 +309,7 @@ In the Renderer tab, we changed the material so that we used our own torch parti
 
 **William:**
 - Goblin AI and Sound Detection
+- Sacrifice and Healing Circles Script
 - Horror Post Processing Shader
 - Tutorial Level Design
 - Sound Effects
