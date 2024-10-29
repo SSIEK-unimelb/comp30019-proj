@@ -327,6 +327,14 @@ In the Renderer tab, we changed the material so that we used our own torch parti
 - Enabling/Disabling quadrants of level to improve performance (QuadrantEnabler.prefab, SceneUnloader.cs)
 
 **Aye:**
+- Getting assets and animations for the game including object assets and the goblin asset and animations
+- Added fading when transitioning scenes
+- Designing Level 1 and Level 2
+- Building Level 1 and Level 2
+- Making the StartScene (main menu screen), RestartMenu, and the logic for scene change
+- SacrificeCircle, Lantern and Torch particle effect
+- Particle System portion of the report
+
 
 ## References and External Resources
 
