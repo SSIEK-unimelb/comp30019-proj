@@ -76,13 +76,14 @@ Controls:
 * Interaction: F to interact with doors, ammo refills, etc.
 * Items: Left-click to use items.
 * Scroll wheel to cycle through items - or use 1,2,3,4… to select specific items.
+* Pause: P
 
 <p align="center">
   <img src="Images/Player_Actions/Mouse_Movement.png" width="600">
 </p>
 
 Progression:
-* Objective: Progress through groups of enemies on each floor, collecting useful items, using sacrifice circles to open locked doors and puuling off difficult movements and jumps to find secrets. The overarching goal is to climb to the highest level of the tower, defeat all enemies and collect the treasure.
+* Objective: Progress through groups of enemies on each floor, collecting useful items, using sacrifice circles to open locked doors and pulling off difficult movements and jumps to find secrets. The overarching goal is to climb to the highest level of the tower, defeat all enemies and collect the treasure.
 * Difficulty: As the player progresses through the levels, they are introduced to more difficult enemies and challenging mechanics. The number of enemies increases, the player is forced to manage their ammo and lantern oil more efficiently, and smarter, stealthier gameplay is required to stay alive.
 * Failure Condition: The player fails if they get defeated (killed) by the enemies, who work together to outnumber and swarm the player once noticed. The player has limited health, so gameplay is oriented around stealth and staying unnoticed.
 
@@ -219,9 +220,12 @@ Game World:
 * Simple Menu for starting, pausing the game.
 * Design: Minimalistic Design.
 
+
+
 <p align="center">
-  <img src="Images/UI/lantern_ui.png" width="50%">
-  <img src="Images/UI/crossbow_ui.png" width="50%">
+  <img src="Images/UI/lantern_ui.png" width="32%">
+  <img src="Images/UI/crossbow_ui.png" width="32%">
+  <img src="Images/UI/pause_ui.png" width="32%">
 </p>
 
 ### Art and Audio
