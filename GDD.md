@@ -248,31 +248,42 @@ Sources: Free assets from Unity Asset Store, free assets from other sources (Mix
 
 ### References:
 
-Goblin:
-
-https://assetstore.unity.com/packages/3d/props/mobile-power-ups-free-vol-1-36106
-
-Level:
+Objects and Textures:
 
 https://assetstore.unity.com/packages/3d/environments/dungeons/decrepit-dungeon-lite-33936
 
-Objects:
+https://www.mixamo.com/#/?page=1&query=goblin&type=Character
 
-UI:
+https://assetstore.unity.com/packages/3d/props/ball-pack-446
 
 https://assetstore.unity.com/packages/2d/gui/icons/heart-in-pixel-287862
 
+https://assetstore.unity.com/packages/3d/props/ten-power-ups-217666
+
+https://assetstore.unity.com/packages/2d/textures-materials/101-artistic-noise-textures-233672
+
 Sounds:
+
+https://assetstore.unity.com/packages/audio/sound-fx/free-ui-click-sound-pack-244644
 
 https://assetstore.unity.com/packages/audio/sound-fx/weapons/bow-and-hammer-sound-effects-163948
 
 https://assetstore.unity.com/packages/audio/sound-fx/footsteps-small-sound-pack-262072
 
+https://assetstore.unity.com/packages/audio/sound-fx/grenade-sound-fx-147490
+
+https://assetstore.unity.com/packages/audio/sound-fx/weapons/demo-ancient-magic-pack-free-175093
+
+https://assetstore.unity.com/packages/audio/sound-fx/rpg-essentials-sound-effects-free-227708
+
 https://assetstore.unity.com/packages/audio/sound-fx/scary-sound-fx-21523
 
-Shaders:
+https://assetstore.unity.com/packages/audio/sound-fx/horror-sfx-32834
 
-https://assetstore.unity.com/packages/2d/textures-materials/101-artistic-noise-textures-233672
+https://assetstore.unity.com/packages/audio/music/electronic/dark-atmospheric-free-track-music-pack-adaptive-tracks-244634
+
+https://assetstore.unity.com/packages/audio/sound-fx/western-audio-music-67788
+
 
 ### Technology and Tools
 

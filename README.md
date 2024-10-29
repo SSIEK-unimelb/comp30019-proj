@@ -338,4 +338,10 @@ In the Renderer tab, we changed the material so that we used our own torch parti
 
 ## References and External Resources
 
-TODO (to be continuously updated) - see specification for details
+- Animations for goblin run, walk, attack, idle: [Mixamo](https://www.mixamo.com/#/?page=1&type=Motion%2CMotionPack)
+- Player character model: [Mixamo](https://www.mixamo.com/#/?page=1&query=heraklios&type=Character)
+- Crates and barrels: [Unity Asset Store](https://assetstore.unity.com/packages/3d/props/exterior/crates-and-barrels-pack-volume-1-free-version-128829)
+- Torch (not including particle effect): [Unity Asset Store](https://assetstore.unity.com/packages/3d/environments/dungeons/lowpoly-dungeon-modules-108997)
+- Lantern: [Unity Asset Store](https://assetstore.unity.com/packages/3d/environments/historic/modular-medieval-lanterns-85527)
+- Crossbow: [Third Party Website - Sketchfab](https://sketchfab.com/3d-models/medieval-crossbow-02-5126230f8e7e4def9bc573c6c5ba24cc)
+- Knife: [Third Party Website - Sketchfab](https://sketchfab.com/3d-models/m9-phrobis-iii-1c0c4e74951b40ce83ff98aa649a191a)
