@@ -18,13 +18,13 @@ https://github.com/user-attachments/assets/89e0ea39-778f-45b4-b581-7c83900a8c08
 * [Possible Challenges](#possible-challenges)
 
 ### Introduction
-_Shadow Ascent_ is a first-person dark fantasy stealth game set in an ancient, mysterious, **goblin-infested** tower. The player's mission as a fearless adventurer is to carefully sneak past hordes of evil goblins to steal the treasure at the top of the tower. They must explore the tower, avoid enemies and navigate through each floor to uncover the secrets hidden within and escape with their treasure. The game features simple yet intriguing mechanics, such as picking up and interacting with enemy bodies, to enhance the eerie atmosphere and challenge players.
+_Shadow Ascent_ is a first-person dark fantasy stealth game set in an ancient, mysterious, **goblin-infested** tower. The player's mission as a fearless adventurer is to carefully sneak through hordes of evil goblins to steal the treasure at the top of the tower. They must explore the tower, take out enemies and navigate through each floor to uncover the secrets hidden within and escape with their treasure. The game features simple yet intriguing mechanics, such as picking up and interacting with enemy bodies, to enhance the eerie atmosphere and challenge players.
 
 > "Arkham City Predator Mode meets the mechanics of Sekiro, meets the atmosphere of Escape the Backrooms, all set in the universe of Lord of the Rings!" - IGN (real quote)
 
 Players who enjoy stealth-based games, and appreciate a different take on eerie environments without the traditional horror elements will love it!
 
-The game features unique ragdoll body mechanics, allowing the player to pick up defeated enemies to hide them from other enemies, throw them as an attack, trigger traps and more!
+The game features unique ragdoll body mechanics, allowing the player to pick up defeated enemies to distract other goblins, throw them as an attack, trigger doors and more!
 
 <p align="center">
   <img src="Images/Characters/ragdoll.gif" width="600">
@@ -51,8 +51,7 @@ The player is set to steal the treasure at the top of an ancient, mystical tower
 1. Player: The protagonist - a brave adventurer determined to take the ancient treasure for themselves - you!
 
 2. Enemies: An evil army of goblins patrolling the tower and its riches. They are brutal killing machines, but not the sharpest tools in the shed...
-    * Regular Goblin: Henchmen of the king. Quick and dangerous, but can be outsmarted. Takes a backstab to murder.
-    * Boss Goblin: A huge, buff goblin with ample health. Impervious to the player's hits, the goblin king has to be defeated by leading him through various traps to outwit him.
+    * Goblin: Quick and dangerous, but can be outsmarted. Takes a backstab or crossbow arrow to murder.
 
 <p align="center">
   <img src="Images/Characters/goblin.gif" width="300">
@@ -71,7 +70,7 @@ Controls:
 * Movement: WASD for movement.
 * Run: Hold shift.
 * Jump: SPACE.
-* Crouch: Ctrl.
+* Crouch: Toggle with C.
 * Look around: Mouse movement to move the camera.
 * Holding: Right-click for picking up / dropping bodies / objects, left-click while holding to throw.
 * Interaction: F to interact with doors, ammo refills, etc.
@@ -83,9 +82,9 @@ Controls:
 </p>
 
 Progression:
-* Objective: Progress through groups of enemies on each floor, collecting useful items, using sacrifice circles to open locked doors and maps to help you navigate. The overarching goal is to climb to the highest level of the tower, beat the goblin king and collect his treasure.
-* Difficulty: As the player progresses through the levels, they are introduced to more difficult enemies and challenging mechanics, culminating in a boss battle against the king goblin at the final level of the tower.
-* Failure Condition: The player fails if they get defeated (killed) by the enemies, who work together to outnumber and swarm the player once noticed. The player has limited health, so gameplay is more focused on stealth.
+* Objective: Progress through groups of enemies on each floor, collecting useful items, using sacrifice circles to open locked doors and puuling off difficult movements and jumps to find secrets. The overarching goal is to climb to the highest level of the tower, defeat all enemies and collect the treasure.
+* Difficulty: As the player progresses through the levels, they are introduced to more difficult enemies and challenging mechanics. The number of enemies increases, the player is forced to manage their ammo and lantern oil more efficiently, and smarter, stealthier gameplay is required to stay alive.
+* Failure Condition: The player fails if they get defeated (killed) by the enemies, who work together to outnumber and swarm the player once noticed. The player has limited health, so gameplay is oriented around stealth and staying unnoticed.
 
 Gameplay Mechanics:
 * Core Mechanics: The player has to move stealthily, clear obstacles, and interact with enemy bodies to progress.
@@ -121,7 +120,7 @@ Gameplay Mechanics:
 
 * Puzzle Mechanics:
     * Sacrifice circles - function like pressure plates for the enemy bodies, where the body activates some kind of event.
-    * Navigation - maps on each floor that inform the player about the layout of each area including alternate paths.
+    * GobEye - use the goblin eye to peek around corners and check for enemies!
 
 
 
@@ -147,13 +146,13 @@ Gameplay Mechanics:
   <img src="Images/Weapons/knife.gif" width="600">
 </p>
 
-* Crossbow: One-hit-kills regular goblins, but is incredibly loud and attracts the attention of all enemies nearby
+* Crossbow: One-hit-kills regular goblins, but has incredibly limited ammo. Use ONLY as a last resort!!
 
 <p align="center">
   <img src="Images/Weapons/crossbow.gif" width="600">
 </p>
 
-* GobEye: Can throw it and acts as a camera...
+* GobEye: Can throw it and acts as a camera to observe enemy movement...
 
 <p align="center">
   <img src="Images/Weapons/EyeMechanic.gif" width="600">
@@ -210,14 +209,14 @@ Game World:
   <img src="Images/Environment/Treasure_Room.jpg" width="600">
 </p>
 
-* Navigation: Doors may close behind the player to keep the player on track. There will be a top-down minimap for easier navigation, which will only show areas that the player has already explored.
+* Navigation: Doors may close behind the player to keep the player on track. The player needs to keep track of where they are going and where they have been, using the GobEye to great effect.
 
 ### UI
 
-* Lantern Burn Time: Displayed in the bottom-right corner of the screen. Shows up when you equip the lantern.
-* Health Points: Displayed in bottom-left corner of the screen.
-* Item you have in hand.
-* Minimap: Only shows the areas the player has explored.
+* Lantern Burn Time: Displayed in the bottom-left corner of the screen. Shows up when you equip the lantern.
+* Crossbow ammo: Displayed in bottom-right corner of the screen when crossbow is equipped
+* Health Points: Displayed on the left side of the screen.
+* Items (equipped item highlighted) on the right side of the screen
 * Simple Menu for starting, pausing the game.
 * Design: Minimalistic Design.
 
