@@ -170,13 +170,14 @@ public class GoblinAI : MonoBehaviour
         GetComponent<HoldStatus>().CanBeHeld = false;
     }
     void Update() {
-        currentState.UpdateState();
-
         if (PauseMenu.gameIsPaused) {
             if (goblinSounds.isPlaying) goblinSounds.Pause();
+            return;
         } else {
             if (!goblinSounds.isPlaying && goblinSounds.clip != null) goblinSounds.Play();
         }
+
+        currentState.UpdateState();
     }
 
     // Exit the current state, and enter the new state.

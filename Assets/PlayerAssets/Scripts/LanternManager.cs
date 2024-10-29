@@ -22,6 +22,8 @@ public class LanternManager : MonoBehaviour
 
     private void Update()
     {
+        if (PauseMenu.gameIsPaused) return;
+        
         Debug.Log("Is Lantern Active? " + isLanternActive);
         if (isLanternActive && currentBurnTime > 0)
         {
@@ -105,10 +107,6 @@ public class LanternManager : MonoBehaviour
     public void AddBurnTime(float burnTime)
     {
         currentBurnTime += burnTime;
-        if (isLanternActive) {
-            UpdateLanternUI();
-        } else {
-            TurnOnLantern();
-        }
+        UpdateLanternUI();
     }
 }

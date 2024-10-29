@@ -97,6 +97,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8580d9adf617fd4fbdbec056fac614c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pickUpSound: {fileID: 8300000, guid: 78ad99fd0a0a5144280b07bbdba84815, type: 3}
   amountText: {fileID: 0}
   refillBurnTime: 60
 --- !u!65 &5281636122290386482

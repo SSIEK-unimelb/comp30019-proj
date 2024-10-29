@@ -6,10 +6,13 @@ using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 {
+    private SoundManager soundManager;
+    [SerializeField] private AudioClip pauseAudio;
+    [SerializeField] private AudioClip unpauseAudio;
     private Button resumeButton;
     private Button restartButton;
     private Button quitButton;
-    private SoundManager soundManager;
+    private GameObject blurPanel;
     public static bool gameIsPaused = false;
 
     private void Start() {
@@ -17,6 +20,7 @@ public class PauseMenu : MonoBehaviour
         resumeButton = transform.Find("ResumeButton").GetComponent<Button>();
         restartButton = transform.Find("RestartButton").GetComponent<Button>();
         quitButton = transform.Find("QuitButton").GetComponent<Button>();
+        blurPanel = transform.Find("BlurPanel").gameObject;
     }
 
     private void Update() {
@@ -33,7 +37,9 @@ public class PauseMenu : MonoBehaviour
         Time.timeScale = 0f;
         gameIsPaused = true;
         soundManager.PauseSound();
+        soundManager.PlaySoundEffect(pauseAudio, 5f);
 
+        blurPanel.SetActive(true);
         resumeButton.gameObject.SetActive(true);
         restartButton.gameObject.SetActive(true);
         quitButton.gameObject.SetActive(true);
@@ -46,7 +52,9 @@ public class PauseMenu : MonoBehaviour
         Time.timeScale = 1f;
         gameIsPaused = false;
         soundManager.ResumeSound();
+        soundManager.PlaySoundEffect(unpauseAudio, 1f);
 
+        blurPanel.SetActive(false);
         resumeButton.gameObject.SetActive(false);
         restartButton.gameObject.SetActive(false);
         quitButton.gameObject.SetActive(false);

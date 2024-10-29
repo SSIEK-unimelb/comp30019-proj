@@ -68,6 +68,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3bed303f3b01a7f4e9f9e1b7074e6001, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pickUpSound: {fileID: 8300000, guid: 78ad99fd0a0a5144280b07bbdba84815, type: 3}
   amountText: {fileID: 0}
   numArrows: 2
 --- !u!1001 &1024793347653990953

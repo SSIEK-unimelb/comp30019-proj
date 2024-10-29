@@ -19,6 +19,8 @@ public class SuspicionMarksBounce : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (PauseMenu.gameIsPaused) return;
+
         //animate
         float finalheight = startHeight + Mathf.Sin(Time.time * bounceSpeed + timeOffset) * bounceAmplitude;
         var position = transform.localPosition;
@@ -29,6 +31,5 @@ public class SuspicionMarksBounce : MonoBehaviour
         Vector3 rotation = transform.localRotation.eulerAngles;
         rotation.y += rotationSpeed * Time.deltaTime;
         transform.localRotation = Quaternion.Euler(rotation.x, rotation.y, rotation.z);
-        
     }
 }

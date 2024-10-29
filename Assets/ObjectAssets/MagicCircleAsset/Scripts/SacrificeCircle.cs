@@ -35,6 +35,8 @@ public class SacrificeCircle : MonoBehaviour
 
     void Update()
     {
+        if (PauseMenu.gameIsPaused) return;
+        
         if (!isSacrificed) {
             if (isInside) {
                 HoldStatus holdStatus = enemySacrifice.GetComponentInParent<HoldStatus>();

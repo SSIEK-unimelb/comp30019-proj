@@ -22,6 +22,8 @@ public class ObjectSoundCollision : MonoBehaviour
     }
 
     private void Update() {
+        if (PauseMenu.gameIsPaused) return;
+        
         if (!canCollide) {
             ignoreCollisionsDurationAtStart -=  Time.deltaTime;
             if (ignoreCollisionsDurationAtStart <= 0) {

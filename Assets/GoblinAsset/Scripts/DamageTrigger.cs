@@ -19,6 +19,7 @@ public class DamageTrigger : MonoBehaviour
     }
 
     void Update() {
+        if (PauseMenu.gameIsPaused) return;
         currentAttackCooldownTime -= Time.deltaTime;
     }
 

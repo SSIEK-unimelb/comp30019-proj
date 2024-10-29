@@ -33,6 +33,8 @@ public class HealingCircle : MonoBehaviour
 
     void Update()
     {
+        if (PauseMenu.gameIsPaused) return;
+        
         if (!isHealed) {
             if (isInside) {
                 // Increment time inside the collider

@@ -6,6 +6,8 @@ using UnityEngine.UI;
 
 public class ArrowReplenishToggle : Interactible
 {
+    private SoundManager soundManager;
+    [SerializeField] private AudioClip pickUpSound;
     [SerializeField] TMP_Text amountText;
     [SerializeField] private int numArrows = 5;
     private string pickUpStr;
@@ -13,6 +15,7 @@ public class ArrowReplenishToggle : Interactible
     private FirstPersonControl firstPersonControl;
     public void Start()
     {
+        soundManager = GameObject.FindGameObjectWithTag("SoundManager").GetComponent<SoundManager>();
         firstPersonControl = GameObject.FindGameObjectWithTag("Player").GetComponent<FirstPersonControl>();
         ammoManager = firstPersonControl.GetComponentInChildren<AmmoManager>();
         pickUpStr = "Arrows (" + numArrows + ")";
@@ -34,6 +37,7 @@ public class ArrowReplenishToggle : Interactible
         amountText.gameObject.SetActive(false);
         Destroy(gameObject);
         // add a pick-up sound here through sound manager
+        soundManager.PlaySoundEffect(pickUpSound, 1f);
     }
 
     public override void OnLoseFocus()

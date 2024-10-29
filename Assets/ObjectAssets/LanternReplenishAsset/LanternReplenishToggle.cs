@@ -6,6 +6,8 @@ using UnityEngine.UI;
 
 public class LanternReplenishToggle : Interactible
 {
+    private SoundManager soundManager;
+    [SerializeField] private AudioClip pickUpSound;
     [SerializeField] TMP_Text amountText;
     [SerializeField] private float refillBurnTime = 20f;
     private string pickUpStr;
@@ -13,6 +15,7 @@ public class LanternReplenishToggle : Interactible
     private FirstPersonControl firstPersonControl;
     public void Start()
     {
+        soundManager = GameObject.FindGameObjectWithTag("SoundManager").GetComponent<SoundManager>();
         firstPersonControl = GameObject.FindGameObjectWithTag("Player").GetComponent<FirstPersonControl>();
         lanternManager = firstPersonControl.GetComponentInChildren<LanternManager>();
         pickUpStr = "Lantern Oil (" + Mathf.Max(0, Mathf.RoundToInt(refillBurnTime)) + "s)";
@@ -32,8 +35,10 @@ public class LanternReplenishToggle : Interactible
         // Implement interaction protocol
         amountText.gameObject.SetActive(false);
         lanternManager.AddBurnTime(refillBurnTime);
+        Debug.Log("The lantern replenish candle was destroyed!");
         Destroy(gameObject);
         // add a pick-up sound here through sound manager
+        soundManager.PlaySoundEffect(pickUpSound, 1f);
     }
 
     public override void OnLoseFocus()

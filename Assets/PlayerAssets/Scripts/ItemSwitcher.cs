@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class ItemSwitcher : MonoBehaviour
 {
+    private SoundManager soundManager;
+    [SerializeField] private AudioClip switchItemAudio;
     public GameObject[] itemPrefabs;
     public GameObject currentItem { get; private set; }
     private int currentItemIndex = -1;
@@ -19,6 +21,8 @@ public class ItemSwitcher : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        soundManager = GameObject.FindGameObjectWithTag("SoundManager").GetComponent<SoundManager>();
+
         for (int i = 0; i < itemPrefabs.Length; i++) {
             itemPrefabs[i].SetActive(true);
         }
@@ -100,6 +104,8 @@ public class ItemSwitcher : MonoBehaviour
         
         currentItemIndex = itemIndex; // update current item
         inventoryIconController.Highlight(currentItemIndex, true);
+
+        soundManager.PlaySoundEffect(switchItemAudio, 1f);
 
     }
 
